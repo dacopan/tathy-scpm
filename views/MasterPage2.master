@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+    <title>Despliegue de Red</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script language="JavaScript" type="text/javascript">
+        function show5() {
+            if (!document.layers && !document.all && !document.getElementById)
+                return
+            var Digital = new Date()
+            var hours = Digital.getHours()
+            var minutes = Digital.getMinutes()
+            var seconds = Digital.getSeconds()
+
+            var dn = "PM"
+            if (hours < 12)
+                dn = "AM"
+            if (hours > 12)
+                hours = hours - 12
+            if (hours == 0)
+                hours = 12
+
+            if (minutes <= 9)
+                minutes = "0" + minutes
+            if (seconds <= 9)
+                seconds = "0" + seconds
+
+            myclock = +hours + ":" + minutes + ":" + seconds + " " + dn
+            if (document.layers) {
+                document.layers.liveclock.document.write(myclock)
+                document.layers.liveclock.document.close()
+            }
+            else if (document.all)
+                liveclock.innerHTML = myclock
+            else if (document.getElementById)
+                document.getElementById("liveclock").innerHTML = myclock
+
+            setTimeout("show5()", 1000)
+        }
+
+        window.onload = show5
+
+    </script>
+
+    <style type="text/css">
+        #form1 {
+            width: 1225px;
+        }
+
+        .backgroundRepeatBanner {
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body background="/Images/Pagina.png">
+    <form id="form1" runat="server">
+        <input type="hidden" id="hd" name="hd" value="1" />
+        <div style="width: 1229px">
+            <table border="0" class="backgroundRepeatBanner">
+                <tr>
+                    <td align="center" rowspan="1" style="height: 2px; text-align: left;">
+
+                        <div>
+                            <img src="/Images/encabezadoDDR.png" style="width: 1268px; height: 108px;" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" rowspan="1" style="width: 30%; height: 30px">
+                        <label id="liveclock" class="subtitle_fecha" style="text-align: left">
+                        </label>
+                        <asp:ImageButton ID="ImageButton2" runat="server" Height="39px"
+                            ImageUrl="~/Images/blue-home-icon.png" OnClick="ImageButton2_Click"
+                            Width="41px" />
+                        <asp:ImageButton ID="ImageButton3" runat="server" Height="35px"
+                            ImageUrl="~/Images/off.png" OnClick="ImageButton3_Click" Width="48px" />
+                        <asp:ImageButton ID="ImageButton1" runat="server" EnableTheming="False"
+                            EnableViewState="False" ImageUrl="~/views/Images/cerrar.GIF"
+                            OnClick="ImageButton1_Click" TabIndex="3" Visible="False" Width="84px" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center" class="titleBanner" rowspan="1"
+                        style="width: 63%; height: 30px; text-align: center">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </form>
+</body>
+</html>
