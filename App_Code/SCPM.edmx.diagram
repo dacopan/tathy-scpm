@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bee8965cc9894dd5a9e5f5bc77f421af" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_AREAS" Width="1.5" PointX="7.5" PointY="23.375" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CANTONES" Width="1.5" PointX="3" PointY="10" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CARGOS" Width="1.5" PointX="7.5" PointY="20.875" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CONYUGES" Width="1.5" PointX="12" PointY="3.625" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_DENOMINACIONES" Width="1.5" PointX="7.5" PointY="28.875" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_DISCAPACIDADES" Width="1.5" PointX="15" PointY="5.75" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_EMERGENCIAS" Width="1.5" PointX="15" PointY="9.75" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_ESTADOS_CIVILES" Width="1.5" PointX="7.5" PointY="13" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PAIS" Width="1.5" PointX="7.5" PointY="6.25" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PARENTESCOS" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PARROQUIAS" Width="1.5" PointX="5.25" PointY="10" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PERSONALES" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PROFESIONES" Width="1.5" PointX="9.75" PointY="5.125" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PROVINCIAS" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PUESTO_HIST" Width="1.5" PointX="12" PointY="13" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PUESTOS" Width="1.5" PointX="9.75" PointY="24.75" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_RAZAS" Width="1.5" PointX="7.5" PointY="15.5" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_RELACIONES_LABORALES" Width="1.5" PointX="7.5" PointY="26.25" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_SECTORES" Width="1.5" PointX="7.5" PointY="10" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_SUBROGA_HIST" Width="1.5" PointX="12" PointY="9.875" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_TIPO_DISCAPACIDADES" Width="1.5" PointX="12.75" PointY="16.5" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_TIPO_IDENTIFICACIONES" Width="1.5" PointX="7.5" PointY="18" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_UNIDAD" Width="1.5" PointX="5.25" PointY="23.5" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_ARE_RELATIONS_SCPM_UNI" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_CAN_RELATIONS_SCPM_PRO" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PAR_RELATIONS_SCPM_CAN" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PRO" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PAR" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PER" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_TIP" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_EME_RELATIONS_SCPM_PAR" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_EME_RELATIONS_SCPM_PER" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_EST" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_PAI" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_SEC_RELATIONS_SCPM_PAR" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_RAZ" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_SEC" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_TIP" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PER" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" />
+        <AssociationConnector Association="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

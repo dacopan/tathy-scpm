@@ -1,211 +1,214 @@
 ﻿<%@ Page Title="mantenedor de posiciones" Language="C#" MasterPageFile="~/views/MasterPage2.master" AutoEventWireup="true" CodeFile="MantenedoresPosiciones.aspx.cs" Inherits="MantenedoresPosiciones" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<%@ Register Assembly="System.Web.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Namespace="System.Web.UI.WebControls" TagPrefix="asp" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table class="backgroundRepeatBanner">
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label1" runat="server" BackColor="#000066" ForeColor="White" 
-                    Text="MANTENEDORES DE"></asp:Label>
+                <asp:label id="Label1" runat="server" backcolor="#000066" forecolor="White"
+                    text="MANTENEDORES DE"></asp:label>
             </td>
         </tr>
         <tr>
             <td colspan="4">
-                <asp:Label ID="Label2" runat="server" BackColor="#000066" ForeColor="White" 
-                    Text="LUGAR DE TRABAJO"></asp:Label>
+                <asp:label id="Label2" runat="server" backcolor="#000066" forecolor="White"
+                    text="LUGAR DE TRABAJO"></asp:label>
             </td>
         </tr>
         <tr>
-            <td style="height: 30px">
-                &nbsp;</td>
-            <td style="height: 30px">
-                &nbsp;</td>
-            <td style="height: 30px">
-                &nbsp;</td>
-            <td style="height: 30px">
-                &nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
         </tr>
         <tr>
             <td style="height: 30px">
-                <asp:Label ID="Label3" runat="server" Text="UNIDAD"></asp:Label>
+                <asp:label id="Label3" runat="server" text="UNIDAD"></asp:label>
             </td>
             <td style="height: 30px">
-                <asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:dropdownlist id="ComboUnidad" runat="server" autopostback="True" onselectedindexchanged="ComboUnidad_SelectedIndexChanged">
                     <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
-                </asp:DropDownList>
+                </asp:dropdownlist>
             </td>
             <td style="height: 30px">
                 <table class="backgroundRepeatBanner">
                     <tr>
                         <td style="height: 23px">
-                            <asp:Label ID="Label33" runat="server" Text="Nuevo/Modificar"></asp:Label>
+                            <asp:label id="Label33" runat="server" text="Nuevo/Modificar"></asp:label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
+                            <asp:textbox id="inUnidad" runat="server"></asp:textbox>
+                        </td>
+                        <td style="height: 23px">
+                            <asp:checkbox id="UnidadEnabled" runat="server" />
                         </td>
                     </tr>
                 </table>
             </td>
             <td style="height: 30px">
-                <asp:Button ID="Button1" runat="server" Text="Ingresar" />
+                <asp:button id="AddUnidad" runat="server" text="Añadir" onclick="AddUnidad_Click" />
+                <asp:button id="editUnidad" runat="server" text="Modificar" onclick="editUnidad_Click" />
             </td>
         </tr>
         <tr>
             <td style="height: 26px">
-                <asp:Label ID="Label4" runat="server" Text="AREA"></asp:Label>
+                <asp:label id="Label4" runat="server" text="AREA"></asp:label>
             </td>
             <td style="height: 26px">
-                <asp:DropDownList ID="DropDownList2" runat="server">
+                <asp:dropdownlist id="ComboArea" runat="server" autopostback="True" onselectedindexchanged="ComboArea_SelectedIndexChanged">
                     <asp:ListItem>DIRECCION FINANCIERA</asp:ListItem>
                     <asp:ListItem>DIRECCION ADMINISTRATIVA</asp:ListItem>
-                </asp:DropDownList>
+                </asp:dropdownlist>
             </td>
             <td style="height: 26px">
                 <table class="backgroundRepeatBanner">
                     <tr>
                         <td>
-                            <asp:Label ID="Label34" runat="server" Text="Nuevo/Modificar"></asp:Label>
+                            <asp:label id="Label34" runat="server" text="Nuevo/Modificar"></asp:label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
+                            <asp:textbox id="inArea" runat="server"></asp:textbox>
+                        </td>
+                        <td>
+                            <asp:checkbox id="AreaEnabled" runat="server" />
                         </td>
                     </tr>
                 </table>
             </td>
             <td style="height: 26px">
-                <asp:Button ID="Button3" runat="server" Text="Modificar" />
+                <asp:button id="AddArea" runat="server" text="Añadir" onclick="AddArea_Click" />
+                <asp:button id="editArea" runat="server" text="Modificar" onclick="editArea_Click" />
             </td>
         </tr>
         <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
             <td>
                 <table class="backgroundRepeatBanner">
                     <tr>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </table>
             </td>
-            <td>
-                <asp:Button ID="Button2" runat="server" Text="Deshabilitar/habilitar" />
-            </td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label35" runat="server" BackColor="#000066" ForeColor="White" 
-                    Text="PUESTO TRABAJO"></asp:Label>
+                <asp:label id="Label35" runat="server" backcolor="#000066" forecolor="White"
+                    text="PUESTO TRABAJO"></asp:label>
             </td>
         </tr>
         <tr>
-            <td style="height: 30px">
-                &nbsp;</td>
-            <td style="height: 30px">
-                &nbsp;</td>
-            <td style="height: 30px">
-                &nbsp;</td>
-            <td style="height: 30px">
-                &nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
+            <td style="height: 30px">&nbsp;</td>
         </tr>
         <tr>
             <td style="height: 30px">
-                <asp:Label ID="Label36" runat="server" Text="Relacion Laboral"></asp:Label>
+                <asp:label id="Label36" runat="server" text="Relacion Laboral"></asp:label>
             </td>
             <td style="height: 30px">
-                <asp:DropDownList ID="DropDownList3" runat="server">
+                <asp:dropdownlist id="comboRelacionLab" runat="server" autopostback="True" onselectedindexchanged="comboRelacionLab_SelectedIndexChanged">
                     <asp:ListItem>SERVICIOS PROFESIONALES</asp:ListItem>
-                </asp:DropDownList>
-                </td>
+                </asp:dropdownlist>
+            </td>
             <td style="height: 30px">
                 <table class="backgroundRepeatBanner">
                     <tr>
                         <td style="height: 23px">
-                            <asp:Label ID="Label37" runat="server" Text="Nuevo/Modificar"></asp:Label>
+                            <asp:label id="Label37" runat="server" text="Nuevo/Modificar"></asp:label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
+                            <asp:textbox id="inRelacionLab" runat="server"></asp:textbox>
+                        </td>
+                        <td>
+                            <asp:checkbox id="relacionLabEnabled" runat="server" />
                         </td>
                     </tr>
                 </table>
             </td>
             <td style="height: 30px">
-                <asp:Button ID="Button4" runat="server" Text="Ingresar" />
+                <asp:button id="addRelacionLab" runat="server" text="Modificar" OnClick="addRelacionLab_Click" />
+                <asp:button id="editRelacionLab" runat="server" text="Ingresar" OnClick="editRelacionLab_Click" />
             </td>
         </tr>
         <tr>
             <td style="height: 26px">
-                <asp:Label ID="Label38" runat="server" Text="Denominacion"></asp:Label>
+                <asp:label id="Label38" runat="server" text="Denominacion"></asp:label>
             </td>
             <td style="height: 26px">
-                            <asp:DropDownList ID="DropDownList4" runat="server">
+                <asp:dropdownlist id="ComboDenominacion" runat="server" autopostback="True" onselectedindexchanged="ComboDenominacion_SelectedIndexChanged">
                                 <asp:ListItem>SERVICIOS PROFESIONALES 1</asp:ListItem>
                                 <asp:ListItem>SERVICIOS PROFESIONALES 2</asp:ListItem>
-                            </asp:DropDownList>
-                </td>
+                            </asp:dropdownlist>
+            </td>
             <td style="height: 26px">
                 <table class="backgroundRepeatBanner">
                     <tr>
                         <td>
-                            <asp:Label ID="Label39" runat="server" Text="Nuevo/Modificar"></asp:Label>
+                            <asp:label id="Label39" runat="server" text="Nuevo/Modificar"></asp:label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox15" runat="server"></asp:TextBox>
+                            <asp:textbox id="InDenominacion" runat="server"></asp:textbox>
+                        </td>
+                        <td>
+                            <asp:checkbox id="denominacionEnabled" runat="server" />
                         </td>
                     </tr>
                 </table>
             </td>
             <td style="height: 26px">
-                <asp:Button ID="Button5" runat="server" Text="Modificar" />
+                <asp:button id="addDenominacion" runat="server" text="Modificar" OnClick="addDenominacion_Click" />
+                <asp:button id="editDenominacion" runat="server" text="Ingresar" OnClick="editDenominacion_Click" />
             </td>
         </tr>
         <tr>
-            <td>
-                <asp:Label ID="Label5" runat="server" Text="Cargo"></asp:Label>
+            <td style="height: 32px">
+                <asp:label id="Label5" runat="server" text="Cargo"></asp:label>
             </td>
-            <td>
-                            <asp:DropDownList ID="DropDownList5" runat="server">
+            <td style="height: 32px">
+                <asp:dropdownlist id="ComboCargo" runat="server" autopostback="True" onselectedindexchanged="ComboCargo_SelectedIndexChanged">
                                 <asp:ListItem>ANALISTA 1</asp:ListItem>
-                            </asp:DropDownList>
-                </td>
-            <td>
+                            </asp:dropdownlist>
+            </td>
+            <td style="height: 32px">
                 <table class="backgroundRepeatBanner">
                     <tr>
                         <td>
-                            <asp:Label ID="Label40" runat="server" Text="Nuevo/Modificar"></asp:Label>
+                            <asp:label id="Label40" runat="server" text="Nuevo/Modificar"></asp:label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox16" runat="server"></asp:TextBox>
+                            <asp:textbox id="InCargo" runat="server"></asp:textbox>
+                        </td>
+                        <td>
+                            <asp:checkbox id="cargoEnabled" runat="server" />
                         </td>
                     </tr>
                 </table>
             </td>
-            <td>
-                <asp:Button ID="Button6" runat="server" Text="Deshabilitar/habilitar" />
+            <td style="height: 32px">
+                <asp:button id="addCargo" runat="server" text="Modificar" OnClick="addCargo_Click" />
+                <asp:button id="editCargo" runat="server" text="Ingresar" OnClick="editCargo_Click" />
+
             </td>
         </tr>
         <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
+
+        
     </table>
 </asp:Content>
 
