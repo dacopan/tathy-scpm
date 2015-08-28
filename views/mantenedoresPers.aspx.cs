@@ -307,7 +307,7 @@ public partial class mantenedoresPers : System.Web.UI.Page
     {
         fillCantones();
 
-        inProvincia.Text = comboProvincia.SelectedItem.Text;
+        inProvincia.Text = comboProvincia.SelectedItem.Text;        
     }
     protected void ComboCanton_SelectedIndexChanged(object sender, EventArgs e)
     {

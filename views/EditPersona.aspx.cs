@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AddPersona : System.Web.UI.Page
+public partial class EditPersona : System.Web.UI.Page
 {
     PersonaServiceModel psvm;
     protected void Page_Load(object sender, EventArgs e)
@@ -47,7 +47,167 @@ public partial class AddPersona : System.Web.UI.Page
 
             //emergencia
             fillParentesco(emg_comboParentesco);
+
+            var _per_ID = Request.QueryString["per_id"];
+            if (_per_ID != null)
+            {
+                int per_id;
+                bool isNumeric = int.TryParse(_per_ID, out per_id);
+                if (isNumeric)
+                {
+                    //fill personas
+                    fillPersonaData(per_id);
+                }
+                else
+                {
+                    HelperUtil.showNotifi("persona no encontrada");
+                }
+
+            }
+            else
+            {
+                HelperUtil.showNotifi("persona no encontrada");
+            }
         }
+    }
+
+    private void fillPersonaData(int per_id)
+    {
+        //datos funcionario
+        SCPM_PERSONALES p = psvm.getPersonasByID(per_id).First();
+        //load joins
+        p.SCPM_RAZASReference.Load();
+        p.SCPM_PAISReference.Load();
+        p.SCPM_ESTADOS_CIVILESReference.Load();
+        //
+
+        inApellido1.Text = p.PER_APE_PAT;
+        inApellido2.Text = p.PER_APE_MAT;
+        inNombre1.Text = p.PER_NOM1;
+        inNombre2.Text = p.PER_NOM2;
+
+        comboPais.SelectedValue = p.SCPM_PAIS.PAI_ID.ToString();
+        comboDocumento.SelectedValue = p.SCPM_TIPO_IDENTIFICACIONES.TIP_IDE_COD.ToString();
+        inDocumento.Text = p.PER_NUM_DOC;
+        sexo.Checked = p.PER_GEN.Value;
+        p.SCPM_RAZASReference.Load();
+        comboRaza.SelectedValue = p.SCPM_RAZAS.RAZ_ID.ToString();
+        inMilitar.Text = p.PER_LIB_MIL_NUM;
+
+        //fechanac
+        inFechaNac.Text = p.PER_FEC_NAC.Value.ToString("yyyy-MM-dd");
+        //
+        comboSangre.SelectedValue = p.PER_TIP_SAN;
+        comboEstadoCivil.SelectedValue = p.SCPM_ESTADOS_CIVILES.EST_CIV_ID.ToString();
+        inCelular.Text = p.PER_CEL;
+        inTelefono.Text = p.PER_TEL;
+
+        inEmail.Text = p.PER_COR_PER;
+        tarjeta.Checked = p.PER_TAR.Value;
+
+        //file avatar
+        Avatar.ImageUrl = (p.PER_PHOTO == null) ? "~/Uploads/avatar.png" : p.PER_PHOTO;
+        //end file avatar
+
+        //domicilio
+        comboSector.SelectedValue = p.SCPM_SECTORES.SEC_ID.ToString();
+
+        p.SCPM_SECTORES.SCPM_PARROQUIASReference.Load();
+        ComboParroquia.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.PAR_ID.ToString();
+
+        p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONESReference.Load();
+        ComboCanton.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.CAN_ID.ToString();
+
+        p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.SCPM_PROVINCIASReference.Load();
+        ComboParroquia.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.SCPM_PROVINCIAS.PRO_ID.ToString();
+
+        inDireccion.Text = p.PER_DIR;
+
+        ///---CONYUGUE---///
+        p.SCPM_CONYUGES.Load();
+        if (p.SCPM_CONYUGES.Count > 0)
+        {
+            stepConyugue.Visible = true;
+
+            SCPM_CONYUGES con = p.SCPM_CONYUGES.First();
+            con_apellido1.Text = con.CON_APE_PAT;
+            con_apellido2.Text = con.CON_APE_MAT;
+            con_nombre1.Text = con.CON_NOM1;
+            con_nombre2.Text = con.CON_NOM2;
+
+            con.SCPM_PAISReference.Load();
+            con_pais.SelectedValue = con.SCPM_PAIS.PAI_ID.ToString();
+
+            con.SCPM_TIPO_IDENTIFICACIONESReference.Load();
+            con_comboDocumento.SelectedValue = con.SCPM_TIPO_IDENTIFICACIONES.TIP_IDE_COD.ToString();
+
+            con_documento.Text = con.CON_NUM_DOC;
+            con_fechaNacimiento.Text = con.CON_FEC_NAC.Value.ToString("yyyy-MM-dd");
+
+            con_telefono.Text = con.CON_TEL;
+            con_celular.Text = con.CON_CEL;
+            con_Email.Text = con.CON_COR_PER;
+
+            con.SCPM_PROFESIONESReference.Load();
+            con_comboProfesion.SelectedValue = con.SCPM_PROFESIONES.PROF_ID.ToString();
+
+            con_trabaja.Checked = con.CON_TRA.Value;
+            if (con_trabaja.Checked)
+            {
+                con_empresa.Text = con.CON_NOM_EMP;
+                con_telfTrabajo.Text = con.CON_NUM_TRA;
+                con_lugarTrab.Text = con.CON_DIR_TRAB;
+            }
+            else
+            {
+                con_empresa.Text = "";
+                con_telfTrabajo.Text = "";
+                con_lugarTrab.Text = "";
+            }
+        }
+        else
+        {
+            stepConyugue.Visible = false;
+        }
+        //end conyugue
+        ///---discapacidad---///
+        p.SCPM_DISCAPACIDADES.Load();
+        hasDisapacidad.Checked = p.SCPM_DISCAPACIDADES.Count > 0;
+        if (hasDisapacidad.Checked)
+        {
+            var alldiscapcidades = psvm.getAllDiscapacidadControl();
+            var discapcidadesIn = p.SCPM_DISCAPACIDADES.ToList();
+
+            foreach (var disItem in alldiscapcidades)
+            {
+
+            }
+
+            discapcidadesIn.First().SCPM_PARENTESCOSReference.Load();
+            dis_comboParentesco.SelectedValue = discapcidadesIn.FirstOrDefault().SCPM_PARENTESCOS.PARE_ID.ToString();
+
+
+
+            foreach (RepeaterItem item in Repeater1.Items)
+            {
+
+
+              /*  int rango = Convert.ToInt32((item.FindControl("slider_input") as TextBox).Text.Split('-')[0]);
+                int dis_tip_id = Convert.ToInt32((item.FindControl("dis_tip_id") as HiddenField).Value);
+                if (rango > 0)
+                {
+                    p.SCPM_DISCAPACIDADES.Add(new SCPM_DISCAPACIDADES()
+                    {
+                        DIS_CLA = dis_isPropia.Checked,
+                        DIS_POR = rango,
+                        DIS_CONADIS = (dis_hasConadis.Checked ? dis_conadis.Text : ""),
+                        SCPM_TIPO_DISCAPACIDADES = psvm.getDiscapacidadByID(dis_tip_id),
+                       // SCPM_PARENTESCOS = parentezcoRef
+                    });
+                }*/
+            }
+        }
+
     }
 
     private void fillParentesco(DropDownList combo)
@@ -333,7 +493,7 @@ public partial class AddPersona : System.Web.UI.Page
         }
         else
         {
-            //if (p.PER_PHOTO == null) p.PER_PHOTO = "~/Uploads/avatar.png";
+            if (p.PER_PHOTO == null) p.PER_PHOTO = "~/Uploads/avatar.png";
         }
 
         //end file avatar
@@ -383,7 +543,9 @@ public partial class AddPersona : System.Web.UI.Page
         {
             var parentezcoRef = psvm.getParentezcoByID(Convert.ToInt32(dis_comboParentesco.SelectedValue));
             foreach (RepeaterItem item in Repeater1.Items)
-            {                
+            {
+                Response.Write((item.FindControl("slider_input") as TextBox).Text);
+
                 int rango = Convert.ToInt32((item.FindControl("slider_input") as TextBox).Text.Split('-')[0]);
                 int dis_tip_id = Convert.ToInt32((item.FindControl("dis_tip_id") as HiddenField).Value);
                 if (rango > 0)

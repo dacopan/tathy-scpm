@@ -377,7 +377,7 @@ public class PersonaServiceModel
         return (from a in db.SCPM_PROFESIONES where a.PROF_ID == newx select a).First();
     }
 
-    public object getAllDiscapacidadControl()
+    public List<DiscapacidadControl> getAllDiscapacidadControl()
     {
         var discapacidades = getAllDiscapacidad();
         List<DiscapacidadControl> disc = new List<DiscapacidadControl>();

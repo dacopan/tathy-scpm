@@ -5,28 +5,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b7cd77c1bb52456f804a415d2200a55e" Name="Diagram1">
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_AREAS" Width="1.5" PointX="8.25" PointY="23.375" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CANTONES" Width="1.5" PointX="1.5" PointY="16.75" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CARGOS" Width="1.5" PointX="10.5" PointY="19.375" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CONYUGES" Width="1.5" PointX="3" PointY="8.125" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_DENOMINACIONES" Width="1.5" PointX="6" PointY="18.375" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_DISCAPACIDADES" Width="1.5" PointX="8.25" PointY="5.5" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_EMERGENCIAS" Width="1.5" PointX="11.25" PointY="9.5" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_ESTADOS_CIVILES" Width="1.5" PointX="3.75" PointY="4.875" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PAIS" Width="1.5" PointX="0.75" PointY="9.75" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PARENTESCOS" Width="1.5" PointX="6" PointY="4.5" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PARROQUIAS" Width="1.5" PointX="1.5" PointY="19.75" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PERSONALES" Width="1.5" PointX="6" PointY="7.5" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PROFESIONES" Width="1.5" PointX="0.75" PointY="4.625" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PROVINCIAS" Width="1.5" PointX="1.5" PointY="22.75" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PUESTO_HIST" Width="1.5" PointX="8.25" PointY="9.625" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_RAZAS" Width="1.5" PointX="3.75" PointY="17.125" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_RELACIONES_LABORALES" Width="1.5" PointX="6" PointY="15.875" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_SECTORES" Width="1.5" PointX="3.75" PointY="19.75" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_SUBROGA_HIST" Width="1.5" PointX="8.25" PointY="19.375" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_TIPO_DISCAPACIDADES" Width="1.5" PointX="6" PointY="1.25" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_TIPO_IDENTIFICACIONES" Width="1.5" PointX="3.75" PointY="14.375" />
-        <EntityTypeShape EntityType="SCPMdbModel.SCPM_UNIDAD" Width="1.5" PointX="6" PointY="23.625" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_AREAS" Width="1.5" PointX="8" PointY="16" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CANTONES" Width="1.5" PointX="1.25" PointY="17.25" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CARGOS" Width="1.5" PointX="10.25" PointY="20" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_CONYUGES" Width="1.5" PointX="2.75" PointY="8.625" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_DENOMINACIONES" Width="1.5" PointX="5.75" PointY="3.375" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_DISCAPACIDADES" Width="1.5" PointX="8" PointY="10" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_EMERGENCIAS" Width="1.5" PointX="11" PointY="10" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_ESTADOS_CIVILES" Width="1.5" PointX="0.75" PointY="15" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PAIS" Width="1.5" PointX="0.5" PointY="10.25" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PARENTESCOS" Width="1.5" PointX="5.75" PointY="20" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PARROQUIAS" Width="1.5" PointX="1.25" PointY="20.25" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PERSONALES" Width="1.5" PointX="5.75" PointY="8" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PROFESIONES" Width="1.5" PointX="0.5" PointY="5.125" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PROVINCIAS" Width="1.5" PointX="1.25" PointY="23.25" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_PUESTO_HIST" Width="1.5" PointX="8" PointY="6.125" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_RAZAS" Width="1.5" PointX="3.5" PointY="5.375" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_RELACIONES_LABORALES" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_SECTORES" Width="1.5" PointX="3.5" PointY="20.25" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_SUBROGA_HIST" Width="1.5" PointX="8" PointY="19.875" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_TIPO_DISCAPACIDADES" Width="1.5" PointX="5.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_TIPO_IDENTIFICACIONES" Width="1.5" PointX="3.5" PointY="17.5" />
+        <EntityTypeShape EntityType="SCPMdbModel.SCPM_UNIDAD" Width="1.5" PointX="5.75" PointY="16.125" />
         <AssociationConnector Association="SCPMdbModel.FK_SCPM_ARE_RELATIONS_SCPM_UNI" />
         <AssociationConnector Association="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE" />
         <AssociationConnector Association="SCPMdbModel.FK_SCPM_CAN_RELATIONS_SCPM_PRO" />

@@ -126,9 +126,10 @@
             setTimeout(function () {
                 if (mesagges != "") {
                     var msgs = mesagges.split(",");
-                    for (var m in msgs) {
-                        $.Notify({ shadow: true, timeout: 6000, keepOpen: false, type: 'info', caption: 'SCPM', content: msgs, icon: "<span class='mif-vpn-publ'></span>" });
-                    }
+                    msgs.forEach(function (m) {
+                        $.Notify({ shadow: true, timeout: 8000, keepOpen: false, type: 'info', caption: 'SCPM', content: m, icon: "<span class='mif-vpn-publ'></span>" });
+                    });
+
                 }
             }, 300);
 
