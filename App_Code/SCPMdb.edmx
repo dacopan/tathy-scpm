@@ -9,8 +9,8 @@
           <Key>
             <PropertyRef Name="ARE_COD" />
           </Key>
-          <Property Name="ARE_COD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UNI_COD" Type="int" />
+          <Property Name="ARE_COD" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNI_COD" Type="numeric" Precision="18" Scale="0" />
           <Property Name="ARE_NOM" Type="text" />
           <Property Name="ARE_EST" Type="bit" />
           <Property Name="ORG_PAD" Type="text" />
@@ -19,8 +19,8 @@
           <Key>
             <PropertyRef Name="CAN_ID" />
           </Key>
-          <Property Name="CAN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PRO_ID" Type="int" Nullable="false" />
+          <Property Name="CAN_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRO_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CAN_NOM" Type="text" />
           <Property Name="CAN_EST" Type="bit" />
         </EntityType>
@@ -28,7 +28,9 @@
           <Key>
             <PropertyRef Name="CAR_ID" />
           </Key>
-          <Property Name="CAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAR_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ARE_COD" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SUB_HIS_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CAR_NOM" Type="text" />
           <Property Name="CAR_EST" Type="bit" />
         </EntityType>
@@ -37,30 +39,33 @@
             <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_ID" />
           </Key>
-          <Property Name="PER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CON_ID" Type="int" Nullable="false" />
-          <Property Name="PROF_ID" Type="int" />
+          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CON_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROF_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="TIP_IDE_COD" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PAI_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CON_NUM_DOC" Type="text" />
           <Property Name="CON_APE_PAT" Type="text" />
           <Property Name="CON_APE_MAT" Type="text" />
           <Property Name="CON_NOM1" Type="text" />
           <Property Name="CON_NOM2" Type="text" />
           <Property Name="CON_FEC_NAC" Type="datetime" />
-          <Property Name="CON_CEL" Type="int" />
-          <Property Name="CON_TEL" Type="int" />
+          <Property Name="CON_CEL" Type="text" />
+          <Property Name="CON_TEL" Type="text" />
           <Property Name="CON_DIR" Type="text" />
           <Property Name="CON_COR_PER" Type="text" />
           <Property Name="CON_PRO" Type="text" />
           <Property Name="CON_TRA" Type="bit" />
           <Property Name="CON_NOM_EMP" Type="text" />
-          <Property Name="CON_NUM_TRA" Type="int" />
+          <Property Name="CON_NUM_TRA" Type="text" />
           <Property Name="CON_EST" Type="bit" />
+          <Property Name="CON_DIR_TRAB" Type="text" />
         </EntityType>
         <EntityType Name="SCPM_DENOMINACIONES">
           <Key>
             <PropertyRef Name="DEN_ID" />
           </Key>
-          <Property Name="DEN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEN_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DEN_NOM" Type="text" />
           <Property Name="DEN_GRA" Type="text" />
           <Property Name="DEN_RMU" Type="text" />
@@ -71,10 +76,10 @@
           <Key>
             <PropertyRef Name="DIS_ID" />
           </Key>
-          <Property Name="DIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PARE_ID" Type="int" />
-          <Property Name="PER_ID" Type="int" />
-          <Property Name="TIP_DIS_ID" Type="int" />
+          <Property Name="DIS_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PARE_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="TIP_DIS_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="DIS_CLA" Type="bit" />
           <Property Name="DIS_POR" Type="decimal" Precision="18" Scale="0" />
           <Property Name="DIS_EST" Type="bit" />
@@ -85,19 +90,19 @@
             <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_FAM_EME_ID" />
           </Key>
-          <Property Name="PER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CON_FAM_EME_ID" Type="int" Nullable="false" />
-          <Property Name="PARE_ID" Type="int" />
+          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CON_FAM_EME_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PARE_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CON_FAM_EME_NOM" Type="text" />
-          <Property Name="CON_FAM_EME_TEF" Type="int" />
-          <Property Name="CON_FAM_EME_CEL" Type="int" />
+          <Property Name="CON_FAM_EME_TEF" Type="text" />
+          <Property Name="CON_FAM_EME_CEL" Type="text" />
           <Property Name="CON_FAM_EME_EST" Type="bit" />
         </EntityType>
         <EntityType Name="SCPM_ESTADOS_CIVILES">
           <Key>
             <PropertyRef Name="EST_CIV_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EST_CIV_NOM" Type="text" />
           <Property Name="EST_CIV_EST" Type="bit" />
         </EntityType>
@@ -105,7 +110,7 @@
           <Key>
             <PropertyRef Name="PAI_ID" />
           </Key>
-          <Property Name="PAI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAI_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PAI_CIU" Type="text" />
           <Property Name="PAI_EST" Type="bit" />
           <Property Name="PAI_NACIONALIDAD" Type="text" />
@@ -114,7 +119,7 @@
           <Key>
             <PropertyRef Name="PARE_ID" />
           </Key>
-          <Property Name="PARE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PARE_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PARE_NOM" Type="text" />
           <Property Name="PARE_EST" Type="bit" />
         </EntityType>
@@ -122,8 +127,8 @@
           <Key>
             <PropertyRef Name="PAR_ID" />
           </Key>
-          <Property Name="PAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CAN_ID" Type="int" Nullable="false" />
+          <Property Name="PAR_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAN_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PAR_NOM" Type="text" />
           <Property Name="PAR_EST" Type="bit" />
         </EntityType>
@@ -131,35 +136,36 @@
           <Key>
             <PropertyRef Name="PER_ID" />
           </Key>
-          <Property Name="PER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EST_CIV_ID" Type="int" />
-          <Property Name="TIP_IDE_COD" Type="int" />
-          <Property Name="RAZ_ID" Type="int" />
-          <Property Name="PAI_ID" Type="int" Nullable="false" />
-          <Property Name="SEC_ID" Type="int" Nullable="false" />
+          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="TIP_IDE_COD" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PAI_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SEC_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PER_NUM_DOC" Type="char" MaxLength="20" />
           <Property Name="PER_APE_PAT" Type="char" MaxLength="64" />
           <Property Name="PER_APE_MAT" Type="char" MaxLength="20" />
           <Property Name="PER_NOM1" Type="char" MaxLength="64" />
           <Property Name="PER_NOM2" Type="char" MaxLength="64" />
           <Property Name="PER_FEC_NAC" Type="datetime" />
-          <Property Name="PER_GEN" Type="binary" MaxLength="1" />
-          <Property Name="PER_CEL" Type="int" />
-          <Property Name="PER_TEL" Type="int" />
+          <Property Name="PER_GEN" Type="bit" />
+          <Property Name="PER_CEL" Type="text" />
+          <Property Name="PER_TEL" Type="text" />
           <Property Name="PER_TAR" Type="bit" />
           <Property Name="PER_EXT" Type="int" />
           <Property Name="PER_DIR" Type="text" />
           <Property Name="PER_PAIS_NAC" Type="int" />
-          <Property Name="PER_LIB_MIL_NUM" Type="int" />
+          <Property Name="PER_LIB_MIL_NUM" Type="text" />
           <Property Name="PER_TIP_SAN" Type="char" MaxLength="4" />
           <Property Name="PER_COR_PER" Type="text" />
           <Property Name="PER_EST" Type="bit" />
+          <Property Name="PER_PHOTO" Type="text" />
         </EntityType>
         <EntityType Name="SCPM_PROFESIONES">
           <Key>
             <PropertyRef Name="PROF_ID" />
           </Key>
-          <Property Name="PROF_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROF_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PROF_NOM" Type="text" />
           <Property Name="PROF_EST" Type="bit" />
         </EntityType>
@@ -167,7 +173,7 @@
           <Key>
             <PropertyRef Name="PRO_ID" />
           </Key>
-          <Property Name="PRO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRO_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PRO_NOM" Type="text" />
           <Property Name="PRO_EST" Type="bit" />
         </EntityType>
@@ -175,28 +181,19 @@
           <Key>
             <PropertyRef Name="PST_HIS_ID" />
           </Key>
-          <Property Name="PST_HIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PER_ID" Type="int" />
-          <Property Name="PUE_ID" Type="int" />
+          <Property Name="PST_HIS_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEN_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CAR_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="REL_LAB_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PST_HIS_FEC_INI" Type="datetime" />
           <Property Name="PST_HIS_FEC_FIN" Type="datetime" />
-        </EntityType>
-        <EntityType Name="SCPM_PUESTOS">
-          <Key>
-            <PropertyRef Name="PUE_ID" />
-          </Key>
-          <Property Name="PUE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="REL_LAB_ID" Type="int" />
-          <Property Name="DEN_ID" Type="int" />
-          <Property Name="CAR_ID" Type="int" />
-          <Property Name="ARE_COD" Type="int" />
-          <Property Name="PUE_EST" Type="bit" />
         </EntityType>
         <EntityType Name="SCPM_RAZAS">
           <Key>
             <PropertyRef Name="RAZ_ID" />
           </Key>
-          <Property Name="RAZ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RAZ_NOM" Type="text" />
           <Property Name="RAZ_EST" Type="bit" />
         </EntityType>
@@ -204,7 +201,7 @@
           <Key>
             <PropertyRef Name="REL_LAB_ID" />
           </Key>
-          <Property Name="REL_LAB_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REL_LAB_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="REL_LAB_NOM" Type="text" />
           <Property Name="REL_LAB_EST" Type="bit" />
         </EntityType>
@@ -212,8 +209,8 @@
           <Key>
             <PropertyRef Name="SEC_ID" />
           </Key>
-          <Property Name="SEC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PAR_ID" Type="int" Nullable="false" />
+          <Property Name="SEC_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAR_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="SEC_NOM" Type="text" />
           <Property Name="SEC_EST" Type="bit" />
         </EntityType>
@@ -221,9 +218,8 @@
           <Key>
             <PropertyRef Name="SUB_HIS_ID" />
           </Key>
-          <Property Name="SUB_HIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PER_ID" Type="int" />
-          <Property Name="PUE_ID" Type="int" />
+          <Property Name="SUB_HIS_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SUB_HIS_IS_ENCARGO" Type="bit" />
           <Property Name="SUB_HIS_FEC_INI" Type="datetime" />
           <Property Name="SUB_HIS_FEC_FIN" Type="datetime" />
@@ -233,7 +229,7 @@
           <Key>
             <PropertyRef Name="TIP_DIS_ID" />
           </Key>
-          <Property Name="TIP_DIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIP_DIS_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TIP_DIS_NOM" Type="text" />
           <Property Name="TIP_DIS_EST" Type="bit" />
         </EntityType>
@@ -241,7 +237,7 @@
           <Key>
             <PropertyRef Name="TIP_IDE_COD" />
           </Key>
-          <Property Name="TIP_IDE_COD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIP_IDE_COD" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TIP_IDE_NOM" Type="text" />
           <Property Name="TIP_IDE_EST" Type="bit" />
         </EntityType>
@@ -249,7 +245,7 @@
           <Key>
             <PropertyRef Name="UNI_COD" />
           </Key>
-          <Property Name="UNI_COD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNI_COD" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UNI_NOM" Type="text" />
           <Property Name="UNI_EST" Type="bit" />
         </EntityType>
@@ -277,6 +273,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SCPM_CAR_RELATIONS_SCPM_ARE">
+          <End Role="SCPM_AREAS" Type="Self.SCPM_AREAS" Multiplicity="0..1" />
+          <End Role="SCPM_CARGOS" Type="Self.SCPM_CARGOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCPM_AREAS">
+              <PropertyRef Name="ARE_COD" />
+            </Principal>
+            <Dependent Role="SCPM_CARGOS">
+              <PropertyRef Name="ARE_COD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB">
+          <End Role="SCPM_SUBROGA_HIST" Type="Self.SCPM_SUBROGA_HIST" Multiplicity="0..1" />
+          <End Role="SCPM_CARGOS" Type="Self.SCPM_CARGOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCPM_SUBROGA_HIST">
+              <PropertyRef Name="SUB_HIS_ID" />
+            </Principal>
+            <Dependent Role="SCPM_CARGOS">
+              <PropertyRef Name="SUB_HIS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCPM_CON_RELATIONS_SCPM_PAI">
+          <End Role="SCPM_PAIS" Type="Self.SCPM_PAIS" Multiplicity="0..1" />
+          <End Role="SCPM_CONYUGES" Type="Self.SCPM_CONYUGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCPM_PAIS">
+              <PropertyRef Name="PAI_ID" />
+            </Principal>
+            <Dependent Role="SCPM_CONYUGES">
+              <PropertyRef Name="PAI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SCPM_CON_RELATIONS_SCPM_PER">
           <End Role="SCPM_PERSONALES" Type="Self.SCPM_PERSONALES" Multiplicity="1" />
           <End Role="SCPM_CONYUGES" Type="Self.SCPM_CONYUGES" Multiplicity="*" />
@@ -298,6 +330,18 @@
             </Principal>
             <Dependent Role="SCPM_CONYUGES">
               <PropertyRef Name="PROF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCPM_CON_RELATIONS_SCPM_TIP">
+          <End Role="SCPM_TIPO_IDENTIFICACIONES" Type="Self.SCPM_TIPO_IDENTIFICACIONES" Multiplicity="0..1" />
+          <End Role="SCPM_CONYUGES" Type="Self.SCPM_CONYUGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCPM_TIPO_IDENTIFICACIONES">
+              <PropertyRef Name="TIP_IDE_COD" />
+            </Principal>
+            <Dependent Role="SCPM_CONYUGES">
+              <PropertyRef Name="TIP_IDE_COD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -433,38 +477,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_ARE">
-          <End Role="SCPM_AREAS" Type="Self.SCPM_AREAS" Multiplicity="0..1" />
-          <End Role="SCPM_PUESTOS" Type="Self.SCPM_PUESTOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCPM_AREAS">
-              <PropertyRef Name="ARE_COD" />
-            </Principal>
-            <Dependent Role="SCPM_PUESTOS">
-              <PropertyRef Name="ARE_COD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR">
           <End Role="SCPM_CARGOS" Type="Self.SCPM_CARGOS" Multiplicity="0..1" />
-          <End Role="SCPM_PUESTOS" Type="Self.SCPM_PUESTOS" Multiplicity="*" />
+          <End Role="SCPM_PUESTO_HIST" Type="Self.SCPM_PUESTO_HIST" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_CARGOS">
               <PropertyRef Name="CAR_ID" />
             </Principal>
-            <Dependent Role="SCPM_PUESTOS">
+            <Dependent Role="SCPM_PUESTO_HIST">
               <PropertyRef Name="CAR_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_DEN">
           <End Role="SCPM_DENOMINACIONES" Type="Self.SCPM_DENOMINACIONES" Multiplicity="0..1" />
-          <End Role="SCPM_PUESTOS" Type="Self.SCPM_PUESTOS" Multiplicity="*" />
+          <End Role="SCPM_PUESTO_HIST" Type="Self.SCPM_PUESTO_HIST" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_DENOMINACIONES">
               <PropertyRef Name="DEN_ID" />
             </Principal>
-            <Dependent Role="SCPM_PUESTOS">
+            <Dependent Role="SCPM_PUESTO_HIST">
               <PropertyRef Name="DEN_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -481,26 +513,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_PUE">
-          <End Role="SCPM_PUESTOS" Type="Self.SCPM_PUESTOS" Multiplicity="0..1" />
-          <End Role="SCPM_PUESTO_HIST" Type="Self.SCPM_PUESTO_HIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCPM_PUESTOS">
-              <PropertyRef Name="PUE_ID" />
-            </Principal>
-            <Dependent Role="SCPM_PUESTO_HIST">
-              <PropertyRef Name="PUE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_REL">
           <End Role="SCPM_RELACIONES_LABORALES" Type="Self.SCPM_RELACIONES_LABORALES" Multiplicity="0..1" />
-          <End Role="SCPM_PUESTOS" Type="Self.SCPM_PUESTOS" Multiplicity="*" />
+          <End Role="SCPM_PUESTO_HIST" Type="Self.SCPM_PUESTO_HIST" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_RELACIONES_LABORALES">
               <PropertyRef Name="REL_LAB_ID" />
             </Principal>
-            <Dependent Role="SCPM_PUESTOS">
+            <Dependent Role="SCPM_PUESTO_HIST">
               <PropertyRef Name="REL_LAB_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -529,18 +549,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SCPM_SUB_RELATIONS_SCPM_PUE">
-          <End Role="SCPM_PUESTOS" Type="Self.SCPM_PUESTOS" Multiplicity="0..1" />
-          <End Role="SCPM_SUBROGA_HIST" Type="Self.SCPM_SUBROGA_HIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCPM_PUESTOS">
-              <PropertyRef Name="PUE_ID" />
-            </Principal>
-            <Dependent Role="SCPM_SUBROGA_HIST">
-              <PropertyRef Name="PUE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="SCPMdbModelStoreContainer">
           <EntitySet Name="SCPM_AREAS" EntityType="Self.SCPM_AREAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCPM_CANTONES" EntityType="Self.SCPM_CANTONES" Schema="dbo" store:Type="Tables" />
@@ -557,7 +565,6 @@
           <EntitySet Name="SCPM_PROFESIONES" EntityType="Self.SCPM_PROFESIONES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCPM_PROVINCIAS" EntityType="Self.SCPM_PROVINCIAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCPM_PUESTO_HIST" EntityType="Self.SCPM_PUESTO_HIST" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SCPM_PUESTOS" EntityType="Self.SCPM_PUESTOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCPM_RAZAS" EntityType="Self.SCPM_RAZAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCPM_RELACIONES_LABORALES" EntityType="Self.SCPM_RELACIONES_LABORALES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCPM_SECTORES" EntityType="Self.SCPM_SECTORES" Schema="dbo" store:Type="Tables" />
@@ -573,12 +580,28 @@
             <End Role="SCPM_PROVINCIAS" EntitySet="SCPM_PROVINCIAS" />
             <End Role="SCPM_CANTONES" EntitySet="SCPM_CANTONES" />
           </AssociationSet>
+          <AssociationSet Name="FK_SCPM_CAR_RELATIONS_SCPM_ARE" Association="Self.FK_SCPM_CAR_RELATIONS_SCPM_ARE">
+            <End Role="SCPM_AREAS" EntitySet="SCPM_AREAS" />
+            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB" Association="Self.FK_SCPM_CAR_RELATIONS_SCPM_SUB">
+            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
+            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_PAI" Association="Self.FK_SCPM_CON_RELATIONS_SCPM_PAI">
+            <End Role="SCPM_PAIS" EntitySet="SCPM_PAIS" />
+            <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
+          </AssociationSet>
           <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_PER" Association="Self.FK_SCPM_CON_RELATIONS_SCPM_PER">
             <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
             <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_PRO" Association="Self.FK_SCPM_CON_RELATIONS_SCPM_PRO">
             <End Role="SCPM_PROFESIONES" EntitySet="SCPM_PROFESIONES" />
+            <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_TIP" Association="Self.FK_SCPM_CON_RELATIONS_SCPM_TIP">
+            <End Role="SCPM_TIPO_IDENTIFICACIONES" EntitySet="SCPM_TIPO_IDENTIFICACIONES" />
             <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_DIS_RELATIONS_SCPM_PAR" Association="Self.FK_SCPM_DIS_RELATIONS_SCPM_PAR">
@@ -625,29 +648,21 @@
             <End Role="SCPM_TIPO_IDENTIFICACIONES" EntitySet="SCPM_TIPO_IDENTIFICACIONES" />
             <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
           </AssociationSet>
-          <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_ARE" Association="Self.FK_SCPM_PUE_RELATIONS_SCPM_ARE">
-            <End Role="SCPM_AREAS" EntitySet="SCPM_AREAS" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
-          </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR" Association="Self.FK_SCPM_PUE_RELATIONS_SCPM_CAR">
             <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
+            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_DEN" Association="Self.FK_SCPM_PUE_RELATIONS_SCPM_DEN">
             <End Role="SCPM_DENOMINACIONES" EntitySet="SCPM_DENOMINACIONES" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
+            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_PER" Association="Self.FK_SCPM_PUE_RELATIONS_SCPM_PER">
             <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
             <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
           </AssociationSet>
-          <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_PUE" Association="Self.FK_SCPM_PUE_RELATIONS_SCPM_PUE">
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
-            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
-          </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_REL" Association="Self.FK_SCPM_PUE_RELATIONS_SCPM_REL">
             <End Role="SCPM_RELACIONES_LABORALES" EntitySet="SCPM_RELACIONES_LABORALES" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
+            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_SEC_RELATIONS_SCPM_PAR" Association="Self.FK_SCPM_SEC_RELATIONS_SCPM_PAR">
             <End Role="SCPM_PARROQUIAS" EntitySet="SCPM_PARROQUIAS" />
@@ -655,10 +670,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_SUB_RELATIONS_SCPM_PER" Association="Self.FK_SCPM_SUB_RELATIONS_SCPM_PER">
             <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
-            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SCPM_SUB_RELATIONS_SCPM_PUE" Association="Self.FK_SCPM_SUB_RELATIONS_SCPM_PUE">
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
             <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
           </AssociationSet>
         </EntityContainer>
@@ -682,7 +693,6 @@
           <EntitySet Name="SCPM_PROFESIONES" EntityType="SCPMdbModel.SCPM_PROFESIONES" />
           <EntitySet Name="SCPM_PROVINCIAS" EntityType="SCPMdbModel.SCPM_PROVINCIAS" />
           <EntitySet Name="SCPM_PUESTO_HIST" EntityType="SCPMdbModel.SCPM_PUESTO_HIST" />
-          <EntitySet Name="SCPM_PUESTOS" EntityType="SCPMdbModel.SCPM_PUESTOS" />
           <EntitySet Name="SCPM_RAZAS" EntityType="SCPMdbModel.SCPM_RAZAS" />
           <EntitySet Name="SCPM_RELACIONES_LABORALES" EntityType="SCPMdbModel.SCPM_RELACIONES_LABORALES" />
           <EntitySet Name="SCPM_SECTORES" EntityType="SCPMdbModel.SCPM_SECTORES" />
@@ -694,9 +704,9 @@
             <End Role="SCPM_UNIDAD" EntitySet="SCPM_UNIDAD" />
             <End Role="SCPM_AREAS" EntitySet="SCPM_AREAS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_ARE" Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE">
+          <AssociationSet Name="FK_SCPM_CAR_RELATIONS_SCPM_ARE" Association="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE">
             <End Role="SCPM_AREAS" EntitySet="SCPM_AREAS" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
+            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_CAN_RELATIONS_SCPM_PRO" Association="SCPMdbModel.FK_SCPM_CAN_RELATIONS_SCPM_PRO">
             <End Role="SCPM_PROVINCIAS" EntitySet="SCPM_PROVINCIAS" />
@@ -706,9 +716,17 @@
             <End Role="SCPM_CANTONES" EntitySet="SCPM_CANTONES" />
             <End Role="SCPM_PARROQUIAS" EntitySet="SCPM_PARROQUIAS" />
           </AssociationSet>
+          <AssociationSet Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB" Association="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB">
+            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
+            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
+          </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR" Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR">
             <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
+            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_PAI" Association="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI">
+            <End Role="SCPM_PAIS" EntitySet="SCPM_PAIS" />
+            <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_PER" Association="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER">
             <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
@@ -718,9 +736,13 @@
             <End Role="SCPM_PROFESIONES" EntitySet="SCPM_PROFESIONES" />
             <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
           </AssociationSet>
+          <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_TIP" Association="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP">
+            <End Role="SCPM_TIPO_IDENTIFICACIONES" EntitySet="SCPM_TIPO_IDENTIFICACIONES" />
+            <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
+          </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_DEN" Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN">
             <End Role="SCPM_DENOMINACIONES" EntitySet="SCPM_DENOMINACIONES" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
+            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_DIS_RELATIONS_SCPM_PAR" Association="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PAR">
             <End Role="SCPM_PARENTESCOS" EntitySet="SCPM_PARENTESCOS" />
@@ -774,35 +796,27 @@
             <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
             <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
           </AssociationSet>
-          <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_PUE" Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE">
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
-            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
-          </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_REL" Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL">
             <End Role="SCPM_RELACIONES_LABORALES" EntitySet="SCPM_RELACIONES_LABORALES" />
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SCPM_SUB_RELATIONS_SCPM_PUE" Association="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE">
-            <End Role="SCPM_PUESTOS" EntitySet="SCPM_PUESTOS" />
-            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
+            <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="SCPM_AREAS">
           <Key>
             <PropertyRef Name="ARE_COD" />
           </Key>
-          <Property Name="ARE_COD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ARE_COD" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ARE_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ARE_EST" Type="Boolean" />
           <Property Name="ORG_PAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SCPM_UNIDAD" Relationship="SCPMdbModel.FK_SCPM_ARE_RELATIONS_SCPM_UNI" FromRole="SCPM_AREAS" ToRole="SCPM_UNIDAD" />
-          <NavigationProperty Name="SCPM_PUESTOS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE" FromRole="SCPM_AREAS" ToRole="SCPM_PUESTOS" />
+          <NavigationProperty Name="SCPM_CARGOS" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE" FromRole="SCPM_AREAS" ToRole="SCPM_CARGOS" />
         </EntityType>
         <EntityType Name="SCPM_CANTONES">
           <Key>
             <PropertyRef Name="CAN_ID" />
           </Key>
-          <Property Name="CAN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAN_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CAN_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CAN_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_PROVINCIAS" Relationship="SCPMdbModel.FK_SCPM_CAN_RELATIONS_SCPM_PRO" FromRole="SCPM_CANTONES" ToRole="SCPM_PROVINCIAS" />
@@ -812,53 +826,58 @@
           <Key>
             <PropertyRef Name="CAR_ID" />
           </Key>
-          <Property Name="CAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAR_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CAR_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CAR_EST" Type="Boolean" />
-          <NavigationProperty Name="SCPM_PUESTOS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" FromRole="SCPM_CARGOS" ToRole="SCPM_PUESTOS" />
+          <NavigationProperty Name="SCPM_AREAS" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE" FromRole="SCPM_CARGOS" ToRole="SCPM_AREAS" />
+          <NavigationProperty Name="SCPM_SUBROGA_HIST" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB" FromRole="SCPM_CARGOS" ToRole="SCPM_SUBROGA_HIST" />
+          <NavigationProperty Name="SCPM_PUESTO_HIST" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" FromRole="SCPM_CARGOS" ToRole="SCPM_PUESTO_HIST" />
         </EntityType>
         <EntityType Name="SCPM_CONYUGES">
           <Key>
             <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_ID" />
           </Key>
-          <Property Name="PER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CON_ID" Type="Int32" Nullable="false" />
+          <Property Name="PER_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CON_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CON_NUM_DOC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_APE_PAT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_APE_MAT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_NOM1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_NOM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_FEC_NAC" Type="DateTime" Precision="3" />
-          <Property Name="CON_CEL" Type="Int32" />
-          <Property Name="CON_TEL" Type="Int32" />
+          <Property Name="CON_CEL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CON_TEL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_DIR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_COR_PER" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_PRO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_TRA" Type="Boolean" />
           <Property Name="CON_NOM_EMP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CON_NUM_TRA" Type="Int32" />
+          <Property Name="CON_NUM_TRA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_EST" Type="Boolean" />
+          <Property Name="CON_DIR_TRAB" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SCPM_PAIS" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI" FromRole="SCPM_CONYUGES" ToRole="SCPM_PAIS" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER" FromRole="SCPM_CONYUGES" ToRole="SCPM_PERSONALES" />
           <NavigationProperty Name="SCPM_PROFESIONES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PRO" FromRole="SCPM_CONYUGES" ToRole="SCPM_PROFESIONES" />
+          <NavigationProperty Name="SCPM_TIPO_IDENTIFICACIONES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP" FromRole="SCPM_CONYUGES" ToRole="SCPM_TIPO_IDENTIFICACIONES" />
         </EntityType>
         <EntityType Name="SCPM_DENOMINACIONES">
           <Key>
             <PropertyRef Name="DEN_ID" />
           </Key>
-          <Property Name="DEN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEN_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DEN_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DEN_GRA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DEN_RMU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DEN_RMU_ANT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DEN_EST" Type="Boolean" />
-          <NavigationProperty Name="SCPM_PUESTOS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN" FromRole="SCPM_DENOMINACIONES" ToRole="SCPM_PUESTOS" />
+          <NavigationProperty Name="SCPM_PUESTO_HIST" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN" FromRole="SCPM_DENOMINACIONES" ToRole="SCPM_PUESTO_HIST" />
         </EntityType>
         <EntityType Name="SCPM_DISCAPACIDADES">
           <Key>
             <PropertyRef Name="DIS_ID" />
           </Key>
-          <Property Name="DIS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DIS_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DIS_CLA" Type="Boolean" />
           <Property Name="DIS_POR" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="DIS_EST" Type="Boolean" />
@@ -872,11 +891,11 @@
             <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_FAM_EME_ID" />
           </Key>
-          <Property Name="PER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CON_FAM_EME_ID" Type="Int32" Nullable="false" />
+          <Property Name="PER_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="CON_FAM_EME_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CON_FAM_EME_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CON_FAM_EME_TEF" Type="Int32" />
-          <Property Name="CON_FAM_EME_CEL" Type="Int32" />
+          <Property Name="CON_FAM_EME_TEF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CON_FAM_EME_CEL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_FAM_EME_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_PARENTESCOS" Relationship="SCPMdbModel.FK_SCPM_EME_RELATIONS_SCPM_PAR" FromRole="SCPM_EMERGENCIAS" ToRole="SCPM_PARENTESCOS" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_EME_RELATIONS_SCPM_PER" FromRole="SCPM_EMERGENCIAS" ToRole="SCPM_PERSONALES" />
@@ -885,7 +904,7 @@
           <Key>
             <PropertyRef Name="EST_CIV_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EST_CIV_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EST_CIV_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EST_CIV_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_EST" FromRole="SCPM_ESTADOS_CIVILES" ToRole="SCPM_PERSONALES" />
@@ -894,17 +913,18 @@
           <Key>
             <PropertyRef Name="PAI_ID" />
           </Key>
-          <Property Name="PAI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAI_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PAI_CIU" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PAI_EST" Type="Boolean" />
           <Property Name="PAI_NACIONALIDAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SCPM_CONYUGES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI" FromRole="SCPM_PAIS" ToRole="SCPM_CONYUGES" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_PAI" FromRole="SCPM_PAIS" ToRole="SCPM_PERSONALES" />
         </EntityType>
         <EntityType Name="SCPM_PARENTESCOS">
           <Key>
             <PropertyRef Name="PARE_ID" />
           </Key>
-          <Property Name="PARE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PARE_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PARE_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PARE_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_DISCAPACIDADES" Relationship="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PAR" FromRole="SCPM_PARENTESCOS" ToRole="SCPM_DISCAPACIDADES" />
@@ -914,7 +934,7 @@
           <Key>
             <PropertyRef Name="PAR_ID" />
           </Key>
-          <Property Name="PAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAR_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PAR_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PAR_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_CANTONES" Relationship="SCPMdbModel.FK_SCPM_PAR_RELATIONS_SCPM_CAN" FromRole="SCPM_PARROQUIAS" ToRole="SCPM_CANTONES" />
@@ -924,24 +944,25 @@
           <Key>
             <PropertyRef Name="PER_ID" />
           </Key>
-          <Property Name="PER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PER_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PER_NUM_DOC" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="PER_APE_PAT" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
           <Property Name="PER_APE_MAT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="PER_NOM1" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
           <Property Name="PER_NOM2" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
           <Property Name="PER_FEC_NAC" Type="DateTime" Precision="3" />
-          <Property Name="PER_GEN" Type="Binary" MaxLength="1" FixedLength="true" />
-          <Property Name="PER_CEL" Type="Int32" />
-          <Property Name="PER_TEL" Type="Int32" />
+          <Property Name="PER_GEN" Type="Boolean" />
+          <Property Name="PER_CEL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PER_TEL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PER_TAR" Type="Boolean" />
           <Property Name="PER_EXT" Type="Int32" />
           <Property Name="PER_DIR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PER_PAIS_NAC" Type="Int32" />
-          <Property Name="PER_LIB_MIL_NUM" Type="Int32" />
+          <Property Name="PER_LIB_MIL_NUM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PER_TIP_SAN" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
           <Property Name="PER_COR_PER" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PER_EST" Type="Boolean" />
+          <Property Name="PER_PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SCPM_CONYUGES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER" FromRole="SCPM_PERSONALES" ToRole="SCPM_CONYUGES" />
           <NavigationProperty Name="SCPM_DISCAPACIDADES" Relationship="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PER" FromRole="SCPM_PERSONALES" ToRole="SCPM_DISCAPACIDADES" />
           <NavigationProperty Name="SCPM_EMERGENCIAS" Relationship="SCPMdbModel.FK_SCPM_EME_RELATIONS_SCPM_PER" FromRole="SCPM_PERSONALES" ToRole="SCPM_EMERGENCIAS" />
@@ -957,7 +978,7 @@
           <Key>
             <PropertyRef Name="PROF_ID" />
           </Key>
-          <Property Name="PROF_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROF_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PROF_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PROF_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_CONYUGES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PRO" FromRole="SCPM_PROFESIONES" ToRole="SCPM_CONYUGES" />
@@ -966,7 +987,7 @@
           <Key>
             <PropertyRef Name="PRO_ID" />
           </Key>
-          <Property Name="PRO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRO_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PRO_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PRO_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_CANTONES" Relationship="SCPMdbModel.FK_SCPM_CAN_RELATIONS_SCPM_PRO" FromRole="SCPM_PROVINCIAS" ToRole="SCPM_CANTONES" />
@@ -975,30 +996,19 @@
           <Key>
             <PropertyRef Name="PST_HIS_ID" />
           </Key>
-          <Property Name="PST_HIS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PST_HIS_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PST_HIS_FEC_INI" Type="DateTime" Precision="3" />
           <Property Name="PST_HIS_FEC_FIN" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SCPM_CARGOS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" FromRole="SCPM_PUESTO_HIST" ToRole="SCPM_CARGOS" />
+          <NavigationProperty Name="SCPM_DENOMINACIONES" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN" FromRole="SCPM_PUESTO_HIST" ToRole="SCPM_DENOMINACIONES" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER" FromRole="SCPM_PUESTO_HIST" ToRole="SCPM_PERSONALES" />
-          <NavigationProperty Name="SCPM_PUESTOS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE" FromRole="SCPM_PUESTO_HIST" ToRole="SCPM_PUESTOS" />
-        </EntityType>
-        <EntityType Name="SCPM_PUESTOS">
-          <Key>
-            <PropertyRef Name="PUE_ID" />
-          </Key>
-          <Property Name="PUE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PUE_EST" Type="Boolean" />
-          <NavigationProperty Name="SCPM_AREAS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE" FromRole="SCPM_PUESTOS" ToRole="SCPM_AREAS" />
-          <NavigationProperty Name="SCPM_CARGOS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" FromRole="SCPM_PUESTOS" ToRole="SCPM_CARGOS" />
-          <NavigationProperty Name="SCPM_DENOMINACIONES" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN" FromRole="SCPM_PUESTOS" ToRole="SCPM_DENOMINACIONES" />
-          <NavigationProperty Name="SCPM_PUESTO_HIST" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE" FromRole="SCPM_PUESTOS" ToRole="SCPM_PUESTO_HIST" />
-          <NavigationProperty Name="SCPM_RELACIONES_LABORALES" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" FromRole="SCPM_PUESTOS" ToRole="SCPM_RELACIONES_LABORALES" />
-          <NavigationProperty Name="SCPM_SUBROGA_HIST" Relationship="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE" FromRole="SCPM_PUESTOS" ToRole="SCPM_SUBROGA_HIST" />
+          <NavigationProperty Name="SCPM_RELACIONES_LABORALES" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" FromRole="SCPM_PUESTO_HIST" ToRole="SCPM_RELACIONES_LABORALES" />
         </EntityType>
         <EntityType Name="SCPM_RAZAS">
           <Key>
             <PropertyRef Name="RAZ_ID" />
           </Key>
-          <Property Name="RAZ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RAZ_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RAZ_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="RAZ_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_RAZ" FromRole="SCPM_RAZAS" ToRole="SCPM_PERSONALES" />
@@ -1007,16 +1017,16 @@
           <Key>
             <PropertyRef Name="REL_LAB_ID" />
           </Key>
-          <Property Name="REL_LAB_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REL_LAB_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="REL_LAB_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="REL_LAB_EST" Type="Boolean" />
-          <NavigationProperty Name="SCPM_PUESTOS" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" FromRole="SCPM_RELACIONES_LABORALES" ToRole="SCPM_PUESTOS" />
+          <NavigationProperty Name="SCPM_PUESTO_HIST" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" FromRole="SCPM_RELACIONES_LABORALES" ToRole="SCPM_PUESTO_HIST" />
         </EntityType>
         <EntityType Name="SCPM_SECTORES">
           <Key>
             <PropertyRef Name="SEC_ID" />
           </Key>
-          <Property Name="SEC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SEC_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SEC_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SEC_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_PARROQUIAS" Relationship="SCPMdbModel.FK_SCPM_SEC_RELATIONS_SCPM_PAR" FromRole="SCPM_SECTORES" ToRole="SCPM_PARROQUIAS" />
@@ -1026,19 +1036,19 @@
           <Key>
             <PropertyRef Name="SUB_HIS_ID" />
           </Key>
-          <Property Name="SUB_HIS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SUB_HIS_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SUB_HIS_IS_ENCARGO" Type="Boolean" />
           <Property Name="SUB_HIS_FEC_INI" Type="DateTime" Precision="3" />
           <Property Name="SUB_HIS_FEC_FIN" Type="DateTime" Precision="3" />
           <Property Name="SUB_HIS_EST" Type="Boolean" />
+          <NavigationProperty Name="SCPM_CARGOS" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB" FromRole="SCPM_SUBROGA_HIST" ToRole="SCPM_CARGOS" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PER" FromRole="SCPM_SUBROGA_HIST" ToRole="SCPM_PERSONALES" />
-          <NavigationProperty Name="SCPM_PUESTOS" Relationship="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE" FromRole="SCPM_SUBROGA_HIST" ToRole="SCPM_PUESTOS" />
         </EntityType>
         <EntityType Name="SCPM_TIPO_DISCAPACIDADES">
           <Key>
             <PropertyRef Name="TIP_DIS_ID" />
           </Key>
-          <Property Name="TIP_DIS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIP_DIS_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TIP_DIS_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TIP_DIS_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_DISCAPACIDADES" Relationship="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_TIP" FromRole="SCPM_TIPO_DISCAPACIDADES" ToRole="SCPM_DISCAPACIDADES" />
@@ -1047,16 +1057,17 @@
           <Key>
             <PropertyRef Name="TIP_IDE_COD" />
           </Key>
-          <Property Name="TIP_IDE_COD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIP_IDE_COD" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TIP_IDE_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TIP_IDE_EST" Type="Boolean" />
+          <NavigationProperty Name="SCPM_CONYUGES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP" FromRole="SCPM_TIPO_IDENTIFICACIONES" ToRole="SCPM_CONYUGES" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_TIP" FromRole="SCPM_TIPO_IDENTIFICACIONES" ToRole="SCPM_PERSONALES" />
         </EntityType>
         <EntityType Name="SCPM_UNIDAD">
           <Key>
             <PropertyRef Name="UNI_COD" />
           </Key>
-          <Property Name="UNI_COD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNI_COD" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UNI_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UNI_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_AREAS" Relationship="SCPMdbModel.FK_SCPM_ARE_RELATIONS_SCPM_UNI" FromRole="SCPM_UNIDAD" ToRole="SCPM_AREAS" />
@@ -1065,9 +1076,9 @@
           <End Type="SCPMdbModel.SCPM_UNIDAD" Role="SCPM_UNIDAD" Multiplicity="0..1" />
           <End Type="SCPMdbModel.SCPM_AREAS" Role="SCPM_AREAS" Multiplicity="*" />
         </Association>
-        <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_ARE">
+        <Association Name="FK_SCPM_CAR_RELATIONS_SCPM_ARE">
           <End Type="SCPMdbModel.SCPM_AREAS" Role="SCPM_AREAS" Multiplicity="0..1" />
-          <End Type="SCPMdbModel.SCPM_PUESTOS" Role="SCPM_PUESTOS" Multiplicity="*" />
+          <End Type="SCPMdbModel.SCPM_CARGOS" Role="SCPM_CARGOS" Multiplicity="*" />
         </Association>
         <Association Name="FK_SCPM_CAN_RELATIONS_SCPM_PRO">
           <End Type="SCPMdbModel.SCPM_PROVINCIAS" Role="SCPM_PROVINCIAS" Multiplicity="1" />
@@ -1077,9 +1088,17 @@
           <End Type="SCPMdbModel.SCPM_CANTONES" Role="SCPM_CANTONES" Multiplicity="1" />
           <End Type="SCPMdbModel.SCPM_PARROQUIAS" Role="SCPM_PARROQUIAS" Multiplicity="*" />
         </Association>
+        <Association Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB">
+          <End Type="SCPMdbModel.SCPM_SUBROGA_HIST" Role="SCPM_SUBROGA_HIST" Multiplicity="0..1" />
+          <End Type="SCPMdbModel.SCPM_CARGOS" Role="SCPM_CARGOS" Multiplicity="*" />
+        </Association>
         <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR">
           <End Type="SCPMdbModel.SCPM_CARGOS" Role="SCPM_CARGOS" Multiplicity="0..1" />
-          <End Type="SCPMdbModel.SCPM_PUESTOS" Role="SCPM_PUESTOS" Multiplicity="*" />
+          <End Type="SCPMdbModel.SCPM_PUESTO_HIST" Role="SCPM_PUESTO_HIST" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SCPM_CON_RELATIONS_SCPM_PAI">
+          <End Type="SCPMdbModel.SCPM_PAIS" Role="SCPM_PAIS" Multiplicity="0..1" />
+          <End Type="SCPMdbModel.SCPM_CONYUGES" Role="SCPM_CONYUGES" Multiplicity="*" />
         </Association>
         <Association Name="FK_SCPM_CON_RELATIONS_SCPM_PER">
           <End Type="SCPMdbModel.SCPM_PERSONALES" Role="SCPM_PERSONALES" Multiplicity="1" />
@@ -1098,9 +1117,13 @@
           <End Type="SCPMdbModel.SCPM_PROFESIONES" Role="SCPM_PROFESIONES" Multiplicity="0..1" />
           <End Type="SCPMdbModel.SCPM_CONYUGES" Role="SCPM_CONYUGES" Multiplicity="*" />
         </Association>
+        <Association Name="FK_SCPM_CON_RELATIONS_SCPM_TIP">
+          <End Type="SCPMdbModel.SCPM_TIPO_IDENTIFICACIONES" Role="SCPM_TIPO_IDENTIFICACIONES" Multiplicity="0..1" />
+          <End Type="SCPMdbModel.SCPM_CONYUGES" Role="SCPM_CONYUGES" Multiplicity="*" />
+        </Association>
         <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_DEN">
           <End Type="SCPMdbModel.SCPM_DENOMINACIONES" Role="SCPM_DENOMINACIONES" Multiplicity="0..1" />
-          <End Type="SCPMdbModel.SCPM_PUESTOS" Role="SCPM_PUESTOS" Multiplicity="*" />
+          <End Type="SCPMdbModel.SCPM_PUESTO_HIST" Role="SCPM_PUESTO_HIST" Multiplicity="*" />
         </Association>
         <Association Name="FK_SCPM_DIS_RELATIONS_SCPM_PAR">
           <End Type="SCPMdbModel.SCPM_PARENTESCOS" Role="SCPM_PARENTESCOS" Multiplicity="0..1" />
@@ -1163,17 +1186,9 @@
           <End Type="SCPMdbModel.SCPM_PERSONALES" Role="SCPM_PERSONALES" Multiplicity="0..1" />
           <End Type="SCPMdbModel.SCPM_SUBROGA_HIST" Role="SCPM_SUBROGA_HIST" Multiplicity="*" />
         </Association>
-        <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_PUE">
-          <End Type="SCPMdbModel.SCPM_PUESTOS" Role="SCPM_PUESTOS" Multiplicity="0..1" />
-          <End Type="SCPMdbModel.SCPM_PUESTO_HIST" Role="SCPM_PUESTO_HIST" Multiplicity="*" />
-        </Association>
         <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_REL">
           <End Type="SCPMdbModel.SCPM_RELACIONES_LABORALES" Role="SCPM_RELACIONES_LABORALES" Multiplicity="0..1" />
-          <End Type="SCPMdbModel.SCPM_PUESTOS" Role="SCPM_PUESTOS" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_SCPM_SUB_RELATIONS_SCPM_PUE">
-          <End Type="SCPMdbModel.SCPM_PUESTOS" Role="SCPM_PUESTOS" Multiplicity="0..1" />
-          <End Type="SCPMdbModel.SCPM_SUBROGA_HIST" Role="SCPM_SUBROGA_HIST" Multiplicity="*" />
+          <End Type="SCPMdbModel.SCPM_PUESTO_HIST" Role="SCPM_PUESTO_HIST" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1212,6 +1227,7 @@
           <EntitySetMapping Name="SCPM_CONYUGES">
             <EntityTypeMapping TypeName="SCPMdbModel.SCPM_CONYUGES">
               <MappingFragment StoreEntitySet="SCPM_CONYUGES">
+                <ScalarProperty Name="CON_DIR_TRAB" ColumnName="CON_DIR_TRAB" />
                 <ScalarProperty Name="CON_EST" ColumnName="CON_EST" />
                 <ScalarProperty Name="CON_NUM_TRA" ColumnName="CON_NUM_TRA" />
                 <ScalarProperty Name="CON_NOM_EMP" ColumnName="CON_NOM_EMP" />
@@ -1307,6 +1323,7 @@
           <EntitySetMapping Name="SCPM_PERSONALES">
             <EntityTypeMapping TypeName="SCPMdbModel.SCPM_PERSONALES">
               <MappingFragment StoreEntitySet="SCPM_PERSONALES">
+                <ScalarProperty Name="PER_PHOTO" ColumnName="PER_PHOTO" />
                 <ScalarProperty Name="PER_EST" ColumnName="PER_EST" />
                 <ScalarProperty Name="PER_COR_PER" ColumnName="PER_COR_PER" />
                 <ScalarProperty Name="PER_TIP_SAN" ColumnName="PER_TIP_SAN" />
@@ -1352,14 +1369,6 @@
                 <ScalarProperty Name="PST_HIS_FEC_FIN" ColumnName="PST_HIS_FEC_FIN" />
                 <ScalarProperty Name="PST_HIS_FEC_INI" ColumnName="PST_HIS_FEC_INI" />
                 <ScalarProperty Name="PST_HIS_ID" ColumnName="PST_HIS_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SCPM_PUESTOS">
-            <EntityTypeMapping TypeName="SCPMdbModel.SCPM_PUESTOS">
-              <MappingFragment StoreEntitySet="SCPM_PUESTOS">
-                <ScalarProperty Name="PUE_EST" ColumnName="PUE_EST" />
-                <ScalarProperty Name="PUE_ID" ColumnName="PUE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1437,9 +1446,9 @@
             </EndProperty>
             <Condition ColumnName="UNI_COD" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_ARE" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE" StoreEntitySet="SCPM_PUESTOS">
-            <EndProperty Name="SCPM_PUESTOS">
-              <ScalarProperty Name="PUE_ID" ColumnName="PUE_ID" />
+          <AssociationSetMapping Name="FK_SCPM_CAR_RELATIONS_SCPM_ARE" TypeName="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE" StoreEntitySet="SCPM_CARGOS">
+            <EndProperty Name="SCPM_CARGOS">
+              <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_AREAS">
               <ScalarProperty Name="ARE_COD" ColumnName="ARE_COD" />
@@ -1462,14 +1471,33 @@
               <ScalarProperty Name="CAN_ID" ColumnName="CAN_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" StoreEntitySet="SCPM_PUESTOS">
-            <EndProperty Name="SCPM_PUESTOS">
-              <ScalarProperty Name="PUE_ID" ColumnName="PUE_ID" />
+          <AssociationSetMapping Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB" TypeName="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB" StoreEntitySet="SCPM_CARGOS">
+            <EndProperty Name="SCPM_CARGOS">
+              <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+            </EndProperty>
+            <EndProperty Name="SCPM_SUBROGA_HIST">
+              <ScalarProperty Name="SUB_HIS_ID" ColumnName="SUB_HIS_ID" />
+            </EndProperty>
+            <Condition ColumnName="SUB_HIS_ID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" StoreEntitySet="SCPM_PUESTO_HIST">
+            <EndProperty Name="SCPM_PUESTO_HIST">
+              <ScalarProperty Name="PST_HIS_ID" ColumnName="PST_HIS_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_CARGOS">
               <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
             </EndProperty>
             <Condition ColumnName="CAR_ID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SCPM_CON_RELATIONS_SCPM_PAI" TypeName="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI" StoreEntitySet="SCPM_CONYUGES">
+            <EndProperty Name="SCPM_CONYUGES">
+              <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
+              <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+            </EndProperty>
+            <EndProperty Name="SCPM_PAIS">
+              <ScalarProperty Name="PAI_ID" ColumnName="PAI_ID" />
+            </EndProperty>
+            <Condition ColumnName="PAI_ID" IsNull="false" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_CON_RELATIONS_SCPM_PER" TypeName="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER" StoreEntitySet="SCPM_CONYUGES">
             <EndProperty Name="SCPM_CONYUGES">
@@ -1490,9 +1518,19 @@
             </EndProperty>
             <Condition ColumnName="PROF_ID" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_DEN" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN" StoreEntitySet="SCPM_PUESTOS">
-            <EndProperty Name="SCPM_PUESTOS">
-              <ScalarProperty Name="PUE_ID" ColumnName="PUE_ID" />
+          <AssociationSetMapping Name="FK_SCPM_CON_RELATIONS_SCPM_TIP" TypeName="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP" StoreEntitySet="SCPM_CONYUGES">
+            <EndProperty Name="SCPM_CONYUGES">
+              <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
+              <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+            </EndProperty>
+            <EndProperty Name="SCPM_TIPO_IDENTIFICACIONES">
+              <ScalarProperty Name="TIP_IDE_COD" ColumnName="TIP_IDE_COD" />
+            </EndProperty>
+            <Condition ColumnName="TIP_IDE_COD" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_DEN" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN" StoreEntitySet="SCPM_PUESTO_HIST">
+            <EndProperty Name="SCPM_PUESTO_HIST">
+              <ScalarProperty Name="PST_HIS_ID" ColumnName="PST_HIS_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_DENOMINACIONES">
               <ScalarProperty Name="DEN_ID" ColumnName="DEN_ID" />
@@ -1614,32 +1652,14 @@
             </EndProperty>
             <Condition ColumnName="PER_ID" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_PUE" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE" StoreEntitySet="SCPM_PUESTO_HIST">
+          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_REL" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" StoreEntitySet="SCPM_PUESTO_HIST">
             <EndProperty Name="SCPM_PUESTO_HIST">
               <ScalarProperty Name="PST_HIS_ID" ColumnName="PST_HIS_ID" />
-            </EndProperty>
-            <EndProperty Name="SCPM_PUESTOS">
-              <ScalarProperty Name="PUE_ID" ColumnName="PUE_ID" />
-            </EndProperty>
-            <Condition ColumnName="PUE_ID" IsNull="false" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_REL" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" StoreEntitySet="SCPM_PUESTOS">
-            <EndProperty Name="SCPM_PUESTOS">
-              <ScalarProperty Name="PUE_ID" ColumnName="PUE_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_RELACIONES_LABORALES">
               <ScalarProperty Name="REL_LAB_ID" ColumnName="REL_LAB_ID" />
             </EndProperty>
             <Condition ColumnName="REL_LAB_ID" IsNull="false" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SCPM_SUB_RELATIONS_SCPM_PUE" TypeName="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE" StoreEntitySet="SCPM_SUBROGA_HIST">
-            <EndProperty Name="SCPM_SUBROGA_HIST">
-              <ScalarProperty Name="SUB_HIS_ID" ColumnName="SUB_HIS_ID" />
-            </EndProperty>
-            <EndProperty Name="SCPM_PUESTOS">
-              <ScalarProperty Name="PUE_ID" ColumnName="PUE_ID" />
-            </EndProperty>
-            <Condition ColumnName="PUE_ID" IsNull="false" />
           </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>

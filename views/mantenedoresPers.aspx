@@ -4,14 +4,8 @@
     <table class="backgroundRepeatBanner">
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label1" runat="server" BackColor="#000066" ForeColor="White"
-                    Text="MANTENEDORES DE"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <asp:Label ID="Label2" runat="server" BackColor="#000066" ForeColor="White"
-                    Text="LOCALIZACION"></asp:Label>
+                <asp:Label ID="Label1" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
+                    Text="MANTENEDORES DE LOCALIZACION"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -110,6 +104,38 @@
                 <asp:Button ID="editParroquia" runat="server" Text="Modificar" OnClick="editParroquia_Click" />
             </td>
         </tr>
+
+        <tr>
+            <td>
+                <asp:Label ID="Label26" runat="server" Text="Sector"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="comboSector" runat="server" AutoPostBack="True" OnSelectedIndexChanged="comboSector_SelectedIndexChanged">
+                    <asp:ListItem>Chillogallo</asp:ListItem>
+                    <asp:ListItem>La Ecuatoriana</asp:ListItem>
+                </asp:DropDownList>
+            </td>
+            <td>
+                <table class="backgroundRepeatBanner">
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label27" runat="server" Text="Nuevo/Modificar"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="inSector" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:CheckBox ID="onSector" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <asp:Button ID="addSector" runat="server" Text="Ingresar" OnClick="addSector_Click" />
+                <asp:Button ID="editSector" runat="server" Text="Modificar" OnClick="editSector_Click"/>
+            </td>
+        </tr>
+        
         <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -118,7 +144,7 @@
         </tr>
         <tr>
             <td colspan="4" style="height: 23px" bgcolor="#000066">
-                <asp:Label ID="Label6" runat="server" BackColor="#000066" ForeColor="White"
+                <asp:Label ID="Label6" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
                     Text="TIPO DISCAPACIDAD"></asp:Label>
             </td>
         </tr>
@@ -180,7 +206,7 @@
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label9" runat="server" BackColor="#000066" ForeColor="White"
+                <asp:Label ID="Label9" runat="server" BackColor="#000066" ForeColor="White"  CssClass="panel-header"
                     Text="TIPO DOCUMENTO"></asp:Label>
             </td>
         </tr>
@@ -233,7 +259,7 @@
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label12" runat="server" BackColor="#000066" ForeColor="White"
+                <asp:Label ID="Label12" runat="server" BackColor="#000066" ForeColor="White"  CssClass="panel-header"
                     Text="ESTADO CIVIL"></asp:Label>
             </td>
         </tr>
@@ -286,7 +312,7 @@
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label13" runat="server" BackColor="#000066" ForeColor="White"
+                <asp:Label ID="Label13" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
                     Text="PROFESION"></asp:Label>
             </td>
         </tr>
@@ -333,7 +359,7 @@
 
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label16" runat="server" BackColor="#000066" ForeColor="White"
+                <asp:Label ID="Label16" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
                     Text="PARENTESCO"></asp:Label>
             </td>
         </tr>
@@ -385,7 +411,7 @@
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label19" runat="server" BackColor="#000066" ForeColor="White"
+                <asp:Label ID="Label19" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
                     Text="RAZA"></asp:Label>
             </td>
         </tr>
@@ -436,7 +462,7 @@
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label29" runat="server" BackColor="#000066" ForeColor="White"
+                <asp:Label ID="Label29" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
                     Text="NACIONALIDAD"></asp:Label>
             </td>
         </tr>

@@ -1,6 +1,6 @@
 ﻿/*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     26/08/2015 18:48:04                          */
+/* Created on:     27/08/2015 13:06:19                          */
 /*==============================================================*/
 
 
@@ -16,6 +16,20 @@ if exists (select 1
    where r.fkeyid = object_id('SCPM_CANTONES') and o.name = 'FK_SCPM_CAN_RELATIONS_SCPM_PRO')
 alter table SCPM_CANTONES
    drop constraint FK_SCPM_CAN_RELATIONS_SCPM_PRO
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SCPM_CARGOS') and o.name = 'FK_SCPM_CAR_RELATIONS_SCPM_SUB')
+alter table SCPM_CARGOS
+   drop constraint FK_SCPM_CAR_RELATIONS_SCPM_SUB
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SCPM_CARGOS') and o.name = 'FK_SCPM_CAR_RELATIONS_SCPM_ARE')
+alter table SCPM_CARGOS
+   drop constraint FK_SCPM_CAR_RELATIONS_SCPM_ARE
 go
 
 if exists (select 1
@@ -111,37 +125,23 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_PUESTOS') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_ARE')
-alter table SCPM_PUESTOS
-   drop constraint FK_SCPM_PUE_RELATIONS_SCPM_ARE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_PUESTOS') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_DEN')
-alter table SCPM_PUESTOS
-   drop constraint FK_SCPM_PUE_RELATIONS_SCPM_DEN
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_PUESTOS') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_CAR')
-alter table SCPM_PUESTOS
+   where r.fkeyid = object_id('SCPM_PUESTO_HIST') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_CAR')
+alter table SCPM_PUESTO_HIST
    drop constraint FK_SCPM_PUE_RELATIONS_SCPM_CAR
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_PUESTOS') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_REL')
-alter table SCPM_PUESTOS
+   where r.fkeyid = object_id('SCPM_PUESTO_HIST') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_REL')
+alter table SCPM_PUESTO_HIST
    drop constraint FK_SCPM_PUE_RELATIONS_SCPM_REL
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_PUESTO_HIST') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_PUE')
+   where r.fkeyid = object_id('SCPM_PUESTO_HIST') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_DEN')
 alter table SCPM_PUESTO_HIST
-   drop constraint FK_SCPM_PUE_RELATIONS_SCPM_PUE
+   drop constraint FK_SCPM_PUE_RELATIONS_SCPM_DEN
 go
 
 if exists (select 1
@@ -156,13 +156,6 @@ if exists (select 1
    where r.fkeyid = object_id('SCPM_SECTORES') and o.name = 'FK_SCPM_SEC_RELATIONS_SCPM_PAR')
 alter table SCPM_SECTORES
    drop constraint FK_SCPM_SEC_RELATIONS_SCPM_PAR
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_SUBROGA_HIST') and o.name = 'FK_SCPM_SUB_RELATIONS_SCPM_PUE')
-alter table SCPM_SUBROGA_HIST
-   drop constraint FK_SCPM_SUB_RELATIONS_SCPM_PUE
 go
 
 if exists (select 1
@@ -202,6 +195,24 @@ if exists (select 1
            where  id = object_id('SCPM_CANTONES')
             and   type = 'U')
    drop table SCPM_CANTONES
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SCPM_CARGOS')
+            and   name  = 'RELATIONSHIP_21_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SCPM_CARGOS.RELATIONSHIP_21_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SCPM_CARGOS')
+            and   name  = 'RELATIONSHIP_38_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SCPM_CARGOS.RELATIONSHIP_38_FK
 go
 
 if exists (select 1
@@ -407,45 +418,29 @@ go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('SCPM_PUESTOS')
-            and   name  = 'RELATIONSHIP_37_FK'
+           where  id    = object_id('SCPM_PUESTO_HIST')
+            and   name  = 'RELATIONSHIP_30_FK'
             and   indid > 0
             and   indid < 255)
-   drop index SCPM_PUESTOS.RELATIONSHIP_37_FK
+   drop index SCPM_PUESTO_HIST.RELATIONSHIP_30_FK
 go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('SCPM_PUESTOS')
-            and   name  = 'RELATIONSHIP_7_FK'
+           where  id    = object_id('SCPM_PUESTO_HIST')
+            and   name  = 'RELATIONSHIP_22_FK'
             and   indid > 0
             and   indid < 255)
-   drop index SCPM_PUESTOS.RELATIONSHIP_7_FK
+   drop index SCPM_PUESTO_HIST.RELATIONSHIP_22_FK
 go
 
 if exists (select 1
             from  sysindexes
-           where  id    = object_id('SCPM_PUESTOS')
-            and   name  = 'RELATIONSHIP_6_FK'
+           where  id    = object_id('SCPM_PUESTO_HIST')
+            and   name  = 'RELATIONSHIP_20_FK'
             and   indid > 0
             and   indid < 255)
-   drop index SCPM_PUESTOS.RELATIONSHIP_6_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('SCPM_PUESTOS')
-            and   name  = 'RELATIONSHIP_5_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index SCPM_PUESTOS.RELATIONSHIP_5_FK
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('SCPM_PUESTOS')
-            and   type = 'U')
-   drop table SCPM_PUESTOS
+   drop index SCPM_PUESTO_HIST.RELATIONSHIP_20_FK
 go
 
 if exists (select 1
@@ -455,15 +450,6 @@ if exists (select 1
             and   indid > 0
             and   indid < 255)
    drop index SCPM_PUESTO_HIST.RELATIONSHIP_35_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('SCPM_PUESTO_HIST')
-            and   name  = 'RELATIONSHIP_31_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index SCPM_PUESTO_HIST.RELATIONSHIP_31_FK
 go
 
 if exists (select 1
@@ -501,15 +487,6 @@ if exists (select 1
            where  id = object_id('SCPM_SECTORES')
             and   type = 'U')
    drop table SCPM_SECTORES
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('SCPM_SUBROGA_HIST')
-            and   name  = 'RELATIONSHIP_30_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index SCPM_SUBROGA_HIST.RELATIONSHIP_30_FK
 go
 
 if exists (select 1
@@ -553,8 +530,8 @@ go
 /* Table: SCPM_AREAS                                            */
 /*==============================================================*/
 create table SCPM_AREAS (
-   ARE_COD              int                  identity,
-   UNI_COD              int                  null,
+   ARE_COD              numeric              identity,
+   UNI_COD              numeric              null,
    ARE_NOM              text                 null,
    ARE_EST              bit                  null,
    ORG_PAD              text                 null,
@@ -667,8 +644,8 @@ go
 /* Table: SCPM_CANTONES                                         */
 /*==============================================================*/
 create table SCPM_CANTONES (
-   CAN_ID               int                  identity,
-   PRO_ID               int                  not null,
+   CAN_ID               numeric              identity,
+   PRO_ID               numeric              not null,
    CAN_NOM              text                 null,
    CAN_EST              bit                  null,
    constraint PK_SCPM_CANTONES primary key nonclustered (CAN_ID)
@@ -780,7 +757,9 @@ go
 /* Table: SCPM_CARGOS                                           */
 /*==============================================================*/
 create table SCPM_CARGOS (
-   CAR_ID               int                  identity,
+   CAR_ID               numeric              identity,
+   ARE_COD              numeric              null,
+   SUB_HIS_ID           numeric              null,
    CAR_NOM              text                 null,
    CAR_EST              bit                  null,
    constraint PK_SCPM_CARGOS primary key nonclustered (CAR_ID)
@@ -825,6 +804,44 @@ go
 
 if exists(select 1 from sys.extended_properties p where
       p.major_id = object_id('SCPM_CARGOS')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ARE_COD')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'ARE_COD'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla ',
+   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'ARE_COD'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_CARGOS')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'SUB_HIS_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'SUB_HIS_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'SUB_HIS_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_CARGOS')
   and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CAR_NOM')
 )
 begin
@@ -862,12 +879,28 @@ execute sp_addextendedproperty 'MS_Description',
 go
 
 /*==============================================================*/
+/* Index: RELATIONSHIP_38_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_38_FK on SCPM_CARGOS (
+ARE_COD ASC
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_21_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_21_FK on SCPM_CARGOS (
+SUB_HIS_ID ASC
+)
+go
+
+/*==============================================================*/
 /* Table: SCPM_CONYUGES                                         */
 /*==============================================================*/
 create table SCPM_CONYUGES (
-   PER_ID               int                  identity,
-   CON_ID               int                  not null,
-   PROF_ID              int                  null,
+   PER_ID               numeric              not null,
+   CON_ID               numeric              identity,
+   PROF_ID              numeric              null,
    CON_NUM_DOC          text                 null,
    CON_APE_PAT          text                 null,
    CON_APE_MAT          text                 null,
@@ -1249,7 +1282,7 @@ go
 /* Table: SCPM_DENOMINACIONES                                   */
 /*==============================================================*/
 create table SCPM_DENOMINACIONES (
-   DEN_ID               int                  identity,
+   DEN_ID               numeric              identity,
    DEN_NOM              text                 null,
    DEN_GRA              text                 null,
    DEN_RMU              text                 null,
@@ -1375,10 +1408,10 @@ go
 /* Table: SCPM_DISCAPACIDADES                                   */
 /*==============================================================*/
 create table SCPM_DISCAPACIDADES (
-   DIS_ID               int                  identity,
-   PARE_ID              int                  null,
-   PER_ID               int                  null,
-   TIP_DIS_ID           int                  null,
+   DIS_ID               numeric              identity,
+   PARE_ID              numeric              null,
+   PER_ID               numeric              null,
+   TIP_DIS_ID           numeric              null,
    DIS_CLA              bit                  null,
    DIS_POR              decimal              null,
    DIS_EST              bit                  null,
@@ -1565,9 +1598,9 @@ go
 /* Table: SCPM_EMERGENCIAS                                      */
 /*==============================================================*/
 create table SCPM_EMERGENCIAS (
-   PER_ID               int                  identity,
-   CON_FAM_EME_ID       int                  not null,
-   PARE_ID              int                  null,
+   PER_ID               numeric              not null,
+   CON_FAM_EME_ID       numeric              identity,
+   PARE_ID              numeric              null,
    CON_FAM_EME_NOM      text                 null,
    CON_FAM_EME_TEF      int                  null,
    CON_FAM_EME_CEL      int                  null,
@@ -1746,7 +1779,7 @@ go
 /* Table: SCPM_ESTADOS_CIVILES                                  */
 /*==============================================================*/
 create table SCPM_ESTADOS_CIVILES (
-   EST_CIV_ID           int                  identity,
+   EST_CIV_ID           numeric              identity,
    EST_CIV_NOM          text                 null,
    EST_CIV_EST          bit                  null,
    constraint PK_SCPM_ESTADOS_CIVILES primary key nonclustered (EST_CIV_ID)
@@ -1831,7 +1864,7 @@ go
 /* Table: SCPM_PAIS                                             */
 /*==============================================================*/
 create table SCPM_PAIS (
-   PAI_ID               int                  identity,
+   PAI_ID               int                  not null,
    PAI_CIU              text                 null,
    PAI_EST              bit                  null,
    PAI_NACIONALIDAD     text                 null,
@@ -1917,7 +1950,7 @@ go
 /* Table: SCPM_PARENTESCOS                                      */
 /*==============================================================*/
 create table SCPM_PARENTESCOS (
-   PARE_ID              int                  identity,
+   PARE_ID              numeric              identity,
    PARE_NOM             text                 null,
    PARE_EST             bit                  null,
    constraint PK_SCPM_PARENTESCOS primary key nonclustered (PARE_ID)
@@ -2002,8 +2035,8 @@ go
 /* Table: SCPM_PARROQUIAS                                       */
 /*==============================================================*/
 create table SCPM_PARROQUIAS (
-   PAR_ID               int                  identity,
-   CAN_ID               int                  not null,
+   PAR_ID               numeric              identity,
+   CAN_ID               numeric              not null,
    PAR_NOM              text                 null,
    PAR_EST              bit                  null,
    constraint PK_SCPM_PARROQUIAS primary key nonclustered (PAR_ID)
@@ -2115,19 +2148,19 @@ go
 /* Table: SCPM_PERSONALES                                       */
 /*==============================================================*/
 create table SCPM_PERSONALES (
-   PER_ID               int                  identity,
-   EST_CIV_ID           int                  null,
-   TIP_IDE_COD          int                  null,
-   RAZ_ID               int                  null,
+   PER_ID               numeric              identity,
+   EST_CIV_ID           numeric              null,
+   TIP_IDE_COD          numeric              null,
+   RAZ_ID               numeric              null,
    PAI_ID               int                  not null,
-   SEC_ID               int                  not null,
+   SEC_ID               numeric              not null,
    PER_NUM_DOC          char(20)             null,
    PER_APE_PAT          char(64)             null,
    PER_APE_MAT          char(20)             null,
    PER_NOM1             char(64)             null,
    PER_NOM2             char(64)             null,
    PER_FEC_NAC          datetime             null,
-   PER_GEN              binary(1)            null,
+   PER_GEN              bit                  null,
    PER_CEL              int                  null,
    PER_TEL              int                  null,
    PER_TAR              bit                  null,
@@ -2623,7 +2656,7 @@ go
 /* Table: SCPM_PROFESIONES                                      */
 /*==============================================================*/
 create table SCPM_PROFESIONES (
-   PROF_ID              int                  identity,
+   PROF_ID              numeric              identity,
    PROF_NOM             text                 null,
    PROF_EST             bit                  null,
    constraint PK_SCPM_PROFESIONES primary key nonclustered (PROF_ID)
@@ -2708,7 +2741,7 @@ go
 /* Table: SCPM_PROVINCIAS                                       */
 /*==============================================================*/
 create table SCPM_PROVINCIAS (
-   PRO_ID               int                  identity,
+   PRO_ID               numeric              identity,
    PRO_NOM              text                 null,
    PRO_EST              bit                  null,
    constraint PK_SCPM_PROVINCIAS primary key nonclustered (PRO_ID)
@@ -2790,189 +2823,14 @@ execute sp_addextendedproperty 'MS_Description',
 go
 
 /*==============================================================*/
-/* Table: SCPM_PUESTOS                                          */
-/*==============================================================*/
-create table SCPM_PUESTOS (
-   PUE_ID               int                  identity,
-   REL_LAB_ID           int                  null,
-   DEN_ID               int                  null,
-   CAR_ID               int                  null,
-   ARE_COD              int                  null,
-   PUE_EST              bit                  null,
-   constraint PK_SCPM_PUESTOS primary key nonclustered (PUE_ID)
-)
-go
-
-if exists (select 1 from  sys.extended_properties
-           where major_id = object_id('SCPM_PUESTOS') and minor_id = 0)
-begin 
-   declare @CurrentUser sysname 
-select @CurrentUser = user_name() 
-execute sp_dropextendedproperty 'MS_Description',  
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS' 
- 
-end 
-
-
-select @CurrentUser = user_name() 
-execute sp_addextendedproperty 'MS_Description',  
-   'Tabla Padre de Denominaciones, Cargos,Relacion Laboraes', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PUESTOS')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PUE_ID')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'PUE_ID'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'PUE_ID'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PUESTOS')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'REL_LAB_ID')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'REL_LAB_ID'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'REL_LAB_ID'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PUESTOS')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'DEN_ID')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'DEN_ID'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'DEN_ID'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PUESTOS')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CAR_ID')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'CAR_ID'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'CAR_ID'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PUESTOS')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ARE_COD')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'ARE_COD'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla ',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'ARE_COD'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PUESTOS')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PUE_EST')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'PUE_EST'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Estado del registro activo o desactivado',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTOS', 'column', 'PUE_EST'
-go
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_5_FK                                     */
-/*==============================================================*/
-create index RELATIONSHIP_5_FK on SCPM_PUESTOS (
-DEN_ID ASC
-)
-go
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_6_FK                                     */
-/*==============================================================*/
-create index RELATIONSHIP_6_FK on SCPM_PUESTOS (
-CAR_ID ASC
-)
-go
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_7_FK                                     */
-/*==============================================================*/
-create index RELATIONSHIP_7_FK on SCPM_PUESTOS (
-REL_LAB_ID ASC
-)
-go
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_37_FK                                    */
-/*==============================================================*/
-create index RELATIONSHIP_37_FK on SCPM_PUESTOS (
-ARE_COD ASC
-)
-go
-
-/*==============================================================*/
 /* Table: SCPM_PUESTO_HIST                                      */
 /*==============================================================*/
 create table SCPM_PUESTO_HIST (
-   PST_HIS_ID           int                  identity,
-   PER_ID               int                  null,
-   PUE_ID               int                  null,
+   PST_HIS_ID           numeric              identity,
+   DEN_ID               numeric              null,
+   CAR_ID               numeric              null,
+   PER_ID               numeric              null,
+   REL_LAB_ID           numeric              null,
    PST_HIS_FEC_INI      datetime             null,
    PST_HIS_FEC_FIN      datetime             null,
    constraint PK_SCPM_PUESTO_HIST primary key nonclustered (PST_HIS_ID)
@@ -3017,6 +2875,44 @@ go
 
 if exists(select 1 from sys.extended_properties p where
       p.major_id = object_id('SCPM_PUESTO_HIST')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'DEN_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'DEN_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'DEN_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_PUESTO_HIST')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CAR_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'CAR_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'CAR_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_PUESTO_HIST')
   and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PER_ID')
 )
 begin
@@ -3036,13 +2932,13 @@ go
 
 if exists(select 1 from sys.extended_properties p where
       p.major_id = object_id('SCPM_PUESTO_HIST')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PUE_ID')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'REL_LAB_ID')
 )
 begin
    declare @CurrentUser sysname
 select @CurrentUser = user_name()
 execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'PUE_ID'
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'REL_LAB_ID'
 
 end
 
@@ -3050,7 +2946,7 @@ end
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'PUE_ID'
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'REL_LAB_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -3092,14 +2988,6 @@ execute sp_addextendedproperty 'MS_Description',
 go
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_31_FK                                    */
-/*==============================================================*/
-create index RELATIONSHIP_31_FK on SCPM_PUESTO_HIST (
-PUE_ID ASC
-)
-go
-
-/*==============================================================*/
 /* Index: RELATIONSHIP_35_FK                                    */
 /*==============================================================*/
 create index RELATIONSHIP_35_FK on SCPM_PUESTO_HIST (
@@ -3108,10 +2996,34 @@ PER_ID ASC
 go
 
 /*==============================================================*/
+/* Index: RELATIONSHIP_20_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_20_FK on SCPM_PUESTO_HIST (
+CAR_ID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_22_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_22_FK on SCPM_PUESTO_HIST (
+REL_LAB_ID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_30_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_30_FK on SCPM_PUESTO_HIST (
+DEN_ID ASC
+)
+go
+
+/*==============================================================*/
 /* Table: SCPM_RAZAS                                            */
 /*==============================================================*/
 create table SCPM_RAZAS (
-   RAZ_ID               int                  identity,
+   RAZ_ID               numeric              identity,
    RAZ_NOM              text                 null,
    RAZ_EST              bit                  null,
    constraint PK_SCPM_RAZAS primary key nonclustered (RAZ_ID)
@@ -3196,7 +3108,7 @@ go
 /* Table: SCPM_RELACIONES_LABORALES                             */
 /*==============================================================*/
 create table SCPM_RELACIONES_LABORALES (
-   REL_LAB_ID           int                  identity,
+   REL_LAB_ID           numeric              identity,
    REL_LAB_NOM          text                 null,
    REL_LAB_EST          bit                  null,
    constraint PK_SCPM_RELACIONES_LABORALES primary key nonclustered (REL_LAB_ID)
@@ -3281,8 +3193,8 @@ go
 /* Table: SCPM_SECTORES                                         */
 /*==============================================================*/
 create table SCPM_SECTORES (
-   SEC_ID               int                  identity,
-   PAR_ID               int                  not null,
+   SEC_ID               numeric              identity,
+   PAR_ID               numeric              not null,
    SEC_NOM              text                 null,
    SEC_EST              bit                  null,
    constraint PK_SCPM_SECTORES primary key nonclustered (SEC_ID)
@@ -3394,9 +3306,8 @@ go
 /* Table: SCPM_SUBROGA_HIST                                     */
 /*==============================================================*/
 create table SCPM_SUBROGA_HIST (
-   SUB_HIS_ID           int                  identity,
-   PER_ID               int                  null,
-   PUE_ID               int                  null,
+   SUB_HIS_ID           numeric              identity,
+   PER_ID               numeric              null,
    SUB_HIS_IS_ENCARGO   bit                  null,
    SUB_HIS_FEC_INI      datetime             null,
    SUB_HIS_FEC_FIN      datetime             null,
@@ -3458,25 +3369,6 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'codigo unico del funcionario',
    'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'PER_ID'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_SUBROGA_HIST')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PUE_ID')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'PUE_ID'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'PUE_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -3564,18 +3456,10 @@ PER_ID ASC
 go
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_30_FK                                    */
-/*==============================================================*/
-create index RELATIONSHIP_30_FK on SCPM_SUBROGA_HIST (
-PUE_ID ASC
-)
-go
-
-/*==============================================================*/
 /* Table: SCPM_TIPO_DISCAPACIDADES                              */
 /*==============================================================*/
 create table SCPM_TIPO_DISCAPACIDADES (
-   TIP_DIS_ID           int                  identity,
+   TIP_DIS_ID           numeric              identity,
    TIP_DIS_NOM          text                 null,
    TIP_DIS_EST          bit                  null,
    constraint PK_SCPM_TIPO_DISCAPACIDADES primary key nonclustered (TIP_DIS_ID)
@@ -3660,7 +3544,7 @@ go
 /* Table: SCPM_TIPO_IDENTIFICACIONES                            */
 /*==============================================================*/
 create table SCPM_TIPO_IDENTIFICACIONES (
-   TIP_IDE_COD          int                  identity,
+   TIP_IDE_COD          numeric              identity,
    TIP_IDE_NOM          text                 null,
    TIP_IDE_EST          bit                  null,
    constraint PK_SCPM_TIPO_IDENTIFICACIONES primary key nonclustered (TIP_IDE_COD)
@@ -3745,7 +3629,7 @@ go
 /* Table: SCPM_UNIDAD                                           */
 /*==============================================================*/
 create table SCPM_UNIDAD (
-   UNI_COD              int                  identity,
+   UNI_COD              numeric              identity,
    UNI_NOM              text                 null,
    UNI_EST              bit                  null,
    constraint PK_SCPM_UNIDAD primary key nonclustered (UNI_COD)
@@ -3836,6 +3720,16 @@ alter table SCPM_CANTONES
       references SCPM_PROVINCIAS (PRO_ID)
 go
 
+alter table SCPM_CARGOS
+   add constraint FK_SCPM_CAR_RELATIONS_SCPM_SUB foreign key (SUB_HIS_ID)
+      references SCPM_SUBROGA_HIST (SUB_HIS_ID)
+go
+
+alter table SCPM_CARGOS
+   add constraint FK_SCPM_CAR_RELATIONS_SCPM_ARE foreign key (ARE_COD)
+      references SCPM_AREAS (ARE_COD)
+go
+
 alter table SCPM_CONYUGES
    add constraint FK_SCPM_CON_RELATIONS_SCPM_PRO foreign key (PROF_ID)
       references SCPM_PROFESIONES (PROF_ID)
@@ -3901,29 +3795,19 @@ alter table SCPM_PERSONALES
       references SCPM_SECTORES (SEC_ID)
 go
 
-alter table SCPM_PUESTOS
-   add constraint FK_SCPM_PUE_RELATIONS_SCPM_ARE foreign key (ARE_COD)
-      references SCPM_AREAS (ARE_COD)
-go
-
-alter table SCPM_PUESTOS
-   add constraint FK_SCPM_PUE_RELATIONS_SCPM_DEN foreign key (DEN_ID)
-      references SCPM_DENOMINACIONES (DEN_ID)
-go
-
-alter table SCPM_PUESTOS
+alter table SCPM_PUESTO_HIST
    add constraint FK_SCPM_PUE_RELATIONS_SCPM_CAR foreign key (CAR_ID)
       references SCPM_CARGOS (CAR_ID)
 go
 
-alter table SCPM_PUESTOS
+alter table SCPM_PUESTO_HIST
    add constraint FK_SCPM_PUE_RELATIONS_SCPM_REL foreign key (REL_LAB_ID)
       references SCPM_RELACIONES_LABORALES (REL_LAB_ID)
 go
 
 alter table SCPM_PUESTO_HIST
-   add constraint FK_SCPM_PUE_RELATIONS_SCPM_PUE foreign key (PUE_ID)
-      references SCPM_PUESTOS (PUE_ID)
+   add constraint FK_SCPM_PUE_RELATIONS_SCPM_DEN foreign key (DEN_ID)
+      references SCPM_DENOMINACIONES (DEN_ID)
 go
 
 alter table SCPM_PUESTO_HIST
@@ -3934,11 +3818,6 @@ go
 alter table SCPM_SECTORES
    add constraint FK_SCPM_SEC_RELATIONS_SCPM_PAR foreign key (PAR_ID)
       references SCPM_PARROQUIAS (PAR_ID)
-go
-
-alter table SCPM_SUBROGA_HIST
-   add constraint FK_SCPM_SUB_RELATIONS_SCPM_PUE foreign key (PUE_ID)
-      references SCPM_PUESTOS (PUE_ID)
 go
 
 alter table SCPM_SUBROGA_HIST

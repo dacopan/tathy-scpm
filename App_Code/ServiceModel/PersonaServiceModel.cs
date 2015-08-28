@@ -23,37 +23,37 @@ public class PersonaServiceModel
         return db.SCPM_PROVINCIAS.ToList();
     }
 
-    public object getAllPais()
+    public List<SCPM_PAIS> getAllPais()
     {
         return db.SCPM_PAIS.ToList();
     }
 
-    public object getAllRazas()
+    public List<SCPM_RAZAS> getAllRazas()
     {
         return db.SCPM_RAZAS.ToList();
     }
 
-    public object getAllParentesco()
+    public List<SCPM_PARENTESCOS> getAllParentesco()
     {
         return db.SCPM_PARENTESCOS.ToList();
     }
 
-    public object getAllProfesion()
+    public List<SCPM_PROFESIONES> getAllProfesion()
     {
         return db.SCPM_PROFESIONES.ToList();
     }
 
-    public object getAllEstadoCivil()
+    public List<SCPM_ESTADOS_CIVILES> getAllEstadoCivil()
     {
         return db.SCPM_ESTADOS_CIVILES.ToList();
     }
 
-    public object getAllDocumentos()
+    public List<SCPM_TIPO_IDENTIFICACIONES> getAllDocumentos()
     {
         return db.SCPM_TIPO_IDENTIFICACIONES.ToList();
     }
 
-    public object getAllDiscapacidad()
+    public List<SCPM_TIPO_DISCAPACIDADES> getAllDiscapacidad()
     {
         return db.SCPM_TIPO_DISCAPACIDADES.ToList();
     }
@@ -67,6 +67,11 @@ public class PersonaServiceModel
     public object getParroquiasByCanton(int p)
     {
         var par = from c in db.SCPM_PARROQUIAS where c.SCPM_CANTONES.CAN_ID == p select c;
+        return par.ToList();
+    }
+    public object getSectorByParroquiaID(int p)
+    {
+        var par = from c in db.SCPM_SECTORES where c.SCPM_PARROQUIAS.PAR_ID == p select c;
         return par.ToList();
     }
 
@@ -142,6 +147,34 @@ public class PersonaServiceModel
             var a = _a.First();
             a.PAR_NOM = newx.PAR_NOM;
             a.PAR_EST = newx.PAR_EST;
+
+            db.SaveChanges();
+            return true;
+        }
+        else return false;
+    }
+
+    public bool addSector(SCPM_SECTORES newx, int idx)
+    {
+        var _a = from a in db.SCPM_PARROQUIAS where a.PAR_ID == idx select a;
+        if (_a.Count() > 0)
+        {
+            _a.First().SCPM_SECTORES.Add(newx);
+            db.SaveChanges();
+            return true;
+        }
+        else return false;
+    }
+
+    public bool editSector(SCPM_SECTORES newx)
+    {
+        var _a = from a in db.SCPM_SECTORES where a.SEC_ID == newx.SEC_ID select a;
+
+        if (_a.Count() > 0)
+        {
+            var a = _a.First();
+            a.SEC_NOM = newx.SEC_NOM;
+            a.SEC_EST = newx.SEC_EST;
 
             db.SaveChanges();
             return true;
@@ -304,4 +337,88 @@ public class PersonaServiceModel
         db.SaveChanges();
         return true;
     }
+
+
+    public bool addPersona(SCPM_PERSONALES newx)
+    {
+        var contains = db.SCPM_PERSONALES.ToList().Any(u => u.PER_NUM_DOC == newx.PER_NUM_DOC);
+        if (contains) return false;
+        db.AddToSCPM_PERSONALES(newx);
+        db.SaveChanges();
+        return true;
+    }
+
+    public SCPM_TIPO_IDENTIFICACIONES getIdentificacionByID(int newx)
+    {
+        return (from a in db.SCPM_TIPO_IDENTIFICACIONES where a.TIP_IDE_COD == newx select a).First();
+    }
+    public SCPM_PAIS getPaisByID(int newx)
+    {
+        return (from a in db.SCPM_PAIS where a.PAI_ID == newx select a).First();
+    }
+
+    public SCPM_RAZAS getRazaByID(int newx)
+    {
+        return (from a in db.SCPM_RAZAS where a.RAZ_ID == newx select a).First();
+    }
+
+    public SCPM_ESTADOS_CIVILES getEstadoCivilByID(int newx)
+    {
+        return (from a in db.SCPM_ESTADOS_CIVILES where a.EST_CIV_ID == newx select a).First();
+    }
+
+    public SCPM_SECTORES getSectorByID(int newx)
+    {
+        return (from a in db.SCPM_SECTORES where a.SEC_ID == newx select a).First();
+    }
+
+    public SCPM_PROFESIONES getProfesionByID(int newx)
+    {
+        return (from a in db.SCPM_PROFESIONES where a.PROF_ID == newx select a).First();
+    }
+
+    public object getAllDiscapacidadControl()
+    {
+        var discapacidades = getAllDiscapacidad();
+        List<DiscapacidadControl> disc = new List<DiscapacidadControl>();
+        foreach (var item in discapacidades)
+        {
+            disc.Add(new DiscapacidadControl() { TIP_DIS_ID = item.TIP_DIS_ID, TIP_DIS_NOM = item.TIP_DIS_NOM, DIS_POR = 0 });
+        }
+        return disc;
+    }
+
+    public SCPM_TIPO_DISCAPACIDADES getDiscapacidadByID(int newx)
+    {
+        return (from a in db.SCPM_TIPO_DISCAPACIDADES where a.TIP_DIS_ID == newx select a).First();
+    }
+
+    public SCPM_PARENTESCOS getParentezcoByID(int newx)
+    {
+        return (from a in db.SCPM_PARENTESCOS where a.PARE_ID == newx select a).First();
+    }
+
+
+
+    public List<SCPM_PERSONALES> getPersonasByNumDoc(string filtro)
+    {
+        return (from a in db.SCPM_PERSONALES where a.PER_NUM_DOC.Equals(filtro) select a).ToList();
+    }
+
+    public object getPersonasByNombre(string filtro)
+    {
+        return (from a in db.SCPM_PERSONALES where (a.PER_APE_PAT + " " + a.PER_APE_MAT + " " + a.PER_NOM1 + " " + a.PER_NOM2).Contains(filtro) select a).ToList();
+    }
+
+    public List<SCPM_PERSONALES> getPersonasByID(int p)
+    {
+        return (from a in db.SCPM_PERSONALES where a.PER_ID == p select a).ToList();
+    }
+
+    public object getAllPersonas()
+    {
+        return db.SCPM_PERSONALES.ToList();
+    }
+
+
 }

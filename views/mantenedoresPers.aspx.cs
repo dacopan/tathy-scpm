@@ -211,12 +211,19 @@ public partial class mantenedoresPers : System.Web.UI.Page
             comboProvincia.Enabled = false;
             comboProvincia.Items.Add(new ListItem("--Añadir provincia--", ""));
 
-            ComboParroquia.Enabled = false;
-            ComboParroquia.Items.Add(new ListItem("--Añadir provincia--", ""));
 
             ComboCanton.Enabled = false;
-            ComboCanton.Items.Add(new ListItem("--Añadir provincia--", ""));
+            ComboCanton.Items.Add(new ListItem("--Añadir--", ""));
+
+            ComboParroquia.Enabled = false;
+            ComboParroquia.Items.Add(new ListItem("--Añadir--", ""));
+
+            comboSector.Enabled = false;
+            comboSector.Items.Add(new ListItem("--Añadir--", ""));
         }
+
+
+
     }
 
     private void fillCantones()
@@ -232,12 +239,21 @@ public partial class mantenedoresPers : System.Web.UI.Page
         {
             ComboCanton.Enabled = true;
             inCanton.Text = "";
+            ComboCanton_SelectedIndexChanged(ComboCanton, null);
         }
         else
         {
             ComboCanton.Enabled = false;
             ComboCanton.Items.Add(new ListItem("--añadir--", ""));
+
+            ComboParroquia.Enabled = false;
+            ComboParroquia.Items.Add(new ListItem("--Añadir--", ""));
+
+            comboSector.Enabled = false;
+            comboSector.Items.Add(new ListItem("--Añadir--", ""));
         }
+
+
     }
 
     private void fillParroquias()
@@ -245,7 +261,7 @@ public partial class mantenedoresPers : System.Web.UI.Page
         psvm = new PersonaServiceModel();
         ComboParroquia.Items.Clear();
         ComboParroquia.AppendDataBoundItems = true;
-        ComboParroquia.DataSource = psvm.getParroquiasByCanton(Convert.ToInt32(comboProvincia.SelectedItem.Value));
+        ComboParroquia.DataSource = psvm.getParroquiasByCanton(Convert.ToInt32(ComboCanton.SelectedItem.Value));
         ComboParroquia.DataTextField = "PAR_NOM";
         ComboParroquia.DataValueField = "PAR_ID";
         ComboParroquia.DataBind();
@@ -253,11 +269,37 @@ public partial class mantenedoresPers : System.Web.UI.Page
         {
             ComboParroquia.Enabled = true;
             inParroquia.Text = "";
+            ComboParroquia_SelectedIndexChanged(ComboParroquia, null);
         }
         else
         {
             ComboParroquia.Enabled = false;
             ComboParroquia.Items.Add(new ListItem("--Añadir--", ""));
+
+            comboSector.Enabled = false;
+            comboSector.Items.Add(new ListItem("--Añadir--", ""));
+        }
+    }
+
+    private void fillSectores()
+    {
+        psvm = new PersonaServiceModel();
+        comboSector.Items.Clear();
+        comboSector.AppendDataBoundItems = true;
+        comboSector.DataSource = psvm.getSectorByParroquiaID(Convert.ToInt32(ComboParroquia.SelectedItem.Value));
+        comboSector.DataTextField = "SEC_NOM";
+        comboSector.DataValueField = "SEC_ID";
+        comboSector.DataBind();
+        if (comboSector.Items.Count > 0)
+        {
+            comboSector.Enabled = true;
+            inSector.Text = "";
+            comboSector_SelectedIndexChanged(comboSector, null);
+        }
+        else
+        {
+            comboSector.Enabled = false;
+            comboSector.Items.Add(new ListItem("--Añadir--", ""));
         }
     }
 
@@ -276,6 +318,12 @@ public partial class mantenedoresPers : System.Web.UI.Page
     protected void ComboParroquia_SelectedIndexChanged(object sender, EventArgs e)
     {
         inParroquia.Text = ComboParroquia.SelectedItem.Text;
+        fillSectores();
+    }
+
+    protected void comboSector_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        inSector.Text = comboSector.SelectedItem.Text;
     }
     protected void comboDiscapacidad_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -534,6 +582,30 @@ public partial class mantenedoresPers : System.Web.UI.Page
         if (psvm.editPais(new SCPM_PAIS() { PAI_ID = Convert.ToInt32(comboPais.SelectedValue), PAI_NACIONALIDAD = inPais.Text, PAI_EST = onPais.Checked }))
         {
             fillPais();
+            HelperUtil.showNotifi("editado");
+        }
+        else
+            HelperUtil.showNotifi("no editado");
+    }
+
+    protected void addSector_Click(object sender, EventArgs e)
+    {
+        psvm = new PersonaServiceModel();
+        if (psvm.addSector(new SCPM_SECTORES() { SEC_NOM = inSector.Text, SEC_EST = onSector.Checked }, Convert.ToInt32(ComboParroquia.SelectedValue)))
+        {
+            fillSectores();
+            HelperUtil.showNotifi("añadido");
+        }
+        else
+            HelperUtil.showNotifi("no añadido");
+    }
+
+    protected void editSector_Click(object sender, EventArgs e)
+    {
+        psvm = new PersonaServiceModel();
+        if (psvm.editSector(new SCPM_SECTORES() { SEC_ID = Convert.ToInt32(comboSector.SelectedValue), SEC_NOM = inSector.Text, SEC_EST = onSector.Checked }))
+        {
+            fillSectores();
             HelperUtil.showNotifi("editado");
         }
         else

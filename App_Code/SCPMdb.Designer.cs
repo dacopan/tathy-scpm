@@ -10,13 +10,16 @@
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_ARE_RELATIONS_SCPM_UNI", "SCPM_UNIDAD", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_UNIDAD), "SCPM_AREAS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_AREAS))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_AREAS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_AREAS), "SCPM_PUESTOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTOS))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_AREAS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_AREAS), "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CARGOS))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CAN_RELATIONS_SCPM_PRO", "SCPM_PROVINCIAS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SCPMdbModel.SCPM_PROVINCIAS), "SCPM_CANTONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CANTONES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PAR_RELATIONS_SCPM_CAN", "SCPM_CANTONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SCPMdbModel.SCPM_CANTONES), "SCPM_PARROQUIAS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PARROQUIAS))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_CARGOS), "SCPM_PUESTOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTOS))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_SUBROGA_HIST), "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CARGOS))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_CARGOS), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_PAIS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PAIS), "SCPM_CONYUGES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CONYUGES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PER", "SCPM_PERSONALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SCPMdbModel.SCPM_PERSONALES), "SCPM_CONYUGES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CONYUGES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PRO", "SCPM_PROFESIONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PROFESIONES), "SCPM_CONYUGES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CONYUGES))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_DENOMINACIONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_DENOMINACIONES), "SCPM_PUESTOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTOS))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_TIPO_IDENTIFICACIONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_TIPO_IDENTIFICACIONES), "SCPM_CONYUGES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CONYUGES))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_DENOMINACIONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_DENOMINACIONES), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_DIS_RELATIONS_SCPM_PAR", "SCPM_PARENTESCOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PARENTESCOS), "SCPM_DISCAPACIDADES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_DISCAPACIDADES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_DIS_RELATIONS_SCPM_PER", "SCPM_PERSONALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PERSONALES), "SCPM_DISCAPACIDADES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_DISCAPACIDADES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_DIS_RELATIONS_SCPM_TIP", "SCPM_TIPO_DISCAPACIDADES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_TIPO_DISCAPACIDADES), "SCPM_DISCAPACIDADES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_DISCAPACIDADES))]
@@ -30,12 +33,10 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PER_RELATIONS_SCPM_TIP", "SCPM_TIPO_IDENTIFICACIONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_TIPO_IDENTIFICACIONES), "SCPM_PERSONALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PERSONALES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PERSONALES), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_PER", "SCPM_PERSONALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PERSONALES), "SCPM_SUBROGA_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_SUBROGA_HIST))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PUESTOS), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_RELACIONES_LABORALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_RELACIONES_LABORALES), "SCPM_PUESTOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTOS))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_PUESTOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PUESTOS), "SCPM_SUBROGA_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_SUBROGA_HIST))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_RELACIONES_LABORALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_RELACIONES_LABORALES), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
 
 // Nombre de archivo original:
-// Fecha de generación: 26/08/2015 18:49:18
+// Fecha de generación: 27/08/2015 22:35:42
 namespace SCPMdbModel
 {
     
@@ -325,23 +326,6 @@ namespace SCPMdbModel
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<SCPM_PUESTO_HIST> _SCPM_PUESTO_HIST;
         /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<SCPM_PUESTOS> SCPM_PUESTOS
-        {
-            get
-            {
-                if ((this._SCPM_PUESTOS == null))
-                {
-                    this._SCPM_PUESTOS = base.CreateQuery<SCPM_PUESTOS>("[SCPM_PUESTOS]");
-                }
-                return this._SCPM_PUESTOS;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<SCPM_PUESTOS> _SCPM_PUESTOS;
-        /// <summary>
         /// No hay ningún comentario para SCPM_RAZAS en el esquema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
@@ -581,14 +565,6 @@ namespace SCPMdbModel
             base.AddObject("SCPM_PUESTO_HIST", sCPM_PUESTO_HIST);
         }
         /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToSCPM_PUESTOS(SCPM_PUESTOS sCPM_PUESTOS)
-        {
-            base.AddObject("SCPM_PUESTOS", sCPM_PUESTOS);
-        }
-        /// <summary>
         /// No hay ningún comentario para SCPM_RAZAS en el esquema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
@@ -661,7 +637,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="aRE_COD">Valor inicial de ARE_COD.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_AREAS CreateSCPM_AREAS(int aRE_COD)
+        public static SCPM_AREAS CreateSCPM_AREAS(decimal aRE_COD)
         {
             SCPM_AREAS sCPM_AREAS = new SCPM_AREAS();
             sCPM_AREAS.ARE_COD = aRE_COD;
@@ -673,7 +649,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int ARE_COD
+        public decimal ARE_COD
         {
             get
             {
@@ -689,9 +665,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _ARE_COD;
+        private decimal _ARE_COD;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnARE_CODChanging(int value);
+        partial void OnARE_CODChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnARE_CODChanged();
         /// <summary>
@@ -815,24 +791,24 @@ namespace SCPMdbModel
             }
         }
         /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
+        /// No hay ningún comentario para SCPM_CARGOS en el esquema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_PUESTOS")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_CARGOS")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTOS> SCPM_PUESTOS
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_CARGOS> SCPM_CARGOS
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_PUESTOS");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_CARGOS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_PUESTOS", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_CARGOS", value);
                 }
             }
         }
@@ -853,7 +829,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="cAN_ID">Valor inicial de CAN_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_CANTONES CreateSCPM_CANTONES(int cAN_ID)
+        public static SCPM_CANTONES CreateSCPM_CANTONES(decimal cAN_ID)
         {
             SCPM_CANTONES sCPM_CANTONES = new SCPM_CANTONES();
             sCPM_CANTONES.CAN_ID = cAN_ID;
@@ -865,7 +841,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int CAN_ID
+        public decimal CAN_ID
         {
             get
             {
@@ -881,9 +857,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _CAN_ID;
+        private decimal _CAN_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCAN_IDChanging(int value);
+        partial void OnCAN_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCAN_IDChanged();
         /// <summary>
@@ -1018,7 +994,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="cAR_ID">Valor inicial de CAR_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_CARGOS CreateSCPM_CARGOS(int cAR_ID)
+        public static SCPM_CARGOS CreateSCPM_CARGOS(decimal cAR_ID)
         {
             SCPM_CARGOS sCPM_CARGOS = new SCPM_CARGOS();
             sCPM_CARGOS.CAR_ID = cAR_ID;
@@ -1030,7 +1006,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int CAR_ID
+        public decimal CAR_ID
         {
             get
             {
@@ -1046,9 +1022,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _CAR_ID;
+        private decimal _CAR_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCAR_IDChanging(int value);
+        partial void OnCAR_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCAR_IDChanged();
         /// <summary>
@@ -1106,24 +1082,102 @@ namespace SCPMdbModel
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCAR_ESTChanged();
         /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
+        /// No hay ningún comentario para SCPM_AREAS en el esquema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTOS")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_AREAS")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTOS> SCPM_PUESTOS
+        public SCPM_AREAS SCPM_AREAS
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTOS");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_AREAS").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_AREAS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_AREAS en el esquema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_AREAS> SCPM_AREASReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_AREAS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTOS", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE", "SCPM_AREAS", value);
+                }
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_SUBROGA_HIST en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public SCPM_SUBROGA_HIST SCPM_SUBROGA_HIST
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_SUBROGA_HIST en el esquema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_SUBROGA_HIST> SCPM_SUBROGA_HISTReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST", value);
+                }
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_PUESTO_HIST en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTO_HIST")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTO_HIST> SCPM_PUESTO_HIST
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTO_HIST");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTO_HIST", value);
                 }
             }
         }
@@ -1146,7 +1200,7 @@ namespace SCPMdbModel
         /// <param name="pER_ID">Valor inicial de PER_ID.</param>
         /// <param name="cON_ID">Valor inicial de CON_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_CONYUGES CreateSCPM_CONYUGES(int pER_ID, int cON_ID)
+        public static SCPM_CONYUGES CreateSCPM_CONYUGES(decimal pER_ID, decimal cON_ID)
         {
             SCPM_CONYUGES sCPM_CONYUGES = new SCPM_CONYUGES();
             sCPM_CONYUGES.PER_ID = pER_ID;
@@ -1159,7 +1213,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PER_ID
+        public decimal PER_ID
         {
             get
             {
@@ -1175,9 +1229,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PER_ID;
+        private decimal _PER_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPER_IDChanging(int value);
+        partial void OnPER_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_IDChanged();
         /// <summary>
@@ -1186,7 +1240,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int CON_ID
+        public decimal CON_ID
         {
             get
             {
@@ -1202,9 +1256,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _CON_ID;
+        private decimal _CON_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCON_IDChanging(int value);
+        partial void OnCON_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_IDChanged();
         /// <summary>
@@ -1375,7 +1429,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> CON_CEL
+        public string CON_CEL
         {
             get
             {
@@ -1385,15 +1439,15 @@ namespace SCPMdbModel
             {
                 this.OnCON_CELChanging(value);
                 this.ReportPropertyChanging("CON_CEL");
-                this._CON_CEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._CON_CEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("CON_CEL");
                 this.OnCON_CELChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _CON_CEL;
+        private string _CON_CEL;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCON_CELChanging(global::System.Nullable<int> value);
+        partial void OnCON_CELChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_CELChanged();
         /// <summary>
@@ -1402,7 +1456,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> CON_TEL
+        public string CON_TEL
         {
             get
             {
@@ -1412,15 +1466,15 @@ namespace SCPMdbModel
             {
                 this.OnCON_TELChanging(value);
                 this.ReportPropertyChanging("CON_TEL");
-                this._CON_TEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._CON_TEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("CON_TEL");
                 this.OnCON_TELChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _CON_TEL;
+        private string _CON_TEL;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCON_TELChanging(global::System.Nullable<int> value);
+        partial void OnCON_TELChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_TELChanged();
         /// <summary>
@@ -1564,7 +1618,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> CON_NUM_TRA
+        public string CON_NUM_TRA
         {
             get
             {
@@ -1574,15 +1628,15 @@ namespace SCPMdbModel
             {
                 this.OnCON_NUM_TRAChanging(value);
                 this.ReportPropertyChanging("CON_NUM_TRA");
-                this._CON_NUM_TRA = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._CON_NUM_TRA = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("CON_NUM_TRA");
                 this.OnCON_NUM_TRAChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _CON_NUM_TRA;
+        private string _CON_NUM_TRA;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCON_NUM_TRAChanging(global::System.Nullable<int> value);
+        partial void OnCON_NUM_TRAChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_NUM_TRAChanged();
         /// <summary>
@@ -1612,6 +1666,72 @@ namespace SCPMdbModel
         partial void OnCON_ESTChanging(global::System.Nullable<bool> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_ESTChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad CON_DIR_TRAB en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string CON_DIR_TRAB
+        {
+            get
+            {
+                return this._CON_DIR_TRAB;
+            }
+            set
+            {
+                this.OnCON_DIR_TRABChanging(value);
+                this.ReportPropertyChanging("CON_DIR_TRAB");
+                this._CON_DIR_TRAB = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("CON_DIR_TRAB");
+                this.OnCON_DIR_TRABChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _CON_DIR_TRAB;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCON_DIR_TRABChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnCON_DIR_TRABChanged();
+        /// <summary>
+        /// No hay ningún comentario para SCPM_PAIS en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_PAIS")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public SCPM_PAIS SCPM_PAIS
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PAIS>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_PAIS").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PAIS>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_PAIS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_PAIS en el esquema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_PAIS> SCPM_PAISReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PAIS>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_PAIS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_PAIS>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_PAIS", value);
+                }
+            }
+        }
         /// <summary>
         /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
         /// </summary>
@@ -1690,6 +1810,45 @@ namespace SCPMdbModel
                 }
             }
         }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_TIPO_IDENTIFICACIONES en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_TIPO_IDENTIFICACIONES")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public SCPM_TIPO_IDENTIFICACIONES SCPM_TIPO_IDENTIFICACIONES
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_TIPO_IDENTIFICACIONES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_TIPO_IDENTIFICACIONES").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_TIPO_IDENTIFICACIONES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_TIPO_IDENTIFICACIONES").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_TIPO_IDENTIFICACIONES en el esquema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_TIPO_IDENTIFICACIONES> SCPM_TIPO_IDENTIFICACIONESReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_TIPO_IDENTIFICACIONES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_TIPO_IDENTIFICACIONES");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_TIPO_IDENTIFICACIONES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_TIPO_IDENTIFICACIONES", value);
+                }
+            }
+        }
     }
     /// <summary>
     /// No hay ningún comentario para SCPMdbModel.SCPM_DENOMINACIONES en el esquema.
@@ -1707,7 +1866,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="dEN_ID">Valor inicial de DEN_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_DENOMINACIONES CreateSCPM_DENOMINACIONES(int dEN_ID)
+        public static SCPM_DENOMINACIONES CreateSCPM_DENOMINACIONES(decimal dEN_ID)
         {
             SCPM_DENOMINACIONES sCPM_DENOMINACIONES = new SCPM_DENOMINACIONES();
             sCPM_DENOMINACIONES.DEN_ID = dEN_ID;
@@ -1719,7 +1878,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int DEN_ID
+        public decimal DEN_ID
         {
             get
             {
@@ -1735,9 +1894,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _DEN_ID;
+        private decimal _DEN_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDEN_IDChanging(int value);
+        partial void OnDEN_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnDEN_IDChanged();
         /// <summary>
@@ -1876,24 +2035,24 @@ namespace SCPMdbModel
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnDEN_ESTChanged();
         /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
+        /// No hay ningún comentario para SCPM_PUESTO_HIST en el esquema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_PUESTOS")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_PUESTO_HIST")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTOS> SCPM_PUESTOS
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTO_HIST> SCPM_PUESTO_HIST
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_PUESTOS");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_PUESTO_HIST");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_PUESTOS", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_DEN", "SCPM_PUESTO_HIST", value);
                 }
             }
         }
@@ -1914,7 +2073,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="dIS_ID">Valor inicial de DIS_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_DISCAPACIDADES CreateSCPM_DISCAPACIDADES(int dIS_ID)
+        public static SCPM_DISCAPACIDADES CreateSCPM_DISCAPACIDADES(decimal dIS_ID)
         {
             SCPM_DISCAPACIDADES sCPM_DISCAPACIDADES = new SCPM_DISCAPACIDADES();
             sCPM_DISCAPACIDADES.DIS_ID = dIS_ID;
@@ -1926,7 +2085,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int DIS_ID
+        public decimal DIS_ID
         {
             get
             {
@@ -1942,9 +2101,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _DIS_ID;
+        private decimal _DIS_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDIS_IDChanging(int value);
+        partial void OnDIS_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnDIS_IDChanged();
         /// <summary>
@@ -2191,7 +2350,7 @@ namespace SCPMdbModel
         /// <param name="pER_ID">Valor inicial de PER_ID.</param>
         /// <param name="cON_FAM_EME_ID">Valor inicial de CON_FAM_EME_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_EMERGENCIAS CreateSCPM_EMERGENCIAS(int pER_ID, int cON_FAM_EME_ID)
+        public static SCPM_EMERGENCIAS CreateSCPM_EMERGENCIAS(decimal pER_ID, decimal cON_FAM_EME_ID)
         {
             SCPM_EMERGENCIAS sCPM_EMERGENCIAS = new SCPM_EMERGENCIAS();
             sCPM_EMERGENCIAS.PER_ID = pER_ID;
@@ -2204,7 +2363,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PER_ID
+        public decimal PER_ID
         {
             get
             {
@@ -2220,9 +2379,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PER_ID;
+        private decimal _PER_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPER_IDChanging(int value);
+        partial void OnPER_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_IDChanged();
         /// <summary>
@@ -2231,7 +2390,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int CON_FAM_EME_ID
+        public decimal CON_FAM_EME_ID
         {
             get
             {
@@ -2247,9 +2406,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _CON_FAM_EME_ID;
+        private decimal _CON_FAM_EME_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCON_FAM_EME_IDChanging(int value);
+        partial void OnCON_FAM_EME_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_FAM_EME_IDChanged();
         /// <summary>
@@ -2285,7 +2444,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> CON_FAM_EME_TEF
+        public string CON_FAM_EME_TEF
         {
             get
             {
@@ -2295,15 +2454,15 @@ namespace SCPMdbModel
             {
                 this.OnCON_FAM_EME_TEFChanging(value);
                 this.ReportPropertyChanging("CON_FAM_EME_TEF");
-                this._CON_FAM_EME_TEF = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._CON_FAM_EME_TEF = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("CON_FAM_EME_TEF");
                 this.OnCON_FAM_EME_TEFChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _CON_FAM_EME_TEF;
+        private string _CON_FAM_EME_TEF;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCON_FAM_EME_TEFChanging(global::System.Nullable<int> value);
+        partial void OnCON_FAM_EME_TEFChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_FAM_EME_TEFChanged();
         /// <summary>
@@ -2312,7 +2471,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> CON_FAM_EME_CEL
+        public string CON_FAM_EME_CEL
         {
             get
             {
@@ -2322,15 +2481,15 @@ namespace SCPMdbModel
             {
                 this.OnCON_FAM_EME_CELChanging(value);
                 this.ReportPropertyChanging("CON_FAM_EME_CEL");
-                this._CON_FAM_EME_CEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._CON_FAM_EME_CEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("CON_FAM_EME_CEL");
                 this.OnCON_FAM_EME_CELChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _CON_FAM_EME_CEL;
+        private string _CON_FAM_EME_CEL;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCON_FAM_EME_CELChanging(global::System.Nullable<int> value);
+        partial void OnCON_FAM_EME_CELChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCON_FAM_EME_CELChanged();
         /// <summary>
@@ -2455,7 +2614,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="eST_CIV_ID">Valor inicial de EST_CIV_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_ESTADOS_CIVILES CreateSCPM_ESTADOS_CIVILES(int eST_CIV_ID)
+        public static SCPM_ESTADOS_CIVILES CreateSCPM_ESTADOS_CIVILES(decimal eST_CIV_ID)
         {
             SCPM_ESTADOS_CIVILES sCPM_ESTADOS_CIVILES = new SCPM_ESTADOS_CIVILES();
             sCPM_ESTADOS_CIVILES.EST_CIV_ID = eST_CIV_ID;
@@ -2467,7 +2626,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int EST_CIV_ID
+        public decimal EST_CIV_ID
         {
             get
             {
@@ -2483,9 +2642,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _EST_CIV_ID;
+        private decimal _EST_CIV_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnEST_CIV_IDChanging(int value);
+        partial void OnEST_CIV_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnEST_CIV_IDChanged();
         /// <summary>
@@ -2581,7 +2740,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="pAI_ID">Valor inicial de PAI_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PAIS CreateSCPM_PAIS(int pAI_ID)
+        public static SCPM_PAIS CreateSCPM_PAIS(decimal pAI_ID)
         {
             SCPM_PAIS sCPM_PAIS = new SCPM_PAIS();
             sCPM_PAIS.PAI_ID = pAI_ID;
@@ -2593,7 +2752,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PAI_ID
+        public decimal PAI_ID
         {
             get
             {
@@ -2609,9 +2768,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PAI_ID;
+        private decimal _PAI_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPAI_IDChanging(int value);
+        partial void OnPAI_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPAI_IDChanged();
         /// <summary>
@@ -2696,6 +2855,28 @@ namespace SCPMdbModel
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPAI_NACIONALIDADChanged();
         /// <summary>
+        /// No hay ningún comentario para SCPM_CONYUGES en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_CONYUGES")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_CONYUGES> SCPM_CONYUGES
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_CONYUGES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_CONYUGES");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_CONYUGES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_CONYUGES", value);
+                }
+            }
+        }
+        /// <summary>
         /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PER_RELATIONS_SCPM_PAI", "SCPM_PERSONALES")]
@@ -2734,7 +2915,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="pARE_ID">Valor inicial de PARE_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PARENTESCOS CreateSCPM_PARENTESCOS(int pARE_ID)
+        public static SCPM_PARENTESCOS CreateSCPM_PARENTESCOS(decimal pARE_ID)
         {
             SCPM_PARENTESCOS sCPM_PARENTESCOS = new SCPM_PARENTESCOS();
             sCPM_PARENTESCOS.PARE_ID = pARE_ID;
@@ -2746,7 +2927,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PARE_ID
+        public decimal PARE_ID
         {
             get
             {
@@ -2762,9 +2943,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PARE_ID;
+        private decimal _PARE_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPARE_IDChanging(int value);
+        partial void OnPARE_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPARE_IDChanged();
         /// <summary>
@@ -2882,7 +3063,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="pAR_ID">Valor inicial de PAR_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PARROQUIAS CreateSCPM_PARROQUIAS(int pAR_ID)
+        public static SCPM_PARROQUIAS CreateSCPM_PARROQUIAS(decimal pAR_ID)
         {
             SCPM_PARROQUIAS sCPM_PARROQUIAS = new SCPM_PARROQUIAS();
             sCPM_PARROQUIAS.PAR_ID = pAR_ID;
@@ -2894,7 +3075,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PAR_ID
+        public decimal PAR_ID
         {
             get
             {
@@ -2910,9 +3091,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PAR_ID;
+        private decimal _PAR_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPAR_IDChanging(int value);
+        partial void OnPAR_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPAR_IDChanged();
         /// <summary>
@@ -3047,7 +3228,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="pER_ID">Valor inicial de PER_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PERSONALES CreateSCPM_PERSONALES(int pER_ID)
+        public static SCPM_PERSONALES CreateSCPM_PERSONALES(decimal pER_ID)
         {
             SCPM_PERSONALES sCPM_PERSONALES = new SCPM_PERSONALES();
             sCPM_PERSONALES.PER_ID = pER_ID;
@@ -3059,7 +3240,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PER_ID
+        public decimal PER_ID
         {
             get
             {
@@ -3075,9 +3256,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PER_ID;
+        private decimal _PER_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPER_IDChanging(int value);
+        partial void OnPER_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_IDChanged();
         /// <summary>
@@ -3248,25 +3429,25 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public byte[] PER_GEN
+        public global::System.Nullable<bool> PER_GEN
         {
             get
             {
-                return global::System.Data.Objects.DataClasses.StructuralObject.GetValidValue(this._PER_GEN);
+                return this._PER_GEN;
             }
             set
             {
                 this.OnPER_GENChanging(value);
                 this.ReportPropertyChanging("PER_GEN");
-                this._PER_GEN = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this._PER_GEN = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
                 this.ReportPropertyChanged("PER_GEN");
                 this.OnPER_GENChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private byte[] _PER_GEN;
+        private global::System.Nullable<bool> _PER_GEN;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPER_GENChanging(byte[] value);
+        partial void OnPER_GENChanging(global::System.Nullable<bool> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_GENChanged();
         /// <summary>
@@ -3275,7 +3456,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> PER_CEL
+        public string PER_CEL
         {
             get
             {
@@ -3285,15 +3466,15 @@ namespace SCPMdbModel
             {
                 this.OnPER_CELChanging(value);
                 this.ReportPropertyChanging("PER_CEL");
-                this._PER_CEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._PER_CEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("PER_CEL");
                 this.OnPER_CELChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _PER_CEL;
+        private string _PER_CEL;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPER_CELChanging(global::System.Nullable<int> value);
+        partial void OnPER_CELChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_CELChanged();
         /// <summary>
@@ -3302,7 +3483,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> PER_TEL
+        public string PER_TEL
         {
             get
             {
@@ -3312,15 +3493,15 @@ namespace SCPMdbModel
             {
                 this.OnPER_TELChanging(value);
                 this.ReportPropertyChanging("PER_TEL");
-                this._PER_TEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._PER_TEL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("PER_TEL");
                 this.OnPER_TELChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _PER_TEL;
+        private string _PER_TEL;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPER_TELChanging(global::System.Nullable<int> value);
+        partial void OnPER_TELChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_TELChanged();
         /// <summary>
@@ -3437,7 +3618,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> PER_LIB_MIL_NUM
+        public string PER_LIB_MIL_NUM
         {
             get
             {
@@ -3447,15 +3628,15 @@ namespace SCPMdbModel
             {
                 this.OnPER_LIB_MIL_NUMChanging(value);
                 this.ReportPropertyChanging("PER_LIB_MIL_NUM");
-                this._PER_LIB_MIL_NUM = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._PER_LIB_MIL_NUM = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("PER_LIB_MIL_NUM");
                 this.OnPER_LIB_MIL_NUMChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _PER_LIB_MIL_NUM;
+        private string _PER_LIB_MIL_NUM;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPER_LIB_MIL_NUMChanging(global::System.Nullable<int> value);
+        partial void OnPER_LIB_MIL_NUMChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_LIB_MIL_NUMChanged();
         /// <summary>
@@ -3539,6 +3720,33 @@ namespace SCPMdbModel
         partial void OnPER_ESTChanging(global::System.Nullable<bool> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPER_ESTChanged();
+        /// <summary>
+        /// No hay ningún comentario para la propiedad PER_PHOTO en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string PER_PHOTO
+        {
+            get
+            {
+                return this._PER_PHOTO;
+            }
+            set
+            {
+                this.OnPER_PHOTOChanging(value);
+                this.ReportPropertyChanging("PER_PHOTO");
+                this._PER_PHOTO = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("PER_PHOTO");
+                this.OnPER_PHOTOChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _PER_PHOTO;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPER_PHOTOChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPER_PHOTOChanged();
         /// <summary>
         /// No hay ningún comentario para SCPM_CONYUGES en el esquema.
         /// </summary>
@@ -3861,7 +4069,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="pROF_ID">Valor inicial de PROF_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PROFESIONES CreateSCPM_PROFESIONES(int pROF_ID)
+        public static SCPM_PROFESIONES CreateSCPM_PROFESIONES(decimal pROF_ID)
         {
             SCPM_PROFESIONES sCPM_PROFESIONES = new SCPM_PROFESIONES();
             sCPM_PROFESIONES.PROF_ID = pROF_ID;
@@ -3873,7 +4081,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PROF_ID
+        public decimal PROF_ID
         {
             get
             {
@@ -3889,9 +4097,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PROF_ID;
+        private decimal _PROF_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPROF_IDChanging(int value);
+        partial void OnPROF_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPROF_IDChanged();
         /// <summary>
@@ -3987,7 +4195,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="pRO_ID">Valor inicial de PRO_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PROVINCIAS CreateSCPM_PROVINCIAS(int pRO_ID)
+        public static SCPM_PROVINCIAS CreateSCPM_PROVINCIAS(decimal pRO_ID)
         {
             SCPM_PROVINCIAS sCPM_PROVINCIAS = new SCPM_PROVINCIAS();
             sCPM_PROVINCIAS.PRO_ID = pRO_ID;
@@ -3999,7 +4207,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PRO_ID
+        public decimal PRO_ID
         {
             get
             {
@@ -4015,9 +4223,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PRO_ID;
+        private decimal _PRO_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPRO_IDChanging(int value);
+        partial void OnPRO_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPRO_IDChanged();
         /// <summary>
@@ -4113,7 +4321,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="pST_HIS_ID">Valor inicial de PST_HIS_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PUESTO_HIST CreateSCPM_PUESTO_HIST(int pST_HIS_ID)
+        public static SCPM_PUESTO_HIST CreateSCPM_PUESTO_HIST(decimal pST_HIS_ID)
         {
             SCPM_PUESTO_HIST sCPM_PUESTO_HIST = new SCPM_PUESTO_HIST();
             sCPM_PUESTO_HIST.PST_HIS_ID = pST_HIS_ID;
@@ -4125,7 +4333,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PST_HIS_ID
+        public decimal PST_HIS_ID
         {
             get
             {
@@ -4141,9 +4349,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PST_HIS_ID;
+        private decimal _PST_HIS_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPST_HIS_IDChanging(int value);
+        partial void OnPST_HIS_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPST_HIS_IDChanged();
         /// <summary>
@@ -4200,200 +4408,6 @@ namespace SCPMdbModel
         partial void OnPST_HIS_FEC_FINChanging(global::System.Nullable<global::System.DateTime> value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPST_HIS_FEC_FINChanged();
-        /// <summary>
-        /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public SCPM_PERSONALES SCPM_PERSONALES
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_PERSONALES> SCPM_PERSONALESReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES", value);
-                }
-            }
-        }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTOS")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public SCPM_PUESTOS SCPM_PUESTOS
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTOS").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTOS").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_PUESTOS> SCPM_PUESTOSReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTOS");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTOS", value);
-                }
-            }
-        }
-    }
-    /// <summary>
-    /// No hay ningún comentario para SCPMdbModel.SCPM_PUESTOS en el esquema.
-    /// </summary>
-    /// <KeyProperties>
-    /// PUE_ID
-    /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="SCPMdbModel", Name="SCPM_PUESTOS")]
-    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
-    [global::System.Serializable()]
-    public partial class SCPM_PUESTOS : global::System.Data.Objects.DataClasses.EntityObject
-    {
-        /// <summary>
-        /// Crear un nuevo objeto SCPM_PUESTOS.
-        /// </summary>
-        /// <param name="pUE_ID">Valor inicial de PUE_ID.</param>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_PUESTOS CreateSCPM_PUESTOS(int pUE_ID)
-        {
-            SCPM_PUESTOS sCPM_PUESTOS = new SCPM_PUESTOS();
-            sCPM_PUESTOS.PUE_ID = pUE_ID;
-            return sCPM_PUESTOS;
-        }
-        /// <summary>
-        /// No hay ningún comentario para la propiedad PUE_ID en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int PUE_ID
-        {
-            get
-            {
-                return this._PUE_ID;
-            }
-            set
-            {
-                this.OnPUE_IDChanging(value);
-                this.ReportPropertyChanging("PUE_ID");
-                this._PUE_ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("PUE_ID");
-                this.OnPUE_IDChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _PUE_ID;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPUE_IDChanging(int value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPUE_IDChanged();
-        /// <summary>
-        /// No hay ningún comentario para la propiedad PUE_EST en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<bool> PUE_EST
-        {
-            get
-            {
-                return this._PUE_EST;
-            }
-            set
-            {
-                this.OnPUE_ESTChanging(value);
-                this.ReportPropertyChanging("PUE_EST");
-                this._PUE_EST = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("PUE_EST");
-                this.OnPUE_ESTChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<bool> _PUE_EST;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPUE_ESTChanging(global::System.Nullable<bool> value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnPUE_ESTChanged();
-        /// <summary>
-        /// No hay ningún comentario para SCPM_AREAS en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_AREAS")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public SCPM_AREAS SCPM_AREAS
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_AREAS").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_AREAS").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_AREAS en el esquema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_AREAS> SCPM_AREASReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_AREAS");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_AREAS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_ARE", "SCPM_AREAS", value);
-                }
-            }
-        }
         /// <summary>
         /// No hay ningún comentario para SCPM_CARGOS en el esquema.
         /// </summary>
@@ -4473,24 +4487,41 @@ namespace SCPMdbModel
             }
         }
         /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTO_HIST en el esquema.
+        /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTO_HIST")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTO_HIST> SCPM_PUESTO_HIST
+        public SCPM_PERSONALES SCPM_PERSONALES
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTO_HIST");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_PERSONALES> SCPM_PERSONALESReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PUE", "SCPM_PUESTO_HIST", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_PERSONALES>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_PER", "SCPM_PERSONALES", value);
                 }
             }
         }
@@ -4533,28 +4564,6 @@ namespace SCPMdbModel
                 }
             }
         }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_SUBROGA_HIST en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_SUBROGA_HIST")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_SUBROGA_HIST> SCPM_SUBROGA_HIST
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_SUBROGA_HIST");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_SUBROGA_HIST", value);
-                }
-            }
-        }
     }
     /// <summary>
     /// No hay ningún comentario para SCPMdbModel.SCPM_RAZAS en el esquema.
@@ -4572,7 +4581,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="rAZ_ID">Valor inicial de RAZ_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_RAZAS CreateSCPM_RAZAS(int rAZ_ID)
+        public static SCPM_RAZAS CreateSCPM_RAZAS(decimal rAZ_ID)
         {
             SCPM_RAZAS sCPM_RAZAS = new SCPM_RAZAS();
             sCPM_RAZAS.RAZ_ID = rAZ_ID;
@@ -4584,7 +4593,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int RAZ_ID
+        public decimal RAZ_ID
         {
             get
             {
@@ -4600,9 +4609,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _RAZ_ID;
+        private decimal _RAZ_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnRAZ_IDChanging(int value);
+        partial void OnRAZ_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnRAZ_IDChanged();
         /// <summary>
@@ -4698,7 +4707,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="rEL_LAB_ID">Valor inicial de REL_LAB_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_RELACIONES_LABORALES CreateSCPM_RELACIONES_LABORALES(int rEL_LAB_ID)
+        public static SCPM_RELACIONES_LABORALES CreateSCPM_RELACIONES_LABORALES(decimal rEL_LAB_ID)
         {
             SCPM_RELACIONES_LABORALES sCPM_RELACIONES_LABORALES = new SCPM_RELACIONES_LABORALES();
             sCPM_RELACIONES_LABORALES.REL_LAB_ID = rEL_LAB_ID;
@@ -4710,7 +4719,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int REL_LAB_ID
+        public decimal REL_LAB_ID
         {
             get
             {
@@ -4726,9 +4735,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _REL_LAB_ID;
+        private decimal _REL_LAB_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnREL_LAB_IDChanging(int value);
+        partial void OnREL_LAB_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnREL_LAB_IDChanged();
         /// <summary>
@@ -4786,24 +4795,24 @@ namespace SCPMdbModel
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnREL_LAB_ESTChanged();
         /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
+        /// No hay ningún comentario para SCPM_PUESTO_HIST en el esquema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_PUESTOS")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_PUESTO_HIST")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTOS> SCPM_PUESTOS
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_PUESTO_HIST> SCPM_PUESTO_HIST
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_PUESTOS");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_PUESTO_HIST");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_PUESTOS", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_PUESTO_HIST", value);
                 }
             }
         }
@@ -4824,7 +4833,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="sEC_ID">Valor inicial de SEC_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_SECTORES CreateSCPM_SECTORES(int sEC_ID)
+        public static SCPM_SECTORES CreateSCPM_SECTORES(decimal sEC_ID)
         {
             SCPM_SECTORES sCPM_SECTORES = new SCPM_SECTORES();
             sCPM_SECTORES.SEC_ID = sEC_ID;
@@ -4836,7 +4845,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int SEC_ID
+        public decimal SEC_ID
         {
             get
             {
@@ -4852,9 +4861,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _SEC_ID;
+        private decimal _SEC_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnSEC_IDChanging(int value);
+        partial void OnSEC_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnSEC_IDChanged();
         /// <summary>
@@ -4989,7 +4998,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="sUB_HIS_ID">Valor inicial de SUB_HIS_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_SUBROGA_HIST CreateSCPM_SUBROGA_HIST(int sUB_HIS_ID)
+        public static SCPM_SUBROGA_HIST CreateSCPM_SUBROGA_HIST(decimal sUB_HIS_ID)
         {
             SCPM_SUBROGA_HIST sCPM_SUBROGA_HIST = new SCPM_SUBROGA_HIST();
             sCPM_SUBROGA_HIST.SUB_HIS_ID = sUB_HIS_ID;
@@ -5001,7 +5010,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int SUB_HIS_ID
+        public decimal SUB_HIS_ID
         {
             get
             {
@@ -5017,9 +5026,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _SUB_HIS_ID;
+        private decimal _SUB_HIS_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnSUB_HIS_IDChanging(int value);
+        partial void OnSUB_HIS_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnSUB_HIS_IDChanged();
         /// <summary>
@@ -5131,6 +5140,28 @@ namespace SCPMdbModel
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnSUB_HIS_ESTChanged();
         /// <summary>
+        /// No hay ningún comentario para SCPM_CARGOS en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_CARGOS")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_CARGOS> SCPM_CARGOS
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_CARGOS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_CARGOS", value);
+                }
+            }
+        }
+        /// <summary>
         /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_PER", "SCPM_PERSONALES")]
@@ -5169,45 +5200,6 @@ namespace SCPMdbModel
                 }
             }
         }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_PUESTOS")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public SCPM_PUESTOS SCPM_PUESTOS
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_PUESTOS").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_PUESTOS").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_PUESTOS en el esquema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_PUESTOS> SCPM_PUESTOSReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_PUESTOS");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_PUESTOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PUE", "SCPM_PUESTOS", value);
-                }
-            }
-        }
     }
     /// <summary>
     /// No hay ningún comentario para SCPMdbModel.SCPM_TIPO_DISCAPACIDADES en el esquema.
@@ -5225,7 +5217,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="tIP_DIS_ID">Valor inicial de TIP_DIS_ID.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_TIPO_DISCAPACIDADES CreateSCPM_TIPO_DISCAPACIDADES(int tIP_DIS_ID)
+        public static SCPM_TIPO_DISCAPACIDADES CreateSCPM_TIPO_DISCAPACIDADES(decimal tIP_DIS_ID)
         {
             SCPM_TIPO_DISCAPACIDADES sCPM_TIPO_DISCAPACIDADES = new SCPM_TIPO_DISCAPACIDADES();
             sCPM_TIPO_DISCAPACIDADES.TIP_DIS_ID = tIP_DIS_ID;
@@ -5237,7 +5229,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int TIP_DIS_ID
+        public decimal TIP_DIS_ID
         {
             get
             {
@@ -5253,9 +5245,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _TIP_DIS_ID;
+        private decimal _TIP_DIS_ID;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTIP_DIS_IDChanging(int value);
+        partial void OnTIP_DIS_IDChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTIP_DIS_IDChanged();
         /// <summary>
@@ -5351,7 +5343,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="tIP_IDE_COD">Valor inicial de TIP_IDE_COD.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_TIPO_IDENTIFICACIONES CreateSCPM_TIPO_IDENTIFICACIONES(int tIP_IDE_COD)
+        public static SCPM_TIPO_IDENTIFICACIONES CreateSCPM_TIPO_IDENTIFICACIONES(decimal tIP_IDE_COD)
         {
             SCPM_TIPO_IDENTIFICACIONES sCPM_TIPO_IDENTIFICACIONES = new SCPM_TIPO_IDENTIFICACIONES();
             sCPM_TIPO_IDENTIFICACIONES.TIP_IDE_COD = tIP_IDE_COD;
@@ -5363,7 +5355,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int TIP_IDE_COD
+        public decimal TIP_IDE_COD
         {
             get
             {
@@ -5379,9 +5371,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _TIP_IDE_COD;
+        private decimal _TIP_IDE_COD;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTIP_IDE_CODChanging(int value);
+        partial void OnTIP_IDE_CODChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTIP_IDE_CODChanged();
         /// <summary>
@@ -5439,6 +5431,28 @@ namespace SCPMdbModel
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTIP_IDE_ESTChanged();
         /// <summary>
+        /// No hay ningún comentario para SCPM_CONYUGES en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_CONYUGES")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_CONYUGES> SCPM_CONYUGES
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_CONYUGES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_CONYUGES");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_CONYUGES>("SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP", "SCPM_CONYUGES", value);
+                }
+            }
+        }
+        /// <summary>
         /// No hay ningún comentario para SCPM_PERSONALES en el esquema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PER_RELATIONS_SCPM_TIP", "SCPM_PERSONALES")]
@@ -5477,7 +5491,7 @@ namespace SCPMdbModel
         /// </summary>
         /// <param name="uNI_COD">Valor inicial de UNI_COD.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static SCPM_UNIDAD CreateSCPM_UNIDAD(int uNI_COD)
+        public static SCPM_UNIDAD CreateSCPM_UNIDAD(decimal uNI_COD)
         {
             SCPM_UNIDAD sCPM_UNIDAD = new SCPM_UNIDAD();
             sCPM_UNIDAD.UNI_COD = uNI_COD;
@@ -5489,7 +5503,7 @@ namespace SCPMdbModel
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int UNI_COD
+        public decimal UNI_COD
         {
             get
             {
@@ -5505,9 +5519,9 @@ namespace SCPMdbModel
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _UNI_COD;
+        private decimal _UNI_COD;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnUNI_CODChanging(int value);
+        partial void OnUNI_CODChanging(decimal value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnUNI_CODChanged();
         /// <summary>
