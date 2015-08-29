@@ -40,10 +40,12 @@
                 </div>
                 <div class="row cells8">
                     <div class="cell colspan8">
+                        <asp:HiddenField runat="server" Value="dcm" ID="current_puesto_id" />
+                        <asp:HiddenField runat="server" Value="dcm" ID="current_tipo_id" />
                         <h2 runat="server" class="text-light text-left" id="search_res">No se encontro Puesto</h2>
                     </div>
                 </div>
-                <div class="row cells8">
+                <div class="row cells8" runat="server" id="cargoWrap">
                     <div class="cell colspan3">
                         <label>Cargo</label><br />
                         <strong runat="server" id="cargoLabel">Analista</strong>
@@ -53,7 +55,7 @@
                         <strong runat="server" id="denominacionLabel">SP1</strong>
                     </div>
                 </div>
-                <div class="row cells8">
+                <div class="row cells8" runat="server" id="personaWrap">
                     <div class="cell colspan3">
                         <label>Funcionario en puesto</label><br />
                         <strong runat="server" id="Strong1">Cristina Mora</strong>
@@ -113,198 +115,54 @@
                         </div>
                     </div>
                 </div>
-
+                <br />
+                <br />
+                <button class="button success text-shadow margin5R" onclick="showDialog2('#previewAV');return false;"><span class="mif-profile margin-double"></span>&nbsp;Guardar</button>
+                <br />
+                <br />
 
             </div>
-    </div>
+        </div>
     </div>
 
-    <table class="backgroundRepeatBanner">
-        <tr>
-            <td colspan="5" bgcolor="#000066">
-                <asp:Label ID="Label1" runat="server" BackColor="#000066" ForeColor="White"
-                    Text="INGRESO DE SUBROGACION/ ENCARGO "></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label2" runat="server" Text="ID Puesto"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                <asp:Button ID="Button1" runat="server" Text="Buscar" />
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label3" runat="server" Text="Relacion Laboral"></asp:Label>
-            </td>
-            <td>
-                <asp:Label ID="Label4" runat="server" Text="Denominacion"></asp:Label>
-            </td>
-            <td>
-                <asp:Label ID="Label5" runat="server" Text="Cargo"></asp:Label>
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="height: 23px">
-                <asp:Label ID="Label6" runat="server" Style="font-weight: 700"
-                    Text="SERVICIOS PROFESIONALES"></asp:Label>
-            </td>
-            <td style="height: 23px">
-                <asp:Label ID="Label7" runat="server" Style="font-weight: 700"
-                    Text="SERVICIOS PROFESIONALES 1"></asp:Label>
-            </td>
-            <td style="height: 23px">
-                <asp:Label ID="Label8" runat="server" Style="font-weight: 700"
-                    Text="ANALISTA 1"></asp:Label>
-            </td>
-            <td style="height: 23px"></td>
-            <td style="height: 23px"></td>
-        </tr>
-        <tr>
-            <td style="height: 23px"></td>
-            <td style="height: 23px"></td>
-            <td style="height: 23px"></td>
-            <td style="height: 23px"></td>
-            <td style="height: 23px"></td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label9" runat="server" Text="Funcionario en puesto"></asp:Label>
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label10" runat="server" Style="font-weight: 700"
-                    Text="RUIZ MERA LUIS MARIO"></asp:Label>
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <table class="backgroundRepeatBanner">
-                    <tr>
-                        <td>
-                            <asp:Label ID="Label11" runat="server" Text="Tipo"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="DropDownList1" runat="server">
-                                <asp:ListItem>Subrogación</asp:ListItem>
-                                <asp:ListItem>Encargo</asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <table class="backgroundRepeatBanner">
-                    <tr>
-                        <td>
-                            <asp:Label ID="Label12" runat="server" Text="Funcionario A"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:Label ID="Label13" runat="server" Style="font-weight: 700"
-                                Text="Subrogar/encargar"></asp:Label>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <asp:DropDownList ID="DropDownList6" runat="server">
-                    <asp:ListItem>CESAR JACOME</asp:ListItem>
-                    <asp:ListItem>JUAN CARLOS</asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td style="height: 23px">
-                <table class="backgroundRepeatBanner">
-                    <tr>
-                        <td>
-                            <asp:Label ID="Label14" runat="server" Text="Fecha Inicio"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td style="height: 23px">
-                <table class="backgroundRepeatBanner">
-                    <tr>
-                        <td style="height: 23px">
-                            <asp:Label ID="Label15" runat="server" Text="Fecha Fin"></asp:Label>
-                        </td>
-                        <td style="height: 23px">
-                            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td style="height: 23px"></td>
-            <td style="height: 23px"></td>
-            <td style="height: 23px"></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>
-                <asp:Button ID="Button2" runat="server" Text="GUARDAR" />
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    </table>
+    <br />
+    <br />
+    <hr class="thin" />
+    <br />
+    <br />
 </asp:Content>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+    <div data-role="dialog" id="previewAV" data-windows-style="true" data-overlay="true" data-overlay-color="op-dark" class="window-style">
+        <div class="gridx">
+            <div class="row">
+                <div class="cell" style="margin: auto; float: none;">
+                    <div class="container page-content">
+                        <h1 class="text-light"><span class="mif-cabinet"></span>Actualizar cargo</h1>
+                        <hr class="thin" />
+                        <br />
+                        <div class="row-fluid body-preview" id="dialogContent">
+                            Seguro deseaa actualizar esto?
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-actions page-content align-right">
+                            <button type="button" class="button primary" onclick="ocultDialog('#previewAV')">Cancelar</button>
+                            <asp:Button CssClass="button success text-shadow" runat="server" ID="saveAll" Text="Guardar" OnClick="saveAll_Click" />
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        function showDialog2(id) {
+
+            showDialog(id);
+        }
+    </script>
+</asp:Content>

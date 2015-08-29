@@ -277,10 +277,9 @@ public class PuestoServiceModel
             HelperUtil.showNotifi("Nueva Relacion laboral añadida.");
             return true;
         }
-        return false;
     }
 
-    private SCPM_CARGOS getCargoByID(int cargo_id)
+    public SCPM_CARGOS getCargoByID(int cargo_id)
     {
         return (from a in db.SCPM_CARGOS where a.CAR_ID == cargo_id select a).FirstOrDefault();
     }

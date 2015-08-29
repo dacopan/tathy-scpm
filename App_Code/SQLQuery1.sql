@@ -1,6 +1,6 @@
 ﻿/*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     27/08/2015 13:06:19                          */
+/* Created on:     29/08/2015 10:38:02                          */
 /*==============================================================*/
 
 
@@ -20,9 +20,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_CARGOS') and o.name = 'FK_SCPM_CAR_RELATIONS_SCPM_SUB')
+   where r.fkeyid = object_id('SCPM_CARGOS') and o.name = 'FK_SCPM_CAR_RELATIONS_SCPM_DEN')
 alter table SCPM_CARGOS
-   drop constraint FK_SCPM_CAR_RELATIONS_SCPM_SUB
+   drop constraint FK_SCPM_CAR_RELATIONS_SCPM_DEN
 go
 
 if exists (select 1
@@ -37,6 +37,20 @@ if exists (select 1
    where r.fkeyid = object_id('SCPM_CONYUGES') and o.name = 'FK_SCPM_CON_RELATIONS_SCPM_PRO')
 alter table SCPM_CONYUGES
    drop constraint FK_SCPM_CON_RELATIONS_SCPM_PRO
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SCPM_CONYUGES') and o.name = 'FK_SCPM_CON_RELATIONS_SCPM_PAI')
+alter table SCPM_CONYUGES
+   drop constraint FK_SCPM_CON_RELATIONS_SCPM_PAI
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SCPM_CONYUGES') and o.name = 'FK_SCPM_CON_RELATIONS_SCPM_TIP')
+alter table SCPM_CONYUGES
+   drop constraint FK_SCPM_CON_RELATIONS_SCPM_TIP
 go
 
 if exists (select 1
@@ -139,13 +153,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SCPM_PUESTO_HIST') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_DEN')
-alter table SCPM_PUESTO_HIST
-   drop constraint FK_SCPM_PUE_RELATIONS_SCPM_DEN
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('SCPM_PUESTO_HIST') and o.name = 'FK_SCPM_PUE_RELATIONS_SCPM_PER')
 alter table SCPM_PUESTO_HIST
    drop constraint FK_SCPM_PUE_RELATIONS_SCPM_PER
@@ -163,6 +170,13 @@ if exists (select 1
    where r.fkeyid = object_id('SCPM_SUBROGA_HIST') and o.name = 'FK_SCPM_SUB_RELATIONS_SCPM_PER')
 alter table SCPM_SUBROGA_HIST
    drop constraint FK_SCPM_SUB_RELATIONS_SCPM_PER
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SCPM_SUBROGA_HIST') and o.name = 'FK_SCPM_SUB_RELATIONS_SCPM_CAR')
+alter table SCPM_SUBROGA_HIST
+   drop constraint FK_SCPM_SUB_RELATIONS_SCPM_CAR
 go
 
 if exists (select 1
@@ -200,10 +214,10 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('SCPM_CARGOS')
-            and   name  = 'RELATIONSHIP_21_FK'
+            and   name  = 'RELATIONSHIP_30_FK'
             and   indid > 0
             and   indid < 255)
-   drop index SCPM_CARGOS.RELATIONSHIP_21_FK
+   drop index SCPM_CARGOS.RELATIONSHIP_30_FK
 go
 
 if exists (select 1
@@ -220,6 +234,24 @@ if exists (select 1
            where  id = object_id('SCPM_CARGOS')
             and   type = 'U')
    drop table SCPM_CARGOS
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SCPM_CONYUGES')
+            and   name  = 'RELATIONSHIP_31_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SCPM_CONYUGES.RELATIONSHIP_31_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SCPM_CONYUGES')
+            and   name  = 'RELATIONSHIP_37_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SCPM_CONYUGES.RELATIONSHIP_37_FK
 go
 
 if exists (select 1
@@ -419,15 +451,6 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('SCPM_PUESTO_HIST')
-            and   name  = 'RELATIONSHIP_30_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index SCPM_PUESTO_HIST.RELATIONSHIP_30_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('SCPM_PUESTO_HIST')
             and   name  = 'RELATIONSHIP_22_FK'
             and   indid > 0
             and   indid < 255)
@@ -487,6 +510,15 @@ if exists (select 1
            where  id = object_id('SCPM_SECTORES')
             and   type = 'U')
    drop table SCPM_SECTORES
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SCPM_SUBROGA_HIST')
+            and   name  = 'RELATIONSHIP_39_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SCPM_SUBROGA_HIST.RELATIONSHIP_39_FK
 go
 
 if exists (select 1
@@ -759,7 +791,7 @@ go
 create table SCPM_CARGOS (
    CAR_ID               numeric              identity,
    ARE_COD              numeric              null,
-   SUB_HIS_ID           numeric              null,
+   DEN_ID               numeric              null,
    CAR_NOM              text                 null,
    CAR_EST              bit                  null,
    constraint PK_SCPM_CARGOS primary key nonclustered (CAR_ID)
@@ -823,13 +855,13 @@ go
 
 if exists(select 1 from sys.extended_properties p where
       p.major_id = object_id('SCPM_CARGOS')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'SUB_HIS_ID')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'DEN_ID')
 )
 begin
    declare @CurrentUser sysname
 select @CurrentUser = user_name()
 execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'SUB_HIS_ID'
+   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'DEN_ID'
 
 end
 
@@ -837,7 +869,7 @@ end
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'SUB_HIS_ID'
+   'user', @CurrentUser, 'table', 'SCPM_CARGOS', 'column', 'DEN_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -887,10 +919,10 @@ ARE_COD ASC
 go
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_21_FK                                    */
+/* Index: RELATIONSHIP_30_FK                                    */
 /*==============================================================*/
-create index RELATIONSHIP_21_FK on SCPM_CARGOS (
-SUB_HIS_ID ASC
+create index RELATIONSHIP_30_FK on SCPM_CARGOS (
+DEN_ID ASC
 )
 go
 
@@ -898,26 +930,69 @@ go
 /* Table: SCPM_CONYUGES                                         */
 /*==============================================================*/
 create table SCPM_CONYUGES (
+   EST_CIV_ID           numeric              not null,
+   RAZ_ID               numeric              not null,
    PER_ID               numeric              not null,
    CON_ID               numeric              identity,
    PROF_ID              numeric              null,
+   TIP_IDE_COD          numeric              null,
+   PAI_ID               numeric              null,
    CON_NUM_DOC          text                 null,
    CON_APE_PAT          text                 null,
    CON_APE_MAT          text                 null,
    CON_NOM1             text                 null,
    CON_NOM2             text                 null,
    CON_FEC_NAC          datetime             null,
-   CON_CEL              int                  null,
-   CON_TEL              int                  null,
+   CON_CEL              text                 null,
+   CON_TEL              text                 null,
    CON_DIR              text                 null,
    CON_COR_PER          text                 null,
    CON_PRO              text                 null,
    CON_TRA              bit                  null,
    CON_NOM_EMP          text                 null,
-   CON_NUM_TRA          int                  null,
+   CON_NUM_TRA          text                 null,
    CON_EST              bit                  null,
-   constraint PK_SCPM_CONYUGES primary key nonclustered (PER_ID, CON_ID)
+   CON_DIR_TRAB         text                 null,
+   constraint PK_SCPM_CONYUGES primary key nonclustered (EST_CIV_ID, RAZ_ID, PER_ID, CON_ID)
 )
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_CONYUGES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'EST_CIV_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'EST_CIV_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'EST_CIV_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_CONYUGES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RAZ_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'RAZ_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'RAZ_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -975,6 +1050,44 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Codigo de la clave primaria de la tabla',
    'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'PROF_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_CONYUGES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'TIP_IDE_COD')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'TIP_IDE_COD'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'TIP_IDE_COD'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_CONYUGES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PAI_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'PAI_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_CONYUGES', 'column', 'PAI_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -1266,6 +1379,8 @@ go
 /* Index: RELATIONSHIP_8_FK                                     */
 /*==============================================================*/
 create index RELATIONSHIP_8_FK on SCPM_CONYUGES (
+EST_CIV_ID ASC,
+RAZ_ID ASC,
 PER_ID ASC
 )
 go
@@ -1275,6 +1390,22 @@ go
 /*==============================================================*/
 create index RELATIONSHIP_27_FK on SCPM_CONYUGES (
 PROF_ID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_37_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_37_FK on SCPM_CONYUGES (
+TIP_IDE_COD ASC
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_31_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_31_FK on SCPM_CONYUGES (
+PAI_ID ASC
 )
 go
 
@@ -1410,6 +1541,8 @@ go
 create table SCPM_DISCAPACIDADES (
    DIS_ID               numeric              identity,
    PARE_ID              numeric              null,
+   EST_CIV_ID           numeric              null,
+   RAZ_ID               numeric              null,
    PER_ID               numeric              null,
    TIP_DIS_ID           numeric              null,
    DIS_CLA              bit                  null,
@@ -1473,6 +1606,44 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Codigo de la clave primaria de la tabla',
    'user', @CurrentUser, 'table', 'SCPM_DISCAPACIDADES', 'column', 'PARE_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_DISCAPACIDADES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'EST_CIV_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_DISCAPACIDADES', 'column', 'EST_CIV_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_DISCAPACIDADES', 'column', 'EST_CIV_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_DISCAPACIDADES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RAZ_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_DISCAPACIDADES', 'column', 'RAZ_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_DISCAPACIDADES', 'column', 'RAZ_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -1574,6 +1745,8 @@ go
 /* Index: RELATIONSHIP_13_FK                                    */
 /*==============================================================*/
 create index RELATIONSHIP_13_FK on SCPM_DISCAPACIDADES (
+EST_CIV_ID ASC,
+RAZ_ID ASC,
 PER_ID ASC
 )
 go
@@ -1598,14 +1771,16 @@ go
 /* Table: SCPM_EMERGENCIAS                                      */
 /*==============================================================*/
 create table SCPM_EMERGENCIAS (
+   EST_CIV_ID           numeric              not null,
+   RAZ_ID               numeric              not null,
    PER_ID               numeric              not null,
    CON_FAM_EME_ID       numeric              identity,
    PARE_ID              numeric              null,
    CON_FAM_EME_NOM      text                 null,
-   CON_FAM_EME_TEF      int                  null,
-   CON_FAM_EME_CEL      int                  null,
+   CON_FAM_EME_TEF      text                 null,
+   CON_FAM_EME_CEL      text                 null,
    CON_FAM_EME_EST      bit                  null,
-   constraint PK_SCPM_EMERGENCIAS primary key nonclustered (PER_ID, CON_FAM_EME_ID)
+   constraint PK_SCPM_EMERGENCIAS primary key nonclustered (EST_CIV_ID, RAZ_ID, PER_ID, CON_FAM_EME_ID)
 )
 go
 
@@ -1624,6 +1799,44 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description',  
    'Cantactos de emergencia por funcionarios', 
    'user', @CurrentUser, 'table', 'SCPM_EMERGENCIAS'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_EMERGENCIAS')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'EST_CIV_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_EMERGENCIAS', 'column', 'EST_CIV_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_EMERGENCIAS', 'column', 'EST_CIV_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_EMERGENCIAS')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RAZ_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_EMERGENCIAS', 'column', 'RAZ_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_EMERGENCIAS', 'column', 'RAZ_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -1763,6 +1976,8 @@ go
 /* Index: RELATIONSHIP_12_FK                                    */
 /*==============================================================*/
 create index RELATIONSHIP_12_FK on SCPM_EMERGENCIAS (
+EST_CIV_ID ASC,
+RAZ_ID ASC,
 PER_ID ASC
 )
 go
@@ -1864,7 +2079,7 @@ go
 /* Table: SCPM_PAIS                                             */
 /*==============================================================*/
 create table SCPM_PAIS (
-   PAI_ID               int                  not null,
+   PAI_ID               numeric              identity,
    PAI_CIU              text                 null,
    PAI_EST              bit                  null,
    PAI_NACIONALIDAD     text                 null,
@@ -2148,50 +2363,32 @@ go
 /* Table: SCPM_PERSONALES                                       */
 /*==============================================================*/
 create table SCPM_PERSONALES (
+   EST_CIV_ID           numeric              not null,
+   RAZ_ID               numeric              not null,
    PER_ID               numeric              identity,
-   EST_CIV_ID           numeric              null,
    TIP_IDE_COD          numeric              null,
-   RAZ_ID               numeric              null,
-   PAI_ID               int                  not null,
+   PAI_ID               numeric              not null,
    SEC_ID               numeric              not null,
-   PER_NUM_DOC          char(20)             null,
-   PER_APE_PAT          char(64)             null,
-   PER_APE_MAT          char(20)             null,
-   PER_NOM1             char(64)             null,
-   PER_NOM2             char(64)             null,
+   PER_NUM_DOC          varchar(20)          null,
+   PER_APE_PAT          varchar(20)          null,
+   PER_APE_MAT          varchar(20)          null,
+   PER_NOM1             varchar(20)          null,
+   PER_NOM2             varchar(20)          null,
    PER_FEC_NAC          datetime             null,
    PER_GEN              bit                  null,
-   PER_CEL              int                  null,
-   PER_TEL              int                  null,
+   PER_CEL              text                 null,
+   PER_TEL              text                 null,
    PER_TAR              bit                  null,
    PER_EXT              int                  null,
    PER_DIR              text                 null,
    PER_PAIS_NAC         int                  null,
-   PER_LIB_MIL_NUM      int                  null,
+   PER_LIB_MIL_NUM      text                 null,
    PER_TIP_SAN          char(4)              null,
    PER_COR_PER          text                 null,
    PER_EST              bit                  null,
-   constraint PK_SCPM_PERSONALES primary key nonclustered (PER_ID)
+   PER_PHOTO            text                 null,
+   constraint PK_SCPM_PERSONALES primary key nonclustered (EST_CIV_ID, RAZ_ID, PER_ID)
 )
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PERSONALES')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PER_ID')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'PER_ID'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'codigo unico del funcionario',
-   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'PER_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -2215,25 +2412,6 @@ go
 
 if exists(select 1 from sys.extended_properties p where
       p.major_id = object_id('SCPM_PERSONALES')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'TIP_IDE_COD')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'TIP_IDE_COD'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'TIP_IDE_COD'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PERSONALES')
   and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RAZ_ID')
 )
 begin
@@ -2249,6 +2427,44 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Codigo de la clave primaria de la tabla',
    'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'RAZ_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_PERSONALES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PER_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'PER_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'codigo unico del funcionario',
+   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'PER_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_PERSONALES')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'TIP_IDE_COD')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'TIP_IDE_COD'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_PERSONALES', 'column', 'TIP_IDE_COD'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -2827,8 +3043,9 @@ go
 /*==============================================================*/
 create table SCPM_PUESTO_HIST (
    PST_HIS_ID           numeric              identity,
-   DEN_ID               numeric              null,
    CAR_ID               numeric              null,
+   EST_CIV_ID           numeric              null,
+   RAZ_ID               numeric              null,
    PER_ID               numeric              null,
    REL_LAB_ID           numeric              null,
    PST_HIS_FEC_INI      datetime             null,
@@ -2875,25 +3092,6 @@ go
 
 if exists(select 1 from sys.extended_properties p where
       p.major_id = object_id('SCPM_PUESTO_HIST')
-  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'DEN_ID')
-)
-begin
-   declare @CurrentUser sysname
-select @CurrentUser = user_name()
-execute sp_dropextendedproperty 'MS_Description', 
-   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'DEN_ID'
-
-end
-
-
-select @CurrentUser = user_name()
-execute sp_addextendedproperty 'MS_Description', 
-   'Codigo de la clave primaria de la tabla',
-   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'DEN_ID'
-go
-
-if exists(select 1 from sys.extended_properties p where
-      p.major_id = object_id('SCPM_PUESTO_HIST')
   and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CAR_ID')
 )
 begin
@@ -2909,6 +3107,44 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'Codigo de la clave primaria de la tabla',
    'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'CAR_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_PUESTO_HIST')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'EST_CIV_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'EST_CIV_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'EST_CIV_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_PUESTO_HIST')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RAZ_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'RAZ_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_PUESTO_HIST', 'column', 'RAZ_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -2991,6 +3227,8 @@ go
 /* Index: RELATIONSHIP_35_FK                                    */
 /*==============================================================*/
 create index RELATIONSHIP_35_FK on SCPM_PUESTO_HIST (
+EST_CIV_ID ASC,
+RAZ_ID ASC,
 PER_ID ASC
 )
 go
@@ -3008,14 +3246,6 @@ go
 /*==============================================================*/
 create index RELATIONSHIP_22_FK on SCPM_PUESTO_HIST (
 REL_LAB_ID ASC
-)
-go
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_30_FK                                    */
-/*==============================================================*/
-create index RELATIONSHIP_30_FK on SCPM_PUESTO_HIST (
-DEN_ID ASC
 )
 go
 
@@ -3307,7 +3537,10 @@ go
 /*==============================================================*/
 create table SCPM_SUBROGA_HIST (
    SUB_HIS_ID           numeric              identity,
+   EST_CIV_ID           numeric              null,
+   RAZ_ID               numeric              null,
    PER_ID               numeric              null,
+   CAR_ID               numeric              null,
    SUB_HIS_IS_ENCARGO   bit                  null,
    SUB_HIS_FEC_INI      datetime             null,
    SUB_HIS_FEC_FIN      datetime             null,
@@ -3354,6 +3587,44 @@ go
 
 if exists(select 1 from sys.extended_properties p where
       p.major_id = object_id('SCPM_SUBROGA_HIST')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'EST_CIV_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'EST_CIV_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'EST_CIV_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_SUBROGA_HIST')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'RAZ_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'RAZ_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'RAZ_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_SUBROGA_HIST')
   and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'PER_ID')
 )
 begin
@@ -3369,6 +3640,25 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    'codigo unico del funcionario',
    'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'PER_ID'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('SCPM_SUBROGA_HIST')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'CAR_ID')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'CAR_ID'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   'Codigo de la clave primaria de la tabla',
+   'user', @CurrentUser, 'table', 'SCPM_SUBROGA_HIST', 'column', 'CAR_ID'
 go
 
 if exists(select 1 from sys.extended_properties p where
@@ -3451,7 +3741,17 @@ go
 /* Index: RELATIONSHIP_34_FK                                    */
 /*==============================================================*/
 create index RELATIONSHIP_34_FK on SCPM_SUBROGA_HIST (
+EST_CIV_ID ASC,
+RAZ_ID ASC,
 PER_ID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_39_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_39_FK on SCPM_SUBROGA_HIST (
+CAR_ID ASC
 )
 go
 
@@ -3721,8 +4021,8 @@ alter table SCPM_CANTONES
 go
 
 alter table SCPM_CARGOS
-   add constraint FK_SCPM_CAR_RELATIONS_SCPM_SUB foreign key (SUB_HIS_ID)
-      references SCPM_SUBROGA_HIST (SUB_HIS_ID)
+   add constraint FK_SCPM_CAR_RELATIONS_SCPM_DEN foreign key (DEN_ID)
+      references SCPM_DENOMINACIONES (DEN_ID)
 go
 
 alter table SCPM_CARGOS
@@ -3736,13 +4036,23 @@ alter table SCPM_CONYUGES
 go
 
 alter table SCPM_CONYUGES
-   add constraint FK_SCPM_CON_RELATIONS_SCPM_PER foreign key (PER_ID)
-      references SCPM_PERSONALES (PER_ID)
+   add constraint FK_SCPM_CON_RELATIONS_SCPM_PAI foreign key (PAI_ID)
+      references SCPM_PAIS (PAI_ID)
+go
+
+alter table SCPM_CONYUGES
+   add constraint FK_SCPM_CON_RELATIONS_SCPM_TIP foreign key (TIP_IDE_COD)
+      references SCPM_TIPO_IDENTIFICACIONES (TIP_IDE_COD)
+go
+
+alter table SCPM_CONYUGES
+   add constraint FK_SCPM_CON_RELATIONS_SCPM_PER foreign key (EST_CIV_ID, RAZ_ID, PER_ID)
+      references SCPM_PERSONALES (EST_CIV_ID, RAZ_ID, PER_ID)
 go
 
 alter table SCPM_DISCAPACIDADES
-   add constraint FK_SCPM_DIS_RELATIONS_SCPM_PER foreign key (PER_ID)
-      references SCPM_PERSONALES (PER_ID)
+   add constraint FK_SCPM_DIS_RELATIONS_SCPM_PER foreign key (EST_CIV_ID, RAZ_ID, PER_ID)
+      references SCPM_PERSONALES (EST_CIV_ID, RAZ_ID, PER_ID)
 go
 
 alter table SCPM_DISCAPACIDADES
@@ -3756,8 +4066,8 @@ alter table SCPM_DISCAPACIDADES
 go
 
 alter table SCPM_EMERGENCIAS
-   add constraint FK_SCPM_EME_RELATIONS_SCPM_PER foreign key (PER_ID)
-      references SCPM_PERSONALES (PER_ID)
+   add constraint FK_SCPM_EME_RELATIONS_SCPM_PER foreign key (EST_CIV_ID, RAZ_ID, PER_ID)
+      references SCPM_PERSONALES (EST_CIV_ID, RAZ_ID, PER_ID)
 go
 
 alter table SCPM_EMERGENCIAS
@@ -3806,13 +4116,8 @@ alter table SCPM_PUESTO_HIST
 go
 
 alter table SCPM_PUESTO_HIST
-   add constraint FK_SCPM_PUE_RELATIONS_SCPM_DEN foreign key (DEN_ID)
-      references SCPM_DENOMINACIONES (DEN_ID)
-go
-
-alter table SCPM_PUESTO_HIST
-   add constraint FK_SCPM_PUE_RELATIONS_SCPM_PER foreign key (PER_ID)
-      references SCPM_PERSONALES (PER_ID)
+   add constraint FK_SCPM_PUE_RELATIONS_SCPM_PER foreign key (EST_CIV_ID, RAZ_ID, PER_ID)
+      references SCPM_PERSONALES (EST_CIV_ID, RAZ_ID, PER_ID)
 go
 
 alter table SCPM_SECTORES
@@ -3821,7 +4126,12 @@ alter table SCPM_SECTORES
 go
 
 alter table SCPM_SUBROGA_HIST
-   add constraint FK_SCPM_SUB_RELATIONS_SCPM_PER foreign key (PER_ID)
-      references SCPM_PERSONALES (PER_ID)
+   add constraint FK_SCPM_SUB_RELATIONS_SCPM_PER foreign key (EST_CIV_ID, RAZ_ID, PER_ID)
+      references SCPM_PERSONALES (EST_CIV_ID, RAZ_ID, PER_ID)
+go
+
+alter table SCPM_SUBROGA_HIST
+   add constraint FK_SCPM_SUB_RELATIONS_SCPM_CAR foreign key (CAR_ID)
+      references SCPM_CARGOS (CAR_ID)
 go
 

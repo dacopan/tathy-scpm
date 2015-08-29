@@ -30,7 +30,6 @@
           </Key>
           <Property Name="CAR_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ARE_COD" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="SUB_HIS_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="DEN_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CAR_NOM" Type="text" />
           <Property Name="CAR_EST" Type="bit" />
@@ -236,6 +235,7 @@
           <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CAR_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SUB_HIS_IS_ENCARGO" Type="bit" />
           <Property Name="SUB_HIS_FEC_INI" Type="datetime" />
           <Property Name="SUB_HIS_FEC_FIN" Type="datetime" />
@@ -310,18 +310,6 @@
             </Principal>
             <Dependent Role="SCPM_CARGOS">
               <PropertyRef Name="DEN_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB">
-          <End Role="SCPM_SUBROGA_HIST" Type="Self.SCPM_SUBROGA_HIST" Multiplicity="0..1" />
-          <End Role="SCPM_CARGOS" Type="Self.SCPM_CARGOS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCPM_SUBROGA_HIST">
-              <PropertyRef Name="SUB_HIS_ID" />
-            </Principal>
-            <Dependent Role="SCPM_CARGOS">
-              <PropertyRef Name="SUB_HIS_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -569,6 +557,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SCPM_SUB_RELATIONS_SCPM_CAR">
+          <End Role="SCPM_CARGOS" Type="Self.SCPM_CARGOS" Multiplicity="0..1" />
+          <End Role="SCPM_SUBROGA_HIST" Type="Self.SCPM_SUBROGA_HIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCPM_CARGOS">
+              <PropertyRef Name="CAR_ID" />
+            </Principal>
+            <Dependent Role="SCPM_SUBROGA_HIST">
+              <PropertyRef Name="CAR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SCPM_SUB_RELATIONS_SCPM_PER">
           <End Role="SCPM_PERSONALES" Type="Self.SCPM_PERSONALES" Multiplicity="0..1" />
           <End Role="SCPM_SUBROGA_HIST" Type="Self.SCPM_SUBROGA_HIST" Multiplicity="*" />
@@ -622,10 +622,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_CAR_RELATIONS_SCPM_DEN" Association="Self.FK_SCPM_CAR_RELATIONS_SCPM_DEN">
             <End Role="SCPM_DENOMINACIONES" EntitySet="SCPM_DENOMINACIONES" />
-            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB" Association="Self.FK_SCPM_CAR_RELATIONS_SCPM_SUB">
-            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
             <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_PAI" Association="Self.FK_SCPM_CON_RELATIONS_SCPM_PAI">
@@ -704,6 +700,10 @@
             <End Role="SCPM_PARROQUIAS" EntitySet="SCPM_PARROQUIAS" />
             <End Role="SCPM_SECTORES" EntitySet="SCPM_SECTORES" />
           </AssociationSet>
+          <AssociationSet Name="FK_SCPM_SUB_RELATIONS_SCPM_CAR" Association="Self.FK_SCPM_SUB_RELATIONS_SCPM_CAR">
+            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
+            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
+          </AssociationSet>
           <AssociationSet Name="FK_SCPM_SUB_RELATIONS_SCPM_PER" Association="Self.FK_SCPM_SUB_RELATIONS_SCPM_PER">
             <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
             <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
@@ -756,13 +756,13 @@
             <End Role="SCPM_DENOMINACIONES" EntitySet="SCPM_DENOMINACIONES" />
             <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
           </AssociationSet>
-          <AssociationSet Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB" Association="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB">
-            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
-            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
-          </AssociationSet>
           <AssociationSet Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR" Association="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR">
             <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
             <End Role="SCPM_PUESTO_HIST" EntitySet="SCPM_PUESTO_HIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCPM_SUB_RELATIONS_SCPM_CAR" Association="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR">
+            <End Role="SCPM_CARGOS" EntitySet="SCPM_CARGOS" />
+            <End Role="SCPM_SUBROGA_HIST" EntitySet="SCPM_SUBROGA_HIST" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_CON_RELATIONS_SCPM_PAI" Association="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI">
             <End Role="SCPM_PAIS" EntitySet="SCPM_PAIS" />
@@ -867,8 +867,8 @@
           <Property Name="CAR_EST" Type="Boolean" />
           <NavigationProperty Name="SCPM_AREAS" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_ARE" FromRole="SCPM_CARGOS" ToRole="SCPM_AREAS" />
           <NavigationProperty Name="SCPM_DENOMINACIONES" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_DEN" FromRole="SCPM_CARGOS" ToRole="SCPM_DENOMINACIONES" />
-          <NavigationProperty Name="SCPM_SUBROGA_HIST" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB" FromRole="SCPM_CARGOS" ToRole="SCPM_SUBROGA_HIST" />
           <NavigationProperty Name="SCPM_PUESTO_HIST" Relationship="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" FromRole="SCPM_CARGOS" ToRole="SCPM_PUESTO_HIST" />
+          <NavigationProperty Name="SCPM_SUBROGA_HIST" Relationship="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR" FromRole="SCPM_CARGOS" ToRole="SCPM_SUBROGA_HIST" />
         </EntityType>
         <EntityType Name="SCPM_CONYUGES">
           <Key>
@@ -1089,7 +1089,7 @@
           <Property Name="SUB_HIS_FEC_INI" Type="DateTime" Precision="3" />
           <Property Name="SUB_HIS_FEC_FIN" Type="DateTime" Precision="3" />
           <Property Name="SUB_HIS_EST" Type="Boolean" />
-          <NavigationProperty Name="SCPM_CARGOS" Relationship="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB" FromRole="SCPM_SUBROGA_HIST" ToRole="SCPM_CARGOS" />
+          <NavigationProperty Name="SCPM_CARGOS" Relationship="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR" FromRole="SCPM_SUBROGA_HIST" ToRole="SCPM_CARGOS" />
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PER" FromRole="SCPM_SUBROGA_HIST" ToRole="SCPM_PERSONALES" />
         </EntityType>
         <EntityType Name="SCPM_TIPO_DISCAPACIDADES">
@@ -1140,13 +1140,13 @@
           <End Type="SCPMdbModel.SCPM_DENOMINACIONES" Role="SCPM_DENOMINACIONES" Multiplicity="0..1" />
           <End Type="SCPMdbModel.SCPM_CARGOS" Role="SCPM_CARGOS" Multiplicity="*" />
         </Association>
-        <Association Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB">
-          <End Type="SCPMdbModel.SCPM_SUBROGA_HIST" Role="SCPM_SUBROGA_HIST" Multiplicity="0..1" />
-          <End Type="SCPMdbModel.SCPM_CARGOS" Role="SCPM_CARGOS" Multiplicity="*" />
-        </Association>
         <Association Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR">
           <End Type="SCPMdbModel.SCPM_CARGOS" Role="SCPM_CARGOS" Multiplicity="0..1" />
           <End Type="SCPMdbModel.SCPM_PUESTO_HIST" Role="SCPM_PUESTO_HIST" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SCPM_SUB_RELATIONS_SCPM_CAR">
+          <End Type="SCPMdbModel.SCPM_CARGOS" Role="SCPM_CARGOS" Multiplicity="0..1" />
+          <End Type="SCPMdbModel.SCPM_SUBROGA_HIST" Role="SCPM_SUBROGA_HIST" Multiplicity="*" />
         </Association>
         <Association Name="FK_SCPM_CON_RELATIONS_SCPM_PAI">
           <End Type="SCPMdbModel.SCPM_PAIS" Role="SCPM_PAIS" Multiplicity="0..1" />
@@ -1560,18 +1560,18 @@
             </EndProperty>
             <Condition ColumnName="DEN_ID" IsNull="false" />
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_SCPM_CAR_RELATIONS_SCPM_SUB" TypeName="SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB" StoreEntitySet="SCPM_CARGOS">
-            <EndProperty Name="SCPM_CARGOS">
-              <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
-            </EndProperty>
-            <EndProperty Name="SCPM_SUBROGA_HIST">
-              <ScalarProperty Name="SUB_HIS_ID" ColumnName="SUB_HIS_ID" />
-            </EndProperty>
-            <Condition ColumnName="SUB_HIS_ID" IsNull="false" />
-          </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_CAR" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR" StoreEntitySet="SCPM_PUESTO_HIST">
             <EndProperty Name="SCPM_PUESTO_HIST">
               <ScalarProperty Name="PST_HIS_ID" ColumnName="PST_HIS_ID" />
+            </EndProperty>
+            <EndProperty Name="SCPM_CARGOS">
+              <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />
+            </EndProperty>
+            <Condition ColumnName="CAR_ID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SCPM_SUB_RELATIONS_SCPM_CAR" TypeName="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR" StoreEntitySet="SCPM_SUBROGA_HIST">
+            <EndProperty Name="SCPM_SUBROGA_HIST">
+              <ScalarProperty Name="SUB_HIS_ID" ColumnName="SUB_HIS_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_CARGOS">
               <ScalarProperty Name="CAR_ID" ColumnName="CAR_ID" />

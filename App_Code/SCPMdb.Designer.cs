@@ -14,8 +14,8 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CAN_RELATIONS_SCPM_PRO", "SCPM_PROVINCIAS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SCPMdbModel.SCPM_PROVINCIAS), "SCPM_CANTONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CANTONES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PAR_RELATIONS_SCPM_CAN", "SCPM_CANTONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SCPMdbModel.SCPM_CANTONES), "SCPM_PARROQUIAS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PARROQUIAS))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_DEN", "SCPM_DENOMINACIONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_DENOMINACIONES), "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CARGOS))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_SUBROGA_HIST), "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CARGOS))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_CARGOS), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_CARGOS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_CARGOS), "SCPM_SUBROGA_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_SUBROGA_HIST))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PAI", "SCPM_PAIS", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PAIS), "SCPM_CONYUGES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CONYUGES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PER", "SCPM_PERSONALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SCPMdbModel.SCPM_PERSONALES), "SCPM_CONYUGES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CONYUGES))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_CON_RELATIONS_SCPM_PRO", "SCPM_PROFESIONES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_PROFESIONES), "SCPM_CONYUGES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_CONYUGES))]
@@ -36,7 +36,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_RELACIONES_LABORALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_RELACIONES_LABORALES), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
 
 // Nombre de archivo original:
-// Fecha de generación: 28/08/2015 18:27:12
+// Fecha de generación: 29/08/2015 10:39:36
 namespace SCPMdbModel
 {
     
@@ -1160,45 +1160,6 @@ namespace SCPMdbModel
             }
         }
         /// <summary>
-        /// No hay ningún comentario para SCPM_SUBROGA_HIST en el esquema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public SCPM_SUBROGA_HIST SCPM_SUBROGA_HIST
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay ningún comentario para SCPM_SUBROGA_HIST en el esquema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_SUBROGA_HIST> SCPM_SUBROGA_HISTReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_SUBROGA_HIST", value);
-                }
-            }
-        }
-        /// <summary>
         /// No hay ningún comentario para SCPM_PUESTO_HIST en el esquema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTO_HIST")]
@@ -1217,6 +1178,28 @@ namespace SCPMdbModel
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_PUESTO_HIST>("SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_CAR", "SCPM_PUESTO_HIST", value);
+                }
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_SUBROGA_HIST en el esquema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_SUBROGA_HIST")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_SUBROGA_HIST> SCPM_SUBROGA_HIST
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_SUBROGA_HIST");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_SUBROGA_HIST>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_SUBROGA_HIST", value);
                 }
             }
         }
@@ -5322,22 +5305,39 @@ namespace SCPMdbModel
         /// <summary>
         /// No hay ningún comentario para SCPM_CARGOS en el esquema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_CARGOS")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("SCPMdbModel", "FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_CARGOS")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<SCPM_CARGOS> SCPM_CARGOS
+        public SCPM_CARGOS SCPM_CARGOS
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_CARGOS");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_CARGOS").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_CARGOS").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay ningún comentario para SCPM_CARGOS en el esquema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<SCPM_CARGOS> SCPM_CARGOSReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_CARGOS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_CAR_RELATIONS_SCPM_SUB", "SCPM_CARGOS", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<SCPM_CARGOS>("SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_CAR", "SCPM_CARGOS", value);
                 }
             }
         }
