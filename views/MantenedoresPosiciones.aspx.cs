@@ -34,8 +34,8 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
         comboRelacionLab.Items.Clear();
         comboRelacionLab.AppendDataBoundItems = true;
         comboRelacionLab.DataSource = psvm.getAllRelacionLab();
-        comboRelacionLab.DataValueField = "EST_CIV_ID";
-        comboRelacionLab.DataTextField = "EST_CIV_NOM";
+        comboRelacionLab.DataValueField = "REL_LAB_ID";
+        comboRelacionLab.DataTextField = "REL_LAB_NOM";
         comboRelacionLab.DataBind();
         if (comboRelacionLab.Items.Count > 0)
         {
@@ -304,14 +304,7 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
         else
             HelperUtil.showNotifi("Denominación no editada");
     }
-    protected void addCargo_Click(object sender, EventArgs e)
-    {
-        renderCargos();
-    }
-    protected void editCargo_Click(object sender, EventArgs e)
-    {
-        renderCargos();
-    }
+
     protected void cargo_comboArea_SelectedIndexChanged(object sender, EventArgs e)
     {
         renderCargos();
@@ -331,6 +324,16 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
 
             Repeater1.DataSource = psvm.getCargosByAreaID(Convert.ToInt32(cargo_comboArea.SelectedValue));
             Repeater1.DataBind();
+            if (Repeater1.Items.Count > 0)
+            {
+                Repeater1.Visible = true;
+                cargo_empty.Visible = false;
+            }
+            else
+            {
+                Repeater1.Visible = false;
+                cargo_empty.Visible = true;
+            }
         }
         else
         {
@@ -338,7 +341,8 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
             cargo_empty.Visible = true;
         }
     }
-    protected void addCargo_Click1(object sender, EventArgs e)
+
+    protected void addCargo_Click(object sender, EventArgs e)
     {
         if (ComboArea.Enabled && psvm.addCargo(new SCPM_CARGOS()
         {
@@ -353,5 +357,38 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
         }
         else
             HelperUtil.showNotifi("Cargo no añadido");
+    }
+
+    protected void editCargo_Click(object sender, EventArgs e)
+    {
+        //SCPM_AREAS area = psvm.getAreaByID(Convert.ToInt32(cargo_comboArea.SelectedValue));
+        List<SCPM_CARGOS> cargos = psvm.getCargosByAreaID(Convert.ToInt32(cargo_comboArea.SelectedValue));
+
+        foreach (RepeaterItem item in Repeater1.Items)
+        {
+            int car_id = Convert.ToInt32((item.FindControl("car_id") as HiddenField).Value);
+            SCPM_CARGOS cargo = (from c in cargos where c.CAR_ID == car_id select c).First();
+            var _inCargo = (item.FindControl("inCargo") as TextBox).Text;
+            var _denomina = Convert.ToInt32((item.FindControl("cargo_denominacion") as TextBox).Text);
+            if (cargo != null)
+            {
+                cargo.CAR_NOM = _inCargo;
+                cargo.CAR_EST = (item.FindControl("cargo_estado") as CheckBox).Checked;
+                cargo.SCPM_DENOMINACIONESReference.Load();
+                cargo.SCPM_DENOMINACIONES = psvm.getDenominacionByID(_denomina);
+            }
+            else
+            {
+                HelperUtil.showNotifi("cargo id:" + car_id + " no guardado");
+            }
+        }
+        if (psvm.saveDB())
+        {
+            HelperUtil.showNotifi("Cargos actualizados");
+            renderCargos();
+        }
+        else
+            HelperUtil.showNotifi("Cargos no actualizados");
+
     }
 }

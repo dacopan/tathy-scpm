@@ -166,8 +166,133 @@ public class PuestoServiceModel
         return (from a in db.SCPM_DENOMINACIONES where a.DEN_ID == newx select a).First();
     }
 
-    public object getCargosByAreaID(int newx)
+    public List<SCPM_CARGOS> getCargosByAreaID(int newx)
     {
         return (from a in db.SCPM_CARGOS where a.SCPM_AREAS.ARE_COD == newx select a).ToList();
+    }
+
+    public bool saveDB()
+    {
+        try
+        {
+            db.SaveChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+    public bool addCargoHistorial(SCPM_PUESTO_HIST historial, int per_id, int cargo_id, int rel_lab_id)
+    {
+        //compruebo si persona ya tiene un cargo activo
+        var ccp = (from h in db.SCPM_PUESTO_HIST.Include("SCPM_PERSONALES") where h.SCPM_PERSONALES.PER_ID == per_id select h).ToList();
+        SCPM_PUESTO_HIST currentCargo = ccp.Count > 0 ? ccp.OrderByDescending(c => c.PST_HIS_FEC_INI).FirstOrDefault() : ccp.FirstOrDefault();
+
+        if (currentCargo != null)
+        {
+            currentCargo.SCPM_CARGOSReference.Load();
+            currentCargo.SCPM_RELACIONES_LABORALESReference.Load();
+        }
+
+        if (currentCargo != null && currentCargo.SCPM_CARGOS.CAR_ID != cargo_id && (currentCargo.PST_HIS_FEC_FIN == null || DateTime.Now.CompareTo(currentCargo.PST_HIS_FEC_FIN) <= 0))
+        {
+            HelperUtil.showNotifi("persona ya tiene un cargo activo, finalicelo para podr asignarlo a otro cargo");
+            return false;
+        }
+
+        //
+        var cc = (from h in db.SCPM_PUESTO_HIST.Include("SCPM_CARGOS") where h.SCPM_CARGOS.CAR_ID == cargo_id select h).ToList();
+        var nowTime = DateTime.Now;
+
+        SCPM_PUESTO_HIST lastCargo = cc.Count > 0 ? cc.OrderByDescending(c => c.PST_HIS_FEC_INI).FirstOrDefault() : cc.FirstOrDefault();
+
+        if (lastCargo != null && (lastCargo.PST_HIS_FEC_FIN == null || DateTime.Now.CompareTo(lastCargo.PST_HIS_FEC_FIN) <= 0))
+        //if (lastCargo != null && lastCargo.PST_HIS_FEC_FIN == null)
+        {//el cargo esta actualmente ocupado
+
+            lastCargo.SCPM_PERSONALESReference.Load();
+            lastCargo.SCPM_RELACIONES_LABORALESReference.Load();
+
+            if (lastCargo.SCPM_PERSONALES.PER_ID != per_id)
+            {
+                //el cargo esta ocupado por otra persona
+                HelperUtil.showNotifi("el cargo esta ocupado por otra persona");
+                return false;
+            }
+            else
+                if (lastCargo.SCPM_RELACIONES_LABORALES.REL_LAB_ID == rel_lab_id)
+                {// el cargo esta ocupado por la misma persona y relacion laboral es la misma solo se actualizara sus campos
+
+                    //fecha fin no puede ser menor a fecha inicio
+                    if (historial.PST_HIS_FEC_FIN != null && lastCargo.PST_HIS_FEC_INI.Value.CompareTo(historial.PST_HIS_FEC_FIN) > 0)
+                    {
+                        HelperUtil.showNotifi("fecha inicio no puede ser mayor que final");
+                        return false;
+                    }
+                    lastCargo.PST_HIS_FEC_FIN = historial.PST_HIS_FEC_FIN;
+                    db.SaveChanges();
+                    HelperUtil.showNotifi("Solo fecha final actualizada");
+                    return true;
+                }
+                else
+                { // el cargo esta ocupado por la misma persona y relacion laboral no es la misma, se finaliza este historial y añade otro con la nueva relacion laboral
+                    lastCargo.PST_HIS_FEC_FIN = nowTime;
+                    db.SaveChanges();
+                    HelperUtil.showNotifi("Relacion laboral anterior finalizada.");
+                    //add new relacion
+                    historial.SCPM_PERSONALES = getPersonasByID(per_id).ToList().First();
+                    historial.SCPM_RELACIONES_LABORALES = getRalacionLabByID(rel_lab_id);
+                    historial.SCPM_CARGOS = getCargoByID(cargo_id);
+                    historial.PST_HIS_FEC_INI = nowTime;
+                    db.AddToSCPM_PUESTO_HIST(historial);
+                    //save
+                    db.SaveChanges();
+                    HelperUtil.showNotifi("Nueva Relacion laboral añadida.");
+                    return true;
+                }
+        }
+        else
+        {//el cargo no esta ocupado actualmente, se procede a añadir el historial nuevo
+
+            //fecha fin no puede ser menor a fecha inicio
+            if (historial.PST_HIS_FEC_FIN != null && historial.PST_HIS_FEC_INI.Value.CompareTo(historial.PST_HIS_FEC_FIN) > 0)
+            {
+                HelperUtil.showNotifi("fecha inicio no puede ser mayor que final");
+                return false;
+            }
+            //fecha inicio no puede ser anterior a un historial fecha inicio
+            /*if (lastCargo != null && ) { 
+            HelperUtil.showNotifi("fecha inicio no puede ser menor que fecha anterior historial");
+                return false;
+            }*/
+            //add new relacion
+            historial.SCPM_PERSONALES = getPersonasByID(per_id).ToList().First();
+            historial.SCPM_RELACIONES_LABORALES = getRalacionLabByID(rel_lab_id);
+            historial.SCPM_CARGOS = getCargoByID(cargo_id);
+            db.AddToSCPM_PUESTO_HIST(historial);
+            //save
+            db.SaveChanges();
+            HelperUtil.showNotifi("Nueva Relacion laboral añadida.");
+            return true;
+        }
+        return false;
+    }
+
+    private SCPM_CARGOS getCargoByID(int cargo_id)
+    {
+        return (from a in db.SCPM_CARGOS where a.CAR_ID == cargo_id select a).FirstOrDefault();
+    }
+
+    private SCPM_RELACIONES_LABORALES getRalacionLabByID(int rel_lab_id)
+    {
+        return (from a in db.SCPM_RELACIONES_LABORALES where a.REL_LAB_ID == rel_lab_id select a).FirstOrDefault();
+    }
+
+    //from personas service model
+    public List<SCPM_PERSONALES> getPersonasByID(int p)
+    {
+        return (from a in db.SCPM_PERSONALES where a.PER_ID == p select a).ToList();
     }
 }

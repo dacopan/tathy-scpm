@@ -24,8 +24,8 @@
 .metro .text-center {
     text-align: center !important;
 }
-.metr h1.text-center {
 
+.metr h1.text-center {
 }
 
 
@@ -34,13 +34,12 @@
 
 
 
-.dialog{
+.dialog {
     /*max-width: ~"calc(100% - 20px)";
     max-height: ~"calc(100% - 20px)";*/
     height: auto;
     width: auto;
     margin: auto;
-
     left: 0px;
     right: 0px;
     width: auto;
@@ -50,24 +49,42 @@
     bottom: 0;
     /*    text-align: center;*/
 }
-.dialog .grid{
 
-    padding: 0px 0px;
-    margin: 0 auto;
-    list-style: none;
-    -webkit-overflow-scrolling: touch;
-    display: table-cell;
-    vertical-align: middle;
-    width: 100%;
-}
-.dialog.window-style{
-    width: 100%!important;
-}
-.form-actions.page-content.align-right{
-    padding-right: 0!important;
+    .dialog .grid {
+        padding: 0px 0px;
+        margin: 0 auto;
+        list-style: none;
+        -webkit-overflow-scrolling: touch;
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    .dialog.window-style {
+        width: 100% !important;
+    }
+
+.form-actions.page-content.align-right {
+    padding-right: 0 !important;
 }
 
-.margin5R{
+.margin5R {
     margin-right: 5px;
 }
 
+.metro .no-visible {
+    height: 0;
+}
+
+.page-content {
+    padding-top: 48px;
+    padding-left: 10px;
+}
+
+input[type="submit"]:disabled, input[type="button"].disabled, input[type="reset"].disabled, input[type="submit"].disabled {
+    background-color: #eaeaea !important;
+    color: #bebebe !important;
+    cursor: default !important;
+    border-color: transparent !important;
+    text-shadow: none !important;
+}

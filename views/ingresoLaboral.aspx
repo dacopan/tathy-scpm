@@ -1,219 +1,225 @@
 ﻿<%@ Page Title="ingresoLabora" Language="C#" MasterPageFile="~/views/MasterPage2.master" AutoEventWireup="true" CodeFile="ingresoLaboral.aspx.cs" Inherits="ingresoLaboral" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <table class="backgroundRepeatBanner">
-        <tr>
-            <td colspan="5" bgcolor="#000066">
-                <asp:Label ID="Label1" runat="server" BackColor="#000066" ForeColor="White" 
-                    Text="INGRESO DE DATOS LABORABLES DE LA SCPM"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                            &nbsp;</td>
-        </tr>
-        <tr>
-            <td style="height: 23px">
-                <asp:Label ID="Label2" runat="server" Text="Ingreso del Id Funcionario"></asp:Label>
-            </td>
-            <td style="height: 23px">
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            </td>
-            <td style="height: 23px">
-            </td>
-            <td style="height: 23px">
-                <asp:Button ID="Button1" runat="server" Text="BUSCAR" />
-            </td>
-            <td style="height: 23px">
-                            <asp:Label ID="Label8" runat="server" style="font-weight: 700" 
-                                Text="158 RUIZ MERA LUIS MARIO"></asp:Label>
-                        </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5" bgcolor="#000066">
-                <asp:Label ID="Label9" runat="server" BackColor="#000066" ForeColor="White" 
-                    Text="LUGAR DE TRABAJO"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label10" runat="server" Text="Unidad"></asp:Label>
-            </td>
-            <td>
-                <asp:DropDownList ID="DropDownList1" runat="server">
-                    <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                <asp:Label ID="Label11" runat="server" Text="Area"></asp:Label>
-            </td>
-            <td>
-                <asp:DropDownList ID="DropDownList2" runat="server">
-                    <asp:ListItem>DIRECCION FINANCIERA</asp:ListItem>
-                    <asp:ListItem>DIRECCION ADMINISTRATIVA</asp:ListItem>
-                </asp:DropDownList>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5" bgcolor="#000066">
-                <asp:Label ID="Label12" runat="server" BackColor="#000066" ForeColor="White" 
-                    Text="PUESTO DE TRABAJO"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                &nbsp;</td>
-            <td style="height: 23px">
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td style="height: 23px">
-                <asp:Label ID="Label13" runat="server" Text="Relacion Laboral"></asp:Label>
-            </td>
-            <td style="height: 23px">
-                <asp:DropDownList ID="DropDownList3" runat="server" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
-                    <asp:ListItem>SERVICIOS PROFESIONALES</asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td style="height: 23px">
-            </td>
-            <td style="height: 23px">
-                <asp:Label ID="Label14" runat="server" Text="Denominacion"></asp:Label>
-            </td>
-            <td style="height: 23px">
-                <table class="backgroundRepeatBanner">
-                    <tr>
-                        <td>
-                            <asp:DropDownList ID="DropDownList4" runat="server">
-                                <asp:ListItem>SERVICIOS PROFESIONALES 1</asp:ListItem>
-                                <asp:ListItem>SERVICIOS PROFESIONALES 2</asp:ListItem>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="panel">
+        <div class="header panel-header">
+            Buscar Funcionario
+        </div>
+        <div class="content">
+            <div class="grid">
+                <div class="row cells9 condensed">
+                    <div class="cell colspan2">
+                        <label><span class="icon mif-filter"></span>&nbsp;Filtro</label>
+                        <div class="input-control slect iconic info">
+                            <asp:DropDownList ID="comboFiltro" runat="server">
+                                <asp:ListItem Text="ID Institucional" Value="2"></asp:ListItem>
                             </asp:DropDownList>
-                        </td>
-                        <td>
-                            <asp:Label ID="Label15" runat="server" Text="Cargo"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="DropDownList5" runat="server">
-                                <asp:ListItem>ANALISTA 1</asp:ListItem>
+                        </div>
+
+                    </div>
+
+                    <div class="cell colspan4">
+                        <div class="input-control text full-size info">
+                            <asp:TextBox runat="server" ID="inFiltro" />
+                            <button class="button" onclick="applyFilter()"><span class="mif-search"></span></button>
+                        </div>
+                        <asp:Button ID="filtroBut" runat="server" Text="Button" CssClass="no-visible" OnClick="filtroBut_Click" />
+                        <script type="text/javascript">
+                            function applyFilter() {
+                                setTimeout(function () {
+
+                                    $('#<%=filtroBut.ClientID %>').trigger("click");
+                                }, 25);
+                                return false;
+                            }
+
+                        </script>
+                    </div>
+
+                </div>
+                <div class="row cells8">
+                    <div class="cell colspan8">
+                        <h2 runat="server" class="text-light text-left" id="search_res">No se encontro funcionario</h2>
+                        <h5 runat="server" class="text-left" id="puestoActual">Puesto Actual: ninguno</h5>
+                        <asp:HiddenField runat="server" Value="dcm" ID="current_cargo_id" />
+                        <asp:HiddenField runat="server" Value="dcm" ID="current_persona_id" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <hr class="thin" />
+    <br />
+    <br />
+    <div class="panel">
+        <div class="header panel-header">
+            Lugar de trabajo
+        </div>
+        <div class="content">
+            <div class="grid">
+                <div class="row cells9 condensed">
+                    <div class="cell colspan4">
+                        <label>Unidad</label>
+                        <div class="input-control text full-size">
+                            <asp:DropDownList ID="comboUnidad" runat="server" AutoPostBack="True" OnSelectedIndexChanged="comboUnidad_SelectedIndexChanged">
+                                <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
                             </asp:DropDownList>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Fecha de Ingreso</td>
-            <td>
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                <asp:Label ID="Label18" runat="server" Text="Fecha de Salida"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label17" runat="server" Text="Jefe"></asp:Label>
-            </td>
-            <td>
-                <asp:DropDownList ID="DropDownList6" runat="server">
-                    <asp:ListItem>CESAR JACOME</asp:ListItem>
-                    <asp:ListItem>JUAN CARLOS</asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                <asp:Button ID="Button2" runat="server" Text="Guardar" />
-            </td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-            <td>
-                &nbsp;</td>
-        </tr>
-    </table>
+                        </div>
+                    </div>
+                    <div class="cell colspan4">
+                        <label>Area</label>
+                        <div class="input-control text full-size">
+                            <asp:DropDownList ID="ComboArea" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ComboArea_SelectedIndexChanged">
+                                <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="panel">
+        <div class="header panel-header">
+            Puesto de Trabajo
+        </div>
+        <div class="content">
+            <div class="grid">
+                <div class="row cells9 condensed">
+                    <div class="cell colspan4">
+                        <label>Relación Laboral</label>
+                        <div class="input-control text full-size">
+                            <asp:DropDownList ID="comboRelacionLab" runat="server" AutoPostBack="True">
+                                <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="cell colspan4">
+                        <label>Cargo</label>
+                        <div class="input-control text full-size">
+                            <asp:DropDownList ID="comboCargo" runat="server" AutoPostBack="True">
+                                <asp:ListItem>Analista 1</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row cells9 condensed">
+                    <div class="cell colspan2">
+                        <label>Fecha Ingreso</label><br />
+                        <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
+                            <asp:TextBox ID="inFechaStart" runat="server"></asp:TextBox>
+                            <button class="button"><span class="mif-calendar"></span></button>
+                        </div>
+                    </div>
+                    <div class="cell colspan2">
+                        <label>Fecha Salida</label><br />
+                        <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
+                            <asp:TextBox ID="inFechaEnd" runat="server"></asp:TextBox>
+                            <button class="button"><span class="mif-calendar"></span></button>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <button class="button success text-shadow margin5R" onclick="showDialog2('#previewAV');return false;"><span class="mif-profile margin-double"></span>&nbsp;Guardar</button>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+    <div data-role="dialog" id="previewAV" data-windows-style="true" data-overlay="true" data-overlay-color="op-dark" class="window-style">
+        <div class="gridx">
+            <div class="row">
+                <div class="cell" style="margin: auto; float: none;">
+                    <div class="container page-content">
+                        <h1 class="text-light"><span class="mif-cabinet"></span>Actualizar cargo</h1>
+                        <hr class="thin" />
+                        <br />
+                        <div class="row-fluid body-preview" id="dialogContent">
+                            Seguro deseaa actualizar esto?
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-actions page-content align-right">
+                            <button type="button" class="button primary" onclick="ocultDialog('#previewAV')">Cancelar</button>
+                            <asp:Button CssClass="button success text-shadow" runat="server" ID="saveAll" Text="Guardar" OnClick="saveAll_Click" />
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        function showDialog2(id) {
+            var content = $("#dialogContent");
+            var comboCargo = $('#<%= comboCargo.ClientID %>');
+            var current_cargo_id = $('#<%= current_cargo_id.ClientID %>');
+            var current_persona_id = $('#<%= current_persona_id.ClientID %>');
+
+            var saveBut = $('#<%= saveAll.ClientID %>');
+
+            if (current_persona_id.val() == "dcm") {
+                content.html("Seleccione un funcionario al cual añadir cargo.");
+                saveBut.prop('disabled', true);
+                showDialog(id);
+                return;
+            }
+
+            if (comboCargo.prop('disabled')) {
+                content.html("Cargo no disponible");
+                saveBut.prop('disabled', true);
+                showDialog(id);
+                return;
+            }
+
+            if (current_cargo_id.val() != "dcm" && comboCargo.val() != current_cargo_id.val()) {
+                content.html("EL funcionario ya posee un cargo activo, no lo puede colocar en otro cargo, sin antes dar por terminado el anterior.");
+                saveBut.prop('disabled', true);
+                showDialog(id);
+                return;
+            }
+
+            if (current_cargo_id.val() == "dcm") {
+                content.html("Seguro desea colocar al funcionario en este cargo?.");
+                saveBut.prop('disabled', false);
+                showDialog(id);
+                return;
+            }
+
+            content.html("Seguro desea actualizar los datos del cargo actual?.");
+            saveBut.prop('disabled', false);
+            showDialog(id);
+        }
+    </script>
+</asp:Content>
+
 

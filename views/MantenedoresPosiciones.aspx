@@ -194,7 +194,8 @@
                 </div>
                 <div class="row cells9">
 
-                    <button class="button success text-shadow" onclick="showDialog('#previewAV');return false;"><span class="mif-profile margin-double"></span>Añadir Cargo</button>
+                    <button class="button success text-shadow margin5R" onclick="showDialog('#previewAV');return false;"><span class="mif-profile margin-double"></span>Añadir Cargo</button>
+                    <asp:Button ID="editCargo" OnClick="editCargo_Click" runat="server" Text="Guardar Cargos" CssClass="button info" />
 
                 </div>
                 <div class="row cells9">
@@ -215,7 +216,7 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <asp:HiddenField Value='<%# Eval("CAR_ID") %>' ID="dis_tip_id" runat="server" />
+                                        <asp:HiddenField Value='<%# Eval("CAR_ID") %>' ID="car_id" runat="server" />
                                         <div class="input-control text full-size info">
                                             <asp:TextBox ID="inCargo" runat="server" Text='<%# Eval("CAR_NOM") %>' />
                                         </div>
@@ -281,7 +282,7 @@
                         <br />
                         <div class="form-actions page-content align-right">
                             <button type="button" class="button primary" onclick="ocultDialog('#previewAV')">Cancelar</button>
-                            <asp:Button runat="server" ID="addCargo" Text="Guardar" CssClass="button success" OnClick="addCargo_Click1" />
+                            <asp:Button runat="server" ID="addCargo" Text="Guardar" CssClass="button success" OnClick="addCargo_Click" />
                         </div>
                         <br />
                         <br />

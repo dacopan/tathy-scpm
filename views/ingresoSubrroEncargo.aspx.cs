@@ -11,4 +11,8 @@ public partial class ingresoSubrroEncargo : System.Web.UI.Page
     {
 
     }
+    protected void filtroBut_Click(object sender, EventArgs e)
+    {
+
+    }
 }
