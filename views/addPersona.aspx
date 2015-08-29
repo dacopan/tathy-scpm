@@ -544,8 +544,8 @@
                                                         data-role="sliderx"
                                                         data-max-value="100"
                                                         data-complete-color="ribbed-green"
-                                                        data-position='<%# Eval("DIS_POR") %>'
                                                         data-on-change="calcDiscapacidad"
+                                                        data-positionx='<%# Eval("DIS_POR") %>'
                                                         data-permanent-hint="true"
                                                         data-show-hint="true"
                                                         data-min-value="0" style="width: 150px" runat="server">
@@ -730,8 +730,18 @@
             }
             $(function () {
                 $('div[data-role="sliderx"]').each(function () {
-                    $(this).slider();
-                    calcDiscapacidad($(this).data("position"), $(this));
+                    var slider = $(this);
+                    var rang = $(slider.parent().next().find("input"));
+
+                    if (rang.val() != "dcm") {
+                        c = parseInt(rang.val().toString().split('-')[0]);
+                    } else {
+                        c = slider.data("positionx");
+                    }
+                    
+                    slider.data("position", c);
+                    slider.slider({ position: c });
+                    calcDiscapacidad(c, $(this));
                 });
             });
 

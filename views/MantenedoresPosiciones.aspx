@@ -160,35 +160,7 @@
                 <asp:Button ID="editDenominacion" runat="server" Text="Modificar" OnClick="editDenominacion_Click" />
             </td>
         </tr>
-        <tr>
-            <td style="height: 32px">
-                <asp:Label ID="Label5" runat="server" Text="Cargo"></asp:Label>
-            </td>
-            <td style="height: 32px">
-                <asp:DropDownList ID="ComboCargo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ComboCargo_SelectedIndexChanged">
-                    <asp:ListItem>ANALISTA 1</asp:ListItem>
-                </asp:DropDownList>
-            </td>
-            <td style="height: 32px">
-                <table class="backgroundRepeatBanner">
-                    <tr>
-                        <td>
-                            <asp:Label ID="Label40" runat="server" Text="Nuevo/Modificar"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="InCargo" runat="server"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:CheckBox ID="cargoEnabled" runat="server" />
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td style="height: 32px">
-                <asp:Button ID="addCargo" runat="server" Text="Añadir" OnClick="addCargo_Click" />
-                <asp:Button ID="editCargo" runat="server" Text="Modificar" OnClick="editCargo_Click" />
-            </td>
-        </tr>
+
     </table>
     <br />
     <br />
@@ -221,12 +193,17 @@
 
                 </div>
                 <div class="row cells9">
+
+                    <button class="button success text-shadow" onclick="showDialog('#previewAV');return false;"><span class="mif-profile margin-double"></span>Añadir Cargo</button>
+
+                </div>
+                <div class="row cells9">
                     <div class="cell colspan9">
 
+                        <h1 id="cargo_empty" class="text-center text-light" runat="server">Ningún cargo en esta área</h1>
                         <asp:Repeater ID="Repeater1" runat="server">
                             <HeaderTemplate>
-                                <br />
-                                <br />
+
                                 <br />
                                 <table class="backgroundRepeatBanner table striped hovered cell-hovered border bordered">
                                     <thead>
@@ -238,24 +215,24 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <asp:HiddenField Value='<%# Eval("TIP_DIS_ID") %>' ID="dis_tip_id" runat="server" />
-                                        <asp:Label runat="server" ID="tipo" Text='<%# Eval("TIP_DIS_NOM") %>' />
-                                        <asp:TextBox ID="inCargo" runat="server" />
+                                        <asp:HiddenField Value='<%# Eval("CAR_ID") %>' ID="dis_tip_id" runat="server" />
+                                        <div class="input-control text full-size info">
+                                            <asp:TextBox ID="inCargo" runat="server" Text='<%# Eval("CAR_NOM") %>' />
+                                        </div>
                                     </td>
                                     <td>
-
-                                        <label>Denominacion</label>
-                                        <div class="input-control text full-size">
-                                            <asp:DropDownList ID="cargo_comboDenominacion" runat="server">
-                                                <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
-                                            </asp:DropDownList>
+                                        <asp:TextBox ID="cargo_denominacion" Text="dcm" runat="server" CssClass='<%# "no-visible dcm" +Eval("CAR_ID").ToString().Replace(" ","") %>' />
+                                        <div class="input-control text full-size info" data-role="select-denominacion"
+                                            data-targetx='<%# ".dcm" +Eval("CAR_ID").ToString().Replace(" ","") %>'
+                                            data-has-init-val="true"
+                                            data-init-val="<%# Eval("SCPM_DENOMINACIONES.DEN_ID") %>">
                                         </div>
 
 
                                     </td>
                                     <td>
                                         <label class="switch-original">
-                                            <asp:CheckBox ID="cargo_estado" runat="server" />
+                                            <asp:CheckBox ID="cargo_estado" runat="server" Checked='<%# bool.Parse(Eval("CAR_EST").ToString()) %>' />
                                             <span class="check"></span>
                                         </label>
                                     </td>
@@ -278,3 +255,69 @@
     </div>
 </asp:Content>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+    <div data-role="dialog" id="previewAV" data-windows-style="true" data-overlay="true" data-overlay-color="op-dark" class="window-style">
+        <div class="gridx">
+            <div class="row">
+                <div class="cell" style="margin: auto; float: none;">
+                    <div class="container page-content">
+                        <h1 class="text-light"><span class="mif-cabinet"></span>Añadir cargo</h1>
+                        <hr class="thin" />
+                        <br />
+                        <div class="row-fluid body-preview">
+                            <label>Nombre del Cargo</label>
+                            <div class="input-control text">
+                                <asp:TextBox ID="inCargo" runat="server" />
+                            </div>
+                            <br />
+                            <br />
+                            <label>Nombre del Cargo</label>
+                            <asp:HiddenField ID="cargo_denominacion" runat="server" Value="dcm" />
+                            <div class="input-control select" data-role="select-denominacion" data-targetx="#<%=cargo_denominacion.ClientID %>">
+                            </div>
+
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-actions page-content align-right">
+                            <button type="button" class="button primary" onclick="ocultDialog('#previewAV')">Cancelar</button>
+                            <asp:Button runat="server" ID="addCargo" Text="Guardar" CssClass="button success" OnClick="addCargo_Click1" />
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        $("[data-role=select-denominacion]").each(function () {
+            var r = $(this);
+            var deno = $("#<%=ComboDenominacion.ClientID %>").clone();
+            var tar = $(r.data("targetx"));
+
+            deno.attr("onchange", "");
+
+            if (r.data("has-init-val")) {
+                if (tar.val() != "dcm") {
+                    deno.val(tar.val());
+                } else {
+                    tar.val(r.data("init-val"));
+                    deno.val(r.data("init-val"));
+                }
+            } else {
+                tar.val(deno.val());
+            }
+            r.html(deno);
+            deno.change(function () {
+                //var r = $(this);
+
+                var tar = $(r.data("targetx"));
+                tar.val($(this).val());
+                //console.log(tar.val());
+            });
+        });
+    </script>
+</asp:Content>

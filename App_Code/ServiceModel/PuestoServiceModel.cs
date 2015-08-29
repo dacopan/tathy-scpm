@@ -146,4 +146,28 @@ public class PuestoServiceModel
         db.SaveChanges();
         return true;
     }
+
+    public bool addCargo(SCPM_CARGOS newx)
+    {
+        /* var contains = db.SCPM_CARGOS.ToList().Any(u => u.CAR_NOM == newx.CAR_NOM);
+         if (contains) return false;*/
+        db.AddToSCPM_CARGOS(newx);
+        db.SaveChanges();
+        return true;
+    }
+
+    public SCPM_AREAS getAreaByID(int newx)
+    {
+        return (from a in db.SCPM_AREAS where a.ARE_COD == newx select a).First();
+    }
+
+    public SCPM_DENOMINACIONES getDenominacionByID(int newx)
+    {
+        return (from a in db.SCPM_DENOMINACIONES where a.DEN_ID == newx select a).First();
+    }
+
+    public object getCargosByAreaID(int newx)
+    {
+        return (from a in db.SCPM_CARGOS where a.SCPM_AREAS.ARE_COD == newx select a).ToList();
+    }
 }

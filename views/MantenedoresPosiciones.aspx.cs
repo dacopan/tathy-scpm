@@ -136,7 +136,7 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
             combo.Enabled = true;
             if (c == 0)
             {
-                ComboArea_SelectedIndexChanged(ComboDenominacion, null);
+                ComboArea_SelectedIndexChanged(ComboArea, null);
             }
             else
             {
@@ -194,24 +194,9 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
 
     protected void ComboDenominacion_SelectedIndexChanged(object sender, EventArgs e)
     {
-        ComboCargo.Items.Clear();
-        ComboCargo.AppendDataBoundItems = true;
-        //ComboCargo.DataSource = psvm.CargosByDenominacion();
-        ComboCargo.DataTextField = "UNI_NOM";
-        ComboCargo.DataValueField = "UNI_COD";
-        if (ComboCargo.Items.Count < 1)
-        {
-            ComboCargo.Enabled = false;
-            ComboCargo.Items.Add(new ListItem("--Añadir Cargo--", ""));
-        }
-        ComboCargo.DataBind();
         setDefaultText(sender, InDenominacion);
     }
 
-    protected void ComboCargo_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        setDefaultText(sender, InCargo);
-    }
 
     void setDefaultText(object sender, TextBox t)
     {
@@ -304,7 +289,7 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
         if (psvm.addDenominacion(new SCPM_DENOMINACIONES() { DEN_NOM = InDenominacion.Text, DEN_EST = denominacionEnabled.Checked }))
         {
             HelperUtil.showNotifi("Denominación añadida");
-            fillRelacionLab();
+            fillDenominaciones();
         }
         else
             HelperUtil.showNotifi("Denominación no añadida");
@@ -314,7 +299,7 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
         if (ComboDenominacion.Enabled && psvm.editDenominacion(new SCPM_DENOMINACIONES() { DEN_ID = Convert.ToInt32(ComboDenominacion.SelectedValue), DEN_NOM = InDenominacion.Text, DEN_EST = denominacionEnabled.Checked }))
         {
             HelperUtil.showNotifi("Denominación editada");
-            fillRelacionLab();
+            fillDenominaciones();
         }
         else
             HelperUtil.showNotifi("Denominación no editada");
@@ -333,12 +318,40 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
     }
     protected void cargo_comboUnidad_SelectedIndexChanged(object sender, EventArgs e)
     {
-        fillAreas(cargo_comboArea, 0);
+        fillAreas(cargo_comboArea, 1);
         renderCargos();
     }
 
     private void renderCargos()
     {
-        if (cargo_comboArea.Enabled) { } else { }
+        if (cargo_comboArea.Enabled)
+        {
+            Repeater1.Visible = true;
+            cargo_empty.Visible = false;
+
+            Repeater1.DataSource = psvm.getCargosByAreaID(Convert.ToInt32(cargo_comboArea.SelectedValue));
+            Repeater1.DataBind();
+        }
+        else
+        {
+            Repeater1.Visible = false;
+            cargo_empty.Visible = true;
+        }
+    }
+    protected void addCargo_Click1(object sender, EventArgs e)
+    {
+        if (ComboArea.Enabled && psvm.addCargo(new SCPM_CARGOS()
+        {
+            CAR_NOM = inCargo.Text,
+            SCPM_AREAS = psvm.getAreaByID(Convert.ToInt32(cargo_comboArea.SelectedValue)),
+            SCPM_DENOMINACIONES = psvm.getDenominacionByID(Convert.ToInt32(cargo_denominacion.Value)),
+            CAR_EST = true
+        }))
+        {
+            HelperUtil.showNotifi("Cargo añadido");
+            renderCargos();
+        }
+        else
+            HelperUtil.showNotifi("Cargo no añadido");
     }
 }
