@@ -55,17 +55,18 @@
         }
     </style>
 
-    <link rel="Stylesheet" type="text/css" href="../Content/css/metro.css" />
-    <link rel="Stylesheet" type="text/css" href="../Content/css/scpm.css" />
+    <link rel="Stylesheet" type="text/css" href="/Content/css/metro.css" />
+    <link rel="Stylesheet" type="text/css" href="/Content/css/scpm.css" />
 
-    <script src="../Scripts/jquery.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../Scripts/metro.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="/Scripts/metro.js" type="text/javascript"></script>
 
 </head>
 <body background="/Images/Pagina.png" class="metro">
     <img src="/Images/encabezadoDDR.png" style="width: 100%; height: auto;" alt="header" />
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div>
 
             <label id="liveclock" class="subtitle_fecha" style="text-align: left"></label>
@@ -85,8 +86,8 @@
                     <div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
                         <ul class="sidebar2 ">
                             <li class="title">Administración Personal</li>
-                            <li class=""><a href="addPersona.aspx"><span class="mif-home icon"></span>Ingreso</a></li>
-                            <li class="stick bg-red"><a href="searchPersona.aspx"><span class="mif-cog icon"></span>Buscar</a></li>
+                            <li class=""><a href="/views/addPersona.aspx"><span class="mif-home icon"></span>Ingreso</a></li>
+                            <li class="stick bg-red"><a href="/views/searchPersona.aspx"><span class="mif-cog icon"></span>Buscar</a></li>
                             <li class="stick bg-green">
                                 <a class="dropdown-toggle" href="#"><span class="mif-tree icon"></span>Reporte</a>
                                 <ul class="d-menu" data-role="dropdown" style="display: none;">
@@ -95,13 +96,20 @@
                                     <li><a href="#">Discapacidad</a></li>
                                 </ul>
                             </li>
-                            <li class="stick bg-red"><a href="mantenedoresPers.aspx"><span class="mif-cog icon"></span>Mantenedores</a></li>
+                            <li class="stick bg-red"><a href="/views/mantenedoresPers.aspx"><span class="mif-cog icon"></span>Mantenedores</a></li>
 
                             <li class="title">Datos Laborales</li>
-                            <li class="active"><a href="ingresoLaboral.aspx"><span class="mif-home icon"></span>Ingreso</a></li>
-                            <li class="stick bg-red"><a href="ingresoSubrroEncargo.aspx"><span class="mif-cog icon"></span>Subrogación/Encargo</a></li>
-                            <li class="stick bg-red"><a href="#"><span class="mif-cog icon"></span>Reporte</a></li>
-                            <li class="stick bg-red"><a href="MantenedoresPosiciones.aspx"><span class="mif-cog icon"></span>Mantenedor</a></li>
+                            <li class="active"><a href="/views/ingresoLaboral.aspx"><span class="mif-home icon"></span>Ingreso</a></li>
+                            <li class="stick bg-red"><a href="/views/ingresoSubrroEncargo.aspx"><span class="mif-cog icon"></span>Subrogación/Encargo</a></li>
+                            <li class="stick bg-green">
+                                <a class="dropdown-toggle" href="#"><span class="mif-tree icon"></span>Reporte</a>
+                                <ul class="d-menu" data-role="dropdown" style="display: none;">
+                                    <li><a href="/views/Reporte/ReporteCargoHistorial.aspx">Historial Puestos</a></li>
+                                    <li><a href="/views/Reporte/ReporteSubrogacionHistorial.aspx">Historial Subrogación/Encargo</a></li>
+                                    <li><a href="#">Discapacidad</a></li>
+                                </ul>
+                            </li>
+                            <li class="stick bg-red"><a href="/views/MantenedoresPosiciones.aspx"><span class="mif-cog icon"></span>Mantenedor</a></li>
                         </ul>
                     </div>
                     <div class="cell auto-size padding20 bg-white" id="cell-content">
