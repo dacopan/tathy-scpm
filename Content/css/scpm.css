@@ -74,6 +74,9 @@
 
 .metro .no-visible {
     height: 0;
+    height: 0;
+    border: none;
+    padding: 0;
 }
 
 .page-content {

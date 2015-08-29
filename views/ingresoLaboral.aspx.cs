@@ -239,7 +239,7 @@ public partial class ingresoLaboral : System.Web.UI.Page
             var _fec1 = inFechaStart.Text.Split('-');
             DateTime fecha_in = new DateTime(Convert.ToInt32(_fec1[0]), Convert.ToInt32(_fec1[1]), Convert.ToInt32(_fec1[2]));
 
-            var _fec2 = inFechaStart.Text.Split('-');
+            var _fec2 = inFechaEnd.Text.Split('-');
             DateTime? fecha_fin;
             if (inFechaEnd.Text.Contains("-"))
                 fecha_fin = new DateTime(Convert.ToInt32(_fec2[0]), Convert.ToInt32(_fec2[1]), Convert.ToInt32(_fec2[2]));

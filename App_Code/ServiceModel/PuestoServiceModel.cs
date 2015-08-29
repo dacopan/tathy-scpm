@@ -294,4 +294,84 @@ public class PuestoServiceModel
     {
         return (from a in db.SCPM_PERSONALES where a.PER_ID == p select a).ToList();
     }
+
+    public List<SCPM_PERSONALES> getAllPersonas()
+    {
+        return db.SCPM_PERSONALES.ToList();
+    }
+
+
+
+    //current_puesto_id:        ID: id del cargo a subrogar
+    //current_subroga_id:       id: personaID a la q esta subrogado o encargado     dcm: no esta subrogado
+    //current_tipo_id:          1: si el puesto actual esta subrogado               2: puesto actual encargado          dcm: puesto no sugbrogado           
+    //current_persona_id:       ID: personaID si el puesto esta ocupado             dcm: puesto no ocupado
+    //newPersonaID:             ID: personaID a la cual se subrogará
+    public bool addSubrogaHistorial(SCPM_SUBROGA_HIST historial, int cargo_id, string current_subroga_id, string current_tipo_id, string current_persona_id, int newPersonaID, String sub_hist_id)
+    {
+        var nowTime = DateTime.Now;
+
+        if (!current_tipo_id.Equals("dcm"))
+        {//puesto ya subrogado /encargado
+            SCPM_SUBROGA_HIST lastSubroga = getSubrogaByID(Convert.ToInt32(sub_hist_id));
+            if (current_tipo_id == "1" && historial.SUB_HIS_IS_ENCARGO.Value)
+            {//ya esta subrogado/encargado no puede ser encargado/subrogado
+                HelperUtil.showNotifi(String.Format("El puesto ya esta {0}, no puede ser {1}", current_tipo_id == "1" ? "subrogado" : "encargado", current_tipo_id == "1" ? "encargado" : "subrogado"));
+                return false;
+            }
+            else if (Convert.ToInt32(current_subroga_id) == newPersonaID)
+            {//actualiza fecha fin
+                //fecha fin no puede ser menor a fecha inicio
+                if (historial.SUB_HIS_FEC_FIN != null && lastSubroga.SUB_HIS_FEC_INI.Value.CompareTo(historial.SUB_HIS_FEC_FIN) > 0)
+                {
+                    HelperUtil.showNotifi("fecha inicio no puede ser mayor que final");
+                    return false;
+                }
+                lastSubroga.SUB_HIS_FEC_FIN = historial.SUB_HIS_FEC_FIN;
+                db.SaveChanges();
+                HelperUtil.showNotifi("Solo fecha final actualizada");
+                return true;
+            }
+            else
+            {//actualizar cambiar la persona a la q esta subrogado/encargado el puesto, se finaliza este historial y añade nuevo
+                lastSubroga.SUB_HIS_FEC_FIN = nowTime;
+                db.SaveChanges();
+                HelperUtil.showNotifi("Historial anterior finalizado.");
+                //add new historial
+                historial.SCPM_PERSONALES = getPersonasByID(newPersonaID).ToList().First();
+                historial.SCPM_CARGOS = getCargoByID(cargo_id);
+                historial.SUB_HIS_FEC_INI = nowTime;
+                db.AddToSCPM_SUBROGA_HIST(historial);
+                //save
+                db.SaveChanges();
+                HelperUtil.showNotifi("Nueva Historial de Subrogacion/encargo añadido.");
+                return true;
+
+            }
+        }
+        else
+        {//puesto no subrogado /encargado
+            //fecha fin no puede ser menor a fecha inicio
+            if (historial.SUB_HIS_FEC_FIN != null && historial.SUB_HIS_FEC_INI.Value.CompareTo(historial.SUB_HIS_FEC_FIN) > 0)
+            {
+                HelperUtil.showNotifi("fecha inicio no puede ser mayor que final");
+                return false;
+            }
+
+            //add new subroga/encargo
+            historial.SCPM_PERSONALES = getPersonasByID(newPersonaID).ToList().First();
+            historial.SCPM_CARGOS = getCargoByID(cargo_id);
+            db.AddToSCPM_SUBROGA_HIST(historial);
+            //save
+            db.SaveChanges();
+            HelperUtil.showNotifi("Nueva Historial de Subrogacion/encargo añadido.");
+            return true;
+        }
+
+    }
+
+    private SCPM_SUBROGA_HIST getSubrogaByID(int sub_hist_id)
+    {
+        return (from h in db.SCPM_SUBROGA_HIST where h.SUB_HIS_ID == sub_hist_id select h).FirstOrDefault();
+    }
 }

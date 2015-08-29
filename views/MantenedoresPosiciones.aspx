@@ -208,6 +208,7 @@
                                 <br />
                                 <table class="backgroundRepeatBanner table striped hovered cell-hovered border bordered">
                                     <thead>
+                                        <th>ID puesto</th>
                                         <th>Nombre del cargo</th>
                                         <th>Denominacion</th>
                                         <th>Estado</th>
@@ -215,6 +216,9 @@
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr>
+                                    <td>
+                                        <asp:label runat="server"><%# Eval("CAR_ID") %></asp:label>
+                                    </td>
                                     <td>
                                         <asp:HiddenField Value='<%# Eval("CAR_ID") %>' ID="car_id" runat="server" />
                                         <div class="input-control text full-size info">
