@@ -80,7 +80,7 @@
 }
 
 .page-content {
-    padding-top: 48px;
+    padding-top: 0;
     padding-left: 10px;
 }
 
@@ -90,4 +90,29 @@ input[type="submit"]:disabled, input[type="button"].disabled, input[type="reset"
     cursor: default !important;
     border-color: transparent !important;
     text-shadow: none !important;
+}
+
+.metro .dcmx.button {
+    font-size: 30px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    padding-top: 15px;
+    opacity: .8;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+    .metro .dcmx.button:hover {
+        opacity: 1;
+    }
+
+.metro .button.primary.dcmx {
+    padding-left: 13px;
+    padding-top: 12px;
+}
+#liveclock {
+
 }

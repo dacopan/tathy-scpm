@@ -6,44 +6,7 @@
 <head id="Head1" runat="server">
     <title>Despliegue de Red</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script language="JavaScript" type="text/javascript">
-        function show5() {
-            if (!document.layers && !document.all && !document.getElementById)
-                return
-            var Digital = new Date()
-            var hours = Digital.getHours()
-            var minutes = Digital.getMinutes()
-            var seconds = Digital.getSeconds()
 
-            var dn = "PM"
-            if (hours < 12)
-                dn = "AM"
-            if (hours > 12)
-                hours = hours - 12
-            if (hours == 0)
-                hours = 12
-
-            if (minutes <= 9)
-                minutes = "0" + minutes
-            if (seconds <= 9)
-                seconds = "0" + seconds
-
-            myclock = +hours + ":" + minutes + ":" + seconds + " " + dn
-            if (document.layers) {
-                document.layers.liveclock.document.write(myclock)
-                document.layers.liveclock.document.close()
-            }
-            else if (document.all)
-                liveclock.innerHTML = myclock
-            else if (document.getElementById)
-                document.getElementById("liveclock").innerHTML = myclock
-
-            //setTimeout("show5()", 1000)
-        }
-
-        window.onload = show5
-        window.mesagges = ('<%= HelperUtil.NotifyMessages %>');
-    </script>
 
     <style type="text/css">
         #form1 {
@@ -62,22 +25,30 @@
     <script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
     <script src="/Scripts/metro.js" type="text/javascript"></script>
 
+    <script language="JavaScript" type="text/javascript">
+
+       /* $(function () {
+            setInterval(function () {
+                var date = new Date(); var sec = date.getSeconds();
+                $('#liveclock').html(
+                date.getHours() + ":" + date.getMinutes() + ":" + (sec > 9 ? sec : "0"+sec)
+                    );
+            }, 500);
+
+        });*/
+        window.mesagges = ('<%= HelperUtil.NotifyMessages %>');
+    </script>
 </head>
 <body background="/Images/Pagina.png" class="metro">
     <img src="/Images/encabezadoDDR.png" style="width: 100%; height: auto;" alt="header" />
     <form id="form1" runat="server">
-        
-        <div>
 
-            <label id="liveclock" class="subtitle_fecha" style="text-align: left"></label>
-            <asp:ImageButton ID="ImageButton4" runat="server" Height="39px"
-                ImageUrl="~/Images/blue-home-icon.png" OnClick="ImageButton2_Click"
-                Width="41px" />
-            <asp:ImageButton ID="ImageButton5" runat="server" Height="35px"
-                ImageUrl="~/Images/off.png" OnClick="ImageButton3_Click" Width="48px" />
-            <asp:ImageButton ID="ImageButton6" runat="server" EnableTheming="False"
-                EnableViewState="False" ImageUrl="~/views/Images/cerrar.GIF"
-                OnClick="ImageButton1_Click" TabIndex="3" Visible="False" Width="84px" />
+        <div class="text-rigth padding20" style="text-align: right">
+
+            <span class="mif-alarm-on margin5R" style="float: left"></span><span id="liveclock" class="subtitle_fecha left" style="float: left; text-align: left; font-size: 18px;"></span>
+
+            <asp:LinkButton runat="server" ID="home" OnClick="home_Click" CssClass="button primary dcmx"><span class="mif-home"></span></asp:LinkButton>
+            <asp:LinkButton runat="server" ID="login" OnClick="login_Click" CssClass="button warning dcmx"><span class="mif-exit"></span></asp:LinkButton>
 
         </div>
         <div class="page-content">
@@ -86,30 +57,30 @@
                     <div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%">
                         <ul class="sidebar2 ">
                             <li class="title">Administración Personal</li>
-                            <li class=""><a href="/views/addPersona.aspx"><span class="mif-home icon"></span>Ingreso</a></li>
-                            <li class="stick bg-red"><a href="/views/searchPersona.aspx"><span class="mif-cog icon"></span>Buscar</a></li>
-                            <li class="stick bg-green">
-                                <a class="dropdown-toggle" href="#"><span class="mif-tree icon"></span>Reporte</a>
+                            <li class="stick bg-green"><a href="/views/addPersona.aspx"><span class="icon mif-user-plus"></span>Ingreso</a></li>
+                            <li class="stick bg-lightBlue"><a href="/views/searchPersona.aspx"><span class="mif-search icon"></span>Buscar</a></li>
+                            <li class="stick bg-red">
+                                <a class="dropdown-toggle" href="#"><span class="mif-file-pdf icon"></span>Reporte</a>
                                 <ul class="d-menu" data-role="dropdown" style="display: none;">
                                     <li><a href="#">Raza</a></li>
                                     <li><a href="#">Sexo</a></li>
                                     <li><a href="#">Discapacidad</a></li>
                                 </ul>
                             </li>
-                            <li class="stick bg-red"><a href="/views/mantenedoresPers.aspx"><span class="mif-cog icon"></span>Mantenedores</a></li>
+                            <li class="stick bg-orange"><a href="/views/mantenedoresPers.aspx"><span class="mif-suitcase icon"></span>Mantenedores</a></li>
 
                             <li class="title">Datos Laborales</li>
-                            <li class="active"><a href="/views/ingresoLaboral.aspx"><span class="mif-home icon"></span>Ingreso</a></li>
-                            <li class="stick bg-red"><a href="/views/ingresoSubrroEncargo.aspx"><span class="mif-cog icon"></span>Subrogación/Encargo</a></li>
-                            <li class="stick bg-green">
-                                <a class="dropdown-toggle" href="#"><span class="mif-tree icon"></span>Reporte</a>
+                            <li class="stick bg-green"><a href="/views/ingresoLaboral.aspx"><span class="mif-yelp icon"></span>Ingreso</a></li>
+                            <li class="stick bg-lightBlue"><a href="/views/ingresoSubrroEncargo.aspx"><span class="mif-cog icon"></span>Subrogación/Encargo</a></li>
+                            <li class="stick bg-red">
+                                <a class="dropdown-toggle" href="#"><span class="mif-file-pdf icon"></span>Reporte</a>
                                 <ul class="d-menu" data-role="dropdown" style="display: none;">
                                     <li><a href="/views/Reporte/ReporteCargoHistorial.aspx">Historial Puestos</a></li>
                                     <li><a href="/views/Reporte/ReporteSubrogacionHistorial.aspx">Historial Subrogación/Encargo</a></li>
                                     <li><a href="#">Discapacidad</a></li>
                                 </ul>
                             </li>
-                            <li class="stick bg-red"><a href="/views/MantenedoresPosiciones.aspx"><span class="mif-cog icon"></span>Mantenedor</a></li>
+                            <li class="stick bg-orange"><a href="/views/MantenedoresPosiciones.aspx"><span class="mif-cogs icon"></span>Mantenedor</a></li>
                         </ul>
                     </div>
                     <div class="cell auto-size padding20 bg-white" id="cell-content">

@@ -10,12 +10,12 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 //using ProcesosAmbiental;
 
-    
+
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
-    
-   // Conexion VConexion = new Conexion();
+
+    // Conexion VConexion = new Conexion();
 
     protected void Button3_Click(object sender, EventArgs e)
     {
@@ -29,7 +29,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     }
     protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
     {
-        
+
         string usuario1, tipo;
         usuario1 = Session["usuario"].ToString();
         //tipo = VConexion.LlenarDataSet2("select tipousuario from Ddr_Personal where Id_Usuario='" + Session["usuario"].ToString() + "'").Tables[0].Rows[0][0].ToString();
@@ -38,14 +38,24 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             Response.Redirect("WebMenuPrincipal.aspx");
         }
-        else{
+        else
+        {
             Response.Redirect("MenuProveedor.aspx");
-                    }
+        }
     }
     protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
     {
         Session.Abandon();
         Response.Redirect("Login.aspx");
-        
+
+    }
+
+    protected void home_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void login_Click(object sender, EventArgs e)
+    {
+
     }
 }

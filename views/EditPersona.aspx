@@ -553,7 +553,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="input-control text">
-                                                        <asp:TextBox ID="slider_input" value="0" runat="server" CssClass='<%# Eval("TIP_DIS_NOM").ToString().Replace(" ","")+Eval("TIP_DIS_ID") %>' />
+                                                        <asp:TextBox ID="slider_input" value="dcm" runat="server" CssClass='<%# Eval("TIP_DIS_NOM").ToString().Replace(" ","")+Eval("TIP_DIS_ID") %>' />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -730,8 +730,18 @@
             }
             $(function () {
                 $('div[data-role="sliderx"]').each(function () {
-                    $(this).slider();
-                    calcDiscapacidad($(this).data("position"), $(this));
+                    var slider = $(this);
+                    var rang = $(slider.parent().next().find("input"));
+
+                    if (rang.val() != "dcm") {
+                        c = parseInt(rang.val().toString().split('-')[0]);
+                    } else {
+                        c = slider.data("position");
+                    }
+
+                    slider.data("position", c);
+                    slider.slider({ position: c });
+                    calcDiscapacidad(c, $(this));
                 });
             });
 

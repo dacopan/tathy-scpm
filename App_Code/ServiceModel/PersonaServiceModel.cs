@@ -16,7 +16,18 @@ public class PersonaServiceModel
 
     }
 
-
+    public bool saveDB()
+    {
+        try
+        {
+            db.SaveChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
 
     public List<SCPM_PROVINCIAS> getAllProvincias()
     {
