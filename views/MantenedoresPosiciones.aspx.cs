@@ -344,11 +344,25 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
 
     protected void addCargo_Click(object sender, EventArgs e)
     {
+        var _area = psvm.getAreaByID(Convert.ToInt32(cargo_comboArea.SelectedValue));
+        var _den = psvm.getDenominacionByID(Convert.ToInt32(cargo_denominacion.Value));
+        _area.SCPM_CARGOS.Load();
+        psvm.getAllDenominaciones();
+
+        var contains = _area.SCPM_CARGOS.ToList().Any(u => u.CAR_NOM.Equals(inCargo.Text, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_DENOMINACIONES.DEN_ID == _den.DEN_ID);
+        if (contains)
+        {
+            HelperUtil.showNotifi("Cargo no añadido. Ya existe");
+            return;
+        }
+
+
+
         if (ComboArea.Enabled && psvm.addCargo(new SCPM_CARGOS()
         {
             CAR_NOM = inCargo.Text,
-            SCPM_AREAS = psvm.getAreaByID(Convert.ToInt32(cargo_comboArea.SelectedValue)),
-            SCPM_DENOMINACIONES = psvm.getDenominacionByID(Convert.ToInt32(cargo_denominacion.Value)),
+            SCPM_AREAS = _area,
+            SCPM_DENOMINACIONES = _den,
             CAR_EST = true
         }))
         {

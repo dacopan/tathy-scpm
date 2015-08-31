@@ -73,7 +73,8 @@
 
                             <li class="title">Datos Laborales</li>
                             <li class="stick bg-green"><a href="/views/ingresoLaboral.aspx"><span class="mif-yelp icon"></span>Ingreso</a></li>
-                            <li class="stick bg-lightBlue"><a href="/views/ingresoSubrroEncargo.aspx"><span class="mif-suitcase icon"></span>Subrogación/Encargo</a></li>
+                            <li class="stick bg-lightBlue"><a href="/views/searchCargo.aspx"><span class="mif-search icon"></span>Buscar Puesto</a></li>
+                            <li class="stick bg-brown"><a href="/views/ingresoSubrroEncargo.aspx"><span class="mif-suitcase icon"></span>Subrogación/Encargo</a></li>
                             <li class="stick bg-red">
                                 <a class="dropdown-toggle" href="#"><span class="mif-file-pdf icon"></span>Reporte</a>
                                 <ul class="d-menu" data-role="dropdown" style="display: none;">
