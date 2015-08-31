@@ -1,6 +1,7 @@
 ﻿using SCPMdbModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Objects.DataClasses;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -470,11 +471,7 @@ public partial class EditPersona : System.Web.UI.Page
         {
 
             bool isNumeric = int.TryParse(_per_ID, out per_id);
-            if (isNumeric)
-            {
-
-            }
-            else
+            if (!isNumeric)
             {
                 HelperUtil.showNotifi("persona no encontrada");
                 return;
@@ -487,11 +484,15 @@ public partial class EditPersona : System.Web.UI.Page
             return;
         }
         //datos funcionario
-        SCPM_PERSONALES p = psvm.getPersonasByID(per_id).FirstOrDefault();
+        //SCPM_PERSONALES p =( from cc in new DataClassesDataContext().SCPM_PERSONALES where cc.PER_ID == per_id select cc).First();
+        SCPM_PERSONALES p = psvm.getPersonasByID(per_id).First();
         p.SCPM_CONYUGES.Load();
         p.SCPM_RAZASReference.Load();
         p.SCPM_DISCAPACIDADES.Load();
         p.SCPM_EMERGENCIAS.Load();
+        p.SCPM_ESTADOS_CIVILESReference.Load();
+        p.SCPM_SECTORESReference.Load();
+
         //psvm.detach(p);
         p.PER_APE_PAT = inApellido1.Text;
         p.PER_APE_MAT = inApellido2.Text;
@@ -508,17 +509,18 @@ public partial class EditPersona : System.Web.UI.Page
 
         //raza
 
+        //         ((IEntityWithRelationships)p).RelationshipManager.
 
 
         p.SCPM_RAZASReference.Load();
         p.SCPM_RAZAS.SCPM_PERSONALES.Load();
-        p.SCPM_RAZAS.SCPM_PERSONALES.Remove(p);
-        psvm.saveDB();
-        p = psvm.getPersonasByID(per_id).FirstOrDefault();
-
+        //p.SCPM_RAZAS = null;
         p.SCPM_RAZAS = psvm.getRazaByID(Convert.ToInt32(comboRaza.SelectedValue));//set new raza
+        //psvm.saveDB();
+        //psvm.refresh(p);
 
 
+        //end raza
 
         p.PER_LIB_MIL_NUM = inMilitar.Text;
         //end raza
@@ -615,14 +617,20 @@ public partial class EditPersona : System.Web.UI.Page
         }
         else
         {
-            p.SCPM_CONYUGES.Clear();
+            p.SCPM_CONYUGES.Remove(con);
+            psvm.deleteConyugue(con);
         }
         ///---discapacidad---///
         if (hasDisapacidad.Checked)
         {
             var parentezcoRef = psvm.getParentezcoByID(Convert.ToInt32(dis_comboParentesco.SelectedValue));
 
+            p.SCPM_DISCAPACIDADES.Load();
             var current_dis = p.SCPM_DISCAPACIDADES;
+            foreach (var item in current_dis)
+            {
+                item.SCPM_TIPO_DISCAPACIDADESReference.Load();
+            }
             foreach (RepeaterItem item in Repeater1.Items)
             {
                 int rango = Convert.ToInt32((item.FindControl("slider_input") as TextBox).Text.Split('-')[0]);
@@ -648,6 +656,7 @@ public partial class EditPersona : System.Web.UI.Page
                     if (dis != null)        //si la discapacidad fue guardada antroirmente pero nuevo valor es cero, la elimino
                     {
                         p.SCPM_DISCAPACIDADES.Remove(dis);
+                        psvm.deleteteDiscapaciad(dis);
                     }
                 }
             }

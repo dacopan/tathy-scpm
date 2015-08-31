@@ -50,7 +50,7 @@ public class PersonaServiceModel
         return db.SCPM_PAIS.ToList();
     }
 
-    public List<SCPM_RAZAS> getAllRazas()
+    public List<SCPMdbModel.SCPM_RAZAS> getAllRazas()
     {
         return db.SCPM_RAZAS.ToList();
     }
@@ -316,7 +316,7 @@ public class PersonaServiceModel
         return true;
     }
 
-    public bool addRaza(SCPM_RAZAS newx)
+    public bool addRaza(SCPMdbModel.SCPM_RAZAS newx)
     {
         var contains = db.SCPM_RAZAS.ToList().Any(u => u.RAZ_NOM == newx.RAZ_NOM);
         if (contains) return false;
@@ -361,7 +361,7 @@ public class PersonaServiceModel
     }
 
 
-    public bool addPersona(SCPM_PERSONALES newx)
+    public bool addPersona(SCPMdbModel.SCPM_PERSONALES newx)
     {
         var contains = db.SCPM_PERSONALES.ToList().Any(u => u.PER_NUM_DOC == newx.PER_NUM_DOC);
         if (contains) return false;
@@ -379,7 +379,7 @@ public class PersonaServiceModel
         return (from a in db.SCPM_PAIS where a.PAI_ID == newx select a).First();
     }
 
-    public SCPM_RAZAS getRazaByID(int newx)
+    public SCPMdbModel.SCPM_RAZAS getRazaByID(int newx)
     {
         return (from a in db.SCPM_RAZAS where a.RAZ_ID == newx select a).First();
     }
@@ -422,7 +422,7 @@ public class PersonaServiceModel
 
 
 
-    public List<SCPM_PERSONALES> getPersonasByNumDoc(string filtro)
+    public List<SCPMdbModel.SCPM_PERSONALES> getPersonasByNumDoc(string filtro)
     {
         return (from a in db.SCPM_PERSONALES where a.PER_NUM_DOC.Equals(filtro) select a).ToList();
     }
@@ -432,7 +432,7 @@ public class PersonaServiceModel
         return (from a in db.SCPM_PERSONALES where (a.PER_APE_PAT + " " + a.PER_APE_MAT + " " + a.PER_NOM1 + " " + a.PER_NOM2).Contains(filtro) select a).ToList();
     }
 
-    public List<SCPM_PERSONALES> getPersonasByID(int p)
+    public List<SCPMdbModel.SCPM_PERSONALES> getPersonasByID(int p)
     {
         return (from a in db.SCPM_PERSONALES where a.PER_ID == p select a).ToList();
     }
@@ -452,7 +452,18 @@ public class PersonaServiceModel
     {
         //db.Attach(p, true);
         saveDB();
-        
+    }
 
+    public void refresh(object p)
+    {
+        db.Refresh(System.Data.Objects.RefreshMode.StoreWins, p);
+    }
+
+    public void deleteConyugue(SCPM_CONYUGES con)
+    {
+        db.DeleteObject(con);
+    }
+    public void deleteteDiscapaciad(SCPM_DISCAPACIDADES dis) {
+        db.DeleteObject(dis);
     }
 }

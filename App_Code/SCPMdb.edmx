@@ -36,16 +36,11 @@
         </EntityType>
         <EntityType Name="SCPM_CONYUGES">
           <Key>
-            <PropertyRef Name="EST_CIV_ID" />
-            <PropertyRef Name="RAZ_ID" />
-            <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CON_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PROF_ID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TIP_IDE_COD" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PAI_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CON_NUM_DOC" Type="text" />
@@ -82,8 +77,6 @@
           </Key>
           <Property Name="DIS_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PARE_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="TIP_DIS_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="DIS_CLA" Type="bit" />
@@ -93,13 +86,9 @@
         </EntityType>
         <EntityType Name="SCPM_EMERGENCIAS">
           <Key>
-            <PropertyRef Name="EST_CIV_ID" />
-            <PropertyRef Name="RAZ_ID" />
             <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_FAM_EME_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CON_FAM_EME_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PARE_ID" Type="numeric" Precision="18" Scale="0" />
@@ -144,14 +133,13 @@
         </EntityType>
         <EntityType Name="SCPM_PERSONALES">
           <Key>
-            <PropertyRef Name="EST_CIV_ID" />
-            <PropertyRef Name="RAZ_ID" />
             <PropertyRef Name="PER_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="TIP_IDE_COD" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CON_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PAI_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="SEC_ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PER_NUM_DOC" Type="varchar" MaxLength="20" />
@@ -195,8 +183,6 @@
           </Key>
           <Property Name="PST_HIS_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CAR_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="REL_LAB_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PST_HIS_FEC_INI" Type="datetime" />
@@ -232,8 +218,6 @@
             <PropertyRef Name="SUB_HIS_ID" />
           </Key>
           <Property Name="SUB_HIS_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EST_CIV_ID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="RAZ_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="PER_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="CAR_ID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SUB_HIS_IS_ENCARGO" Type="bit" />
@@ -330,13 +314,9 @@
           <End Role="SCPM_CONYUGES" Type="Self.SCPM_CONYUGES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Principal>
             <Dependent Role="SCPM_CONYUGES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -382,13 +362,9 @@
           <End Role="SCPM_DISCAPACIDADES" Type="Self.SCPM_DISCAPACIDADES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Principal>
             <Dependent Role="SCPM_DISCAPACIDADES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -422,13 +398,9 @@
           <End Role="SCPM_EMERGENCIAS" Type="Self.SCPM_EMERGENCIAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Principal>
             <Dependent Role="SCPM_EMERGENCIAS">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -442,6 +414,18 @@
             </Principal>
             <Dependent Role="SCPM_PARROQUIAS">
               <PropertyRef Name="CAN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SCPM_PER_RELATIONS_SCPM_CON">
+          <End Role="SCPM_CONYUGES" Type="Self.SCPM_CONYUGES" Multiplicity="0..1" />
+          <End Role="SCPM_PERSONALES" Type="Self.SCPM_PERSONALES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SCPM_CONYUGES">
+              <PropertyRef Name="CON_ID" />
+            </Principal>
+            <Dependent Role="SCPM_PERSONALES">
+              <PropertyRef Name="CON_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -522,13 +506,9 @@
           <End Role="SCPM_PUESTO_HIST" Type="Self.SCPM_PUESTO_HIST" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Principal>
             <Dependent Role="SCPM_PUESTO_HIST">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -574,13 +554,9 @@
           <End Role="SCPM_SUBROGA_HIST" Type="Self.SCPM_SUBROGA_HIST" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Principal>
             <Dependent Role="SCPM_SUBROGA_HIST">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -663,6 +639,10 @@
           <AssociationSet Name="FK_SCPM_PAR_RELATIONS_SCPM_CAN" Association="Self.FK_SCPM_PAR_RELATIONS_SCPM_CAN">
             <End Role="SCPM_CANTONES" EntitySet="SCPM_CANTONES" />
             <End Role="SCPM_PARROQUIAS" EntitySet="SCPM_PARROQUIAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SCPM_PER_RELATIONS_SCPM_CON" Association="Self.FK_SCPM_PER_RELATIONS_SCPM_CON">
+            <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
+            <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
           </AssociationSet>
           <AssociationSet Name="FK_SCPM_PER_RELATIONS_SCPM_EST" Association="Self.FK_SCPM_PER_RELATIONS_SCPM_EST">
             <End Role="SCPM_ESTADOS_CIVILES" EntitySet="SCPM_ESTADOS_CIVILES" />
@@ -780,6 +760,10 @@
             <End Role="SCPM_TIPO_IDENTIFICACIONES" EntitySet="SCPM_TIPO_IDENTIFICACIONES" />
             <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
           </AssociationSet>
+          <AssociationSet Name="FK_SCPM_PER_RELATIONS_SCPM_CON" Association="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_CON">
+            <End Role="SCPM_CONYUGES" EntitySet="SCPM_CONYUGES" />
+            <End Role="SCPM_PERSONALES" EntitySet="SCPM_PERSONALES" />
+          </AssociationSet>
           <AssociationSet Name="FK_SCPM_DIS_RELATIONS_SCPM_PAR" Association="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PAR">
             <End Role="SCPM_PARENTESCOS" EntitySet="SCPM_PARENTESCOS" />
             <End Role="SCPM_DISCAPACIDADES" EntitySet="SCPM_DISCAPACIDADES" />
@@ -872,14 +856,8 @@
         </EntityType>
         <EntityType Name="SCPM_CONYUGES">
           <Key>
-            <PropertyRef Name="EST_CIV_ID" />
-            <PropertyRef Name="RAZ_ID" />
-            <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="RAZ_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="PER_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="CON_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CON_NUM_DOC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CON_APE_PAT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -901,6 +879,7 @@
           <NavigationProperty Name="SCPM_PERSONALES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER" FromRole="SCPM_CONYUGES" ToRole="SCPM_PERSONALES" />
           <NavigationProperty Name="SCPM_PROFESIONES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PRO" FromRole="SCPM_CONYUGES" ToRole="SCPM_PROFESIONES" />
           <NavigationProperty Name="SCPM_TIPO_IDENTIFICACIONES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP" FromRole="SCPM_CONYUGES" ToRole="SCPM_TIPO_IDENTIFICACIONES" />
+          <NavigationProperty Name="SCPM_PERSONALES1" Relationship="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_CON" FromRole="SCPM_CONYUGES" ToRole="SCPM_PERSONALES" />
         </EntityType>
         <EntityType Name="SCPM_DENOMINACIONES">
           <Key>
@@ -929,13 +908,9 @@
         </EntityType>
         <EntityType Name="SCPM_EMERGENCIAS">
           <Key>
-            <PropertyRef Name="EST_CIV_ID" />
-            <PropertyRef Name="RAZ_ID" />
             <PropertyRef Name="PER_ID" />
             <PropertyRef Name="CON_FAM_EME_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="RAZ_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="PER_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="CON_FAM_EME_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CON_FAM_EME_NOM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -987,12 +962,8 @@
         </EntityType>
         <EntityType Name="SCPM_PERSONALES">
           <Key>
-            <PropertyRef Name="EST_CIV_ID" />
-            <PropertyRef Name="RAZ_ID" />
             <PropertyRef Name="PER_ID" />
           </Key>
-          <Property Name="EST_CIV_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="RAZ_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="PER_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PER_NUM_DOC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="PER_APE_PAT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -1013,6 +984,7 @@
           <Property Name="PER_EST" Type="Boolean" />
           <Property Name="PER_PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SCPM_CONYUGES" Relationship="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER" FromRole="SCPM_PERSONALES" ToRole="SCPM_CONYUGES" />
+          <NavigationProperty Name="SCPM_CONYUGES1" Relationship="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_CON" FromRole="SCPM_PERSONALES" ToRole="SCPM_CONYUGES" />
           <NavigationProperty Name="SCPM_DISCAPACIDADES" Relationship="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PER" FromRole="SCPM_PERSONALES" ToRole="SCPM_DISCAPACIDADES" />
           <NavigationProperty Name="SCPM_EMERGENCIAS" Relationship="SCPMdbModel.FK_SCPM_EME_RELATIONS_SCPM_PER" FromRole="SCPM_PERSONALES" ToRole="SCPM_EMERGENCIAS" />
           <NavigationProperty Name="SCPM_ESTADOS_CIVILES" Relationship="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_EST" FromRole="SCPM_PERSONALES" ToRole="SCPM_ESTADOS_CIVILES" />
@@ -1155,19 +1127,6 @@
         <Association Name="FK_SCPM_CON_RELATIONS_SCPM_PER">
           <End Type="SCPMdbModel.SCPM_PERSONALES" Role="SCPM_PERSONALES" Multiplicity="1" />
           <End Type="SCPMdbModel.SCPM_CONYUGES" Role="SCPM_CONYUGES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
-              <PropertyRef Name="PER_ID" />
-            </Principal>
-            <Dependent Role="SCPM_CONYUGES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
-              <PropertyRef Name="PER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-          
         </Association>
         <Association Name="FK_SCPM_CON_RELATIONS_SCPM_PRO">
           <End Type="SCPMdbModel.SCPM_PROFESIONES" Role="SCPM_PROFESIONES" Multiplicity="0..1" />
@@ -1176,6 +1135,10 @@
         <Association Name="FK_SCPM_CON_RELATIONS_SCPM_TIP">
           <End Type="SCPMdbModel.SCPM_TIPO_IDENTIFICACIONES" Role="SCPM_TIPO_IDENTIFICACIONES" Multiplicity="0..1" />
           <End Type="SCPMdbModel.SCPM_CONYUGES" Role="SCPM_CONYUGES" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SCPM_PER_RELATIONS_SCPM_CON">
+          <End Type="SCPMdbModel.SCPM_CONYUGES" Role="SCPM_CONYUGES" Multiplicity="0..1" />
+          <End Type="SCPMdbModel.SCPM_PERSONALES" Role="SCPM_PERSONALES" Multiplicity="*" />
         </Association>
         <Association Name="FK_SCPM_DIS_RELATIONS_SCPM_PAR">
           <End Type="SCPMdbModel.SCPM_PARENTESCOS" Role="SCPM_PARENTESCOS" Multiplicity="0..1" />
@@ -1198,13 +1161,9 @@
           <End Type="SCPMdbModel.SCPM_EMERGENCIAS" Role="SCPM_EMERGENCIAS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Principal>
             <Dependent Role="SCPM_EMERGENCIAS">
-              <PropertyRef Name="EST_CIV_ID" />
-              <PropertyRef Name="RAZ_ID" />
               <PropertyRef Name="PER_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1213,15 +1172,6 @@
         <Association Name="FK_SCPM_PER_RELATIONS_SCPM_EST">
           <End Type="SCPMdbModel.SCPM_ESTADOS_CIVILES" Role="SCPM_ESTADOS_CIVILES" Multiplicity="1" />
           <End Type="SCPMdbModel.SCPM_PERSONALES" Role="SCPM_PERSONALES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCPM_ESTADOS_CIVILES">
-              <PropertyRef Name="EST_CIV_ID" />
-            </Principal>
-            <Dependent Role="SCPM_PERSONALES">
-              <PropertyRef Name="EST_CIV_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-          
         </Association>
         <Association Name="FK_SCPM_PER_RELATIONS_SCPM_PAI">
           <End Type="SCPMdbModel.SCPM_PAIS" Role="SCPM_PAIS" Multiplicity="1" />
@@ -1234,15 +1184,6 @@
         <Association Name="FK_SCPM_PER_RELATIONS_SCPM_RAZ">
           <End Type="SCPMdbModel.SCPM_RAZAS" Role="SCPM_RAZAS" Multiplicity="1" />
           <End Type="SCPMdbModel.SCPM_PERSONALES" Role="SCPM_PERSONALES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SCPM_RAZAS">
-              <PropertyRef Name="RAZ_ID" />
-            </Principal>
-            <Dependent Role="SCPM_PERSONALES">
-              <PropertyRef Name="RAZ_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-          
         </Association>
         <Association Name="FK_SCPM_PER_RELATIONS_SCPM_SEC">
           <End Type="SCPMdbModel.SCPM_SECTORES" Role="SCPM_SECTORES" Multiplicity="1" />
@@ -1318,9 +1259,6 @@
                 <ScalarProperty Name="CON_APE_PAT" ColumnName="CON_APE_PAT" />
                 <ScalarProperty Name="CON_NUM_DOC" ColumnName="CON_NUM_DOC" />
                 <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
-                <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-                <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-                <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1356,8 +1294,6 @@
                 <ScalarProperty Name="CON_FAM_EME_NOM" ColumnName="CON_FAM_EME_NOM" />
                 <ScalarProperty Name="CON_FAM_EME_ID" ColumnName="CON_FAM_EME_ID" />
                 <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-                <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-                <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1420,8 +1356,6 @@
                 <ScalarProperty Name="PER_APE_PAT" ColumnName="PER_APE_PAT" />
                 <ScalarProperty Name="PER_NUM_DOC" ColumnName="PER_NUM_DOC" />
                 <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-                <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-                <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1581,9 +1515,6 @@
           <AssociationSetMapping Name="FK_SCPM_CON_RELATIONS_SCPM_PAI" TypeName="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PAI" StoreEntitySet="SCPM_CONYUGES">
             <EndProperty Name="SCPM_CONYUGES">
               <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
-              <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_PAIS">
               <ScalarProperty Name="PAI_ID" ColumnName="PAI_ID" />
@@ -1593,22 +1524,14 @@
           <AssociationSetMapping Name="FK_SCPM_CON_RELATIONS_SCPM_PER" TypeName="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PER" StoreEntitySet="SCPM_CONYUGES">
             <EndProperty Name="SCPM_CONYUGES">
               <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
-              <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_CON_RELATIONS_SCPM_PRO" TypeName="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_PRO" StoreEntitySet="SCPM_CONYUGES">
             <EndProperty Name="SCPM_CONYUGES">
               <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
-              <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_PROFESIONES">
               <ScalarProperty Name="PROF_ID" ColumnName="PROF_ID" />
@@ -1618,14 +1541,20 @@
           <AssociationSetMapping Name="FK_SCPM_CON_RELATIONS_SCPM_TIP" TypeName="SCPMdbModel.FK_SCPM_CON_RELATIONS_SCPM_TIP" StoreEntitySet="SCPM_CONYUGES">
             <EndProperty Name="SCPM_CONYUGES">
               <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
-              <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_TIPO_IDENTIFICACIONES">
               <ScalarProperty Name="TIP_IDE_COD" ColumnName="TIP_IDE_COD" />
             </EndProperty>
             <Condition ColumnName="TIP_IDE_COD" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SCPM_PER_RELATIONS_SCPM_CON" TypeName="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_CON" StoreEntitySet="SCPM_PERSONALES">
+            <EndProperty Name="SCPM_PERSONALES">
+              <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+            </EndProperty>
+            <EndProperty Name="SCPM_CONYUGES">
+              <ScalarProperty Name="CON_ID" ColumnName="CON_ID" />
+            </EndProperty>
+            <Condition ColumnName="CON_ID" IsNull="false" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_DIS_RELATIONS_SCPM_PAR" TypeName="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_PAR" StoreEntitySet="SCPM_DISCAPACIDADES">
             <EndProperty Name="SCPM_DISCAPACIDADES">
@@ -1642,11 +1571,7 @@
             </EndProperty>
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
-            <Condition ColumnName="EST_CIV_ID" IsNull="false" />
-            <Condition ColumnName="RAZ_ID" IsNull="false" />
             <Condition ColumnName="PER_ID" IsNull="false" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_DIS_RELATIONS_SCPM_TIP" TypeName="SCPMdbModel.FK_SCPM_DIS_RELATIONS_SCPM_TIP" StoreEntitySet="SCPM_DISCAPACIDADES">
@@ -1662,8 +1587,6 @@
             <EndProperty Name="SCPM_EMERGENCIAS">
               <ScalarProperty Name="CON_FAM_EME_ID" ColumnName="CON_FAM_EME_ID" />
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_PARENTESCOS">
               <ScalarProperty Name="PARE_ID" ColumnName="PARE_ID" />
@@ -1674,20 +1597,14 @@
             <EndProperty Name="SCPM_EMERGENCIAS">
               <ScalarProperty Name="CON_FAM_EME_ID" ColumnName="CON_FAM_EME_ID" />
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_PER_RELATIONS_SCPM_EST" TypeName="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_EST" StoreEntitySet="SCPM_PERSONALES">
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_ESTADOS_CIVILES">
               <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
@@ -1696,8 +1613,6 @@
           <AssociationSetMapping Name="FK_SCPM_PER_RELATIONS_SCPM_PAI" TypeName="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_PAI" StoreEntitySet="SCPM_PERSONALES">
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_PAIS">
               <ScalarProperty Name="PAI_ID" ColumnName="PAI_ID" />
@@ -1714,8 +1629,6 @@
           <AssociationSetMapping Name="FK_SCPM_PER_RELATIONS_SCPM_RAZ" TypeName="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_RAZ" StoreEntitySet="SCPM_PERSONALES">
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_RAZAS">
               <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
@@ -1724,8 +1637,6 @@
           <AssociationSetMapping Name="FK_SCPM_PER_RELATIONS_SCPM_SEC" TypeName="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_SEC" StoreEntitySet="SCPM_PERSONALES">
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_SECTORES">
               <ScalarProperty Name="SEC_ID" ColumnName="SEC_ID" />
@@ -1734,8 +1645,6 @@
           <AssociationSetMapping Name="FK_SCPM_PER_RELATIONS_SCPM_TIP" TypeName="SCPMdbModel.FK_SCPM_PER_RELATIONS_SCPM_TIP" StoreEntitySet="SCPM_PERSONALES">
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
             <EndProperty Name="SCPM_TIPO_IDENTIFICACIONES">
               <ScalarProperty Name="TIP_IDE_COD" ColumnName="TIP_IDE_COD" />
@@ -1748,11 +1657,7 @@
             </EndProperty>
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
-            <Condition ColumnName="EST_CIV_ID" IsNull="false" />
-            <Condition ColumnName="RAZ_ID" IsNull="false" />
             <Condition ColumnName="PER_ID" IsNull="false" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_SUB_RELATIONS_SCPM_PER" TypeName="SCPMdbModel.FK_SCPM_SUB_RELATIONS_SCPM_PER" StoreEntitySet="SCPM_SUBROGA_HIST">
@@ -1761,11 +1666,7 @@
             </EndProperty>
             <EndProperty Name="SCPM_PERSONALES">
               <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
-              <ScalarProperty Name="RAZ_ID" ColumnName="RAZ_ID" />
-              <ScalarProperty Name="EST_CIV_ID" ColumnName="EST_CIV_ID" />
             </EndProperty>
-            <Condition ColumnName="EST_CIV_ID" IsNull="false" />
-            <Condition ColumnName="RAZ_ID" IsNull="false" />
             <Condition ColumnName="PER_ID" IsNull="false" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_SCPM_PUE_RELATIONS_SCPM_REL" TypeName="SCPMdbModel.FK_SCPM_PUE_RELATIONS_SCPM_REL" StoreEntitySet="SCPM_PUESTO_HIST">
