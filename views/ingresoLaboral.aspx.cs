@@ -227,7 +227,7 @@ public partial class ingresoLaboral : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-
+            HelperUtil.showNotifi("No se encontro funcionario");
         }
     }
 

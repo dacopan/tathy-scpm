@@ -1,5 +1,6 @@
 ﻿using SCPMdbModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -80,9 +81,141 @@ public class ReporteServiceModel
         //return 
     }
 
+    public IEnumerable getRazaCount(DateTime? fecha_start, DateTime? fecha_fin)
+    {
+
+        SCPMdbEntities db = new SCPMdbEntities();
+
+        var razas = db.SCPM_RAZAS.ToList();
+        var _res = new Dictionary<decimal, PersonaRaza>();
+
+        foreach (var item in razas)
+        {
+            _res.Add(item.RAZ_ID, new PersonaRaza()
+            {
+                count = 0,
+                raza = item.RAZ_NOM
+            });
+        }
+
+        var personas = db.SCPM_PERSONALES.ToList();
+        foreach (var p in personas)
+        {
+            p.SCPM_PUESTO_HIST.Load();
+            if (p.SCPM_PUESTO_HIST.Count > 0)
+            {
+                SCPM_PUESTO_HIST lastCargo = p.SCPM_PUESTO_HIST.OrderBy(c => c.PST_HIS_FEC_INI).FirstOrDefault();
+                p.SCPM_RAZASReference.Load();
+                if ((lastCargo.PST_HIS_FEC_INI < fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI > fecha_start))
+                    _res[p.SCPM_RAZAS.RAZ_ID].count++;
+
+            }
+        }
+        return _res.Values.ToList();
+    }
+
+    public IEnumerable getGeneroCount(DateTime? fecha_start, DateTime? fecha_fin)
+    {
+
+        SCPMdbEntities db = new SCPMdbEntities();
+
+        var _res = new Dictionary<decimal, PersonaRaza>();
+
+
+        _res.Add(0, new PersonaRaza()
+        {
+            count = 0,
+            raza = "Hombre"
+        });
+        _res.Add(1, new PersonaRaza()
+        {
+            count = 0,
+            raza = "Mujer"
+        });
+
+
+        var personas = db.SCPM_PERSONALES.ToList();
+        foreach (var p in personas)
+        {
+            p.SCPM_PUESTO_HIST.Load();
+            if (p.SCPM_PUESTO_HIST.Count > 0)
+            {
+                SCPM_PUESTO_HIST lastCargo = p.SCPM_PUESTO_HIST.OrderBy(c => c.PST_HIS_FEC_INI).FirstOrDefault();
+
+                if ((lastCargo.PST_HIS_FEC_INI < fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI > fecha_start))
+                    _res[p.PER_GEN.Value ? 0 : 1].count++;
+
+            }
+        }
+        return _res.Values.ToList();
+    }
+
+    public List<SubrogacionHistory> getPersonaHistory(string tipo, SCPM_PERSONALES p)
+    {
+
+        SCPMdbEntities db = new SCPMdbEntities();
+
+        List<SubrogacionHistory> _res = new List<SubrogacionHistory>();
+
+        //SCPM_PERSONALES p = (from a in db.SCPM_PERSONALES where a.PER_ID == per_id select a).ToList().FirstOrDefault();
+
+
+        if (tipo == "1" || tipo == "2")
+        {
+            p.SCPM_SUBROGA_HIST.Load();
+            var hist = p.SCPM_SUBROGA_HIST.ToList();
+            foreach (var item in hist)
+            {
+                item.SCPM_CARGOSReference.Load();
+                item.SCPM_CARGOS.SCPM_AREASReference.Load();
+                item.SCPM_CARGOS.SCPM_AREAS.SCPM_UNIDADReference.Load();
+
+                _res.Add(new SubrogacionHistory()
+                {
+                    unidad = item.SCPM_CARGOS.SCPM_AREAS.SCPM_UNIDAD.UNI_NOM,
+                    area = item.SCPM_CARGOS.SCPM_AREAS.ARE_NOM,
+                    car_id = Convert.ToInt32(item.SCPM_CARGOS.CAR_ID),
+                    car_nom = item.SCPM_CARGOS.CAR_NOM,
+                    fecha_end = item.SUB_HIS_FEC_FIN.HasValue ? item.SUB_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd") : "",
+                    fecha_start = item.SUB_HIS_FEC_INI.Value.ToString("yyyy-MM-dd"),
+                    tipo = item.SUB_HIS_IS_ENCARGO.Value ? "Encargo" : "Subrogación"
+
+                });
+            }
+        }
+        if (tipo == "1" || tipo == "2")
+        {
+            p.SCPM_PUESTO_HIST.Load();
+            var fijo = p.SCPM_PUESTO_HIST.ToList();
+            foreach (var item in fijo)
+            {
+
+                item.SCPM_CARGOSReference.Load();
+                item.SCPM_CARGOS.SCPM_AREASReference.Load();
+                item.SCPM_CARGOS.SCPM_AREAS.SCPM_UNIDADReference.Load();
+
+                _res.Add(new SubrogacionHistory()
+                {
+                    unidad = item.SCPM_CARGOS.SCPM_AREAS.SCPM_UNIDAD.UNI_NOM,
+                    area = item.SCPM_CARGOS.SCPM_AREAS.ARE_NOM,
+                    car_id = Convert.ToInt32(item.SCPM_CARGOS.CAR_ID),
+                    car_nom = item.SCPM_CARGOS.CAR_NOM,
+                    fecha_end = item.PST_HIS_FEC_FIN.HasValue ? item.PST_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd") : "",
+                    fecha_start = item.PST_HIS_FEC_INI.Value.ToString("yyyy-MM-dd"),
+                    tipo = "Fijo"
+
+                });
+            }
+        }
+        return _res.OrderByDescending(a => a.fecha_start).ToList();
+    }
 }
 
-
+public class PersonaRaza
+{
+    public string raza { get; set; }
+    public int count { get; set; }
+}
 
 public class SubrogacionHistory
 {

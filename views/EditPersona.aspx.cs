@@ -488,6 +488,11 @@ public partial class EditPersona : System.Web.UI.Page
         }
         //datos funcionario
         SCPM_PERSONALES p = psvm.getPersonasByID(per_id).FirstOrDefault();
+        p.SCPM_CONYUGES.Load();
+        p.SCPM_RAZASReference.Load();
+        p.SCPM_DISCAPACIDADES.Load();
+        p.SCPM_EMERGENCIAS.Load();
+        //psvm.detach(p);
         p.PER_APE_PAT = inApellido1.Text;
         p.PER_APE_MAT = inApellido2.Text;
         p.PER_NOM1 = inNombre1.Text;
@@ -495,10 +500,31 @@ public partial class EditPersona : System.Web.UI.Page
 
         p.SCPM_PAIS = psvm.getPaisByID(Convert.ToInt32(comboPais.SelectedValue));
         p.SCPM_TIPO_IDENTIFICACIONES = psvm.getIdentificacionByID(Convert.ToInt32(comboDocumento.SelectedValue));
+
         p.PER_NUM_DOC = inDocumento.Text;
         p.PER_GEN = sexo.Checked;
-        p.SCPM_RAZAS = psvm.getRazaByID(Convert.ToInt32(comboRaza.SelectedValue));
+
+
+
+        //raza
+
+
+
+        p.SCPM_RAZASReference.Load();
+        p.SCPM_RAZAS.SCPM_PERSONALES.Load();
+        p.SCPM_RAZAS.SCPM_PERSONALES.Remove(p);
+        psvm.saveDB();
+        p = psvm.getPersonasByID(per_id).FirstOrDefault();
+
+        p.SCPM_RAZAS = psvm.getRazaByID(Convert.ToInt32(comboRaza.SelectedValue));//set new raza
+
+
+
         p.PER_LIB_MIL_NUM = inMilitar.Text;
+        //end raza
+
+
+
 
         var _fec = inFechaNac.Text.Split('-');
         p.PER_FEC_NAC = new DateTime(Convert.ToInt32(_fec[0]), Convert.ToInt32(_fec[1]), Convert.ToInt32(_fec[2]));
@@ -546,7 +572,6 @@ public partial class EditPersona : System.Web.UI.Page
         ///---CONYUGUE---///
         SCPM_CONYUGES con = null;
         bool newConyugue = false;
-        p.SCPM_CONYUGES.Load();
         if (p.SCPM_CONYUGES.Count > 0)
         {
             con = p.SCPM_CONYUGES.FirstOrDefault();
@@ -603,7 +628,6 @@ public partial class EditPersona : System.Web.UI.Page
                 int rango = Convert.ToInt32((item.FindControl("slider_input") as TextBox).Text.Split('-')[0]);
                 int dis_tip_id = Convert.ToInt32((item.FindControl("dis_tip_id") as HiddenField).Value);
 
-                p.SCPM_DISCAPACIDADES.Load();
 
                 SCPM_DISCAPACIDADES dis = (from c in current_dis where c.SCPM_TIPO_DISCAPACIDADES.TIP_DIS_ID == dis_tip_id select c).FirstOrDefault(); //busco si esa discapacidad ya fue guardada anteriormente
                 bool newDis = dis == null; //si no fue guardada debo crear una nueva
@@ -629,7 +653,7 @@ public partial class EditPersona : System.Web.UI.Page
             }
         }
         ///---emergencia---///
-        p.SCPM_EMERGENCIAS.Load();
+
         SCPM_EMERGENCIAS emg = p.SCPM_EMERGENCIAS.FirstOrDefault();
 
         emg.CON_FAM_EME_NOM = emg_nombre.Text;

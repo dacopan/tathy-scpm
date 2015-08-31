@@ -113,6 +113,10 @@ input[type="submit"]:disabled, input[type="button"].disabled, input[type="reset"
     padding-left: 13px;
     padding-top: 12px;
 }
-#liveclock {
 
+#liveclock {
+}
+
+.metro .text-right {
+    text-align: right;
 }

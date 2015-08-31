@@ -15,7 +15,18 @@ public class PersonaServiceModel
         db = new SCPMdbEntities();
 
     }
-
+    public bool AcceptAllChanges()
+    {
+        try
+        {
+            db.AcceptAllChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
     public bool saveDB()
     {
         try
@@ -432,4 +443,16 @@ public class PersonaServiceModel
     }
 
 
+
+    public void detach(SCPM_PERSONALES p)
+    {
+        db.Detach(p);
+    }
+    public void atach(SCPM_PERSONALES p)
+    {
+        //db.Attach(p, true);
+        saveDB();
+        
+
+    }
 }

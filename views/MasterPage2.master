@@ -27,15 +27,15 @@
 
     <script language="JavaScript" type="text/javascript">
 
-       /* $(function () {
-            setInterval(function () {
-                var date = new Date(); var sec = date.getSeconds();
-                $('#liveclock').html(
-                date.getHours() + ":" + date.getMinutes() + ":" + (sec > 9 ? sec : "0"+sec)
-                    );
-            }, 500);
-
-        });*/
+        /* $(function () {
+             setInterval(function () {
+                 var date = new Date(); var sec = date.getSeconds();
+                 $('#liveclock').html(
+                 date.getHours() + ":" + date.getMinutes() + ":" + (sec > 9 ? sec : "0"+sec)
+                     );
+             }, 500);
+ 
+         });*/
         window.mesagges = ('<%= HelperUtil.NotifyMessages %>');
     </script>
 </head>
@@ -60,24 +60,21 @@
                             <li class="stick bg-green"><a href="/views/addPersona.aspx"><span class="icon mif-user-plus"></span>Ingreso</a></li>
                             <li class="stick bg-lightBlue"><a href="/views/searchPersona.aspx"><span class="mif-search icon"></span>Buscar</a></li>
                             <li class="stick bg-red">
-                                <a class="dropdown-toggle" href="#"><span class="mif-file-pdf icon"></span>Reporte</a>
-                                <ul class="d-menu" data-role="dropdown" style="display: none;">
-                                    <li><a href="#">Raza</a></li>
-                                    <li><a href="#">Sexo</a></li>
-                                    <li><a href="#">Discapacidad</a></li>
-                                </ul>
+                                <a href="/views/Reporte/ReporteRaza.aspx"><span class="mif-file-pdf icon"></span>Reportes</a>
+
                             </li>
-                            <li class="stick bg-orange"><a href="/views/mantenedoresPers.aspx"><span class="mif-suitcase icon"></span>Mantenedores</a></li>
+
+                            <li class="stick bg-orange"><a href="/views/mantenedoresPers.aspx"><span class="mif-cogs icon"></span>Mantenedores</a></li>
 
                             <li class="title">Datos Laborales</li>
                             <li class="stick bg-green"><a href="/views/ingresoLaboral.aspx"><span class="mif-yelp icon"></span>Ingreso</a></li>
-                            <li class="stick bg-lightBlue"><a href="/views/ingresoSubrroEncargo.aspx"><span class="mif-cog icon"></span>Subrogación/Encargo</a></li>
+                            <li class="stick bg-lightBlue"><a href="/views/ingresoSubrroEncargo.aspx"><span class="mif-suitcase icon"></span>Subrogación/Encargo</a></li>
                             <li class="stick bg-red">
                                 <a class="dropdown-toggle" href="#"><span class="mif-file-pdf icon"></span>Reporte</a>
                                 <ul class="d-menu" data-role="dropdown" style="display: none;">
                                     <li><a href="/views/Reporte/ReporteCargoHistorial.aspx">Historial Puestos</a></li>
                                     <li><a href="/views/Reporte/ReporteSubrogacionHistorial.aspx">Historial Subrogación/Encargo</a></li>
-                                    <li><a href="#">Discapacidad</a></li>
+                                    <li><a href="/views/Reporte/ReportePersonaHistorial.aspx">Historial por Persona</a></li>
                                 </ul>
                             </li>
                             <li class="stick bg-orange"><a href="/views/MantenedoresPosiciones.aspx"><span class="mif-cogs icon"></span>Mantenedor</a></li>
