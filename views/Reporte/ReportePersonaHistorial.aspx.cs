@@ -22,16 +22,23 @@ public partial class ReportePersonaHistorial : System.Web.UI.Page
             {
                 ReportViewer1.Visible = true;
                 SCPM_PERSONALES p = res.First();
-                String per_nom = String.Format("{0} {1} {2} {3}", p.PER_APE_PAT, p.PER_APE_MAT, p.PER_NOM1, p.PER_NOM2);
+                string per_nom = String.Format("{0} {1} {2} {3}", p.PER_APE_PAT, p.PER_APE_MAT, p.PER_NOM1, p.PER_NOM2);
 
                 ReportViewer1.ProcessingMode = ProcessingMode.Local;
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("/Reportes/ReportePersonaHistorial.rdlc");
 
                 ReportDataSource datasource = new ReportDataSource("DataSet1", new ReporteServiceModel().getPersonaHistory(tipox.SelectedValue, p));
+
                 ReportViewer1.LocalReport.DataSources.Clear();
-                ReportParameter rp1 = new ReportParameter("persona", per_nom);
+                ReportParameter rp1 = new ReportParameter("personax", "Historial de: " + per_nom);
+
                 ReportViewer1.LocalReport.DataSources.Add(datasource);
-                //ReportViewer1.set
+                ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp1 });
+                ReportViewer1.LocalReport.Refresh();
+
+
+
             }
             else
             {

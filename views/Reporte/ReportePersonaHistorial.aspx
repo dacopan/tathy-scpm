@@ -56,10 +56,7 @@
 
     <div>
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%">
-            <LocalReport ReportPath="Reportes\ReportePersonaHistorial.rdlc">
-                <DataSources>
-                    <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
-                </DataSources>
+            <LocalReport ReportPath="Reportes\ReportePersonaHistorial.rdlc">               
             </LocalReport>
         </rsweb:ReportViewer>
     </div>

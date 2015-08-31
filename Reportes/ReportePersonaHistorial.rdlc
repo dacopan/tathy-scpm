@@ -241,7 +241,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -433,7 +432,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>  Historial de cargos de </Value>
+                <Value>=Parameters!personax.Value</Value>
                 <Style>
                   <FontFamily>Segoe UI Light</FontFamily>
                   <FontSize>14pt</FontSize>
@@ -467,7 +466,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Persona x</Value>
+                <Value>=Parameters!personax.Value</Value>
                 <Style>
                   <FontFamily>Segoe UI Light</FontFamily>
                   <FontSize>14pt</FontSize>
@@ -574,6 +573,12 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="personax">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>8040443b-516e-48e6-bb4c-7c71e0144f1b</rd:ReportID>
 </Report>
