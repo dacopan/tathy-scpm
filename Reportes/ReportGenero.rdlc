@@ -22,7 +22,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Numero</Value>
+                              <Value>Total Personas</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -193,7 +193,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value> Personas Por Genero</Value>
+                <Value> Personas Por Género</Value>
                 <Style>
                   <FontFamily>Segoe UI Light</FontFamily>
                   <FontSize>14pt</FontSize>

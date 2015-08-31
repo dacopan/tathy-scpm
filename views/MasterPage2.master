@@ -43,14 +43,7 @@
     <img src="/Images/encabezadoDDR.png" style="width: 100%; height: auto;" alt="header" />
     <form id="form1" runat="server">
 
-        <div class="text-rigth padding20" style="text-align: right">
 
-            <span class="mif-alarm-on margin5R" style="float: left"></span><span id="liveclock" class="subtitle_fecha left" style="float: left; text-align: left; font-size: 18px;"></span>
-
-            <asp:LinkButton runat="server" ID="home" OnClick="home_Click" CssClass="button primary dcmx"><span class="mif-home"></span></asp:LinkButton>
-            <asp:LinkButton runat="server" ID="login" OnClick="login_Click" CssClass="button warning dcmx"><span class="mif-exit"></span></asp:LinkButton>
-
-        </div>
         <div class="page-content">
             <div class="flex-grid no-responsive-future" style="height: 100%;">
                 <div class="row" style="height: 100%">
@@ -84,6 +77,14 @@
 
 
                         <input type="hidden" id="hd" name="hd" value="1" />
+                        <div class="text-rigth" style="text-align: right">
+
+                            <span class="mif-alarm-on margin5R" style="float: left"></span><span id="liveclock" class="subtitle_fecha left" style="float: left; text-align: left; font-size: 18px;"></span>
+
+                            <asp:LinkButton runat="server" ID="home" OnClick="home_Click" CssClass="button primary dcmx"><span class="mif-home"></span></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="login" OnClick="login_Click" CssClass="button warning dcmx"><span class="mif-exit"></span></asp:LinkButton>
+
+                        </div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
 

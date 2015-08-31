@@ -296,125 +296,134 @@ public partial class AddPersona : System.Web.UI.Page
 
     protected void addPersona_Click(object sender, EventArgs e)
     {
-        //datos funcionario
-        SCPM_PERSONALES p = new SCPM_PERSONALES();
-        p.PER_APE_PAT = inApellido1.Text;
-        p.PER_APE_MAT = inApellido2.Text;
-        p.PER_NOM1 = inNombre1.Text;
-        p.PER_NOM2 = inNombre2.Text;
-
-        p.SCPM_PAIS = psvm.getPaisByID(Convert.ToInt32(comboPais.SelectedValue));
-        p.SCPM_TIPO_IDENTIFICACIONES = psvm.getIdentificacionByID(Convert.ToInt32(comboDocumento.SelectedValue));
-        p.PER_NUM_DOC = inDocumento.Text;
-        p.PER_GEN = sexo.Checked;
-        p.SCPM_RAZAS = psvm.getRazaByID(Convert.ToInt32(comboRaza.SelectedValue));
-        p.PER_LIB_MIL_NUM = inMilitar.Text;
-
-        var _fec = inFechaNac.Text.Split('-');
-        p.PER_FEC_NAC = new DateTime(Convert.ToInt32(_fec[0]), Convert.ToInt32(_fec[1]), Convert.ToInt32(_fec[2]));
-        p.PER_TIP_SAN = comboSangre.SelectedValue;
-        p.SCPM_ESTADOS_CIVILES = psvm.getEstadoCivilByID(Convert.ToInt32(comboEstadoCivil.SelectedValue));
-        p.PER_CEL = inCelular.Text;
-        p.PER_TEL = inTelefono.Text;
-
-        p.PER_COR_PER = inEmail.Text;
-        p.PER_TAR = tarjeta.Checked;
-        //file avatar
-
-        if (!hasAvatar.Value.Equals("0"))
+        try
         {
-            var tempPath = "~/Uploads/Temp/";
-            var uploadPath = "~/Uploads/";
+            //datos funcionario
+            SCPM_PERSONALES p = new SCPM_PERSONALES();
+            p.PER_APE_PAT = inApellido1.Text;
+            p.PER_APE_MAT = inApellido2.Text;
+            p.PER_NOM1 = inNombre1.Text;
+            p.PER_NOM2 = inNombre2.Text;
 
-            string filename = hasAvatar.Value;
-            File.Move(Server.MapPath(tempPath + filename), Server.MapPath(uploadPath + filename));
+            p.SCPM_PAIS = psvm.getPaisByID(Convert.ToInt32(comboPais.SelectedValue));
+            p.SCPM_TIPO_IDENTIFICACIONES = psvm.getIdentificacionByID(Convert.ToInt32(comboDocumento.SelectedValue));
+            p.PER_NUM_DOC = inDocumento.Text;
+            p.PER_GEN = sexo.Checked;
+            p.SCPM_RAZAS = psvm.getRazaByID(Convert.ToInt32(comboRaza.SelectedValue));
+            p.PER_LIB_MIL_NUM = inMilitar.Text;
 
-            p.PER_PHOTO = "~/Uploads/" + hasAvatar.Value;
-        }
-        else
-        {
-            //if (p.PER_PHOTO == null) p.PER_PHOTO = "~/Uploads/avatar.png";
-        }
+            var _fec = inFechaNac.Text.Split('-');
+            p.PER_FEC_NAC = new DateTime(Convert.ToInt32(_fec[0]), Convert.ToInt32(_fec[1]), Convert.ToInt32(_fec[2]));
+            p.PER_TIP_SAN = comboSangre.SelectedValue;
+            p.SCPM_ESTADOS_CIVILES = psvm.getEstadoCivilByID(Convert.ToInt32(comboEstadoCivil.SelectedValue));
+            p.PER_CEL = inCelular.Text;
+            p.PER_TEL = inTelefono.Text;
 
-        //end file avatar
+            p.PER_COR_PER = inEmail.Text;
+            p.PER_TAR = tarjeta.Checked;
+            //file avatar
 
-        //domicilio
-        p.SCPM_SECTORES = psvm.getSectorByID(Convert.ToInt32(comboSector.SelectedValue));
-        p.PER_DIR = inDireccion.Text;
-
-
-        ///---CONYUGUE---///
-        if (stepConyugue.Visible)
-        {
-            SCPM_CONYUGES con = new SCPM_CONYUGES();
-            con.CON_APE_PAT = con_apellido1.Text;
-            con.CON_APE_MAT = con_apellido2.Text;
-            con.CON_NOM1 = con_nombre1.Text;
-            con.CON_NOM2 = con_nombre2.Text;
-            con.SCPM_PAIS = psvm.getPaisByID(Convert.ToInt32(con_pais.SelectedValue));
-            con.SCPM_TIPO_IDENTIFICACIONES = psvm.getIdentificacionByID(Convert.ToInt32(con_comboDocumento.SelectedValue));
-            con.CON_NUM_DOC = con_documento.Text;
-            var _fec1 = con_fechaNacimiento.Text.Split('-');
-            con.CON_FEC_NAC = new DateTime(Convert.ToInt32(_fec1[0]), Convert.ToInt32(_fec1[1]), Convert.ToInt32(_fec1[2]));
-            con.CON_TEL = con_telefono.Text;
-            con.CON_CEL = con_celular.Text;
-            con.CON_COR_PER = con_Email.Text;
-            con.SCPM_PROFESIONES = psvm.getProfesionByID(Convert.ToInt32(con_comboProfesion.SelectedValue));
-            con.CON_TRA = con_trabaja.Checked;
-            if (con_trabaja.Checked)
+            if (!hasAvatar.Value.Equals("0"))
             {
-                con.CON_NOM_EMP = con_empresa.Text;
-                con.CON_NUM_TRA = con_telfTrabajo.Text;
-                con.CON_DIR_TRAB = con_lugarTrab.Text;
+                var tempPath = "~/Uploads/Temp/";
+                var uploadPath = "~/Uploads/";
+
+                string filename = hasAvatar.Value;
+                File.Move(Server.MapPath(tempPath + filename), Server.MapPath(uploadPath + filename));
+
+                p.PER_PHOTO = "~/Uploads/" + hasAvatar.Value;
             }
             else
             {
-
+                //if (p.PER_PHOTO == null) p.PER_PHOTO = "~/Uploads/avatar.png";
             }
 
-            p.SCPM_CONYUGES.Add(con);
-        }
-        else
-        {
-            p.SCPM_CONYUGES.Clear();
-        }
-        ///---discapacidad---///
-        if (hasDisapacidad.Checked)
-        {
-            var parentezcoRef = psvm.getParentezcoByID(Convert.ToInt32(dis_comboParentesco.SelectedValue));
-            foreach (RepeaterItem item in Repeater1.Items)
-            {                
-                int rango = Convert.ToInt32((item.FindControl("slider_input") as TextBox).Text.Split('-')[0]);
-                int dis_tip_id = Convert.ToInt32((item.FindControl("dis_tip_id") as HiddenField).Value);
-                if (rango > 0)
+            //end file avatar
+
+            //domicilio
+            p.SCPM_SECTORES = psvm.getSectorByID(Convert.ToInt32(comboSector.SelectedValue));
+            p.PER_DIR = inDireccion.Text;
+
+
+            ///---CONYUGUE---///
+            if (stepConyugue.Visible)
+            {
+                SCPM_CONYUGES con = new SCPM_CONYUGES();
+                con.CON_APE_PAT = con_apellido1.Text;
+                con.CON_APE_MAT = con_apellido2.Text;
+                con.CON_NOM1 = con_nombre1.Text;
+                con.CON_NOM2 = con_nombre2.Text;
+                con.SCPM_PAIS = psvm.getPaisByID(Convert.ToInt32(con_pais.SelectedValue));
+                con.SCPM_TIPO_IDENTIFICACIONES = psvm.getIdentificacionByID(Convert.ToInt32(con_comboDocumento.SelectedValue));
+                con.CON_NUM_DOC = con_documento.Text;
+                var _fec1 = con_fechaNacimiento.Text.Split('-');
+                con.CON_FEC_NAC = new DateTime(Convert.ToInt32(_fec1[0]), Convert.ToInt32(_fec1[1]), Convert.ToInt32(_fec1[2]));
+                con.CON_TEL = con_telefono.Text;
+                con.CON_CEL = con_celular.Text;
+                con.CON_COR_PER = con_Email.Text;
+                con.SCPM_PROFESIONES = psvm.getProfesionByID(Convert.ToInt32(con_comboProfesion.SelectedValue));
+                con.CON_TRA = con_trabaja.Checked;
+                if (con_trabaja.Checked)
                 {
-                    p.SCPM_DISCAPACIDADES.Add(new SCPM_DISCAPACIDADES()
+                    con.CON_NOM_EMP = con_empresa.Text;
+                    con.CON_NUM_TRA = con_telfTrabajo.Text;
+                    con.CON_DIR_TRAB = con_lugarTrab.Text;
+                }
+                else
+                {
+
+                }
+
+                p.SCPM_CONYUGES.Add(con);
+            }
+            else
+            {
+                p.SCPM_CONYUGES.Clear();
+            }
+            ///---discapacidad---///
+            if (hasDisapacidad.Checked)
+            {
+                var parentezcoRef = psvm.getParentezcoByID(Convert.ToInt32(dis_comboParentesco.SelectedValue));
+                foreach (RepeaterItem item in Repeater1.Items)
+                {
+                    int rango = Convert.ToInt32((item.FindControl("slider_input") as TextBox).Text.Split('-')[0]);
+                    int dis_tip_id = Convert.ToInt32((item.FindControl("dis_tip_id") as HiddenField).Value);
+                    if (rango > 0)
                     {
-                        DIS_CLA = dis_isPropia.Checked,
-                        DIS_POR = rango,
-                        DIS_CONADIS = (dis_hasConadis.Checked ? dis_conadis.Text : ""),
-                        SCPM_TIPO_DISCAPACIDADES = psvm.getDiscapacidadByID(dis_tip_id),
-                        SCPM_PARENTESCOS = parentezcoRef
-                    });
+                        p.SCPM_DISCAPACIDADES.Add(new SCPM_DISCAPACIDADES()
+                        {
+                            DIS_CLA = dis_isPropia.Checked,
+                            DIS_POR = rango,
+                            DIS_CONADIS = (dis_hasConadis.Checked ? dis_conadis.Text : ""),
+                            SCPM_TIPO_DISCAPACIDADES = psvm.getDiscapacidadByID(dis_tip_id),
+                            SCPM_PARENTESCOS = parentezcoRef
+                        });
+                    }
                 }
             }
-        }
-        ///---emergencia---///
-        SCPM_EMERGENCIAS emg = new SCPM_EMERGENCIAS();
-        emg.CON_FAM_EME_NOM = emg_nombre.Text;
-        emg.CON_FAM_EME_TEF = emg_telefono.Text;
-        emg.CON_FAM_EME_CEL = emg_celular.Text;
-        emg.SCPM_PARENTESCOS = psvm.getParentezcoByID(Convert.ToInt32(emg_comboParentesco.SelectedValue));
-        p.SCPM_EMERGENCIAS.Add(emg);
-        if (psvm.addPersona(p))
-        {
-            // Page.Redirect(Page.Request.RawUrl, false);
-            HelperUtil.showNotifi("persona añadida");
+            ///---emergencia---///
+            SCPM_EMERGENCIAS emg = new SCPM_EMERGENCIAS();
+            emg.CON_FAM_EME_NOM = emg_nombre.Text;
+            emg.CON_FAM_EME_TEF = emg_telefono.Text;
+            emg.CON_FAM_EME_CEL = emg_celular.Text;
+            emg.SCPM_PARENTESCOS = psvm.getParentezcoByID(Convert.ToInt32(emg_comboParentesco.SelectedValue));
+            p.SCPM_EMERGENCIAS.Add(emg);
+            if (psvm.addPersona(p))
+            {
+                // Page.Redirect(Page.Request.RawUrl, false);
+                HelperUtil.showNotifi("persona añadida");
 
+            }
+            else
+            {
+                HelperUtil.showNotifi("persona no añadida");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            HelperUtil.showNotifi("persona no añadida");
+
+            HelperUtil.showNotifi("persona no añadida, datos incorrectos.");
+            HelperUtil.showNotifi("Asegurese de llenar los datos requeridos he intente.");
         }
     }
     protected void comboEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)

@@ -51,7 +51,12 @@ public partial class ReporteRaza : System.Web.UI.Page
         }
         else
         {
+            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+            ReportViewer1.LocalReport.ReportPath = Server.MapPath("/Reportes/ReporteDiscapacidad.rdlc");
 
+            ReportDataSource datasource = new ReportDataSource("DataSet1", new ReporteServiceModel().getDiscapacidadCount(fecha_start, fecha_fin));
+            ReportViewer1.LocalReport.DataSources.Clear();
+            ReportViewer1.LocalReport.DataSources.Add(datasource);
         }
     }
 }

@@ -21,7 +21,7 @@
               <Width>2.71458cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.71458cm</Width>
+              <Width>3.45541cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -97,7 +97,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>car nom</Value>
+                              <Value>Cargo</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -127,7 +127,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>tipo</Value>
+                              <Value>Tipo</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -157,7 +157,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>fecha start</Value>
+                              <Value>Fecha Inicio</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -187,7 +187,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>fecha end</Value>
+                              <Value>Fecha Finalización</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -418,7 +418,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>2.1664cm</Top>
         <Height>1.2cm</Height>
-        <Width>15.42916cm</Width>
+        <Width>16.16999cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

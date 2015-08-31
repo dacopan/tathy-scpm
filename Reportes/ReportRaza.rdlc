@@ -22,7 +22,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>count</Value>
+                              <Value>Total personas</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -100,7 +100,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>raza</Value>
+                            <Value>Raza</Value>
                             <Style />
                           </TextRun>
                         </TextRuns>
@@ -193,7 +193,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>  Historial de cargos por unidad y área</Value>
+                <Value>   Personas por Raza</Value>
                 <Style>
                   <FontFamily>Segoe UI Light</FontFamily>
                   <FontSize>14pt</FontSize>

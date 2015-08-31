@@ -22,7 +22,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Numero</Value>
+                              <Value>Total Personas</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -179,7 +179,7 @@
         <Top>5.39432cm</Top>
         <Left>0.21456cm</Left>
         <Height>1.2cm</Height>
-        <Width>5.45271cm</Width>
+        <Width>5.4527cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

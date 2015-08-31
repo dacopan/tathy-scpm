@@ -209,6 +209,32 @@ public class ReporteServiceModel
         }
         return _res.OrderByDescending(a => a.fecha_start).ToList();
     }
+
+    public IEnumerable getDiscapacidadCount(DateTime? fecha_start, DateTime? fecha_fin)
+    {
+        SCPMdbEntities db = new SCPMdbEntities();
+
+        var razas = db.SCPM_TIPO_DISCAPACIDADES.ToList();
+        var _res = new Dictionary<decimal, PersonaRaza>();
+
+        foreach (var item in razas)
+        {
+
+            _res.Add(item.TIP_DIS_ID, new PersonaRaza()
+            {
+                count = 0,
+                raza = item.TIP_DIS_NOM
+            });
+        }
+
+        var dis = db.SCPM_DISCAPACIDADES.ToList();
+        foreach (var d in dis)
+        {
+            d.SCPM_TIPO_DISCAPACIDADESReference.Load();
+            _res[d.SCPM_TIPO_DISCAPACIDADES.TIP_DIS_ID].count++;
+        }
+        return _res.Values.ToList();
+    }
 }
 
 public class PersonaRaza
