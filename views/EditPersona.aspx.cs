@@ -620,7 +620,7 @@ public partial class EditPersona : System.Web.UI.Page
             p.SCPM_CONYUGES.Remove(con);
             psvm.deleteConyugue(con);
         }
-        ///---discapacidad---///
+        ///---discapacidad---/// 
         if (hasDisapacidad.Checked)
         {
             var parentezcoRef = psvm.getParentezcoByID(Convert.ToInt32(dis_comboParentesco.SelectedValue));

@@ -648,6 +648,18 @@
                 }
             });
 
+            var stepl = $("#wizardx .step").length;
+            $("#wizardx .stepper li").each(function (ix) {
+                var titles = "", _titles = ["Datos Funcionario", "Datos Cónyugue", "Ingreso Discapacidades", "Contacto de emergencia"];
+                if (stepl == 4) {
+                    titles = _titles;
+                } else {
+                    titles = [_titles[0], _titles[2], _titles[3]];
+                }
+                var el = $("<span class='step-title'></span>").html(titles[ix]);
+                $(this).append(el);
+            });
+
             $('#<%=hasDisapacidad.ClientID %>').click(function () {
                 var $this = $(this);
                 // $this will contain a reference to the checkbox   
@@ -738,7 +750,7 @@
                     } else {
                         c = slider.data("positionx");
                     }
-                    
+
                     slider.data("position", c);
                     slider.slider({ position: c });
                     calcDiscapacidad(c, $(this));

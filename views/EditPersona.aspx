@@ -645,8 +645,22 @@
                     "finish": { "show": true, "title": "Finalizar y guardar!", "cls": "success", "group": "right" },
                     "prior": { "show": true, "title": "Anterior", "cls": "", "group": "right" },
                     "next": { "show": true, "title": "Siguiente", "cls": "", "group": "right" }
-                }
+                }, stepperClickable: true
             });
+
+            var stepl = $("#wizardx .step").length;
+            $("#wizardx .stepper li").each(function (ix) {
+                var titles = "", _titles = ["Datos Funcionario", "Datos Cónyugue", "Ingreso Discapacidades", "Contacto de emergencia"];
+                if (stepl == 4) {
+                    titles = _titles;
+                } else {
+                    titles = [_titles[0], _titles[2], _titles[3]];
+                }
+                var el = $("<span class='step-title'></span>").html(titles[ix]);
+                $(this).append(el);
+            });
+
+
 
             $('#<%=hasDisapacidad.ClientID %>').click(function () {
                 var $this = $(this);
