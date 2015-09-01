@@ -463,7 +463,28 @@ public class PersonaServiceModel
     {
         db.DeleteObject(con);
     }
-    public void deleteteDiscapaciad(SCPM_DISCAPACIDADES dis) {
+    public void deleteteDiscapaciad(SCPM_DISCAPACIDADES dis)
+    {
         db.DeleteObject(dis);
+    }
+
+    public SCPM_PROVINCIAS getProvinciaByID(int id)
+    {
+        return (from a in db.SCPM_PROVINCIAS where a.PRO_ID == id select a).First();
+    }
+
+    public SCPM_CANTONES getCantonByID(int id)
+    {
+        return (from a in db.SCPM_CANTONES where a.CAN_ID == id select a).First();
+    }
+
+    public SCPM_PARROQUIAS getParroquiaByID(int id)
+    {
+        return (from a in db.SCPM_PARROQUIAS where a.PAR_ID == id select a).First();
+    }
+
+    public SCPM_TIPO_IDENTIFICACIONES getDocumentoByID(int id)
+    {
+        return (from a in db.SCPM_TIPO_IDENTIFICACIONES where a.TIP_IDE_COD == id select a).First();
     }
 }

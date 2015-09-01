@@ -110,7 +110,7 @@ public class PuestoServiceModel
 
     public bool editRelacionLab(SCPM_RELACIONES_LABORALES newx)
     {
-        var contains = db.SCPM_RELACIONES_LABORALES.ToList().Any(u => u.REL_LAB_NOM == newx.REL_LAB_NOM && u.REL_LAB_EST == newx.REL_LAB_EST);
+        var contains = db.SCPM_RELACIONES_LABORALES.ToList().Any(u => u.REL_LAB_NOM == newx.REL_LAB_NOM && u.REL_LAB_ID != newx.REL_LAB_ID);
         if (contains) return false;
 
         var _unidad = from u in db.SCPM_RELACIONES_LABORALES where u.REL_LAB_ID == newx.REL_LAB_ID select u;
@@ -373,5 +373,15 @@ public class PuestoServiceModel
     private SCPM_SUBROGA_HIST getSubrogaByID(int sub_hist_id)
     {
         return (from h in db.SCPM_SUBROGA_HIST where h.SUB_HIS_ID == sub_hist_id select h).FirstOrDefault();
+    }
+
+    public SCPM_UNIDAD getUnidadByID(int p)
+    {
+        return (from h in db.SCPM_UNIDAD where h.UNI_COD == p select h).FirstOrDefault();
+    }
+
+    public SCPM_RELACIONES_LABORALES getRelacionLabByID(int p)
+    {
+        return (from h in db.SCPM_RELACIONES_LABORALES where h.REL_LAB_ID == p select h).FirstOrDefault();
     }
 }

@@ -306,52 +306,61 @@ public partial class mantenedoresPers : System.Web.UI.Page
     protected void comboProvincia_SelectedIndexChanged(object sender, EventArgs e)
     {
         fillCantones();
-
-        inProvincia.Text = comboProvincia.SelectedItem.Text;        
+        onProvincia.Checked = psvm.getProvinciaByID(Convert.ToInt32(comboProvincia.SelectedValue)).PRO_EST.Value;
+        inProvincia.Text = comboProvincia.SelectedItem.Text;
     }
     protected void ComboCanton_SelectedIndexChanged(object sender, EventArgs e)
     {
         fillParroquias();
-
+        onCanton.Checked = psvm.getCantonByID(Convert.ToInt32(ComboCanton.SelectedValue)).CAN_EST.Value;
         inCanton.Text = ComboCanton.SelectedItem.Text;
     }
     protected void ComboParroquia_SelectedIndexChanged(object sender, EventArgs e)
     {
         inParroquia.Text = ComboParroquia.SelectedItem.Text;
         fillSectores();
+        onParroquia.Checked = psvm.getParroquiaByID(Convert.ToInt32(ComboParroquia.SelectedValue)).PAR_EST.Value;
     }
 
     protected void comboSector_SelectedIndexChanged(object sender, EventArgs e)
     {
         inSector.Text = comboSector.SelectedItem.Text;
+        onSector.Checked = psvm.getSectorByID(Convert.ToInt32(comboSector.SelectedValue)).SEC_EST.Value;
     }
     protected void comboDiscapacidad_SelectedIndexChanged(object sender, EventArgs e)
     {
         inDiscapacidad.Text = comboDiscapacidad.SelectedItem.Text;
+        onDiscapacidad.Checked = psvm.getDiscapacidadByID(Convert.ToInt32(comboDiscapacidad.SelectedValue)).TIP_DIS_EST.Value;
     }
     protected void comboDocumento_SelectedIndexChanged(object sender, EventArgs e)
     {
         inDocumento.Text = comboDocumento.SelectedItem.Text;
+        onDocumento.Checked = psvm.getDocumentoByID(Convert.ToInt32(comboDocumento.SelectedValue)).TIP_IDE_EST.Value;
     }
     protected void comboEstadoCivil_SelectedIndexChanged(object sender, EventArgs e)
     {
         inEstadoCivil.Text = comboEstadoCivil.SelectedItem.Text;
+        onEstadoCivil.Checked = psvm.getEstadoCivilByID(Convert.ToInt32(comboEstadoCivil.SelectedValue)).EST_CIV_EST.Value;
     }
     protected void comboProfesion_SelectedIndexChanged(object sender, EventArgs e)
     {
         inProfesion.Text = comboProfesion.SelectedItem.Text;
+        onProfesion.Checked = psvm.getProfesionByID(Convert.ToInt32(comboProfesion.SelectedValue)).PROF_EST.Value;
     }
     protected void comboParentesco_SelectedIndexChanged(object sender, EventArgs e)
     {
         inParentesco.Text = comboParentesco.SelectedItem.Text;
+        onParentesco.Checked = psvm.getParentezcoByID(Convert.ToInt32(comboParentesco.SelectedValue)).PARE_EST.Value;
     }
     protected void coboRaza_SelectedIndexChanged(object sender, EventArgs e)
     {
         inRaza.Text = coboRaza.SelectedItem.Text;
+        onRaza.Checked = psvm.getRazaByID(Convert.ToInt32(coboRaza.SelectedValue)).RAZ_EST.Value;
     }
     protected void comboPais_SelectedIndexChanged(object sender, EventArgs e)
     {
         inPais.Text = comboPais.SelectedItem.Text;
+        onPais.Checked = psvm.getPaisByID(Convert.ToInt32(comboPais.SelectedValue)).PAI_EST.Value;
     }
     protected void addProvincia_Click(object sender, EventArgs e)
     {

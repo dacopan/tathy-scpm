@@ -165,35 +165,26 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
         fillAreas(ComboArea, 0);
 
         inUnidad.Text = ComboUnidad.SelectedItem.Text;
-        //UnidadEnabled.Checked=
+        UnidadEnabled.Checked = psvm.getUnidadByID(Convert.ToInt32(ComboUnidad.SelectedValue)).UNI_EST.Value;
 
     }
 
     protected void ComboArea_SelectedIndexChanged(object sender, EventArgs e)
     {
+        AreaEnabled.Checked = psvm.getAreaByID(Convert.ToInt32(ComboArea.SelectedValue)).ARE_EST.Value;
         setDefaultText(sender, inArea);
     }
 
 
     protected void comboRelacionLab_SelectedIndexChanged(object sender, EventArgs e)
     {
-
-        ComboDenominacion.Items.Clear();
-        ComboDenominacion.AppendDataBoundItems = true;
-        ComboDenominacion.DataSource = psvm.getAllDenominaciones();
-        ComboDenominacion.DataTextField = "DEN_ID";
-        ComboDenominacion.DataValueField = "DEN_NOM";
-        if (ComboDenominacion.Items.Count < 1)
-        {
-            ComboDenominacion.Enabled = false;
-            ComboDenominacion.Items.Add(new ListItem("--Añadir Denominacion--", ""));
-        }
-        ComboDenominacion.DataBind();
+        relacionLabEnabled.Checked = psvm.getRelacionLabByID(Convert.ToInt32(comboRelacionLab.SelectedValue)).REL_LAB_EST.Value;
         setDefaultText(sender, inRelacionLab);
     }
 
     protected void ComboDenominacion_SelectedIndexChanged(object sender, EventArgs e)
     {
+        denominacionEnabled.Checked = psvm.getDenominacionByID(Convert.ToInt32(ComboDenominacion.SelectedValue)).DEN_EST.Value;
         setDefaultText(sender, InDenominacion);
     }
 

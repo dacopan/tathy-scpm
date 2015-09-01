@@ -34,7 +34,10 @@
                             <asp:TextBox ID="inProvincia" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onProvincia" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onProvincia" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -64,7 +67,10 @@
                             <asp:TextBox ID="inCanton" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onCanton" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onCanton" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -94,7 +100,10 @@
                             <asp:TextBox ID="inParroquia" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onParroquia" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onParroquia" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -125,17 +134,20 @@
                             <asp:TextBox ID="inSector" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onSector" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onSector" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
             </td>
             <td>
                 <asp:Button ID="addSector" runat="server" Text="Ingresar" OnClick="addSector_Click" />
-                <asp:Button ID="editSector" runat="server" Text="Modificar" OnClick="editSector_Click"/>
+                <asp:Button ID="editSector" runat="server" Text="Modificar" OnClick="editSector_Click" />
             </td>
         </tr>
-        
+
         <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -175,7 +187,10 @@
                             <asp:TextBox ID="inDiscapacidad" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onDiscapacidad" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onDiscapacidad" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -206,7 +221,7 @@
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label9" runat="server" BackColor="#000066" ForeColor="White"  CssClass="panel-header"
+                <asp:Label ID="Label9" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
                     Text="TIPO DOCUMENTO"></asp:Label>
             </td>
         </tr>
@@ -238,7 +253,10 @@
                             <asp:TextBox ID="inDocumento" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onDocumento" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onDocumento" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -259,7 +277,7 @@
         </tr>
         <tr>
             <td colspan="4" bgcolor="#000066">
-                <asp:Label ID="Label12" runat="server" BackColor="#000066" ForeColor="White"  CssClass="panel-header"
+                <asp:Label ID="Label12" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
                     Text="ESTADO CIVIL"></asp:Label>
             </td>
         </tr>
@@ -291,7 +309,10 @@
                             <asp:TextBox ID="inEstadoCivil" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onEstadoCivil" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onEstadoCivil" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -343,7 +364,10 @@
                             <asp:TextBox ID="inProfesion" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onProfesion" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onProfesion" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -392,7 +416,10 @@
                             <asp:TextBox ID="inParentesco" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onParentesco" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onParentesco" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -443,7 +470,10 @@
                             <asp:TextBox ID="inRaza" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onRaza" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onRaza" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -494,7 +524,10 @@
                             <asp:TextBox ID="inPais" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="onPais" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="onPais" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>

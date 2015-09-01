@@ -35,7 +35,11 @@
                             <asp:TextBox ID="inUnidad" runat="server"></asp:TextBox>
                         </td>
                         <td style="height: 23px">
-                            <asp:CheckBox ID="UnidadEnabled" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="UnidadEnabled" runat="server" />
+                                <span class="check"></span>
+                            </label>
+
                         </td>
                     </tr>
                 </table>
@@ -65,7 +69,11 @@
                             <asp:TextBox ID="inArea" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="AreaEnabled" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="AreaEnabled" runat="server" />
+                                <span class="check"></span>
+                            </label>
+
                         </td>
                     </tr>
                 </table>
@@ -119,7 +127,10 @@
                             <asp:TextBox ID="inRelacionLab" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="relacionLabEnabled" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="relacionLabEnabled" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -150,7 +161,10 @@
                             <asp:TextBox ID="InDenominacion" runat="server"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:CheckBox ID="denominacionEnabled" runat="server" />
+                            <label class="switch-original">
+                                <asp:CheckBox ID="denominacionEnabled" runat="server" />
+                                <span class="check"></span>
+                            </label>
                         </td>
                     </tr>
                 </table>
@@ -217,7 +231,7 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <asp:label runat="server"><%# Eval("CAR_ID") %></asp:label>
+                                        <asp:Label runat="server"><%# Eval("CAR_ID") %></asp:Label>
                                     </td>
                                     <td>
                                         <asp:HiddenField Value='<%# Eval("CAR_ID") %>' ID="car_id" runat="server" />
