@@ -120,7 +120,7 @@
                                     <tr>
                                         <td>
                                             <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
-                                                <asp:TextBox ID="inFechaNac" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="inFechaNac" runat="server" CausesValidation="true"></asp:TextBox>
                                                 <button class="button"><span class="mif-calendar"></span></button>
                                             </div>
                                         </td>

@@ -617,8 +617,11 @@ public partial class EditPersona : System.Web.UI.Page
         }
         else
         {
-            p.SCPM_CONYUGES.Remove(con);
-            psvm.deleteConyugue(con);
+            if (con != null)
+            {
+                p.SCPM_CONYUGES.Remove(con);
+                psvm.deleteConyugue(con);
+            }
         }
         ///---discapacidad---/// 
         if (hasDisapacidad.Checked)
