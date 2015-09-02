@@ -326,7 +326,7 @@ public partial class EditPersona : System.Web.UI.Page
         {
 
             HelperUtil.showNotifi("persona no encontrada");
-            Page.Response.Redirect("/views/Default.aspx", true);
+            Page.Response.Redirect("/views/Default.aspx", false);
             return;
         }
         //load joins

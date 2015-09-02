@@ -120,7 +120,7 @@
                                     <tr>
                                         <td>
                                             <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
-                                                <asp:TextBox ID="inFechaNac" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="inFechaNac" runat="server" data-validate-func="date" data-validate-hint="Funcionario fecha nacimiento"></asp:TextBox>
                                                 <button class="button"><span class="mif-calendar"></span></button>
                                             </div>
                                         </td>
@@ -368,7 +368,7 @@
                             </td>
                             <td>
                                 <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
-                                    <asp:TextBox ID="con_fechaNacimiento" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="con_fechaNacimiento" runat="server" data-validate-func="date" data-validate-hint="Conyugue fecha nacimiento"></asp:TextBox>
                                     <button class="button"><span class="mif-calendar"></span></button>
                                 </div>
                             </td>

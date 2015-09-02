@@ -21,9 +21,9 @@
     <link rel="Stylesheet" type="text/css" href="/Content/css/metro.css" />
     <link rel="Stylesheet" type="text/css" href="/Content/css/scpm.css" />
 
-    <script src="/Scripts/jquery.js" type="text/javascript"></script>
-    <script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="/Scripts/metro.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.js?v=3.0.10" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui.min.js?v=3.0.10" type="text/javascript"></script>
+    <script src="/Scripts/metro.js?v=3.0.10" type="text/javascript"></script>
 
     <script language="JavaScript" type="text/javascript">
 
@@ -42,7 +42,8 @@
 <body background="/Images/Pagina.png" class="metro">
 
 
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" data-role="validator" data-on-before-submit="no_submit" data-on-error-input="notifyOnErrorInput" data-show-error-hint="false" novalidate="novalidate">
+
         <div style="position: relative;">
             <img src="/Images/encabezadoDDR.png" style="width: 100%; height: auto;" alt="header" />
             <div class="text-rigth" style="text-align: right; position: absolute; padding-right: 25px; padding-bottom: 20px; bottom: 0; right: 0;">
@@ -86,7 +87,7 @@
                             <li class="stick bg-orange"><a href="/views/MantenedoresPosiciones.aspx"><span class="mif-cogs icon"></span>Mantenedor</a></li>
                         </ul>
                     </div>
-                    <div class="cell auto-size padding20 bg-white" id="cell-content" style="padding-top:40px;">
+                    <div class="cell auto-size padding20 bg-white" id="cell-content" style="padding-top: 40px;">
 
 
                         <input type="hidden" id="hd" name="hd" value="1" />
@@ -141,6 +142,18 @@
             dialog.close();
         }
 
+        function notifyOnErrorInput(input) {
+            var message = input.data('validateHint');
+            $.Notify({
+                caption: 'Error',
+                content: message,
+                type: 'alert'
+            });
+        }
+
+        function no_submit() {
+            return false;
+        }
     </script>
 
 </body>

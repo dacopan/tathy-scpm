@@ -412,7 +412,7 @@ public partial class AddPersona : System.Web.UI.Page
             {
                 // Page.Redirect(Page.Request.RawUrl, false);
                 HelperUtil.showNotifi("persona añadida");
-                Page.Response.Redirect("/views/Default.aspx", true);
+                Page.Response.Redirect("/views/Default.aspx",false);
 
             }
             else
