@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "tathy_proyect", "http://localhost:49620", "{5916B3C5-87A6-4829-A690-5C629FF70D35}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "tathy-scpm", "http://localhost:49620", "{5916B3C5-87A6-4829-A690-5C629FF70D35}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_49620"
-		Debug.AspNetCompiler.PhysicalPath = "..\tathy_proyect\"
+		Debug.AspNetCompiler.PhysicalPath = "..\tathy-scpm\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49620\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_49620"
-		Release.AspNetCompiler.PhysicalPath = "..\tathy_proyect\"
+		Release.AspNetCompiler.PhysicalPath = "..\tathy-scpm\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49620\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\tathy_proyect\"
+		SlnRelativePath = "..\tathy-scpm\"
 	EndProjectSection
 EndProject
 Global
