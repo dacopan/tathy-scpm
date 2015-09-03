@@ -23,25 +23,28 @@ public class PuestoServiceModel
         return db.SCPM_UNIDAD.ToList();
     }
 
-    public bool addUnidad(SCPM_UNIDAD unidad)
+    public bool addUnidad(SCPM_UNIDAD newx)
     {
 
-        var contains = db.SCPM_UNIDAD.ToList().Any(u => u.UNI_NOM == unidad.UNI_NOM);
-        if (contains) return false;
-        db.AddToSCPM_UNIDAD(unidad);
+        var contains = db.SCPM_UNIDAD.ToList().Any(u => u.UNI_NOM.Equals(newx.UNI_NOM, StringComparison.InvariantCultureIgnoreCase));
+        if (contains || newx.UNI_NOM == "") return false;
+
+        db.AddToSCPM_UNIDAD(newx);
         db.SaveChanges();
         return true;
     }
 
-    public bool editUnidad(SCPM_UNIDAD newUnidad)
+    public bool editUnidad(SCPM_UNIDAD newx)
     {
+        var contains = db.SCPM_UNIDAD.ToList().Any(u => u.UNI_NOM.Equals(newx.UNI_NOM, StringComparison.InvariantCultureIgnoreCase) && u.UNI_COD != newx.UNI_COD);
+        if (contains || newx.UNI_NOM == "") return false;
 
-        var _unidad = from u in db.SCPM_UNIDAD where u.UNI_COD == newUnidad.UNI_COD select u;
+        var _unidad = from u in db.SCPM_UNIDAD where u.UNI_COD == newx.UNI_COD select u;
         if (_unidad.Count() < 1) return false;
         var unidad = _unidad.FirstOrDefault();
 
-        unidad.UNI_EST = newUnidad.UNI_EST;
-        unidad.UNI_NOM = newUnidad.UNI_NOM;
+        unidad.UNI_EST = newx.UNI_EST;
+        unidad.UNI_NOM = newx.UNI_NOM;
         db.SaveChanges();
         return true;
     }
@@ -60,6 +63,9 @@ public class PuestoServiceModel
 
     public bool addArea(SCPM_AREAS newx, int unidad)
     {
+        var contains = db.SCPM_AREAS.Include("SCPM_UNIDAD").ToList().Any(u => u.ARE_NOM.Equals(newx.ARE_NOM, StringComparison.InvariantCultureIgnoreCase)&& u.SCPM_UNIDAD.UNI_COD==unidad);
+        if (contains || newx.ARE_NOM == "") return false;
+
         var _a = from a in db.SCPM_UNIDAD where a.UNI_COD == unidad select a;
         if (_a.Count() > 0)
         {
@@ -70,13 +76,16 @@ public class PuestoServiceModel
         else return false;
     }
 
-    public bool editArea(SCPM_AREAS newArea)
+    public bool editArea(SCPM_AREAS newx)
     {
-        var _a = from a in db.SCPM_AREAS where a.ARE_COD == newArea.ARE_COD select a;
+        var contains = db.SCPM_AREAS.Include("SCPM_UNIDAD").ToList().Any(u => u.ARE_NOM.Equals(newx.ARE_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_UNIDAD.UNI_COD == newx.SCPM_UNIDAD.UNI_COD && u.ARE_COD != newx.ARE_COD);
+        if (contains || newx.ARE_NOM == "") return false;
+
+        var _a = from a in db.SCPM_AREAS where a.ARE_COD == newx.ARE_COD select a;
         var area = _a.First();
 
-        area.ARE_NOM = newArea.ARE_NOM;
-        area.ARE_EST = newArea.ARE_EST;
+        area.ARE_NOM = newx.ARE_NOM;
+        area.ARE_EST = newx.ARE_EST;
 
         db.SaveChanges();
         return true;
@@ -102,8 +111,8 @@ public class PuestoServiceModel
 
     public bool addRelacionLab(SCPM_RELACIONES_LABORALES newx)
     {
-        var contains = db.SCPM_RELACIONES_LABORALES.ToList().Any(u => u.REL_LAB_NOM == newx.REL_LAB_NOM);
-        if (contains) return false;
+        var contains = db.SCPM_RELACIONES_LABORALES.ToList().Any(u => u.REL_LAB_NOM.Equals(newx.REL_LAB_NOM, StringComparison.InvariantCultureIgnoreCase));
+        if (contains || newx.REL_LAB_NOM == "") return false;
         db.AddToSCPM_RELACIONES_LABORALES(newx);
         db.SaveChanges();
         return true;
@@ -111,9 +120,9 @@ public class PuestoServiceModel
 
     public bool editRelacionLab(SCPM_RELACIONES_LABORALES newx)
     {
-        var contains = db.SCPM_RELACIONES_LABORALES.ToList().Any(u => u.REL_LAB_NOM == newx.REL_LAB_NOM && u.REL_LAB_ID != newx.REL_LAB_ID);
-        if (contains) return false;
-
+        var contains = db.SCPM_RELACIONES_LABORALES.ToList().Any(u => u.REL_LAB_NOM.Equals(newx.REL_LAB_NOM, StringComparison.InvariantCultureIgnoreCase) && u.REL_LAB_ID != newx.REL_LAB_ID);
+        if (contains || newx.REL_LAB_NOM == "") return false;
+        
         var _unidad = from u in db.SCPM_RELACIONES_LABORALES where u.REL_LAB_ID == newx.REL_LAB_ID select u;
         if (_unidad.Count() < 1) return false;
         var unidad = _unidad.FirstOrDefault();
@@ -126,8 +135,9 @@ public class PuestoServiceModel
 
     public bool addDenominacion(SCPM_DENOMINACIONES newx)
     {
-        var contains = db.SCPM_DENOMINACIONES.ToList().Any(u => u.DEN_NOM == newx.DEN_NOM);
-        if (contains) return false;
+        var contains = db.SCPM_DENOMINACIONES.ToList().Any(u => u.DEN_NOM.Equals(newx.DEN_NOM, StringComparison.InvariantCultureIgnoreCase) && u.DEN_ID != newx.DEN_ID);
+        if (contains || newx.DEN_NOM == "") return false;
+        
         db.AddToSCPM_DENOMINACIONES(newx);
         db.SaveChanges();
         return true;
@@ -135,8 +145,9 @@ public class PuestoServiceModel
 
     public bool editDenominacion(SCPM_DENOMINACIONES newx)
     {
-        var contains = db.SCPM_DENOMINACIONES.ToList().Any(u => u.DEN_NOM == newx.DEN_NOM && u.DEN_ID != newx.DEN_ID);
-        if (contains) return false;
+        var contains = db.SCPM_DENOMINACIONES.ToList().Any(u => u.DEN_NOM.Equals(newx.DEN_NOM, StringComparison.InvariantCultureIgnoreCase) && u.DEN_ID != newx.DEN_ID);
+        if (contains || newx.DEN_NOM == "") return false;
+        
 
         var _unidad = from u in db.SCPM_DENOMINACIONES where u.DEN_ID == newx.DEN_ID select u;
         if (_unidad.Count() < 1) return false;
