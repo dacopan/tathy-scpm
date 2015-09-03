@@ -333,6 +333,7 @@ public partial class EditPersona : System.Web.UI.Page
         p.SCPM_RAZASReference.Load();
         p.SCPM_PAISReference.Load();
         p.SCPM_ESTADOS_CIVILESReference.Load();
+        p.SCPM_SECTORESReference.Load();
         //
 
         inApellido1.Text = p.PER_APE_PAT;
@@ -458,6 +459,7 @@ public partial class EditPersona : System.Web.UI.Page
         emg_nombre.Text = emg.CON_FAM_EME_NOM;
         emg_telefono.Text = emg.CON_FAM_EME_TEF;
         emg_celular.Text = emg.CON_FAM_EME_CEL;
+        emg.SCPM_PARENTESCOSReference.Load();
         emg_comboParentesco.SelectedValue = emg.SCPM_PARENTESCOS.PARE_ID.ToString();
 
 
@@ -690,6 +692,10 @@ public partial class EditPersona : System.Web.UI.Page
         if (comboEstadoCivil.SelectedItem.Text.Equals("casado", StringComparison.InvariantCultureIgnoreCase))
         {
             stepConyugue.Visible = true;
+            if (con_fechaNacimiento.Text == "")
+            {
+                con_fechaNacimiento.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            }
         }
         else
         {
