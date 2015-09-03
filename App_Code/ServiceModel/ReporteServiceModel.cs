@@ -173,7 +173,7 @@ public class ReporteServiceModel
                 _res.Add(new SubrogacionHistory()
                 {
                     unidad = item.SCPM_CARGOS.SCPM_AREAS.SCPM_UNIDAD.UNI_NOM,
-                    area = item.SCPM_CARGOS.SCPM_AREAS.ARE_NOM,
+                    area = item.SCPM_CARGOS.SCPM_AREAS.ARE_NOM, 
                     car_id = Convert.ToInt32(item.SCPM_CARGOS.CAR_ID),
                     car_nom = item.SCPM_CARGOS.CAR_NOM,
                     fecha_end = item.SUB_HIS_FEC_FIN.HasValue ? item.SUB_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd") : "",
@@ -183,7 +183,7 @@ public class ReporteServiceModel
                 });
             }
         }
-        if (tipo == "1" || tipo == "2")
+        if (tipo == "1" || tipo == "3")
         {
             p.SCPM_PUESTO_HIST.Load();
             var fijo = p.SCPM_PUESTO_HIST.ToList();
