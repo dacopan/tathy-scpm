@@ -37,7 +37,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("SCPMdbModel", "FK_SCPM_PUE_RELATIONS_SCPM_REL", "SCPM_RELACIONES_LABORALES", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SCPMdbModel.SCPM_RELACIONES_LABORALES), "SCPM_PUESTO_HIST", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SCPMdbModel.SCPM_PUESTO_HIST))]
 
 // Nombre de archivo original:
-// Fecha de generación: 30/08/2015 23:36:15
+// Fecha de generación: 03/09/2015 15:24:59
 namespace SCPMdbModel
 {
     

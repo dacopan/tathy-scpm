@@ -169,7 +169,7 @@ public class PuestoServiceModel
 
     public List<SCPM_CARGOS> getCargosByAreaID(int newx)
     {
-        return (from a in db.SCPM_CARGOS where a.SCPM_AREAS.ARE_COD == newx select a).ToList();
+        return (from a in db.SCPM_CARGOS.Include("SCPM_DENOMINACIONES") where a.SCPM_AREAS.ARE_COD == newx select a).ToList();
     }
 
     public bool saveDB()

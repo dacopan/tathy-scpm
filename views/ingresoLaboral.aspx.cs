@@ -131,12 +131,19 @@ public partial class ingresoLaboral : System.Web.UI.Page
 
     private void fillCargos()
     {
+        var s = psvm.getCargosByAreaID(Convert.ToInt32(ComboArea.SelectedValue));
+        var datasource = from x in s
+                         select new
+                         {
+                             x.CAR_ID,
+                             DisplayField = String.Format("{0} / {1}", x.CAR_NOM,x.SCPM_DENOMINACIONES.DEN_NOM)
+                         };
 
         comboCargo.Enabled = false;
         comboCargo.Items.Clear();
         comboCargo.AppendDataBoundItems = true;
-        comboCargo.DataSource = psvm.getCargosByAreaID(Convert.ToInt32(ComboArea.SelectedValue));
-        comboCargo.DataTextField = "CAR_NOM";
+        comboCargo.DataSource = datasource;
+        comboCargo.DataTextField = "DisplayField";
         comboCargo.DataValueField = "CAR_ID";
         comboCargo.DataBind();
         if (comboCargo.Items.Count > 0)
