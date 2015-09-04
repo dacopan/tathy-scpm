@@ -65,6 +65,8 @@ public partial class AddPersona : System.Web.UI.Page
         if (combo.Items.Count > 0)
         {
             combo.Enabled = true;
+            combo.Items.Add(new ListItem("--Seleccionar--", "0"));
+            combo.SelectedValue = "0";
         }
         else
         {
@@ -85,6 +87,9 @@ public partial class AddPersona : System.Web.UI.Page
         if (combo.Items.Count > 0)
         {
             combo.Enabled = true;
+            combo.Items.Add(new ListItem("--Seleccionar--", "0"));
+            combo.SelectedValue = "0";
+
         }
         else
         {
@@ -105,6 +110,8 @@ public partial class AddPersona : System.Web.UI.Page
         if (combo.Items.Count > 0)
         {
             combo.Enabled = true;
+            combo.Items.Add(new ListItem("--Seleccionar--", "0"));
+            combo.SelectedValue = "0";
         }
         else
         {
@@ -125,6 +132,8 @@ public partial class AddPersona : System.Web.UI.Page
         if (combo.Items.Count > 0)
         {
             combo.Enabled = true;
+            combo.Items.Add(new ListItem("--Seleccionar--", "0"));
+            combo.SelectedValue = "0";
         }
         else
         {
@@ -145,6 +154,8 @@ public partial class AddPersona : System.Web.UI.Page
         if (coboRaza.Items.Count > 0)
         {
             coboRaza.Enabled = true;
+            coboRaza.Items.Add(new ListItem("--Seleccionar--", "0"));
+            coboRaza.SelectedValue = "0";
         }
         else
         {
@@ -165,6 +176,8 @@ public partial class AddPersona : System.Web.UI.Page
         if (comboEstadoCivil.Items.Count > 0)
         {
             comboEstadoCivil.Enabled = true;
+            comboEstadoCivil.Items.Add(new ListItem("--Seleccionar--", "0"));
+            comboEstadoCivil.SelectedValue = "0";
             comboEstadoCivil_SelectedIndexChanged(comboEstadoCivil, null);
         }
         else
@@ -186,6 +199,8 @@ public partial class AddPersona : System.Web.UI.Page
         if (comboProvincia.Items.Count > 0)
         {
             comboProvincia.Enabled = true;
+            comboProvincia.Items.Add(new ListItem("--Seleccionar--", "0"));
+            comboProvincia.SelectedValue = "0";
             comboProvincia_SelectedIndexChanged(comboProvincia, null);
 
 
@@ -215,14 +230,17 @@ public partial class AddPersona : System.Web.UI.Page
         psvm = new PersonaServiceModel();
         ComboCanton.Items.Clear();
         ComboCanton.AppendDataBoundItems = true;
-        ComboCanton.DataSource = psvm.getCantonesByProvincia(Convert.ToInt32(comboProvincia.SelectedItem.Value));
+        ComboCanton.DataSource = comboProvincia.SelectedItem.Value == "0" ? new List<SCPM_CANTONES>() : psvm.getCantonesByProvincia(Convert.ToInt32(comboProvincia.SelectedItem.Value));
         ComboCanton.DataTextField = "CAN_NOM";
         ComboCanton.DataValueField = "CAN_ID";
         ComboCanton.DataBind();
         if (ComboCanton.Items.Count > 0)
         {
             ComboCanton.Enabled = true;
+            ComboCanton.Items.Add(new ListItem("--Seleccionar--", "0"));
+            ComboCanton.SelectedValue = "0";
             ComboCanton_SelectedIndexChanged(ComboCanton, null);
+           
         }
         else
         {
@@ -244,14 +262,19 @@ public partial class AddPersona : System.Web.UI.Page
         psvm = new PersonaServiceModel();
         ComboParroquia.Items.Clear();
         ComboParroquia.AppendDataBoundItems = true;
-        ComboParroquia.DataSource = psvm.getParroquiasByCanton(Convert.ToInt32(ComboCanton.SelectedItem.Value));
+        ComboParroquia.DataSource = ComboCanton.SelectedItem.Value == "0" ? new List<SCPM_PARROQUIAS>() : psvm.getParroquiasByCanton(Convert.ToInt32(ComboCanton.SelectedItem.Value));
         ComboParroquia.DataTextField = "PAR_NOM";
         ComboParroquia.DataValueField = "PAR_ID";
         ComboParroquia.DataBind();
         if (ComboParroquia.Items.Count > 0)
         {
             ComboParroquia.Enabled = true;
+            ComboParroquia.Items.Add(new ListItem("--Seleccionar--", "0"));
+            ComboParroquia.SelectedValue = "0";
+
             ComboParroquia_SelectedIndexChanged(ComboParroquia, null);
+
+            
         }
         else
         {
@@ -268,13 +291,16 @@ public partial class AddPersona : System.Web.UI.Page
         psvm = new PersonaServiceModel();
         comboSector.Items.Clear();
         comboSector.AppendDataBoundItems = true;
-        comboSector.DataSource = psvm.getSectorByParroquiaID(Convert.ToInt32(ComboParroquia.SelectedItem.Value));
+        comboSector.DataSource = ComboParroquia.SelectedItem.Value == "0" ? new List<SCPM_SECTORES>() : psvm.getSectorByParroquiaID(Convert.ToInt32(ComboParroquia.SelectedItem.Value));
         comboSector.DataTextField = "SEC_NOM";
         comboSector.DataValueField = "SEC_ID";
         comboSector.DataBind();
         if (comboSector.Items.Count > 0)
         {
             comboSector.Enabled = true;
+
+            comboSector.Items.Add(new ListItem("--Seleccionar--", "0"));
+            comboSector.SelectedValue = "0";
         }
         else
         {

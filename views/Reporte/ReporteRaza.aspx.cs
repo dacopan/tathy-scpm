@@ -17,6 +17,11 @@ public partial class ReporteRaza : System.Web.UI.Page
     }
     protected void generarReport_Click(object sender, EventArgs e)
     {
+        if (tipox.SelectedValue == "0")
+        {
+            HelperUtil.showNotifi("Seleccione el tipo de reporte");
+            return;
+        }
         ReportViewer1.Visible = true;
 
         var _fec1 = inFechaStart.Text.Split('-');

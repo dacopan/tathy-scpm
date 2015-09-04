@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <script>
+    <script language="javascript" type="text/javascript">
         /*
  * Date Format 1.2.3
  * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
@@ -126,7 +126,7 @@
 
         // For convenience...
         Date.prototype.format = function (mask, utc) {
-            return dateFormat(this, mask, utc);
+            return dateFormat(this, mask, utc); 
         };
     </script>
     <div class="row cells9 condensed">
@@ -134,6 +134,7 @@
             <label>Tipo reporte</label>
             <div class="input-control text full-size">
                 <asp:DropDownList runat="server" ID="tipox">
+                    <asp:ListItem Value="0">--Seleccionar--</asp:ListItem>
                     <asp:ListItem Value="1">Raza</asp:ListItem>
                     <asp:ListItem Value="2">Genero</asp:ListItem>
                     <asp:ListItem Value="3">Discapacidad</asp:ListItem>
@@ -160,17 +161,16 @@
         </div>
         <br />
         <br />
-        <asp:Button CssClass="button success text-shadow margin5R" OnClick="generarReport_Click" ID="generarReport" runat="server" Text="Generar"/>
+        <asp:Button CssClass="button success text-shadow margin5R" OnClick="generarReport_Click" ID="generarReport" runat="server" Text="Generar" />
         <br />
         <br />
     </div>
     <div>
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%">
             <LocalReport ReportPath="Reportes\ReportRaza.rdlc">
-                
             </LocalReport>
         </rsweb:ReportViewer>
-       
+
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
