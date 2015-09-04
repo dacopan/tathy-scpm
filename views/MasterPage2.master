@@ -21,9 +21,9 @@
     <link rel="Stylesheet" type="text/css" href="/Content/css/metro.css" />
     <link rel="Stylesheet" type="text/css" href="/Content/css/scpm.css" />
 
-    <script src="/Scripts/jquery.js?v=3.0.10" type="text/javascript"></script>
-    <script src="/Scripts/jquery-ui.min.js?v=3.0.10" type="text/javascript"></script>
-    <script src="/Scripts/metro.js?v=3.0.10" type="text/javascript"></script>
+    <script src="/Scripts/jquery.js?v=3.0.11" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui.min.js?v=3.0.11" type="text/javascript"></script>
+    <script src="/Scripts/metro.js?v=3.0.11" type="text/javascript"></script>
 
     <script language="JavaScript" type="text/javascript">
 
@@ -150,9 +150,12 @@
                 type: 'alert'
             });
         }
-
+        var autosubmit = true;
         function no_submit() {
             return false;
+        }
+        function isPostback() {
+            return autosubmit;
         }
     </script>
 

@@ -415,7 +415,7 @@ public partial class AddPersona : System.Web.UI.Page
             {
                 // Page.Redirect(Page.Request.RawUrl, false);
                 HelperUtil.showNotifi("persona añadida");
-                Page.Response.Redirect("/views/Default.aspx",false);
+                Page.Response.Redirect("/views/Default.aspx", false);
 
             }
             else
@@ -470,6 +470,16 @@ public partial class AddPersona : System.Web.UI.Page
         {
 
         }
+    }
+    protected void con_trabaja_CheckedChanged(object sender, EventArgs e)
+    {
+        con_empresa.Visible = con_trabaja.Checked;
+        con_lugarTrab.Visible = con_trabaja.Checked;
+        con_telfTrabajo.Visible = con_trabaja.Checked;
+
+        con_empresaW.Visible = con_trabaja.Checked;
+        con_lugarTrabW.Visible = con_trabaja.Checked;
+        con_telfTrabajoW.Visible = con_trabaja.Checked;
     }
 }
 

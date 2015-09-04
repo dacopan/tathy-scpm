@@ -7723,7 +7723,7 @@
             hintSize: 0,
             hintBackground: '#FFFCC0',
             hintColor: '#000000',
-            hideError: 2000,
+            hideError: false,
             hideHint: 5000,
             hintEasing: 'easeInQuad',
             hintEasingTime: 400,
@@ -7739,7 +7739,7 @@
 
         funcs: {
             required: function (val) {
-                return val.trim() !== "";
+                return val.trim() !== "" && val.trim().toLowerCase().indexOf("selecciona") < 0; 
             },
             minlength: function (val, len) {
                 if (len == undefined || isNaN(len) || len <= 0) {
@@ -7801,6 +7801,12 @@
                 }
                 var reg = new RegExp(pat);
                 return reg.test(val);
+            },
+            celular: function (val) {
+                return /^\d+$/.test(val);
+            },
+            telefono: function (val) {
+                return /^\d+$/.test(val);
             }
         },
 
@@ -7873,6 +7879,9 @@
         },
 
         _submit: function () {
+            if (isPostback()) {
+                return true;
+            }
             var that = this, element = this.element, o = this.options;
             var inputs = element.find("[data-validate-func]");
             var submit = element.find(":submit").attr('disabled', 'disabled').addClass('disabled');

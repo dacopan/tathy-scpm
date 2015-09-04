@@ -15,7 +15,7 @@ public partial class EditPersona : System.Web.UI.Page
     {
         psvm = new PersonaServiceModel();
         if (!IsPostBack)
-        {
+        { 
             //comboPais
             fillPais(comboPais);
 
@@ -731,6 +731,16 @@ public partial class EditPersona : System.Web.UI.Page
         {
 
         }
+    }
+    protected void con_trabaja_CheckedChanged(object sender, EventArgs e)
+    {
+        con_empresa.Visible = con_trabaja.Checked;
+        con_lugarTrab.Visible = con_trabaja.Checked;
+        con_telfTrabajo.Visible = con_trabaja.Checked;
+
+        con_empresaW.Visible = con_trabaja.Checked;
+        con_lugarTrabW.Visible = con_trabaja.Checked;
+        con_telfTrabajoW.Visible = con_trabaja.Checked;
     }
 }
 
