@@ -9,15 +9,59 @@ using System.Web.UI.WebControls;
 
 public partial class ReportePersonaHistorial : System.Web.UI.Page
 {
+    PersonaServiceModel persvm;
     protected void Page_Load(object sender, EventArgs e)
     {
+        persvm = new PersonaServiceModel();
         if (!IsPostBack) ReportViewer1.Visible = false;
     }
+
     protected void filtroBut_Click(object sender, EventArgs e)
     {
         try
         {
-            var res = new PersonaServiceModel().getPersonasByID(Convert.ToInt32(inFiltro.Text));
+            ReportViewer1.Visible = false;
+            switch (comboFiltro.SelectedValue)
+            {
+                case "0": Repeater1.DataSource = persvm.getPersonasByNumDoc(inFiltro.Text); break;
+                case "1": Repeater1.DataSource = persvm.getPersonasByNombre(inFiltro.Text); break;
+                case "2": Repeater1.DataSource = persvm.getPersonasByID(Convert.ToInt32(inFiltro.Text)); break;
+                default: { HelperUtil.showNotifi("Filtro inválido"); return; }
+            }
+
+            Repeater1.DataBind();
+            if (Repeater1.Items.Count > 0)
+            {
+                Repeater1.Visible = true;
+                search_res.Visible = false;
+                HelperUtil.showNotifi("Funcionario encontrado");
+            }
+            else
+            {
+                Repeater1.Visible = false;
+                search_res.Visible = true;
+                HelperUtil.showNotifi("No se encontro funcionario");
+                ReportViewer1.Visible = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            HelperUtil.showNotifi("No se encontro funcionario");
+        }
+    }
+
+    protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        if (tipox.SelectedValue == "999")
+        {
+            HelperUtil.showNotifi("seleccione tipo de reporte");
+            ReportViewer1.Visible = false;
+            return;
+
+        }
+        try
+        {
+            var res = new PersonaServiceModel().getPersonasByID(Convert.ToInt32(e.CommandArgument.ToString()));
             if (res.Count > 0 && res.FirstOrDefault() != null)
             {
                 ReportViewer1.Visible = true;

@@ -12,6 +12,9 @@
                         <label><span class="icon mif-filter"></span>&nbsp;Filtro</label>
                         <div class="input-control slect iconic info">
                             <asp:DropDownList ID="comboFiltro" runat="server">
+                                <asp:ListItem Text="--Seleccionar--" Value="999"></asp:ListItem>
+                                <asp:ListItem Text="No. de Identificación" Value="0"></asp:ListItem>
+                                <asp:ListItem Text="Nombre" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="ID Institucional" Value="2"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
@@ -40,15 +43,69 @@
                 <div class="row cells8">
                     <div class="cell colspan8">
                         <h2 runat="server" class="text-light text-left" id="search_res">No se encontro funcionario</h2>
+                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                            <HeaderTemplate>
+                                <table class="dataTable striped border bordered" data-role="datatable" data-searching="true">
+                                    <thead>
+                                        <tr>
+                                            <th>No. de Identificación</th>
+                                            <th>Nombre</th>
+                                            <th>ID Institucional</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td><%# Eval("PER_NUM_DOC") %></td>
+                                    <td><%# Eval("PER_APE_PAT").ToString()+ " " +Eval("PER_APE_MAT").ToString()+ " " +Eval("PER_NOM1").ToString()+ " " +Eval("PER_NOM2").ToString() %></td>
+                                    <td><%# Eval("PER_ID") %></td>
+                                    <td>
+
+                                        <asp:Button runat="server" CssClass="button success" CommandArgument='<%# Eval("PER_ID") %>' Text="Editar Datos laborales" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                <tfoot>
+                                    <tr>
+                                        <th>No. de Identificación</th>
+                                        <th>Nombre</th>
+                                        <th>ID Institucional</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </tfoot>
+                                </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="panel" id="puestoActualWrap" runat="server">
+        <div class="header panel-header">
+            Puesto Actual
+        </div>
+        <div class="content">
+            <div class="grid">
+                <div class="row cells8">
+                    <div class="cell colspan8">
+                        <h2 runat="server" class="text-light text-left" id="search_res2">Ningun funcionario seleccionado</h2>
                         <h5 runat="server" class="text-left" id="puestoActual">Puesto Actual: ninguno</h5>
                         <asp:HiddenField runat="server" Value="dcm" ID="current_cargo_id" />
                         <asp:HiddenField runat="server" Value="dcm" ID="current_persona_id" />
-
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
     <br />
     <br />
     <hr class="thin" />

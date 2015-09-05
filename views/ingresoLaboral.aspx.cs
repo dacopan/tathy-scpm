@@ -164,7 +164,81 @@ public partial class ingresoLaboral : System.Web.UI.Page
     {
         try
         {
-            var res = persvm.getPersonasByID(Convert.ToInt32(inFiltro.Text));
+
+            switch (comboFiltro.SelectedValue)
+            {
+                case "0": Repeater1.DataSource = persvm.getPersonasByNumDoc(inFiltro.Text); break;
+                case "1": Repeater1.DataSource = persvm.getPersonasByNombre(inFiltro.Text); break;
+                case "2": Repeater1.DataSource = persvm.getPersonasByID(Convert.ToInt32(inFiltro.Text)); break;
+                default: { HelperUtil.showNotifi("Filtro inválido"); return; }
+            }
+
+            Repeater1.DataBind();
+            if (Repeater1.Items.Count > 0)
+            {
+                Repeater1.Visible = true;
+                search_res.Visible = false;
+                HelperUtil.showNotifi("Funcionario encontrado");
+            }
+            else
+            {
+                Repeater1.Visible = false;
+                search_res.Visible = true;
+                HelperUtil.showNotifi("No se encontro funcionario");
+            }
+        }
+        catch (Exception ex)
+        {
+            HelperUtil.showNotifi("No se encontro funcionario");
+        }
+    }
+
+    protected void saveAll_Click(object sender, EventArgs e)
+    {
+        var per_id = Convert.ToInt32(current_persona_id.Value);
+        try
+        {
+            var _fec1 = inFechaStart.Text.Split('-');
+            DateTime fecha_in = new DateTime(Convert.ToInt32(_fec1[0]), Convert.ToInt32(_fec1[1]), Convert.ToInt32(_fec1[2]));
+
+            var _fec2 = inFechaEnd.Text.Split('-');
+            DateTime? fecha_fin;
+            if (inFechaEnd.Text.Contains("-"))
+                fecha_fin = new DateTime(Convert.ToInt32(_fec2[0]), Convert.ToInt32(_fec2[1]), Convert.ToInt32(_fec2[2]));
+            else fecha_fin = null;
+
+
+            //añadir cargo
+            if (psvm.addCargoHistorial(new SCPM_PUESTO_HIST()
+            {
+                PST_HIS_FEC_INI = fecha_in,
+                PST_HIS_FEC_FIN = fecha_fin
+            },
+                per_id, Convert.ToInt32(comboCargo.SelectedValue),
+                Convert.ToInt32(comboRelacionLab.SelectedValue)))
+            {
+                HelperUtil.showNotifi("Cargo guardado");
+
+            }
+            else
+                HelperUtil.showNotifi("Error al guardar cargo");
+
+
+            filtroBut_Click(filtroBut, null);
+
+        }
+        catch (Exception ex)
+        {
+            HelperUtil.showNotifi("Error al guardar cargo");
+        }
+    }
+
+    protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        try
+        {
+
+            var res = persvm.getPersonasByID(Convert.ToInt32(e.CommandArgument.ToString()));
             if (res.Count > 0)
             {
                 SCPM_PERSONALES persona = res.First();
@@ -182,7 +256,7 @@ public partial class ingresoLaboral : System.Web.UI.Page
                 inFechaStart.Enabled = true;
                 inFechaEnd.Enabled = true;
 
-                search_res.InnerHtml = String.Format("{0} {1} {2} {3}", persona.PER_APE_PAT, persona.PER_APE_MAT, persona.PER_NOM1, persona.PER_NOM2);
+                search_res2.InnerHtml = String.Format("{0} {1} {2} {3}", persona.PER_APE_PAT, persona.PER_APE_MAT, persona.PER_NOM1, persona.PER_NOM2);
 
                 if (lastCargo != null && (lastCargo.PST_HIS_FEC_FIN == null || DateTime.Now.CompareTo(lastCargo.PST_HIS_FEC_FIN) <= 0))
                 {
@@ -236,46 +310,6 @@ public partial class ingresoLaboral : System.Web.UI.Page
         catch (Exception ex)
         {
             HelperUtil.showNotifi("No se encontro funcionario");
-        }
-    }
-
-    protected void saveAll_Click(object sender, EventArgs e)
-    {
-        var per_id = Convert.ToInt32(current_persona_id.Value);
-        try
-        {
-            var _fec1 = inFechaStart.Text.Split('-');
-            DateTime fecha_in = new DateTime(Convert.ToInt32(_fec1[0]), Convert.ToInt32(_fec1[1]), Convert.ToInt32(_fec1[2]));
-
-            var _fec2 = inFechaEnd.Text.Split('-');
-            DateTime? fecha_fin;
-            if (inFechaEnd.Text.Contains("-"))
-                fecha_fin = new DateTime(Convert.ToInt32(_fec2[0]), Convert.ToInt32(_fec2[1]), Convert.ToInt32(_fec2[2]));
-            else fecha_fin = null;
-
-
-            //añadir cargo
-            if (psvm.addCargoHistorial(new SCPM_PUESTO_HIST()
-            {
-                PST_HIS_FEC_INI = fecha_in,
-                PST_HIS_FEC_FIN = fecha_fin
-            },
-                per_id, Convert.ToInt32(comboCargo.SelectedValue),
-                Convert.ToInt32(comboRelacionLab.SelectedValue)))
-            {
-                HelperUtil.showNotifi("Cargo guardado");
-
-            }
-            else
-                HelperUtil.showNotifi("Error al guardar cargo");
-
-
-            filtroBut_Click(filtroBut, null);
-
-        }
-        catch (Exception ex)
-        {
-            HelperUtil.showNotifi("Error al guardar cargo");
         }
     }
 }

@@ -16,6 +16,12 @@ public partial class ingresoSubrroEncargo : System.Web.UI.Page
         {
             ViewDetail(false);
             fillPersonas();
+            psvm.getAllDenominaciones();
+
+            fillUnidades(cargo_comboUnidad, 1);
+
+            //renderCargos();
+            Repeater1.Visible = false;
         }
     }
 
@@ -50,11 +56,112 @@ public partial class ingresoSubrroEncargo : System.Web.UI.Page
         }
     }
 
-    protected void filtroBut_Click(object sender, EventArgs e)
+    private void fillUnidades(DropDownList combo, int c)
+    {
+        combo.Enabled = false;
+        combo.Items.Clear();
+        combo.AppendDataBoundItems = true;
+        combo.DataSource = psvm.getAllUnidades();
+        combo.DataValueField = "UNI_COD";
+        combo.DataTextField = "UNI_NOM";
+        combo.DataBind();
+        if (combo.Items.Count > 0)
+        {
+            combo.Enabled = true;
+            combo.Items.Add(new ListItem("--Seleccionar--", "0"));
+            combo.SelectedValue = "0";
+            cargo_comboUnidad_SelectedIndexChanged(combo, null);
+        }
+        else
+        {
+            combo.Enabled = false;
+
+
+
+            combo.Items.Add(new ListItem("--Ninguno--", ""));
+            cargo_comboArea.Enabled = false;
+            cargo_comboArea.Items.Clear();
+            cargo_comboArea.AppendDataBoundItems = true;
+            cargo_comboArea.Items.Add(new ListItem("--Ninguno--", ""));
+            cargo_comboArea.DataBind();
+
+        }
+
+
+
+    }
+
+    private void fillAreas(DropDownList combo, int c)
+    {
+        combo.Enabled = false;
+        combo.Items.Clear();
+        combo.AppendDataBoundItems = true;
+        combo.DataSource = cargo_comboUnidad.SelectedItem.Value == "0" ? new List<SCPMdbModel.SCPM_AREAS>() : psvm.getAreasByUnidad(Convert.ToInt32(cargo_comboUnidad.SelectedItem.Value));
+        combo.DataTextField = "ARE_NOM";
+        combo.DataValueField = "ARE_COD";
+        combo.DataBind();
+        if (combo.Items.Count > 0)
+        {
+            combo.Enabled = true;
+            cargo_comboArea_SelectedIndexChanged(cargo_comboArea, null);
+
+        }
+        else
+        {
+            combo.Enabled = false;
+            combo.Items.Add(new ListItem("--Ninguno--", ""));
+
+        }
+    }
+
+    protected void cargo_comboArea_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        renderCargos();
+    }
+
+    protected void cargo_comboUnidad_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        fillAreas(cargo_comboArea, 1);
+        renderCargos();
+    }
+
+    private void renderCargos()
+    {
+        if (cargo_comboArea.Enabled)
+        {
+            Repeater1.Visible = true;
+            cargo_empty.Visible = false;
+
+            Repeater1.DataSource = psvm.getCargosByAreaID(Convert.ToInt32(cargo_comboArea.SelectedValue));
+            Repeater1.DataBind();
+            if (Repeater1.Items.Count > 0)
+            {
+                Repeater1.Visible = true;
+                cargo_empty.Visible = false;
+            }
+            else
+            {
+                Repeater1.Visible = false;
+                cargo_empty.Visible = true;
+            }
+        }
+        else
+        {
+            Repeater1.Visible = false;
+            cargo_empty.Visible = true;
+        }
+    }
+
+    protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        fillData(Convert.ToInt32(e.CommandArgument.ToString()));
+    }
+
+    private void fillData(int cargo_id)
     {
         try
         {
-            var puesto = psvm.getCargoByID(Convert.ToInt32(inFiltro.Text));
+            var puesto = psvm.getCargoByID(cargo_id);
             if (puesto != null)
             {
                 current_puesto_id.Value = puesto.CAR_ID.ToString();
@@ -164,9 +271,10 @@ public partial class ingresoSubrroEncargo : System.Web.UI.Page
     }
     protected void saveAll_Click(object sender, EventArgs e)
     {
+        var cargo_id = Convert.ToInt32(current_puesto_id.Value);
         try
         {
-            var cargo_id = Convert.ToInt32(current_puesto_id.Value);
+
             var _fec1 = inFechaStart.Text.Split('-');
             DateTime fecha_in = new DateTime(Convert.ToInt32(_fec1[0]), Convert.ToInt32(_fec1[1]), Convert.ToInt32(_fec1[2]));
 
@@ -205,7 +313,7 @@ public partial class ingresoSubrroEncargo : System.Web.UI.Page
             HelperUtil.showNotifi("Error al guardar subrogacion/encargo");
         }
 
-        filtroBut_Click(filtroBut, null);
+        fillData(cargo_id);
     }
 
 }

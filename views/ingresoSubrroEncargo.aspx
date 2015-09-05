@@ -4,40 +4,90 @@
     <h1 class="text-light">INGRESO DE SUBROGACION / ENCARGO </h1>
     <div class="panel">
         <div class="header panel-header">
-            Buscar Puesto
+            Cargos por areas
         </div>
         <div class="content">
             <div class="grid">
                 <div class="row cells9 condensed">
-                    <div class="cell colspan2">
-                        <label><span class="icon mif-filter"></span>&nbsp;Filtro</label>
-                        <div class="input-control slect iconic info">
-                            <asp:DropDownList ID="comboFiltro" runat="server">
-                                <asp:ListItem Text="Puesto ID" Value="2"></asp:ListItem>
+                    <div class="cell colspan4">
+                        <label>Unidad</label>
+                        <div class="input-control text full-size">
+                            <asp:DropDownList ID="cargo_comboUnidad" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cargo_comboUnidad_SelectedIndexChanged">
+                                <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
                             </asp:DropDownList>
                         </div>
-
                     </div>
-
                     <div class="cell colspan4">
-                        <div class="input-control text full-size info">
-                            <asp:TextBox runat="server" ID="inFiltro" />
-                            <button class="button" onclick="applyFilter()"><span class="mif-search"></span></button>
+                        <label>Area</label>
+                        <div class="input-control text full-size">
+                            <asp:DropDownList ID="cargo_comboArea" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cargo_comboArea_SelectedIndexChanged">
+                                <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
-                        <asp:Button ID="filtroBut" runat="server" Text="Button" CssClass="no-visible" OnClick="filtroBut_Click" />
-                        <script type="text/javascript">
-                            function applyFilter() {
-                                setTimeout(function () {
-
-                                    $('#<%=filtroBut.ClientID %>').trigger("click");
-                                }, 25);
-                                return false;
-                            }
-
-                        </script>
                     </div>
 
                 </div>
+
+                <div class="row cells9">
+                    <div class="cell colspan9">
+
+                        <h1 id="cargo_empty" class="text-center text-light" runat="server">Ningún cargo en esta área</h1>
+                        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                            <HeaderTemplate>
+
+                                <br />
+                                <table class="backgroundRepeatBanner table striped hovered cell-hovered border bordered">
+                                    <thead>
+                                        <th>ID puesto</th>
+                                        <th>Nombre del cargo</th>
+                                        <th>Denominacion</th>
+                                        <th>Acción</th>
+                                    </thead>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <asp:Label runat="server"><%# Eval("CAR_ID") %></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:HiddenField Value='<%# Eval("CAR_ID") %>' ID="car_id" runat="server" />
+                                        <div class="input-control text full-size info">
+                                            <asp:TextBox ID="inCargo" runat="server" Text='<%# Eval("CAR_NOM") %>' ReadOnly="true" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-control text full-size info">
+                                            <asp:TextBox ID="cargo_denominacion" Text='<%# Eval("SCPM_DENOMINACIONES.DEN_NOM") %>' runat="server" ReadOnly="true" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                         <asp:Button runat="server" CssClass="button success" CommandArgument='<%# Eval("CAR_ID") %>' Text="Seleccionar cargo" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </table>
+                                <br />
+                                <br />
+                                <br />
+                            </FooterTemplate>
+
+                        </asp:Repeater>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+     <div class="panel">
+        <div class="header panel-header">
+            Puesto seleccionado
+        </div>
+        <div class="content">
+            <div class="grid">
+                
                 <div class="row cells8">
                     <div class="cell colspan8">
                         <asp:HiddenField runat="server" Value="dcm" ID="current_puesto_id" />
@@ -46,7 +96,7 @@
                         <asp:HiddenField runat="server" Value="dcm" ID="current_subroga_id" />
                         <asp:HiddenField runat="server" Value="dcm" ID="sub_hist_id" />
 
-                        <h2 runat="server" class="text-light text-left" id="search_res">No se encontro Puesto</h2>
+                        <h2 runat="server" class="text-light text-left" id="search_res">No se seleccionó Puesto</h2>
                     </div>
                 </div>
                 <div class="row cells8" runat="server" id="unidadWrap">
