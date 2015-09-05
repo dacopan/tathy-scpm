@@ -274,7 +274,11 @@ public partial class ingresoSubrroEncargo : System.Web.UI.Page
         var cargo_id = Convert.ToInt32(current_puesto_id.Value);
         try
         {
-
+            if (combo_tipo.SelectedValue == "1" && current_persona_id.Value == "dcm")
+            {
+                HelperUtil.showNotifi("No se puede subrogar un puesto que actualmente está sin funcionario");
+                return;
+            }
             var _fec1 = inFechaStart.Text.Split('-');
             DateTime fecha_in = new DateTime(Convert.ToInt32(_fec1[0]), Convert.ToInt32(_fec1[1]), Convert.ToInt32(_fec1[2]));
 
