@@ -402,7 +402,7 @@ public partial class mantenedoresPers : System.Web.UI.Page
     protected void editCanton_Click(object sender, EventArgs e)
     {
         psvm = new PersonaServiceModel();
-        if (psvm.editCanton(new SCPM_CANTONES() { CAN_ID = Convert.ToInt32(ComboCanton.SelectedValue), CAN_NOM = inCanton.Text, CAN_EST = onCanton.Checked }))
+        if (psvm.editCanton(new SCPM_CANTONES() { CAN_ID = Convert.ToInt32(ComboCanton.SelectedValue), CAN_NOM = inCanton.Text, CAN_EST = onCanton.Checked }, Convert.ToInt32(comboProvincia.SelectedValue)))
         {
             fillCantones();
             HelperUtil.showNotifi("añadido");
@@ -428,7 +428,7 @@ public partial class mantenedoresPers : System.Web.UI.Page
     protected void editParroquia_Click(object sender, EventArgs e)
     {
         psvm = new PersonaServiceModel();
-        if (psvm.editParroquia(new SCPM_PARROQUIAS() { PAR_ID = Convert.ToInt32(ComboParroquia.SelectedValue), PAR_NOM = inParroquia.Text, PAR_EST = onParroquia.Checked }))
+        if (psvm.editParroquia(new SCPM_PARROQUIAS() { PAR_ID = Convert.ToInt32(ComboParroquia.SelectedValue), PAR_NOM = inParroquia.Text, PAR_EST = onParroquia.Checked }, Convert.ToInt32(ComboCanton.SelectedValue)))
         {
             fillParroquias();
             HelperUtil.showNotifi("añadido");
@@ -612,7 +612,7 @@ public partial class mantenedoresPers : System.Web.UI.Page
     protected void editSector_Click(object sender, EventArgs e)
     {
         psvm = new PersonaServiceModel();
-        if (psvm.editSector(new SCPM_SECTORES() { SEC_ID = Convert.ToInt32(comboSector.SelectedValue), SEC_NOM = inSector.Text, SEC_EST = onSector.Checked }))
+        if (psvm.editSector(new SCPM_SECTORES() { SEC_ID = Convert.ToInt32(comboSector.SelectedValue), SEC_NOM = inSector.Text, SEC_EST = onSector.Checked }, Convert.ToInt32(ComboParroquia.SelectedValue)))
         {
             fillSectores();
             HelperUtil.showNotifi("editado");

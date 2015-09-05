@@ -125,7 +125,7 @@ public class PersonaServiceModel
 
     public bool addCanton(SCPM_CANTONES newx, int idx)
     {
-        var contains = db.SCPM_CANTONES.ToList().Any(u => u.CAN_NOM.Equals(newx.CAN_NOM, StringComparison.InvariantCultureIgnoreCase));
+        var contains = db.SCPM_CANTONES.Include("SCPM_PROVINCIAS").ToList().Any(u => u.CAN_NOM.Equals(newx.CAN_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_PROVINCIAS.PRO_ID == idx);
         if (contains || newx.CAN_NOM == "") return false;
 
         var _a = from a in db.SCPM_PROVINCIAS where a.PRO_ID == idx select a;
@@ -138,9 +138,9 @@ public class PersonaServiceModel
         else return false;
     }
 
-    public bool editCanton(SCPM_CANTONES newx)
+    public bool editCanton(SCPM_CANTONES newx, int idx)
     {
-        var contains = db.SCPM_CANTONES.ToList().Any(u => u.CAN_NOM.Equals(newx.CAN_NOM, StringComparison.InvariantCultureIgnoreCase) && u.CAN_ID != newx.CAN_ID);
+        var contains = db.SCPM_CANTONES.Include("SCPM_PROVINCIAS").ToList().Any(u => u.CAN_NOM.Equals(newx.CAN_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_PROVINCIAS.PRO_ID == idx && u.CAN_ID != newx.CAN_ID);
         if (contains || newx.CAN_NOM == "") return false;
 
         var _a = from a in db.SCPM_CANTONES where a.CAN_ID == newx.CAN_ID select a;
@@ -159,7 +159,7 @@ public class PersonaServiceModel
 
     public bool addParroquia(SCPM_PARROQUIAS newx, int idx)
     {
-        var contains = db.SCPM_PARROQUIAS.ToList().Any(u => u.PAR_NOM.Equals(newx.PAR_NOM, StringComparison.InvariantCultureIgnoreCase));
+        var contains = db.SCPM_PARROQUIAS.Include("SCPM_CANTONES").ToList().Any(u => u.PAR_NOM.Equals(newx.PAR_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_CANTONES.CAN_ID == idx);
         if (contains || newx.PAR_NOM == "") return false;
 
         var _a = from a in db.SCPM_CANTONES where a.CAN_ID == idx select a;
@@ -172,9 +172,9 @@ public class PersonaServiceModel
         else return false;
     }
 
-    public bool editParroquia(SCPM_PARROQUIAS newx)
+    public bool editParroquia(SCPM_PARROQUIAS newx, int idx)
     {
-        var contains = db.SCPM_PARROQUIAS.ToList().Any(u => u.PAR_NOM.Equals(newx.PAR_NOM, StringComparison.InvariantCultureIgnoreCase) && u.PAR_ID != newx.PAR_ID);
+        var contains = db.SCPM_PARROQUIAS.Include("SCPM_CANTONES").ToList().Any(u => u.PAR_NOM.Equals(newx.PAR_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_CANTONES.CAN_ID == idx && u.PAR_ID != newx.PAR_ID);
         if (contains || newx.PAR_NOM == "") return false;
 
         var _a = from a in db.SCPM_PARROQUIAS where a.PAR_ID == newx.PAR_ID select a;
@@ -193,7 +193,7 @@ public class PersonaServiceModel
 
     public bool addSector(SCPM_SECTORES newx, int idx)
     {
-        var contains = db.SCPM_SECTORES.ToList().Any(u => u.SEC_NOM.Equals(newx.SEC_NOM, StringComparison.InvariantCultureIgnoreCase));
+        var contains = db.SCPM_SECTORES.Include("SCPM_PARROQUIAS").ToList().Any(u => u.SEC_NOM.Equals(newx.SEC_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_PARROQUIAS.PAR_ID == idx);
         if (contains || newx.SEC_NOM == "") return false;
 
         var _a = from a in db.SCPM_PARROQUIAS where a.PAR_ID == idx select a;
@@ -206,9 +206,9 @@ public class PersonaServiceModel
         else return false;
     }
 
-    public bool editSector(SCPM_SECTORES newx)
+    public bool editSector(SCPM_SECTORES newx, int idx)
     {
-        var contains = db.SCPM_SECTORES.ToList().Any(u => u.SEC_NOM.Equals(newx.SEC_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SEC_ID != newx.SEC_ID);
+        var contains = db.SCPM_SECTORES.Include("SCPM_PARROQUIAS").ToList().Any(u => u.SEC_NOM.Equals(newx.SEC_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_PARROQUIAS.PAR_ID == idx && u.SEC_ID != newx.SEC_ID);
         if (contains || newx.SEC_NOM == "") return false;
 
         var _a = from a in db.SCPM_SECTORES where a.SEC_ID == newx.SEC_ID select a;
@@ -264,7 +264,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_TIPO_IDENTIFICACIONES.ToList().Any(u => u.TIP_IDE_NOM.Equals(newx.TIP_IDE_NOM, StringComparison.InvariantCultureIgnoreCase) && u.TIP_IDE_COD != newx.TIP_IDE_COD);
         if (contains || newx.TIP_IDE_NOM == "") return false;
-        
+
         var _a = from a in db.SCPM_TIPO_IDENTIFICACIONES where a.TIP_IDE_COD == newx.TIP_IDE_COD select a;
         if (_a.Count() < 1) return false;
         var area = _a.First();
@@ -279,8 +279,8 @@ public class PersonaServiceModel
     public bool addEstadoCivil(SCPM_ESTADOS_CIVILES newx)
     {
         var contains = db.SCPM_ESTADOS_CIVILES.ToList().Any(u => u.EST_CIV_NOM.Equals(newx.EST_CIV_NOM, StringComparison.InvariantCultureIgnoreCase));
-        if (contains || newx.EST_CIV_NOM== "") return false;
-        
+        if (contains || newx.EST_CIV_NOM == "") return false;
+
         db.AddToSCPM_ESTADOS_CIVILES(newx);
         db.SaveChanges();
         return true;
@@ -290,7 +290,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_ESTADOS_CIVILES.ToList().Any(u => u.EST_CIV_NOM.Equals(newx.EST_CIV_NOM, StringComparison.InvariantCultureIgnoreCase) && u.EST_CIV_ID != newx.EST_CIV_ID);
         if (contains || newx.EST_CIV_NOM == "") return false;
-        
+
         var _a = from a in db.SCPM_ESTADOS_CIVILES where a.EST_CIV_ID == newx.EST_CIV_ID select a;
         if (_a.Count() < 1) return false;
         var area = _a.First();
@@ -308,7 +308,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_PROFESIONES.ToList().Any(u => u.PROF_NOM.Equals(newx.PROF_NOM, StringComparison.InvariantCultureIgnoreCase));
         if (contains || newx.PROF_NOM == "") return false;
-        
+
         db.AddToSCPM_PROFESIONES(newx);
         db.SaveChanges();
         return true;
@@ -318,7 +318,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_PROFESIONES.ToList().Any(u => u.PROF_NOM.Equals(newx.PROF_NOM, StringComparison.InvariantCultureIgnoreCase) && u.PROF_ID != newx.PROF_ID);
         if (contains || newx.PROF_NOM == "") return false;
-        
+
         var _a = from a in db.SCPM_PROFESIONES where a.PROF_ID == newx.PROF_ID select a;
         if (_a.Count() < 1) return false;
         var area = _a.First();
@@ -334,7 +334,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_PARENTESCOS.ToList().Any(u => u.PARE_NOM.Equals(newx.PARE_NOM, StringComparison.InvariantCultureIgnoreCase));
         if (contains || newx.PARE_NOM == "") return false;
-        
+
         db.AddToSCPM_PARENTESCOS(newx);
         db.SaveChanges();
         return true;
@@ -344,7 +344,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_PARENTESCOS.ToList().Any(u => u.PARE_NOM.Equals(newx.PARE_NOM, StringComparison.InvariantCultureIgnoreCase) && u.PARE_ID != newx.PARE_ID);
         if (contains || newx.PARE_NOM == "") return false;
-        
+
         var _a = from a in db.SCPM_PARENTESCOS where a.PARE_ID == newx.PARE_ID select a;
         if (_a.Count() < 1) return false;
         var area = _a.First();
@@ -360,7 +360,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_RAZAS.ToList().Any(u => u.RAZ_NOM.Equals(newx.RAZ_NOM, StringComparison.InvariantCultureIgnoreCase));
         if (contains || newx.RAZ_NOM == "") return false;
-        
+
         db.AddToSCPM_RAZAS(newx);
         db.SaveChanges();
         return true;
@@ -370,7 +370,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_RAZAS.ToList().Any(u => u.RAZ_NOM.Equals(newx.RAZ_NOM, StringComparison.InvariantCultureIgnoreCase) && u.RAZ_ID != newx.RAZ_ID);
         if (contains || newx.RAZ_NOM == "") return false;
-        
+
         var _a = from a in db.SCPM_RAZAS where a.RAZ_ID == newx.RAZ_ID select a;
         if (_a.Count() < 1) return false;
         var area = _a.First();
@@ -386,7 +386,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_PAIS.ToList().Any(u => u.PAI_NACIONALIDAD.Equals(newx.PAI_NACIONALIDAD, StringComparison.InvariantCultureIgnoreCase));
         if (contains || newx.PAI_NACIONALIDAD == "") return false;
-        
+
         db.AddToSCPM_PAIS(newx);
         db.SaveChanges();
         return true;
@@ -396,7 +396,7 @@ public class PersonaServiceModel
     {
         var contains = db.SCPM_PAIS.ToList().Any(u => u.PAI_NACIONALIDAD.Equals(newx.PAI_NACIONALIDAD, StringComparison.InvariantCultureIgnoreCase) && u.PAI_ID != newx.PAI_ID);
         if (contains || newx.PAI_NACIONALIDAD == "") return false;
-        
+
         var _a = from a in db.SCPM_PAIS where a.PAI_ID == newx.PAI_ID select a;
         if (_a.Count() < 1) return false;
         var area = _a.First();
