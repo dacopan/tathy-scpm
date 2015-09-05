@@ -95,7 +95,7 @@
 
                             <td>
                                 <div class="input-control select">
-                                    <asp:DropDownList ID="comboDocumento" runat="server" data-validate-func="required" data-validate-hint="Seleccione Tipo documento">
+                                    <asp:DropDownList ID="comboDocumento" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboDocumento_SelectedIndexChanged" data-validate-func="required" data-validate-hint="Seleccione Tipo documento">
                                         <asp:ListItem>Cedula</asp:ListItem>
                                         <asp:ListItem>Pasaporte</asp:ListItem>
                                     </asp:DropDownList>
@@ -411,7 +411,7 @@
                             </td>
                             <td>
                                 <div class="input-control select">
-                                    <asp:DropDownList ID="con_comboDocumento" runat="server" data-validate-func="required" data-validate-hint="Seleccione tipo documento conyugue">
+                                    <asp:DropDownList ID="con_comboDocumento" OnSelectedIndexChanged="con_comboDocumento_SelectedIndexChanged" AutoPostBack="true" runat="server" data-validate-func="required" data-validate-hint="Seleccione tipo documento conyugue">                                        
                                         <asp:ListItem>Cedula</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -722,7 +722,7 @@
             //datepicker
             var dd = new Date();
             var month = dd.getMonth().toString();
-            month = month.length == 1 ? "0" + month : month; 
+            month = month.length == 1 ? "0" + month : month;
             var day = dd.getDate().toString();
             day = day.length == 1 ? "0" + day : day;
             var datex = dd.getFullYear() - 15 + "-" + month + "-" + day;
@@ -742,7 +742,7 @@
                     $("#<%=wizardStep.ClientID %>").val(ix);
 
                 }, onFinish: function (page, wiz) {
-                    autosubmit = false;
+                    autosubmit = false;                    
                     $("#wizardx .submit").trigger("click");
                     autosubmit = true;
                 }, buttons: {
@@ -863,7 +863,7 @@
                     calcDiscapacidad(c, $(this));
                 });
             });
-
+            
         </script>
 
 

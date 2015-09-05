@@ -7739,7 +7739,7 @@
 
         funcs: {
             required: function (val) {
-                return val.trim() !== "" && val.trim().toLowerCase().indexOf("selecciona") < 0; 
+                return val.trim() !== "" && val.trim().toLowerCase().indexOf("selecciona") < 0 && val.trim().toLowerCase()!="0";
             },
             minlength: function (val, len) {
                 if (len == undefined || isNaN(len) || len <= 0) {
@@ -7807,6 +7807,36 @@
             },
             telefono: function (val) {
                 return /^\d+$/.test(val);
+            },
+            cedula: function (ced) {
+                var isNumeric;
+                var total = 0;
+                var tamanoLongitudCedula = 10;
+                var coeficientes = [2, 1, 2, 1, 2, 1, 2, 1, 2];
+                var numeroProvincias = 24;
+                var tercerDigito = 6;
+
+                if (ced.length == tamanoLongitudCedula) {
+                    var provincia = parseInt(ced[0] + "" + ced[1]);
+                    var digitoTres = parseInt(ced[2] + "");
+                    if ((provincia > 0 && provincia <= numeroProvincias) && digitoTres < tercerDigito) {
+                        var digitoVerificadorRecibido = parseInt(ced[9] + "");
+                        for (var k = 0; k < coeficientes.length; k++) {
+                            var valor = parseInt(coeficientes[k] + "") *
+                                parseInt(ced[k] + "");
+                            total = valor >= 10 ? total + (valor - 9) : total + valor;
+
+                        }
+                        var digitoVerificadorObtenido = total >= 10 ? (total % 10) != 0 ?
+                            10 - (total % 10) : (total % 10) : total;
+                        return digitoVerificadorObtenido == digitoVerificadorRecibido;
+
+                    }
+                    return false;
+
+                } else {
+                    return false;
+                }
             }
         },
 

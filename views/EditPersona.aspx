@@ -4,81 +4,81 @@
 
     <div>
         <div class="wizard" data-locale="es" id="wizardx">
-            <asp:hiddenfield value="1" runat="server" id="wizardStep" />
-            <asp:hiddenfield value="0" runat="server" id="hasAvatar" />
-            <asp:button text="submit" onclick="addPersona_Click" runat="server" cssclass="no-visible submit" />
+            <asp:HiddenField Value="1" runat="server" ID="wizardStep" />
+            <asp:HiddenField Value="0" runat="server" ID="hasAvatar" />
+            <asp:Button Text="submit" OnClick="addPersona_Click" runat="server" CssClass="no-visible submit" />
             <div class="steps">
                 <div class="step" runat="server">
                     <table class="style1" align="center">
                         <tr>
                             <td colspan="5" bgcolor="#000066">
-                                <asp:label id="Label25" runat="server" backcolor="#000066" forecolor="White" cssclass="panel-header" 
-                                    text="INGRESO DATOS FUNCIONARIO"></asp:label>
+                                <asp:Label ID="Label25" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
+                                    Text="INGRESO DATOS FUNCIONARIO"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label1" runat="server" text="Apellido Paterno"></asp:label>
-                            </td> 
+                                <asp:Label ID="Label1" runat="server" Text="Apellido Paterno"></asp:Label>
+                            </td>
                             <td class="style24">
                                 <div class="input-control text">
-                                    <asp:textbox id="inApellido1" runat="server" data-validate-func="required" data-validate-hint="apellido paterno requerido"></asp:textbox>
+                                    <asp:TextBox ID="inApellido1" runat="server" data-validate-func="required" data-validate-hint="apellido paterno requerido"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style15">&nbsp;</td>
                             <td class="style7">
-                                <asp:label id="Label12" runat="server" text="Apellido Materno"></asp:label>
+                                <asp:Label ID="Label12" runat="server" Text="Apellido Materno"></asp:Label>
                             </td>
                             <td class="style8">
                                 <div class="input-control text">
-                                    <asp:textbox id="inApellido2" runat="server" data-validate-func="required" data-validate-hint="apellido materno requerido"></asp:textbox>
+                                    <asp:TextBox ID="inApellido2" runat="server" data-validate-func="required" data-validate-hint="apellido materno requerido"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="style22" style="height: 26px">
-                                <asp:label id="Label2" runat="server" text="Nombre"></asp:label>
+                                <asp:Label ID="Label2" runat="server" Text="Nombre"></asp:Label>
                             </td>
                             <td class="style24" style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:textbox id="inNombre1" runat="server" data-validate-func="required" data-validate-hint="Primer Nombre requerido"></asp:textbox>
+                                    <asp:TextBox ID="inNombre1" runat="server" data-validate-func="required" data-validate-hint="Primer Nombre requerido"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style15" style="height: 26px"></td>
                             <td class="style7" style="height: 26px">
-                                <asp:label id="Label13" runat="server" text="2do Nombre"></asp:label>
+                                <asp:Label ID="Label13" runat="server" Text="2do Nombre"></asp:Label>
                             </td>
                             <td class="style8" style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:textbox id="inNombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre requerido"></asp:textbox>
+                                    <asp:TextBox ID="inNombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre requerido"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label3" runat="server" text="Nacionalidad"></asp:label>
+                                <asp:Label ID="Label3" runat="server" Text="Nacionalidad"></asp:Label>
                             </td>
                             <td class="style24">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="comboPais" runat="server" data-validate-func="required" data-validate-hint="Seleccione pais">
+                                    <asp:DropDownList ID="comboPais" runat="server" data-validate-func="required" data-validate-hint="Seleccione pais">
                                         <asp:ListItem>Ecuatoriano</asp:ListItem>
                                         <asp:ListItem>Peruano</asp:ListItem>
                                         <asp:ListItem></asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td class="style15">&nbsp;</td>
                             <td class="style7">
-                                <asp:label id="Label14" runat="server" text="Sexo"></asp:label>
+                                <asp:Label ID="Label14" runat="server" Text="Sexo"></asp:Label>
                             </td>
                             <td class="style8">
                                 <label class="input-control checkbox">
-                                    <asp:radiobutton id="sexo" runat="server" text="" groupname="sexo" checked="true" />
+                                    <asp:RadioButton ID="sexo" runat="server" Text="" GroupName="sexo" Checked="true" />
                                     <span class="check"></span>
                                     <span class="caption">Masculino</span>
                                 </label>
                                 <label class="input-control checkbox">
-                                    <asp:radiobutton id="RadioButton6" runat="server" text="" groupname="sexo" />
+                                    <asp:RadioButton ID="RadioButton6" runat="server" Text="" GroupName="sexo" />
                                     <span class="check"></span>
                                     <span class="caption">Femenino</span>
                                 </label>
@@ -88,26 +88,26 @@
                         </tr>
                         <tr>
                             <td class="style23">
-                                <asp:label id="Label4" runat="server" text="Tipo de Documento"></asp:label>
+                                <asp:Label ID="Label4" runat="server" Text="Tipo de Documento"></asp:Label>
                             </td>
 
 
 
                             <td>
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="comboDocumento" runat="server" data-validate-func="required" data-validate-hint="Seleccione Tipo documento">
+                                    <asp:DropDownList ID="comboDocumento" runat="server" AutoPostBack="true" OnSelectedIndexChanged="comboDocumento_SelectedIndexChanged" data-validate-func="required" data-validate-hint="Seleccione Tipo documento">
                                         <asp:ListItem>Cedula</asp:ListItem>
                                         <asp:ListItem>Pasaporte</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td class="style16">&nbsp;</td>
                             <td>
-                                <asp:label id="Label18" runat="server" text="No"></asp:label>
+                                <asp:Label ID="Label18" runat="server" Text="No"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="inDocumento" runat="server" data-validate-func="required" data-validate-hint="Numero documento inválido"></asp:textbox>
+                                    <asp:TextBox ID="inDocumento" runat="server" data-validate-func="required" data-validate-hint="Numero documento inválido"></asp:TextBox>
                                 </div>
                             </td>
 
@@ -116,37 +116,37 @@
                             <td class="style13">Raza</td>
                             <td class="style14">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="comboRaza" runat="server" data-validate-func="required" data-validate-hint="Seleccione Raza">
+                                    <asp:DropDownList ID="comboRaza" runat="server" data-validate-func="required" data-validate-hint="Seleccione Raza">
                                         <asp:ListItem>Mestizo</asp:ListItem>
                                         <asp:ListItem>Mulato</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td class="style16">&nbsp;</td>
                             <td class="style7">
-                                <asp:label id="Label16" runat="server" text="Estado Civil"></asp:label>
+                                <asp:Label ID="Label16" runat="server" Text="Estado Civil"></asp:Label>
                             </td>
                             <td class="style8">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="comboEstadoCivil" runat="server" autopostback="True" onselectedindexchanged="comboEstadoCivil_SelectedIndexChanged"
+                                    <asp:DropDownList ID="comboEstadoCivil" runat="server" AutoPostBack="True" OnSelectedIndexChanged="comboEstadoCivil_SelectedIndexChanged"
                                         data-validate-func="required" data-validate-hint="Seleccione estado civil">
                                         <asp:ListItem>Soltero</asp:ListItem>
                                         <asp:ListItem>Casado</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
 
                             </td>
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label5" runat="server" text="Libreta Militar"></asp:label>
+                                <asp:Label ID="Label5" runat="server" Text="Libreta Militar"></asp:Label>
                             </td>
                             <td class="style24">
                                 <table class="style17">
                                     <tr>
                                         <td class="style21" style="width: 4px">
                                             <div class="input-control text">
-                                                <asp:textbox id="inMilitar" runat="server" data-validate-func="required" data-validate-hint="ingrese libreta militar"></asp:textbox>
+                                                <asp:TextBox ID="inMilitar" runat="server" data-validate-func="required" data-validate-hint="ingrese libreta militar"></asp:TextBox>
                                             </div>
                                         </td>
                                     </tr>
@@ -154,14 +154,14 @@
                             </td>
                             <td class="style15">&nbsp;</td>
                             <td class="style7">
-                                <asp:label id="Label15" runat="server" text="Fecha Nacimiento"></asp:label>
+                                <asp:Label ID="Label15" runat="server" Text="Fecha Nacimiento"></asp:Label>
                             </td>
                             <td class="style8">
                                 <table class="style17">
                                     <tr>
                                         <td>
                                             <div class="input-control text" data-role="datepickerx" data-format="yyyy-mm-dd">
-                                                <asp:textbox id="inFechaNac" runat="server" data-validate-hint="Funcionario fecha nacimiento"></asp:textbox>
+                                                <asp:TextBox ID="inFechaNac" runat="server" data-validate-hint="Funcionario fecha nacimiento"></asp:TextBox>
                                                 <button class="button"><span class="mif-calendar"></span></button>
                                             </div>
                                         </td>
@@ -173,34 +173,34 @@
 
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label7" runat="server" text="Tipo de Sangre"></asp:label>
+                                <asp:Label ID="Label7" runat="server" Text="Tipo de Sangre"></asp:Label>
                             </td>
                             <td class="style24">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="comboSangre" runat="server" data-validate-func="required" data-validate-hint="Seleccione Tipo de sangre">
+                                    <asp:DropDownList ID="comboSangre" runat="server" data-validate-func="required" data-validate-hint="Seleccione Tipo de sangre">
                                         <asp:ListItem>--Seleccionar--</asp:ListItem>
                                         <asp:ListItem>O+</asp:ListItem>
                                         <asp:ListItem>A-</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td class="style15">&nbsp;</td>
                             <td class="style7">
-                                <asp:label id="Label17" runat="server" text="Telefono Celular"></asp:label>
+                                <asp:Label ID="Label17" runat="server" Text="Telefono Celular"></asp:Label>
                             </td>
                             <td class="style8">
                                 <div class="input-control text">
-                                    <asp:textbox id="inCelular" runat="server" data-validate-func="celular" data-validate-hint="Telefono celular incorrecto"></asp:textbox>
+                                    <asp:TextBox ID="inCelular" runat="server" data-validate-func="celular" data-validate-hint="Telefono celular incorrecto"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label8" runat="server" text="Telefono Fijo"></asp:label>
+                                <asp:Label ID="Label8" runat="server" Text="Telefono Fijo"></asp:Label>
                             </td>
                             <td class="style24">
                                 <div class="input-control text">
-                                    <asp:textbox id="inTelefono" runat="server" data-validate-func="telefono" data-validate-hint="Telefono fijo incorrecto"></asp:textbox>
+                                    <asp:TextBox ID="inTelefono" runat="server" data-validate-func="telefono" data-validate-hint="Telefono fijo incorrecto"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style15">&nbsp;</td>
@@ -208,7 +208,7 @@
                             <td class="style7" colspan="2" rowspan="5">
                                 <div class="image-container bordered image-format-hd handing" style="max-width: 150px">
                                     <div class="frame">
-                                        <asp:image id="Avatar" runat="server" imageurl="~/Uploads/avatar.png" />
+                                        <asp:Image ID="Avatar" runat="server" ImageUrl="~/Uploads/avatar.png" />
                                     </div>
                                 </div>
 
@@ -216,30 +216,30 @@
                         </tr>
                         <tr>
                             <td class="style23">
-                                <asp:label id="Label9" runat="server" text="Correo Personal"></asp:label>
+                                <asp:Label ID="Label9" runat="server" Text="Correo Personal"></asp:Label>
                             </td>
                             <td class="style25">
                                 <div class="input-control text">
-                                    <asp:textbox id="inEmail" runat="server" data-validate-func="email" data-validate-hint="Email incorrecto"></asp:textbox>
+                                    <asp:TextBox ID="inEmail" runat="server" data-validate-func="email" data-validate-hint="Email incorrecto"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style16"></td>
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label10" runat="server" text="Tarjeta"></asp:label>
+                                <asp:Label ID="Label10" runat="server" Text="Tarjeta"></asp:Label>
                             </td>
                             <td class="style24">
                                 <table class="style17">
                                     <tr>
                                         <td>
                                             <label class="input-control checkbox">
-                                                <asp:radiobutton id="tarjeta" runat="server" text="" groupname="tarjeta" checked="true" />
+                                                <asp:RadioButton ID="tarjeta" runat="server" Text="" GroupName="tarjeta" Checked="true" />
                                                 <span class="check"></span>
                                                 <span class="caption">Si</span>
                                             </label>
                                             <label class="input-control checkbox">
-                                                <asp:radiobutton id="RadioButton10" runat="server" text="" groupname="tarjeta" />
+                                                <asp:RadioButton ID="RadioButton10" runat="server" Text="" GroupName="tarjeta" />
                                                 <span class="check"></span>
                                                 <span class="caption">No</span>
                                             </label>
@@ -252,7 +252,7 @@
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label11" runat="server" text="Foto"></asp:label>
+                                <asp:Label ID="Label11" runat="server" Text="Foto"></asp:Label>
                             </td>
                             <td class="style24">
                                 <div class="input-control file" data-role="input">
@@ -261,7 +261,7 @@
                                 </div>
                             </td>
                             <td class="style15">
-                                <asp:button runat="server" id="atach" text="Subir" onclick="atach_Click" />
+                                <asp:Button runat="server" ID="atach" Text="Subir" OnClick="atach_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -272,70 +272,70 @@
                         <tr>
                             <td class="style22" colspan="5" bgcolor="#000066">
 
-                                <asp:label id="Label19" runat="server" backcolor="#000066" forecolor="White" cssclass="panel-header"
-                                    text="INGRESO LOCALIZACION DOMICILIO FUNCIONARIO"></asp:label>
+                                <asp:Label ID="Label19" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
+                                    Text="INGRESO LOCALIZACION DOMICILIO FUNCIONARIO"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td class="style22" style="height: 26px">
-                                <asp:label id="Label20" runat="server" text="Provincia"></asp:label>
+                                <asp:Label ID="Label20" runat="server" Text="Provincia"></asp:Label>
                             </td>
                             <td class="style24" style="height: 26px">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="comboProvincia" runat="server" autopostback="True" onselectedindexchanged="comboProvincia_SelectedIndexChanged"
+                                    <asp:DropDownList ID="comboProvincia" runat="server" AutoPostBack="True" OnSelectedIndexChanged="comboProvincia_SelectedIndexChanged"
                                         data-validate-func="required" data-validate-hint="Provincia incorrecta">
                                         <asp:ListItem>Pichincha</asp:ListItem>
                                         <asp:ListItem>Cotopaxi</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td class="style15" style="height: 26px"></td>
                             <td class="style7" style="height: 26px">
-                                <asp:label id="Label22" runat="server" text="Canton"></asp:label>
+                                <asp:Label ID="Label22" runat="server" Text="Canton"></asp:Label>
                             </td>
                             <td class="style8" style="height: 26px">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="ComboCanton" runat="server" autopostback="True" onselectedindexchanged="ComboCanton_SelectedIndexChanged"
+                                    <asp:DropDownList ID="ComboCanton" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ComboCanton_SelectedIndexChanged"
                                         data-validate-func="required" data-validate-hint="Canton incorrecto">
                                         <asp:ListItem>Quito</asp:ListItem>
                                         <asp:ListItem>Rumiñahui</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label21" runat="server" text="Parroquia"></asp:label>
+                                <asp:Label ID="Label21" runat="server" Text="Parroquia"></asp:Label>
                             </td>
                             <td class="style24">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="ComboParroquia" runat="server" autopostback="True" onselectedindexchanged="ComboParroquia_SelectedIndexChanged"
+                                    <asp:DropDownList ID="ComboParroquia" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ComboParroquia_SelectedIndexChanged"
                                         data-validate-func="required" data-validate-hint="Parroquia incorrecto">
                                         <asp:ListItem>Chillogallo</asp:ListItem>
                                         <asp:ListItem>La Ecuatoriana</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td class="style15">&nbsp;</td>
                             <td class="style7">
-                                <asp:label id="Label23" runat="server" text="Sector"></asp:label>
+                                <asp:Label ID="Label23" runat="server" Text="Sector"></asp:Label>
                             </td>
                             <td class="style8">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="comboSector" runat="server"
+                                    <asp:DropDownList ID="comboSector" runat="server"
                                         data-validate-func="required" data-validate-hint="Sector incorrecto">
                                         <asp:ListItem>San Luis</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td class="style22">
-                                <asp:label id="Label24" runat="server" text="Direccion"></asp:label>
+                                <asp:Label ID="Label24" runat="server" Text="Direccion"></asp:Label>
                             </td>
                             <td class="style15">
                                 <div class="input-control text">
-                                    <asp:textbox id="inDireccion" runat="server" data-validate-func="required" data-validate-hint="Dirección incorrecto"></asp:textbox>
+                                    <asp:TextBox ID="inDireccion" runat="server" data-validate-func="required" data-validate-hint="Dirección incorrecto"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style7">&nbsp;</td>
@@ -349,8 +349,8 @@
                     <table class="style1" align="center">
                         <tr>
                             <td colspan="5" bgcolor="#000066">
-                                <asp:label id="Label6" runat="server" backcolor="#000066" forecolor="White" cssclass="panel-header"
-                                    text="INGRESO CONYUGE"></asp:label>
+                                <asp:Label ID="Label6" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
+                                    Text="INGRESO CONYUGE"></asp:Label>
                             </td>
                         </tr>
 
@@ -358,47 +358,47 @@
                             <td style="height: 26px">Apellido Paterno</td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:textbox id="con_apellido1" runat="server" data-validate-func="required" data-validate-hint="Apellido paterno cónyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_apellido1" runat="server" data-validate-func="required" data-validate-hint="Apellido paterno cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                             <td style="height: 26px"></td>
                             <td style="height: 26px">
-                                <asp:label id="Label30" runat="server" text="Apellido Materno"></asp:label>
+                                <asp:Label ID="Label30" runat="server" Text="Apellido Materno"></asp:Label>
                             </td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:textbox id="con_apellido2" runat="server" data-validate-func="required" data-validate-hint="Apellido materno cónyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_apellido2" runat="server" data-validate-func="required" data-validate-hint="Apellido materno cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label31" runat="server" text="Nombre:"></asp:label>
+                                <asp:Label ID="Label31" runat="server" Text="Nombre:"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="con_nombre1" runat="server" data-validate-func="required" data-validate-hint="Primer nombre cónyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_nombre1" runat="server" data-validate-func="required" data-validate-hint="Primer nombre cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                             <td>&nbsp;</td>
                             <td>
-                                <asp:label id="Label32" runat="server" text="2do Nombre"></asp:label>
+                                <asp:Label ID="Label32" runat="server" Text="2do Nombre"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="con_nombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre cónyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_nombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td style="height: 26px">
-                                <asp:label id="Label33" runat="server" text="Nacionalidad"></asp:label>
+                                <asp:Label ID="Label33" runat="server" Text="Nacionalidad"></asp:Label>
                             </td>
                             <td style="height: 26px">
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="con_pais" runat="server" data-validate-func="required" data-validate-hint="Seleccione país conyugue">
+                                    <asp:DropDownList ID="con_pais" runat="server" data-validate-func="required" data-validate-hint="Seleccione país conyugue">
                                         <asp:ListItem>Ecuatoriano</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td style="height: 26px"></td>
@@ -407,92 +407,92 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label34" runat="server" text="Tipo Documento"></asp:label>
+                                <asp:Label ID="Label34" runat="server" Text="Tipo Documento"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="con_comboDocumento" runat="server" data-validate-func="required" data-validate-hint="Seleccione tipo documento conyugue">
+                                    <asp:DropDownList ID="con_comboDocumento" OnSelectedIndexChanged="con_comboDocumento_SelectedIndexChanged" AutoPostBack="true" runat="server" data-validate-func="required" data-validate-hint="Seleccione tipo documento conyugue">
                                         <asp:ListItem>Cedula</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                             <td>&nbsp;</td>
                             <td>
-                                <asp:label id="Label35" runat="server" text="No"></asp:label>
+                                <asp:Label ID="Label35" runat="server" Text="No"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="con_documento" runat="server" data-validate-func="required" data-validate-hint="Número documento cónyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_documento" runat="server" data-validate-func="required" data-validate-hint="Número documento cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label37" runat="server" text="Fecha de Nacimiento"></asp:label>
+                                <asp:Label ID="Label37" runat="server" Text="Fecha de Nacimiento"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text" data-role="datepickerx" data-format="yyyy-mm-dd">
-                                    <asp:textbox id="con_fechaNacimiento" runat="server" data-validate-hint="Conyugue fecha nacimiento"></asp:textbox>
+                                    <asp:TextBox ID="con_fechaNacimiento" runat="server" data-validate-hint="Conyugue fecha nacimiento"></asp:TextBox>
                                     <button class="button"><span class="mif-calendar"></span></button>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td style="height: 26px">
-                                <asp:label runat="server" text="Telefono Fijo"></asp:label>
+                                <asp:Label runat="server" Text="Telefono Fijo"></asp:Label>
                             </td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:textbox id="con_telefono" runat="server" data-validate-func="telefono" data-validate-hint="Telefono fijo cónyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_telefono" runat="server" data-validate-func="telefono" data-validate-hint="Telefono fijo cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                             <td style="height: 26px"></td>
                             <td style="height: 26px">
-                                <asp:label id="Label42" runat="server" text="Celular"></asp:label>
+                                <asp:Label ID="Label42" runat="server" Text="Celular"></asp:Label>
                             </td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:textbox id="con_celular" runat="server" data-validate-func="celular" data-validate-hint="Telefono celular cónyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_celular" runat="server" data-validate-func="celular" data-validate-hint="Telefono celular cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label43" runat="server" text="Correo Personal"></asp:label>
+                                <asp:Label ID="Label43" runat="server" Text="Correo Personal"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="con_Email" runat="server" data-validate-func="email" data-validate-hint="Mail conyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_Email" runat="server" data-validate-func="email" data-validate-hint="Mail conyugue"></asp:TextBox>
                                 </div>
                             </td>
                             <td>&nbsp;</td>
                             <td>
-                                <asp:label id="Label44" runat="server" text="Profesion"></asp:label>
+                                <asp:Label ID="Label44" runat="server" Text="Profesion"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="con_comboProfesion" runat="server" data-validate-func="required" data-validate-hint="Seleccione profesion cónyugue">
+                                    <asp:DropDownList ID="con_comboProfesion" runat="server" data-validate-func="required" data-validate-hint="Seleccione profesion cónyugue">
                                         <asp:ListItem>Chofer</asp:ListItem>
                                         <asp:ListItem>Cajera</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label45" runat="server" text="Trabaja:"></asp:label>
+                                <asp:Label ID="Label45" runat="server" Text="Trabaja:"></asp:Label>
                             </td>
                             <td>
                                 <table class="backgroundRepeatBanner">
                                     <tr>
                                         <td>
                                             <label class="input-control checkbox">
-                                                <asp:radiobutton id="con_trabaja" runat="server" text="" groupname="abc1" checked="true" autopostback="true" oncheckedchanged="con_trabaja_CheckedChanged" />
+                                                <asp:RadioButton ID="con_trabaja" runat="server" Text="" GroupName="abc1" Checked="true" AutoPostBack="true" OnCheckedChanged="con_trabaja_CheckedChanged" />
                                                 <span class="check"></span>
                                                 <span class="caption">Si</span>
                                             </label>
                                             <label class="input-control checkbox">
-                                                <asp:radiobutton id="RadioButton2" runat="server" text="" groupname="abc1" autopostback="true" oncheckedchanged="con_trabaja_CheckedChanged" />
+                                                <asp:RadioButton ID="RadioButton2" runat="server" Text="" GroupName="abc1" AutoPostBack="true" OnCheckedChanged="con_trabaja_CheckedChanged" />
                                                 <span class="check"></span>
                                                 <span class="caption">No</span>
                                             </label>
@@ -504,30 +504,30 @@
                             </td>
                             <td>&nbsp;</td>
                             <td>
-                                <asp:label id="con_lugarTrabW" runat="server" text="Lugar de trabajo"></asp:label>
+                                <asp:Label ID="con_lugarTrabW" runat="server" Text="Lugar de trabajo"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="con_lugarTrab" runat="server" data-validate-func="required" data-validate-hint="Lugar trabajo Conyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_lugarTrab" runat="server" data-validate-func="required" data-validate-hint="Lugar trabajo Conyugue"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="con_empresaW" runat="server" text="Nombre Empresa"></asp:label>
+                                <asp:Label ID="con_empresaW" runat="server" Text="Nombre Empresa"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="con_empresa" runat="server" data-validate-func="required" data-validate-hint="Empresa Conyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_empresa" runat="server" data-validate-func="required" data-validate-hint="Empresa Conyugue"></asp:TextBox>
                                 </div>
                             </td>
                             <td>&nbsp;</td>
                             <td>
-                                <asp:label id="con_telfTrabajoW" runat="server" text="Telefono Trabajo"></asp:label>
+                                <asp:Label ID="con_telfTrabajoW" runat="server" Text="Telefono Trabajo"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="con_telfTrabajo" runat="server" data-validate-func="digits" data-validate-hint="Telefono trabajo Conyugue"></asp:textbox>
+                                    <asp:TextBox ID="con_telfTrabajo" runat="server" data-validate-func="digits" data-validate-hint="Telefono trabajo Conyugue"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -537,7 +537,7 @@
 
                 <div class="step">
                     <label class="input-control checkbox">
-                        <asp:checkbox id="hasDisapacidad" runat="server" />
+                        <asp:CheckBox ID="hasDisapacidad" runat="server" />
                         <span class="check"></span>
                         <span class="caption">Tiene alguna discapacidad?</span>
                     </label>
@@ -545,8 +545,8 @@
                         <table class="backgroundRepeatBanner">
                             <tr>
                                 <td colspan="5" bgcolor="#000066">
-                                    <asp:label id="Label26" runat="server" backcolor="#000066" forecolor="White" cssclass="panel-header"
-                                        text="INGRESO DISCAPACIDAD"></asp:label>
+                                    <asp:Label ID="Label26" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
+                                        Text="INGRESO DISCAPACIDAD"></asp:Label>
                                 </td>
                             </tr>
 
@@ -556,7 +556,7 @@
                                         <tr>
                                             <td>
                                                 <label class="input-control checkbox">
-                                                    <asp:checkbox id="dis_isPropia" runat="server" checked="true" />
+                                                    <asp:CheckBox ID="dis_isPropia" runat="server" Checked="true" />
                                                     <span class="check"></span>
                                                     <span class="caption">Es discapacidad propia?</span>
                                                 </label>
@@ -569,11 +569,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:label id="Label27" runat="server" text="Parentesco"></asp:label>
-                                    <asp:dropdownlist id="dis_comboParentesco" runat="server">
+                                    <asp:Label ID="Label27" runat="server" Text="Parentesco"></asp:Label>
+                                    <asp:DropDownList ID="dis_comboParentesco" runat="server">
                                         <asp:ListItem>Padre</asp:ListItem>
                                         <asp:ListItem>Madre</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </td>
 
                             </tr>
@@ -584,7 +584,7 @@
                                             <td>
 
                                                 <label class="input-control checkbox">
-                                                    <asp:checkbox id="dis_hasConadis" runat="server" checked="true" />
+                                                    <asp:CheckBox ID="dis_hasConadis" runat="server" Checked="true" />
                                                     <span class="check"></span>
                                                     <span class="caption">Tiene carnet del CONADIS?</span>
                                                 </label>
@@ -600,13 +600,13 @@
                                     <div class="input-control text info" id="dis_conadisWrap">
                                         <label>No. Carnet</label>
                                         <br />
-                                        <asp:textbox id="dis_conadis" runat="server"></asp:textbox>
+                                        <asp:TextBox ID="dis_conadis" runat="server"></asp:TextBox>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:repeater id="Repeater1" runat="server">
+                                    <asp:Repeater ID="Repeater1" runat="server">
                                         <HeaderTemplate>
                                             <br />
                                             <br />
@@ -645,8 +645,8 @@
                                             </tr>
                                         </ItemTemplate>
                                         <FooterTemplate>
-                        </table>
-                        </FooterTemplate>
+                                            </table>
+                                        </FooterTemplate>
 
                                     </asp:Repeater>
                                 </td>
@@ -662,53 +662,53 @@
                     <table class="backgroundRepeatBanner">
                         <tr>
                             <td colspan="5" bgcolor="#000066">
-                                <asp:label id="Label28" runat="server" backcolor="#000066" forecolor="White" cssclass="panel-header"
-                                    text="INGRESO CONTACTO EMERGENCIA"></asp:label>
+                                <asp:Label ID="Label28" runat="server" BackColor="#000066" ForeColor="White" CssClass="panel-header"
+                                    Text="INGRESO CONTACTO EMERGENCIA"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label29" runat="server" text="Nombre"></asp:label>
+                                <asp:Label ID="Label29" runat="server" Text="Nombre"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="emg_nombre" runat="server" data-validate-func="required" data-validate-hint="Nombre contacto emergencia"></asp:textbox>
+                                    <asp:TextBox ID="emg_nombre" runat="server" data-validate-func="required" data-validate-hint="Nombre contacto emergencia"></asp:TextBox>
                                 </div>
 
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label36" runat="server" text="Telefono fijo"></asp:label>
+                                <asp:Label ID="Label36" runat="server" Text="Telefono fijo"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:textbox id="emg_telefono" runat="server" data-validate-func="telefono" data-validate-hint="Numero telefono contacto emergencia"></asp:textbox>
+                                    <asp:TextBox ID="emg_telefono" runat="server" data-validate-func="telefono" data-validate-hint="Numero telefono contacto emergencia"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label38" runat="server" text="Telefono Celular"></asp:label>
+                                <asp:Label ID="Label38" runat="server" Text="Telefono Celular"></asp:Label>
                             </td>
                             <td>
 
                                 <div class="input-control text">
-                                    <asp:textbox id="emg_celular" runat="server" data-validate-func="celular" data-validate-hint="Numero celular contacto emergencia"></asp:textbox>
+                                    <asp:TextBox ID="emg_celular" runat="server" data-validate-func="celular" data-validate-hint="Numero celular contacto emergencia"></asp:TextBox>
                                 </div>
 
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:label id="Label39" runat="server" text="Parentesco"></asp:label>
+                                <asp:Label ID="Label39" runat="server" Text="Parentesco"></asp:Label>
                             </td>
                             <td>
                                 <div class="input-control select">
-                                    <asp:dropdownlist id="emg_comboParentesco" runat="server" data-validate-func="required" data-validate-hint="Seleccione parentezco contacto emergencia">
+                                    <asp:DropDownList ID="emg_comboParentesco" runat="server" data-validate-func="required" data-validate-hint="Seleccione parentezco contacto emergencia">
                                         <asp:ListItem>Padre</asp:ListItem>
                                         <asp:ListItem>Madre</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
 
                             </td>
@@ -734,7 +734,7 @@
                     locale: "es",
                     maxDate: datex.toString(),
                     preset: current != "" ? current + 'T10:00:01Z' : datex.toString() + 'T10:00:01Z'
-                });                
+                });
             });
             $("#wizardx").wizard({
                 startPage: $("#<%=wizardStep.ClientID %>").val(), onPage: function (ix, a) {

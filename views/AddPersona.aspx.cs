@@ -240,7 +240,7 @@ public partial class AddPersona : System.Web.UI.Page
             ComboCanton.Items.Add(new ListItem("--Seleccionar--", "0"));
             ComboCanton.SelectedValue = "0";
             ComboCanton_SelectedIndexChanged(ComboCanton, null);
-           
+
         }
         else
         {
@@ -274,7 +274,7 @@ public partial class AddPersona : System.Web.UI.Page
 
             ComboParroquia_SelectedIndexChanged(ComboParroquia, null);
 
-            
+
         }
         else
         {
@@ -506,6 +506,32 @@ public partial class AddPersona : System.Web.UI.Page
         con_empresaW.Visible = con_trabaja.Checked;
         con_lugarTrabW.Visible = con_trabaja.Checked;
         con_telfTrabajoW.Visible = con_trabaja.Checked;
+    }
+    protected void comboDocumento_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        setDocumentoValidateFunc(comboDocumento, inDocumento);
+    }
+    protected void con_comboDocumento_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        setDocumentoValidateFunc(con_comboDocumento, con_documento);
+    }
+
+    void setDocumentoValidateFunc(DropDownList combo, TextBox inDoc)
+    {
+        if (combo.SelectedItem.Text.ToLower().Contains("ci")
+                || combo.SelectedItem.Text.ToLower().Contains("c.i.")
+                || combo.SelectedItem.Text.ToLower().Equals("cedula")
+                || combo.SelectedItem.Text.ToLower().Equals("cédula")
+                )
+        {
+            inDoc.Attributes["data-validate-func"] = "cedula";
+            inDoc.Attributes["data-validate-hint"] = "Cédula Inválida";
+        }
+        else
+        {
+            inDoc.Attributes["data-validate-func"] = "required";
+            inDoc.Attributes["data-validate-hint"] = "Numero documento inválido";
+        }
     }
 }
 
