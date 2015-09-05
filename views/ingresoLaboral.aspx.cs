@@ -126,17 +126,17 @@ public partial class ingresoLaboral : System.Web.UI.Page
     }
     protected void ComboArea_SelectedIndexChanged(object sender, EventArgs e)
     {
-        fillCargos();
+        fillCargos("0");
     }
 
-    private void fillCargos()
+    private void fillCargos(string per_id)
     {
-        var s = psvm.getCargosByAreaID(Convert.ToInt32(ComboArea.SelectedValue));
+        var s = psvm.getFreeCargosByAreaID(Convert.ToInt32(ComboArea.SelectedValue), Convert.ToInt32(per_id));
         var datasource = from x in s
                          select new
                          {
                              x.CAR_ID,
-                             DisplayField = String.Format("{0} / {1}", x.CAR_NOM,x.SCPM_DENOMINACIONES.DEN_NOM)
+                             DisplayField = String.Format("{0} / {1}", x.CAR_NOM, x.SCPM_DENOMINACIONES.DEN_NOM)
                          };
 
         comboCargo.Enabled = false;
@@ -169,6 +169,7 @@ public partial class ingresoLaboral : System.Web.UI.Page
             {
                 SCPM_PERSONALES persona = res.First();
                 current_persona_id.Value = persona.PER_ID.ToString();
+                fillCargos(persona.PER_ID.ToString());
                 //historial puestos
                 persona.SCPM_PUESTO_HIST.Load();
 
@@ -205,7 +206,7 @@ public partial class ingresoLaboral : System.Web.UI.Page
                     comboRelacionLab.SelectedValue = lastCargo.SCPM_RELACIONES_LABORALES.REL_LAB_ID.ToString();
                     comboCargo.SelectedValue = lastCargo.SCPM_CARGOS.CAR_ID.ToString();
                     inFechaStart.Text = lastCargo.PST_HIS_FEC_INI.Value.ToString("yyyy-MM-dd");
-                    inFechaEnd.Text=lastCargo.PST_HIS_FEC_FIN == null ? "" : lastCargo.PST_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd");
+                    inFechaEnd.Text = lastCargo.PST_HIS_FEC_FIN == null ? "" : lastCargo.PST_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd");
                 }
                 else
                 {

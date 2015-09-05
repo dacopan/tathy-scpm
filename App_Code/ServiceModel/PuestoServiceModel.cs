@@ -63,7 +63,7 @@ public class PuestoServiceModel
 
     public bool addArea(SCPM_AREAS newx, int unidad)
     {
-        var contains = db.SCPM_AREAS.Include("SCPM_UNIDAD").ToList().Any(u => u.ARE_NOM.Equals(newx.ARE_NOM, StringComparison.InvariantCultureIgnoreCase)&& u.SCPM_UNIDAD.UNI_COD==unidad);
+        var contains = db.SCPM_AREAS.Include("SCPM_UNIDAD").ToList().Any(u => u.ARE_NOM.Equals(newx.ARE_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_UNIDAD.UNI_COD == unidad);
         if (contains || newx.ARE_NOM == "") return false;
 
         var _a = from a in db.SCPM_UNIDAD where a.UNI_COD == unidad select a;
@@ -122,7 +122,7 @@ public class PuestoServiceModel
     {
         var contains = db.SCPM_RELACIONES_LABORALES.ToList().Any(u => u.REL_LAB_NOM.Equals(newx.REL_LAB_NOM, StringComparison.InvariantCultureIgnoreCase) && u.REL_LAB_ID != newx.REL_LAB_ID);
         if (contains || newx.REL_LAB_NOM == "") return false;
-        
+
         var _unidad = from u in db.SCPM_RELACIONES_LABORALES where u.REL_LAB_ID == newx.REL_LAB_ID select u;
         if (_unidad.Count() < 1) return false;
         var unidad = _unidad.FirstOrDefault();
@@ -137,7 +137,7 @@ public class PuestoServiceModel
     {
         var contains = db.SCPM_DENOMINACIONES.ToList().Any(u => u.DEN_NOM.Equals(newx.DEN_NOM, StringComparison.InvariantCultureIgnoreCase) && u.DEN_ID != newx.DEN_ID);
         if (contains || newx.DEN_NOM == "") return false;
-        
+
         db.AddToSCPM_DENOMINACIONES(newx);
         db.SaveChanges();
         return true;
@@ -147,7 +147,7 @@ public class PuestoServiceModel
     {
         var contains = db.SCPM_DENOMINACIONES.ToList().Any(u => u.DEN_NOM.Equals(newx.DEN_NOM, StringComparison.InvariantCultureIgnoreCase) && u.DEN_ID != newx.DEN_ID);
         if (contains || newx.DEN_NOM == "") return false;
-        
+
 
         var _unidad = from u in db.SCPM_DENOMINACIONES where u.DEN_ID == newx.DEN_ID select u;
         if (_unidad.Count() < 1) return false;
@@ -182,7 +182,27 @@ public class PuestoServiceModel
     {
         return (from a in db.SCPM_CARGOS.Include("SCPM_DENOMINACIONES") where a.SCPM_AREAS.ARE_COD == newx select a).ToList();
     }
+    public List<SCPM_CARGOS> getFreeCargosByAreaID(int newx, int per_id)
+    {
+        List<SCPM_CARGOS> _res = new List<SCPM_CARGOS>();
 
+        var cargosx = (from a in db.SCPM_CARGOS.Include("SCPM_DENOMINACIONES") where a.SCPM_AREAS.ARE_COD == newx select a).ToList();
+        foreach (var puesto in cargosx)
+        {
+            puesto.SCPM_PUESTO_HIST.Load();
+            SCPM_PUESTO_HIST lastCargo = puesto.SCPM_PUESTO_HIST.Count > 0 ? puesto.SCPM_PUESTO_HIST.OrderByDescending(c => c.PST_HIS_FEC_INI).FirstOrDefault() : puesto.SCPM_PUESTO_HIST.FirstOrDefault();
+            if (lastCargo != null && (lastCargo.PST_HIS_FEC_FIN == null || DateTime.Now.CompareTo(lastCargo.PST_HIS_FEC_FIN) <= 0))
+            {//cargo tiene un funcionario actualmente
+                lastCargo.SCPM_PERSONALESReference.Load();
+                if (lastCargo.SCPM_PERSONALES.PER_ID == per_id) _res.Add(puesto);
+            }
+            else
+            {//cargo libre
+                _res.Add(puesto);
+            }
+        }
+        return _res;
+    }
     public bool saveDB()
     {
         try
@@ -513,4 +533,6 @@ public class PuestoServiceModel
     {
         return (from h in db.SCPM_RELACIONES_LABORALES where h.REL_LAB_ID == p select h).FirstOrDefault();
     }
+
+
 }
