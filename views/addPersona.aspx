@@ -179,8 +179,14 @@
                                 <div class="input-control select">
                                     <asp:DropDownList ID="comboSangre" runat="server" data-validate-func="required" data-validate-hint="Seleccione Tipo de sangre">
                                         <asp:ListItem>--Seleccionar--</asp:ListItem>
-                                        <asp:ListItem>O+</asp:ListItem>
-                                        <asp:ListItem>A-</asp:ListItem>
+                                        <asp:ListItem Value="A-">A-</asp:ListItem>
+                                        <asp:ListItem Value="A+">A+</asp:ListItem>
+                                        <asp:ListItem Value="AB-">AB-</asp:ListItem>
+                                        <asp:ListItem Value="AB+">AB+</asp:ListItem>
+                                        <asp:ListItem Value="B-">B-</asp:ListItem>
+                                        <asp:ListItem Value="B+">B+</asp:ListItem>
+                                        <asp:ListItem Value="O-">O-</asp:ListItem>
+                                        <asp:ListItem Value="O+">O+</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </td>

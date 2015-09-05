@@ -26,17 +26,20 @@
     <script src="/Scripts/metro.js?v=3.0.11" type="text/javascript"></script>
 
     <script language="JavaScript" type="text/javascript">
-
-        /* $(function () {
+        //reloj live
+        /*
+        $(function () {
              setInterval(function () {
                  var date = new Date(); var sec = date.getSeconds();
+                 var min = date.getMinutes();
                  $('#liveclock').html(
-                 date.getHours() + ":" + date.getMinutes() + ":" + (sec > 9 ? sec : "0"+sec)
+                 date.getHours() + ":" + (min > 9 ? min : "0" + min) + ":" + (sec > 9 ? sec : "0" + sec)
                      );
              }, 500);
  
-         });*/
-        window.mesagges = ('<%= HelperUtil.NotifyMessages %>');
+         });
+         //*/
+        window.mesagges = ('<%= HelperUtil.NotifyMessages %>'); 
     </script>
 </head>
 <body background="/Images/Pagina.png" class="metro">
