@@ -15,7 +15,7 @@ public partial class EditPersona : System.Web.UI.Page
     {
         psvm = new PersonaServiceModel();
         if (!IsPostBack)
-        { 
+        {
             //comboPais
             fillPais(comboPais);
 
@@ -352,7 +352,7 @@ public partial class EditPersona : System.Web.UI.Page
         //fechanac
         inFechaNac.Text = p.PER_FEC_NAC.Value.ToString("yyyy-MM-dd");
         //
-        comboSangre.SelectedValue = p.PER_TIP_SAN;
+        comboSangre.SelectedValue = p.PER_TIP_SAN.ToString().Replace(" ","");
         comboEstadoCivil.SelectedValue = p.SCPM_ESTADOS_CIVILES.EST_CIV_ID.ToString();
         inCelular.Text = p.PER_CEL;
         inTelefono.Text = p.PER_TEL;
@@ -365,16 +365,20 @@ public partial class EditPersona : System.Web.UI.Page
         //end file avatar
 
         //domicilio
-        comboSector.SelectedValue = p.SCPM_SECTORES.SEC_ID.ToString();
+
 
         p.SCPM_SECTORES.SCPM_PARROQUIASReference.Load();
-        ComboParroquia.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.PAR_ID.ToString();
-
         p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONESReference.Load();
-        ComboCanton.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.CAN_ID.ToString();
-
         p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.SCPM_PROVINCIASReference.Load();
-        ComboParroquia.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.SCPM_PROVINCIAS.PRO_ID.ToString();
+
+        comboProvincia.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.SCPM_PROVINCIAS.PRO_ID.ToString();
+        fillCantones();
+        ComboCanton.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.SCPM_CANTONES.CAN_ID.ToString();
+        fillParroquias();
+        ComboParroquia.SelectedValue = p.SCPM_SECTORES.SCPM_PARROQUIAS.PAR_ID.ToString();
+        fillSectores();
+        comboSector.SelectedValue = p.SCPM_SECTORES.SEC_ID.ToString();
+
 
         inDireccion.Text = p.PER_DIR;
 
@@ -532,7 +536,7 @@ public partial class EditPersona : System.Web.UI.Page
 
         var _fec = inFechaNac.Text.Split('-');
         p.PER_FEC_NAC = new DateTime(Convert.ToInt32(_fec[0]), Convert.ToInt32(_fec[1]), Convert.ToInt32(_fec[2]));
-        p.PER_TIP_SAN = comboSangre.SelectedValue;
+        p.PER_TIP_SAN = comboSangre.SelectedValue.ToString().Replace(" ", "");
         p.SCPM_ESTADOS_CIVILES = psvm.getEstadoCivilByID(Convert.ToInt32(comboEstadoCivil.SelectedValue));
         p.PER_CEL = inCelular.Text;
         p.PER_TEL = inTelefono.Text;

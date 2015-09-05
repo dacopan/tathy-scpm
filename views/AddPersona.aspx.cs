@@ -343,7 +343,7 @@ public partial class AddPersona : System.Web.UI.Page
 
             var _fec = inFechaNac.Text.Split('-');
             p.PER_FEC_NAC = new DateTime(Convert.ToInt32(_fec[0]), Convert.ToInt32(_fec[1]), Convert.ToInt32(_fec[2]));
-            p.PER_TIP_SAN = comboSangre.SelectedValue;
+            p.PER_TIP_SAN = comboSangre.SelectedValue.ToString().Replace(" ", ""); ;
             p.SCPM_ESTADOS_CIVILES = psvm.getEstadoCivilByID(Convert.ToInt32(comboEstadoCivil.SelectedValue));
             p.PER_CEL = inCelular.Text;
             p.PER_TEL = inTelefono.Text;
