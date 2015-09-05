@@ -203,8 +203,8 @@
                 "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"
             ],
             days: [
-                "Domingo", "Lunes", "Martes", "MiÃ©rcoles", "Jueves", "Viernes", "SÃ¡bado",
-                "Do", "Lu", "Mar", "MiÃ©", "Jue", "Vi", "SÃ¡b"
+                "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado",
+                "Do", "Lu", "Mar", "Mié", "Jue", "Vi", "Sáb"
             ],
             buttons: [
                 "Hoy", "Limpiar", "Cancel", "Help", "Prior", "Next", "Finish"
@@ -2334,7 +2334,7 @@
             }
 
             if (o.maxDate !== false && typeof o.maxDate === 'string') {
-                o.maxDate = new Date(o.maxDate + 'T00:00:00Z');
+                o.maxDate = new Date(o.maxDate + 'T10:00:01Z');
             }
 
             //console.log(window.METRO_LOCALES);

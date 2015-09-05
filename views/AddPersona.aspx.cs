@@ -48,8 +48,8 @@ public partial class AddPersona : System.Web.UI.Page
             //emergencia
             fillParentesco(emg_comboParentesco);
 
-            inFechaNac.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            con_fechaNacimiento.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            //inFechaNac.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            //con_fechaNacimiento.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
     }
 

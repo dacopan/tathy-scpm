@@ -160,7 +160,7 @@
                                 <table class="style17">
                                     <tr>
                                         <td>
-                                            <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
+                                            <div class="input-control text" data-role="datepickerx" data-format="yyyy-mm-dd">
                                                 <asp:textbox id="inFechaNac" runat="server" data-validate-hint="Funcionario fecha nacimiento"></asp:textbox>
                                                 <button class="button"><span class="mif-calendar"></span></button>
                                             </div>
@@ -431,7 +431,7 @@
                                 <asp:label id="Label37" runat="server" text="Fecha de Nacimiento"></asp:label>
                             </td>
                             <td>
-                                <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
+                                <div class="input-control text" data-role="datepickerx" data-format="yyyy-mm-dd">
                                     <asp:textbox id="con_fechaNacimiento" runat="server" data-validate-hint="Conyugue fecha nacimiento"></asp:textbox>
                                     <button class="button"><span class="mif-calendar"></span></button>
                                 </div>
@@ -719,6 +719,23 @@
             </div>
         </div>
         <script type="text/jscript">
+            //datepicker
+            var dd = new Date();
+            var month = dd.getMonth().toString();
+            month = month.length == 1 ? "0" + month : month;
+            var day = dd.getDate().toString();
+            day = day.length == 1 ? "0" + day : day;
+            var datex = dd.getFullYear() - 15 + "-" + month + "-" + day;
+            $("[data-role=datepickerx]").each(function () {
+                var current = $(this).find("input").val();
+
+                $(this).datepicker({
+                    format: "yyyy-mm-dd",
+                    locale: "es",
+                    maxDate: datex.toString(),
+                    preset: current != "" ? current + 'T10:00:01Z' : datex.toString() + 'T10:00:01Z'
+                });                
+            });
             $("#wizardx").wizard({
                 startPage: $("#<%=wizardStep.ClientID %>").val(), onPage: function (ix, a) {
                     $("#<%=wizardStep.ClientID %>").val(ix);

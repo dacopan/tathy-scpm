@@ -160,7 +160,7 @@
                                 <table class="style17">
                                     <tr>
                                         <td>
-                                            <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
+                                            <div class="input-control text" data-role="datepickerx" data-format="yyyy-mm-dd">
                                                 <asp:TextBox ID="inFechaNac" runat="server" data-validate-hint="Funcionario fecha nacimiento"></asp:TextBox>
                                                 <button class="button"><span class="mif-calendar"></span></button>
                                             </div>
@@ -358,7 +358,7 @@
                             <td style="height: 26px">Apellido Paterno</td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_apellido1" runat="server"  data-validate-func="required" data-validate-hint="Apellido paterno cónyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_apellido1" runat="server" data-validate-func="required" data-validate-hint="Apellido paterno cónyugue"></asp:TextBox>
                                 </div>
                             </td>
                             <td style="height: 26px"></td>
@@ -431,7 +431,7 @@
                                 <asp:Label ID="Label37" runat="server" Text="Fecha de Nacimiento"></asp:Label>
                             </td>
                             <td>
-                                <div class="input-control text" data-role="datepicker" data-format="yyyy-mm-dd">
+                                <div class="input-control text" data-role="datepickerx" data-format="yyyy-mm-dd">
                                     <asp:TextBox ID="con_fechaNacimiento" runat="server" data-validate-hint="Conyugue fecha nacimiento"></asp:TextBox>
                                     <button class="button"><span class="mif-calendar"></span></button>
                                 </div>
@@ -471,7 +471,7 @@
                             </td>
                             <td>
                                 <div class="input-control select">
-                                    <asp:DropDownList ID="con_comboProfesion" runat="server"  data-validate-func="required" data-validate-hint="Seleccione profesion cónyugue">
+                                    <asp:DropDownList ID="con_comboProfesion" runat="server" data-validate-func="required" data-validate-hint="Seleccione profesion cónyugue">
                                         <asp:ListItem>Chofer</asp:ListItem>
                                         <asp:ListItem>Cajera</asp:ListItem>
                                     </asp:DropDownList>
@@ -487,18 +487,18 @@
                                     <tr>
                                         <td>
                                             <label class="input-control checkbox">
-                                                <asp:RadioButton ID="con_trabaja" runat="server" Text="" GroupName="abc1" Checked="true" AutoPostBack="true" OnCheckedChanged="con_trabaja_CheckedChanged"/>
+                                                <asp:RadioButton ID="con_trabaja" runat="server" Text="" GroupName="abc1" Checked="true" AutoPostBack="true" OnCheckedChanged="con_trabaja_CheckedChanged" />
                                                 <span class="check"></span>
                                                 <span class="caption">Si</span>
                                             </label>
                                             <label class="input-control checkbox">
-                                                <asp:RadioButton ID="RadioButton2" runat="server" Text="" GroupName="abc1"  AutoPostBack="true"  OnCheckedChanged="con_trabaja_CheckedChanged"/>
+                                                <asp:RadioButton ID="RadioButton2" runat="server" Text="" GroupName="abc1" AutoPostBack="true" OnCheckedChanged="con_trabaja_CheckedChanged" />
                                                 <span class="check"></span>
                                                 <span class="caption">No</span>
                                             </label>
 
-                                            
-                                        </td>                                        
+
+                                        </td>
                                     </tr>
                                 </table>
                             </td>
@@ -527,7 +527,7 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_telfTrabajo" runat="server"  data-validate-func="digits" data-validate-hint="Telefono trabajo Conyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_telfTrabajo" runat="server" data-validate-func="digits" data-validate-hint="Telefono trabajo Conyugue"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -705,7 +705,7 @@
                             </td>
                             <td>
                                 <div class="input-control select">
-                                    <asp:DropDownList ID="emg_comboParentesco" runat="server"  data-validate-func="required" data-validate-hint="Seleccione parentezco contacto emergencia">
+                                    <asp:DropDownList ID="emg_comboParentesco" runat="server" data-validate-func="required" data-validate-hint="Seleccione parentezco contacto emergencia">
                                         <asp:ListItem>Padre</asp:ListItem>
                                         <asp:ListItem>Madre</asp:ListItem>
                                     </asp:DropDownList>
@@ -719,6 +719,24 @@
             </div>
         </div>
         <script type="text/jscript">
+            //datepicker
+            var dd = new Date();
+            var month = dd.getMonth().toString();
+            month = month.length == 1 ? "0" + month : month; 
+            var day = dd.getDate().toString();
+            day = day.length == 1 ? "0" + day : day;
+            var datex = dd.getFullYear() - 15 + "-" + month + "-" + day;
+            $("[data-role=datepickerx]").each(function () {
+                $(this).datepicker({
+                    format: "yyyy-mm-dd",
+                    locale: "es",
+                    maxDate: datex.toString(),
+                    preset: datex.toString() + 'T10:00:01Z'
+                });
+                $(this).find("input").val(datex.toString());
+            });
+
+            //wizard
             $("#wizardx").wizard({
                 startPage: $("#<%=wizardStep.ClientID %>").val(), onPage: function (ix, a) {
                     $("#<%=wizardStep.ClientID %>").val(ix);
