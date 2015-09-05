@@ -106,7 +106,7 @@ public class ReporteServiceModel
             {
                 SCPM_PUESTO_HIST lastCargo = p.SCPM_PUESTO_HIST.OrderBy(c => c.PST_HIS_FEC_INI).FirstOrDefault();
                 p.SCPM_RAZASReference.Load();
-                if ((lastCargo.PST_HIS_FEC_INI < fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI > fecha_start))
+                if ((lastCargo.PST_HIS_FEC_INI <= fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI >= fecha_start))
                     _res[p.SCPM_RAZAS.RAZ_ID].count++;
 
             }
@@ -142,7 +142,7 @@ public class ReporteServiceModel
             {
                 SCPM_PUESTO_HIST lastCargo = p.SCPM_PUESTO_HIST.OrderBy(c => c.PST_HIS_FEC_INI).FirstOrDefault();
 
-                if ((lastCargo.PST_HIS_FEC_INI < fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI > fecha_start))
+                if ((lastCargo.PST_HIS_FEC_INI <= fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI >= fecha_start))
                     _res[p.PER_GEN.Value ? 0 : 1].count++;
 
             }
@@ -150,6 +150,94 @@ public class ReporteServiceModel
         return _res.Values.ToList();
     }
 
+    public IEnumerable getDiscapacidadCount(DateTime? fecha_start, DateTime? fecha_fin)
+    {
+        SCPMdbEntities db = new SCPMdbEntities();
+
+        var razas = db.SCPM_TIPO_DISCAPACIDADES.ToList();
+        var _res = new Dictionary<decimal, PersonaRaza>();
+
+        foreach (var item in razas)
+        {
+
+            _res.Add(item.TIP_DIS_ID, new PersonaRaza()
+            {
+                count = 0,
+                raza = item.TIP_DIS_NOM
+            });
+        }
+
+        var personas = db.SCPM_PERSONALES.ToList();
+        foreach (var p in personas)
+        {
+            p.SCPM_PUESTO_HIST.Load();
+            if (p.SCPM_PUESTO_HIST.Count > 0)
+            {
+                SCPM_PUESTO_HIST lastCargo = p.SCPM_PUESTO_HIST.OrderBy(c => c.PST_HIS_FEC_INI).FirstOrDefault();
+
+                if ((lastCargo.PST_HIS_FEC_INI <= fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI >= fecha_start))
+                {
+                    p.SCPM_DISCAPACIDADES.Load();
+                    var dis = p.SCPM_DISCAPACIDADES.ToList();
+                    foreach (var d in dis)
+                    {
+                        d.SCPM_TIPO_DISCAPACIDADESReference.Load();
+                        _res[d.SCPM_TIPO_DISCAPACIDADES.TIP_DIS_ID].count++;
+                    }
+
+                }
+
+            }
+        }
+
+        return _res.Values.ToList();
+    }
+
+    public IEnumerable getPersonasDiscapacidadCount(DateTime? fecha_start, DateTime? fecha_fin)
+    {
+        SCPMdbEntities db = new SCPMdbEntities();
+
+        var razas = db.SCPM_TIPO_DISCAPACIDADES.ToList();
+        var _res = new Dictionary<decimal, PersonaRaza>();
+
+
+
+        _res.Add(0, new PersonaRaza()
+        {
+            count = 0,
+            raza = "Sin discapacidad"
+        });
+
+        _res.Add(1, new PersonaRaza()
+        {
+            count = 0,
+            raza = "Con discapacidad"
+        });
+
+        var personas = db.SCPM_PERSONALES.ToList();
+        foreach (var p in personas)
+        {
+            p.SCPM_PUESTO_HIST.Load();
+            if (p.SCPM_PUESTO_HIST.Count > 0)
+            {
+                SCPM_PUESTO_HIST lastCargo = p.SCPM_PUESTO_HIST.OrderBy(c => c.PST_HIS_FEC_INI).FirstOrDefault();
+
+                if ((lastCargo.PST_HIS_FEC_INI <= fecha_fin) && (fecha_start == null || lastCargo.PST_HIS_FEC_INI >= fecha_start))
+                {
+                    p.SCPM_DISCAPACIDADES.Load();
+                    var dis = p.SCPM_DISCAPACIDADES.ToList();
+                    if (dis.Count > 0)
+                        _res[1].count++;
+                    else
+                        _res[0].count++;
+                }
+
+            }
+        }
+
+        return _res.Values.ToList();
+
+    }
     public List<SubrogacionHistory> getPersonaHistory(string tipo, SCPM_PERSONALES p)
     {
 
@@ -173,7 +261,7 @@ public class ReporteServiceModel
                 _res.Add(new SubrogacionHistory()
                 {
                     unidad = item.SCPM_CARGOS.SCPM_AREAS.SCPM_UNIDAD.UNI_NOM,
-                    area = item.SCPM_CARGOS.SCPM_AREAS.ARE_NOM, 
+                    area = item.SCPM_CARGOS.SCPM_AREAS.ARE_NOM,
                     car_id = Convert.ToInt32(item.SCPM_CARGOS.CAR_ID),
                     car_nom = item.SCPM_CARGOS.CAR_NOM,
                     fecha_end = item.SUB_HIS_FEC_FIN.HasValue ? item.SUB_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd") : "",
@@ -208,32 +296,6 @@ public class ReporteServiceModel
             }
         }
         return _res.OrderByDescending(a => a.fecha_start).ToList();
-    }
-
-    public IEnumerable getDiscapacidadCount(DateTime? fecha_start, DateTime? fecha_fin)
-    {
-        SCPMdbEntities db = new SCPMdbEntities();
-
-        var razas = db.SCPM_TIPO_DISCAPACIDADES.ToList();
-        var _res = new Dictionary<decimal, PersonaRaza>();
-
-        foreach (var item in razas)
-        {
-
-            _res.Add(item.TIP_DIS_ID, new PersonaRaza()
-            {
-                count = 0,
-                raza = item.TIP_DIS_NOM
-            });
-        }
-
-        var dis = db.SCPM_DISCAPACIDADES.ToList();
-        foreach (var d in dis)
-        {
-            d.SCPM_TIPO_DISCAPACIDADESReference.Load();
-            _res[d.SCPM_TIPO_DISCAPACIDADES.TIP_DIS_ID].count++;
-        }
-        return _res.Values.ToList();
     }
 }
 

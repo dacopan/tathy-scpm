@@ -138,6 +138,7 @@
                     <asp:ListItem Value="1">Raza</asp:ListItem>
                     <asp:ListItem Value="2">Genero</asp:ListItem>
                     <asp:ListItem Value="3">Discapacidad</asp:ListItem>
+                    <asp:ListItem Value="4">Personas Discapacidad</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <br />
