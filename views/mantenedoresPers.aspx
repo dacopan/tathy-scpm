@@ -31,11 +31,11 @@
                             <asp:Label ID="Label33" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inProvincia" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inProvincia" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
-                                <asp:CheckBox ID="onProvincia" runat="server" />
+                                <asp:CheckBox ID="onProvincia" runat="server"/>
                                 <span class="check"></span>
                             </label>
                         </td>
@@ -64,7 +64,7 @@
                             <asp:Label ID="Label34" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="inCanton" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inCanton" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -97,7 +97,7 @@
                             <asp:Label ID="Label35" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="inParroquia" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inParroquia" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -131,7 +131,7 @@
                             <asp:Label ID="Label27" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="inSector" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inSector" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -184,7 +184,7 @@
                             <asp:Label ID="Label8" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inDiscapacidad" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inDiscapacidad" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -250,7 +250,7 @@
                             <asp:Label ID="Label11" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inDocumento" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inDocumento" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -306,7 +306,7 @@
                             <asp:Label ID="Label15" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inEstadoCivil" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inEstadoCivil" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -361,7 +361,7 @@
                             <asp:Label ID="Label21" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inProfesion" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inProfesion" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -413,7 +413,7 @@
                             <asp:Label ID="Label22" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inParentesco" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inParentesco" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -467,7 +467,7 @@
                             <asp:Label ID="Label23" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inRaza" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inRaza" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -521,7 +521,7 @@
                             <asp:Label ID="Label25" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inPais" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inPais" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -659,5 +659,8 @@
             <td>&nbsp;</td>
         </tr>
     </table>
+    <script type="text/javascript">
+        
+    </script>
 </asp:Content>
 

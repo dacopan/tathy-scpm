@@ -8,7 +8,7 @@
             <asp:HiddenField Value="0" runat="server" ID="hasAvatar" />
             <asp:Button Text="submit" OnClick="addPersona_Click" runat="server" CssClass="no-visible submit" />
             <div class="steps">
-                <div class="step" runat="server">
+               <div class="step" runat="server">
                     <table class="style1" align="center">
                         <tr>
                             <td colspan="5" bgcolor="#000066">
@@ -22,7 +22,8 @@
                             </td>
                             <td class="style24">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="inApellido1" runat="server" data-validate-func="required" data-validate-hint="apellido paterno requerido"></asp:TextBox>
+                                    <asp:TextBox ID="inApellido1" runat="server" data-validate-func="required" data-validate-hint="apellido paterno requerido"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style15">&nbsp;</td>
@@ -31,7 +32,8 @@
                             </td>
                             <td class="style8">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="inApellido2" runat="server" data-validate-func="required" data-validate-hint="apellido materno requerido"></asp:TextBox>
+                                    <asp:TextBox ID="inApellido2" runat="server" data-validate-func="required" data-validate-hint="apellido materno requerido"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -41,7 +43,8 @@
                             </td>
                             <td class="style24" style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="inNombre1" runat="server" data-validate-func="required" data-validate-hint="Primer Nombre requerido"></asp:TextBox>
+                                    <asp:TextBox ID="inNombre1" runat="server" data-validate-func="required" data-validate-hint="Primer Nombre requerido"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style15" style="height: 26px"></td>
@@ -50,7 +53,8 @@
                             </td>
                             <td class="style8" style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="inNombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre requerido"></asp:TextBox>
+                                    <asp:TextBox ID="inNombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre requerido"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -146,7 +150,9 @@
                                     <tr>
                                         <td class="style21" style="width: 4px">
                                             <div class="input-control text">
-                                                <asp:TextBox ID="inMilitar" runat="server" data-validate-func="required" data-validate-hint="ingrese libreta militar"></asp:TextBox>
+                                                <asp:TextBox ID="inMilitar" runat="server" data-validate-hint="Libreta militar incorrecta"
+                                                    data-validate-func="minlength" data-validate-arg="12"
+                                                    data-inputmask="'mask': '9{12}'"></asp:TextBox>
                                             </div>
                                         </td>
                                     </tr>
@@ -196,7 +202,9 @@
                             </td>
                             <td class="style8">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="inCelular" runat="server" data-validate-func="celular" data-validate-hint="Telefono celular incorrecto"></asp:TextBox>
+                                    <asp:TextBox ID="inCelular" runat="server" data-validate-hint="Telefono celular incorrecto"
+                                        data-validate-func="minlength" data-validate-arg="10"
+                                        data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -206,7 +214,9 @@
                             </td>
                             <td class="style24">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="inTelefono" runat="server" data-validate-func="telefono" data-validate-hint="Telefono fijo incorrecto"></asp:TextBox>
+                                    <asp:TextBox ID="inTelefono" runat="server" data-validate-hint="Telefono fijo incorrecto"
+                                        data-validate-func="pattern" data-validate-arg="\d{7,10}"
+                                        data-inputmask="'mask': '9{7,10}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style15">&nbsp;</td>
@@ -341,7 +351,8 @@
                             </td>
                             <td class="style15">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="inDireccion" runat="server" data-validate-func="required" data-validate-hint="Dirección incorrecto"></asp:TextBox>
+                                    <asp:TextBox ID="inDireccion" runat="server" data-validate-func="required" data-validate-hint="Dirección incorrecto"
+                                        data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td class="style7">&nbsp;</td>
@@ -350,6 +361,7 @@
 
                     </table>
                 </div>
+
                 <%--CONYUGUE--%>
                 <div class="step" runat="server" id="stepConyugue" visible="true">
                     <table class="style1" align="center">
@@ -364,7 +376,8 @@
                             <td style="height: 26px">Apellido Paterno</td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_apellido1" runat="server" data-validate-func="required" data-validate-hint="Apellido paterno cónyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_apellido1" runat="server" data-validate-func="required" data-validate-hint="Apellido paterno cónyugue"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td style="height: 26px"></td>
@@ -373,7 +386,8 @@
                             </td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_apellido2" runat="server" data-validate-func="required" data-validate-hint="Apellido materno cónyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_apellido2" runat="server" data-validate-func="required" data-validate-hint="Apellido materno cónyugue"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -383,7 +397,8 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_nombre1" runat="server" data-validate-func="required" data-validate-hint="Primer nombre cónyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_nombre1" runat="server" data-validate-func="required" data-validate-hint="Primer nombre cónyugue"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td>&nbsp;</td>
@@ -392,7 +407,8 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_nombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre cónyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_nombre2" runat="server" data-validate-func="required" data-validate-hint="Segundo Nombre cónyugue"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -449,7 +465,9 @@
                             </td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_telefono" runat="server" data-validate-func="telefono" data-validate-hint="Telefono fijo cónyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_telefono" runat="server" data-validate-hint="Telefono fijo cónyugue"
+                                        data-validate-func="pattern" data-validate-arg="\d{7,10}"
+                                        data-inputmask="'mask': '9{7,10}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td style="height: 26px"></td>
@@ -458,7 +476,9 @@
                             </td>
                             <td style="height: 26px">
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_celular" runat="server" data-validate-func="celular" data-validate-hint="Telefono celular cónyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_celular" runat="server" data-validate-hint="Telefono celular cónyugue"
+                                        data-validate-func="minlength" data-validate-arg="10"
+                                        data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -514,7 +534,8 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_lugarTrab" runat="server" data-validate-func="required" data-validate-hint="Lugar trabajo Conyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_lugarTrab" runat="server" data-validate-func="required" data-validate-hint="Lugar trabajo Conyugue"
+                                        data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -524,7 +545,8 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_empresa" runat="server" data-validate-func="required" data-validate-hint="Empresa Conyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_empresa" runat="server" data-validate-func="required" data-validate-hint="Empresa Conyugue"
+                                        data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                                 </div>
                             </td>
                             <td>&nbsp;</td>
@@ -533,13 +555,17 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="con_telfTrabajo" runat="server" data-validate-func="digits" data-validate-hint="Telefono trabajo Conyugue"></asp:TextBox>
+                                    <asp:TextBox ID="con_telfTrabajo" runat="server" data-validate-hint="Telefono trabajo Conyugue"
+                                        data-validate-func="pattern" data-validate-arg="\d{7,10}"
+                                        data-inputmask="'mask': '9{7,10}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
 
                     </table>
                 </div>
+
+                <%--DISCAPACIDADES--%>
 
                 <div class="step">
                     <label class="input-control checkbox">
@@ -664,6 +690,8 @@
 
                 </div>
 
+                <%--CONTACTO EMERGENCIA--%>
+
                 <div class="step">
                     <table class="backgroundRepeatBanner">
                         <tr>
@@ -689,7 +717,9 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="emg_telefono" runat="server" data-validate-func="telefono" data-validate-hint="Numero telefono contacto emergencia"></asp:TextBox>
+                                    <asp:TextBox ID="emg_telefono" runat="server" data-validate-hint="Numero telefono contacto emergencia"
+                                          data-validate-func="pattern" data-validate-arg="\d{7,10}"
+                                        data-inputmask="'mask': '9{7,10}'"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -700,7 +730,9 @@
                             <td>
 
                                 <div class="input-control text">
-                                    <asp:TextBox ID="emg_celular" runat="server" data-validate-func="celular" data-validate-hint="Numero celular contacto emergencia"></asp:TextBox>
+                                    <asp:TextBox ID="emg_celular" runat="server" data-validate-hint="Numero celular contacto emergencia"
+                                          data-validate-func="pattern" data-validate-arg="\d{9}"
+                                        data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
 
                             </td>

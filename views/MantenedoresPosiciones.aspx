@@ -32,7 +32,7 @@
                             <asp:Label ID="Label33" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inUnidad" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inUnidad" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td style="height: 23px">
                             <label class="switch-original">
@@ -66,7 +66,7 @@
                             <asp:Label ID="Label34" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="inArea" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inArea" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -124,7 +124,7 @@
                             <asp:Label ID="Label37" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td style="height: 23px">
-                            <asp:TextBox ID="inRelacionLab" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="inRelacionLab" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -158,7 +158,7 @@
                             <asp:Label ID="Label39" runat="server" Text="Nuevo/Modificar"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="InDenominacion" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="InDenominacion" runat="server" data-inputmask="'mask': 'W{1,}'"></asp:TextBox>
                         </td>
                         <td>
                             <label class="switch-original">
@@ -236,7 +236,7 @@
                                     <td>
                                         <asp:HiddenField Value='<%# Eval("CAR_ID") %>' ID="car_id" runat="server" />
                                         <div class="input-control text full-size info">
-                                            <asp:TextBox ID="inCargo" runat="server" Text='<%# Eval("CAR_NOM") %>' />
+                                            <asp:TextBox ID="inCargo" runat="server" Text='<%# Eval("CAR_NOM") %>'  data-inputmask="'mask': 'W{1,}'"/>
                                         </div>
                                     </td>
                                     <td>
@@ -286,7 +286,7 @@
                         <div class="row-fluid body-preview">
                             <label>Nombre del Cargo</label>
                             <div class="input-control text">
-                                <asp:TextBox ID="inCargo" runat="server" />
+                                <asp:TextBox ID="inCargo" runat="server"  data-inputmask="'mask': 'W{1,}'"/>
                             </div>
                             <br />
                             <br />
