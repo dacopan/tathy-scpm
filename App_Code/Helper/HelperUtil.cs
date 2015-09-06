@@ -20,6 +20,9 @@ public class HelperUtil
     public const string patternPassport = "\\d{10}";
     public const string tipoSangre = "A-,A+,AB-,AB+,B-,B+,O-,O+";
 
+    public const string cargoJefeArea = "DIRECTOR";
+    public const string cargoJefeUnidad = "COORDINADOR,INTENDENTE";
+
 
 
 

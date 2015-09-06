@@ -151,7 +151,7 @@
                                         <td class="style21" style="width: 4px">
                                             <div class="input-control text">
                                                 <asp:TextBox ID="inMilitar" runat="server" data-validate-hint="Libreta militar incorrecta"
-                                                    data-validate-func="minlength" data-validate-arg="12"
+                                                    data-validate-func="pattern" data-validate-arg="\d{12}"
                                                     data-inputmask="'mask': '9{12}'"></asp:TextBox>
                                             </div>
                                         </td>
@@ -203,7 +203,7 @@
                             <td class="style8">
                                 <div class="input-control text">
                                     <asp:TextBox ID="inCelular" runat="server" data-validate-hint="Telefono celular incorrecto"
-                                        data-validate-func="minlength" data-validate-arg="10"
+                                        data-validate-func="pattern" data-validate-arg="\d{10}"
                                         data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
                             </td>
@@ -477,7 +477,7 @@
                             <td style="height: 26px">
                                 <div class="input-control text">
                                     <asp:TextBox ID="con_celular" runat="server" data-validate-hint="Telefono celular cónyugue"
-                                        data-validate-func="minlength" data-validate-arg="10"
+                                        data-validate-func="pattern" data-validate-arg="\d{10}"
                                         data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
                             </td>
