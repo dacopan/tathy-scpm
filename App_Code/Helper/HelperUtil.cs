@@ -15,6 +15,14 @@ public class HelperUtil
         // TODO: Agregar aquí la lógica del constructor
         //       
     }
+
+    public const string maskPassport = "'mask': '9{10}'";
+    public const string patternPassport = "\\d{10}";
+    public const string tipoSangre = "A-,A+,AB-,AB+,B-,B+,O-,O+";
+
+
+
+
     public static void showNotifi(String msg)
     {
         NotifyMessages = (msg);

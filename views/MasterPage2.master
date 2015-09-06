@@ -27,7 +27,7 @@
 
     <script language="JavaScript" type="text/javascript">
         //reloj live
-        /*
+       // /*
         $(function () {
              setInterval(function () {
                  var date = new Date(); var sec = date.getSeconds();
@@ -37,6 +37,15 @@
                      );
              }, 500);
  
+ 
+            //deshabilita click derecho
+            $(this).bind("contextmenu", function(e) {
+                e.preventDefault();
+            });
+        
+            //deshabilita consola de navegadores
+                      
+            
          });
          //*/
         window.mesagges = ('<%= HelperUtil.NotifyMessages %>'); 
@@ -143,7 +152,7 @@
             $("[data-inputmask]").each(function () {
                 $(this).inputmask();
             });
-            
+
         });
 
         /**

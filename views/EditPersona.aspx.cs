@@ -16,6 +16,7 @@ public partial class EditPersona : System.Web.UI.Page
         psvm = new PersonaServiceModel();
         if (!IsPostBack)
         {
+            fillComboSangre();
             //comboPais
             fillPais(comboPais);
 
@@ -72,7 +73,24 @@ public partial class EditPersona : System.Web.UI.Page
         }
     }
 
+    private void fillComboSangre()
+    {
+        var datasource = from x in HelperUtil.tipoSangre.Split(',')
+                         select new
+                         {
+                             SAN_ID = x
+                         };
 
+        comboSangre.Items.Clear();
+        comboSangre.AppendDataBoundItems = true;
+        comboSangre.DataSource = datasource.OrderBy(a => a.SAN_ID);
+        comboSangre.DataValueField = "SAN_ID";
+        comboSangre.DataTextField = "SAN_ID";
+
+        comboSangre.DataBind();
+        comboSangre.Items.Add(new ListItem("--Seleccionar--", "0"));
+        comboSangre.SelectedValue = "0";
+    }
 
     private void fillParentesco(DropDownList combo)
     {
@@ -352,7 +370,7 @@ public partial class EditPersona : System.Web.UI.Page
         //fechanac
         inFechaNac.Text = p.PER_FEC_NAC.Value.ToString("yyyy-MM-dd");
         //
-        comboSangre.SelectedValue = p.PER_TIP_SAN.ToString().Replace(" ","");
+        comboSangre.SelectedValue = p.PER_TIP_SAN.ToString().Replace(" ", "");
         comboEstadoCivil.SelectedValue = p.SCPM_ESTADOS_CIVILES.EST_CIV_ID.ToString();
         inCelular.Text = p.PER_CEL;
         inTelefono.Text = p.PER_TEL;
@@ -766,11 +784,14 @@ public partial class EditPersona : System.Web.UI.Page
         {
             inDoc.Attributes["data-validate-func"] = "cedula";
             inDoc.Attributes["data-validate-hint"] = "Cédula Inválida";
+            inDoc.Attributes["data-inputmask"] = "'mask': '9{10}'";
         }
         else
         {
-            inDoc.Attributes["data-validate-func"] = "required";
-            inDoc.Attributes["data-validate-hint"] = "Numero documento inválido";
+            inDoc.Attributes["data-validate-func"] = "pattern";
+            inDoc.Attributes["data-validate-arg"] = HelperUtil.patternPassport;
+            inDoc.Attributes["data-validate-hint"] = "Documento Inválido";
+            inDoc.Attributes["data-inputmask"] = HelperUtil.maskPassport;
         }
     }
 }
