@@ -243,7 +243,7 @@ public partial class ingresoLaboral : System.Web.UI.Page
             {
                 SCPM_PERSONALES persona = res.First();
                 current_persona_id.Value = persona.PER_ID.ToString();
-                fillCargos(persona.PER_ID.ToString());
+                //fillCargos(persona.PER_ID.ToString());
                 //historial puestos
                 persona.SCPM_PUESTO_HIST.Load();
 
@@ -275,10 +275,18 @@ public partial class ingresoLaboral : System.Web.UI.Page
                         lastCargo.PST_HIS_FEC_INI.Value.ToString("yyyy-MM-dd"),
                         lastCargo.PST_HIS_FEC_FIN == null ? "actualidad" : lastCargo.PST_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd"));
 
+                    //jefe
+                    JefeModel jefe = psvm.getJefeOfAreaId(Convert.ToInt32(ComboArea.SelectedValue), HelperUtil.cargoJefeArea.Split(',').Contains(lastCargo.SCPM_CARGOS.CAR_NOM));
+                    puestoActual.InnerHtml += String.Format("<br/><br/><strong>{0}<strong>: {1}", jefe.Cargo, jefe.Nombre);
+                    //fin jefe
                     comboUnidad.SelectedValue = lastCargo.SCPM_CARGOS.SCPM_AREAS.SCPM_UNIDAD.UNI_COD.ToString();
+                    fillAreas();
+
                     ComboArea.SelectedValue = lastCargo.SCPM_CARGOS.SCPM_AREAS.ARE_COD.ToString();
-                    comboRelacionLab.SelectedValue = lastCargo.SCPM_RELACIONES_LABORALES.REL_LAB_ID.ToString();
+                    fillCargos(persona.PER_ID.ToString());                    
                     comboCargo.SelectedValue = lastCargo.SCPM_CARGOS.CAR_ID.ToString();
+
+                    comboRelacionLab.SelectedValue = lastCargo.SCPM_RELACIONES_LABORALES.REL_LAB_ID.ToString();
                     inFechaStart.Text = lastCargo.PST_HIS_FEC_INI.Value.ToString("yyyy-MM-dd");
                     inFechaEnd.Text = lastCargo.PST_HIS_FEC_FIN == null ? "" : lastCargo.PST_HIS_FEC_FIN.Value.ToString("yyyy-MM-dd");
                 }
@@ -287,6 +295,7 @@ public partial class ingresoLaboral : System.Web.UI.Page
                     puestoActual.InnerHtml = String.Format("Puesto Actual: {0}", "Ninguno");
                     current_cargo_id.Value = "dcm";
                     HelperUtil.showNotifi("Funcionario actualmente sin puesto de trabajo");
+                    fillCargos(persona.PER_ID.ToString());
                 }
 
             }

@@ -535,4 +535,65 @@ public class PuestoServiceModel
     }
 
 
+
+    public JefeModel getJefeOfAreaId(int area_cod, bool searchJefeUnidad)
+    {
+        SCPM_AREAS area = (from a in db.SCPM_AREAS where a.ARE_COD == area_cod select a).FirstOrDefault();
+        area.SCPM_UNIDADReference.Load();
+        SCPM_UNIDAD unidad = area.SCPM_UNIDAD;
+
+        //determino si busco un cargo q sea jefe de undad o area
+        List<String> cargo_jefe_nombre;
+        string jefe_tipo;
+        if (area.ARE_NOM.Equals(unidad.UNI_NOM, StringComparison.InvariantCultureIgnoreCase) || searchJefeUnidad)
+        {//si el nombre del area es igual al nombre de la unidad, busco al jefe de la unidad
+            cargo_jefe_nombre = HelperUtil.cargoJefeUnidad.Split(',').ToList();
+            jefe_tipo = "unidad";
+        }
+        else
+        {//si el nombre del area distinto al nombre de la unidad, busco al jefe del area
+            cargo_jefe_nombre = HelperUtil.cargoJefeArea.Split(',').ToList();
+            jefe_tipo = "area";
+        }
+
+        //obtengo los cargos q posee esta area, y cojo solo el q tiene el nombre de cargo jefe buscado (determinado en el paso anterior)
+        area.SCPM_CARGOS.Load();
+        SCPM_CARGOS cargo_jefe = (from c in area.SCPM_CARGOS where cargo_jefe_nombre.Contains(c.CAR_NOM.ToUpper()) select c).FirstOrDefault();
+        if (cargo_jefe == null)
+        {
+            HelperUtil.showNotifi(String.Format("debe crear el cargo de {0} en esta {1}",
+                String.Join(";", cargo_jefe_nombre.ToArray()),
+                jefe_tipo));
+            return new JefeModel()
+            {
+                Cargo = String.Join(",", cargo_jefe_nombre.ToArray()),
+                Nombre = "ninguno, cargo no creado"
+            }; ;
+        }
+        //traigo el historial de ese cargo de jefe especifico
+        cargo_jefe.SCPM_PUESTO_HIST.Load();
+        SCPM_PUESTO_HIST lastCargo = cargo_jefe.SCPM_PUESTO_HIST.OrderByDescending(c => c.PST_HIS_FEC_INI).FirstOrDefault();
+
+        if (lastCargo != null && (lastCargo.PST_HIS_FEC_FIN == null || DateTime.Now.CompareTo(lastCargo.PST_HIS_FEC_FIN) <= 0))
+        {//el cargo esta actualmente ocupado, tiene jefe
+            lastCargo.SCPM_PERSONALESReference.Load();
+            SCPM_PERSONALES persona = lastCargo.SCPM_PERSONALES;
+            return new JefeModel()
+            {
+                Cargo = cargo_jefe.CAR_NOM,
+                Nombre = String.Format("{0} {1} {2} {3}", persona.PER_APE_PAT, persona.PER_APE_MAT, persona.PER_NOM1, persona.PER_NOM2)
+            };
+        }
+        else
+        {//no tiene jefe
+            HelperUtil.showNotifi(jefe_tipo + " sin " + cargo_jefe.CAR_NOM);
+            return new JefeModel()
+            {
+                Cargo = cargo_jefe.CAR_NOM,
+                Nombre = "ninguno"
+            };
+        }
+
+
+    }
 }

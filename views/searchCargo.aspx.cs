@@ -13,9 +13,9 @@ public partial class searchCargo : System.Web.UI.Page
         psvm = new PuestoServiceModel();
         if (!IsPostBack)
         {
-            psvm.getAllDenominaciones(); 
+            psvm.getAllDenominaciones();
 
-            fillUnidades(cargo_comboUnidad, 1);  
+            fillUnidades(cargo_comboUnidad, 1);
 
             renderCargos();
         }
@@ -24,7 +24,7 @@ public partial class searchCargo : System.Web.UI.Page
     {
         combo.Enabled = false;
         combo.Items.Clear();
-        combo.AppendDataBoundItems = true; 
+        combo.AppendDataBoundItems = true;
         combo.DataSource = psvm.getAllUnidades();
         combo.DataValueField = "UNI_COD";
         combo.DataTextField = "UNI_NOM";
@@ -80,6 +80,19 @@ public partial class searchCargo : System.Web.UI.Page
     protected void cargo_comboArea_SelectedIndexChanged(object sender, EventArgs e)
     {
         renderCargos();
+        //get jefe
+        JefeModel jefe = psvm.getJefeOfAreaId(Convert.ToInt32(cargo_comboArea.SelectedValue),false);
+        if (jefe == null)
+        {
+            HelperUtil.showNotifi("Área Actualmente sin jefe");
+            jefeTitle.InnerHtml = "Cargo de jefe no asociado";
+            jefex.Text = "ninguno";
+        }
+        else
+        {
+            jefeTitle.InnerHtml = jefe.Cargo;
+            jefex.Text = jefe.Nombre;
+        }
     }
     protected void cargo_comboUnidad_SelectedIndexChanged(object sender, EventArgs e)
     {

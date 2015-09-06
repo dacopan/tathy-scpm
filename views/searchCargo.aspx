@@ -8,7 +8,7 @@
         </div>
         <div class="content">
             <div class="grid">
-                <div class="row cells9 condensed">
+                <div class="row cells12 condensed">
                     <div class="cell colspan4">
                         <label>Unidad</label>
                         <div class="input-control text full-size">
@@ -23,6 +23,12 @@
                             <asp:DropDownList ID="cargo_comboArea" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cargo_comboArea_SelectedIndexChanged">
                                 <asp:ListItem>COORDINACION GENERAL ADMINISTRATIVA FINANCIERA</asp:ListItem>
                             </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="cell colspan3">
+                        <label id="jefeTitle" runat="server">Jefe</label>
+                        <div class="input-control text full-size">
+                            <asp:TextBox Text="MORA NOTNI CRISTINA RENATA" ReadOnly="true" runat="server" ID="jefex" />
                         </div>
                     </div>
 
