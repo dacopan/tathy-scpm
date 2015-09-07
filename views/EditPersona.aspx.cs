@@ -484,7 +484,9 @@ public partial class EditPersona : System.Web.UI.Page
         emg.SCPM_PARENTESCOSReference.Load();
         emg_comboParentesco.SelectedValue = emg.SCPM_PARENTESCOS.PARE_ID.ToString();
 
-
+        ///---estado funcionario---///
+        onFuncionario.Checked = p.PER_EST.Value;
+        onFuncionarioLabel.InnerHtml = p.PER_EST.Value ? "Funcionario Habilitado" : "Funcionario Deshabilitado";
     }
 
     protected void addPersona_Click(object sender, EventArgs e)
@@ -697,6 +699,10 @@ public partial class EditPersona : System.Web.UI.Page
         emg.CON_FAM_EME_CEL = emg_celular.Text;
         emg.SCPM_PARENTESCOS = psvm.getParentezcoByID(Convert.ToInt32(emg_comboParentesco.SelectedValue));
         //p.SCPM_EMERGENCIAS.Add(emg);
+
+        ///---estado funcionario---///
+        p.PER_EST = onFuncionario.Checked;
+
         if (psvm.saveDB())
         {
             // Page.Redirect(Page.Request.RawUrl, false);
@@ -793,6 +799,10 @@ public partial class EditPersona : System.Web.UI.Page
             inDoc.Attributes["data-validate-hint"] = "Documento Inválido";
             inDoc.Attributes["data-inputmask"] = HelperUtil.maskPassport;
         }
+    }
+    protected void onFuncionario_CheckedChanged(object sender, EventArgs e)
+    {
+        onFuncionarioLabel.InnerHtml = onFuncionario.Checked ? "Funcionario Habilitado" : "Funcionario Deshabilitado";
     }
 }
 

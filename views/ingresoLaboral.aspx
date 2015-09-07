@@ -51,6 +51,7 @@
                                             <th>No. de Identificación</th>
                                             <th>Nombre</th>
                                             <th>ID Institucional</th>
+                                            <th>Estado</th>
                                             <th>Acción</th>
                                         </tr>
                                     </thead>
@@ -61,8 +62,14 @@
                                     <td><%# Eval("PER_APE_PAT").ToString()+ " " +Eval("PER_APE_MAT").ToString()+ " " +Eval("PER_NOM1").ToString()+ " " +Eval("PER_NOM2").ToString() %></td>
                                     <td><%# Eval("PER_ID") %></td>
                                     <td>
+                                        <label class="switch-original">
+                                            <asp:CheckBox ID="xxx" runat="server" Checked='<%# bool.Parse( Eval("PER_EST").ToString()) %>' />
+                                            <span class="check"></span>
+                                        </label>
+                                    </td>
+                                    <td>
 
-                                        <asp:Button runat="server" CssClass="button success" CommandArgument='<%# Eval("PER_ID") %>' Text="Editar Datos laborales" />
+                                        <asp:Button runat="server" CssClass="button success" CommandArgument='<%# Eval("PER_ID") %>' Text="Editar Datos laborales" Enabled='<%# bool.Parse( Eval("PER_EST").ToString()) %>' />
                                     </td>
                                 </tr>
                             </ItemTemplate>
@@ -72,6 +79,7 @@
                                         <th>No. de Identificación</th>
                                         <th>Nombre</th>
                                         <th>ID Institucional</th>
+                                        <th>Estado</th>
                                         <th>Acción</th>
                                     </tr>
                                 </tfoot>

@@ -349,6 +349,7 @@ public partial class AddPersona : System.Web.UI.Page
         {
             //datos funcionario
             SCPM_PERSONALES p = new SCPM_PERSONALES();
+            p.PER_EST = true;
             p.PER_APE_PAT = inApellido1.Text;
             p.PER_APE_MAT = inApellido2.Text;
             p.PER_NOM1 = inNombre1.Text;

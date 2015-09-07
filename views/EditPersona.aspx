@@ -755,6 +755,13 @@
 
                     </table>
                 </div>
+                 <div class="step" runat="server">
+                     <label class="switch-original">
+                        <asp:CheckBox ID="onFuncionario" runat="server" Checked="true" AutoPostBack="true" OnCheckedChanged="onFuncionario_CheckedChanged"/>
+                        <span class="check"></span>
+                        <span class="caption" runat="server" id="onFuncionarioLabel">Funcionario activado</span>
+                    </label>
+                 </div>
             </div>
         </div>
         <script type="text/jscript">
@@ -794,11 +801,11 @@
 
             var stepl = $("#wizardx .step").length;
             $("#wizardx .stepper li").each(function (ix) {
-                var titles = "", _titles = ["Datos Funcionario", "Datos Cónyugue", "Ingreso Discapacidades", "Contacto de emergencia"];
-                if (stepl == 4) {
+                var titles = "", _titles = ["Datos Funcionario", "Datos Cónyugue", "Ingreso Discapacidades", "Contacto de emergencia","Estado funcionario"];
+                if (stepl == 5) {
                     titles = _titles;
                 } else {
-                    titles = [_titles[0], _titles[2], _titles[3]];
+                    titles = [_titles[0], _titles[2], _titles[3], _titles[4]];
                 }
                 var el = $("<span class='step-title'></span>").html(titles[ix]);
                 $(this).append(el);

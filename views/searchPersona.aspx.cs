@@ -13,7 +13,7 @@ public partial class searchPersona : System.Web.UI.Page
         psvm = new PersonaServiceModel();
         if (!IsPostBack)
         {
-            exampledata();
+            //exampledata();
 
             Repeater1.DataSource = psvm.getAllPersonas();
             Repeater1.DataBind();
