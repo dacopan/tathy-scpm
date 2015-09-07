@@ -7837,6 +7837,9 @@
                 } else {
                     return false;
                 }
+            },
+            militar: function (val) {
+                return val.trim() === "" || val.trim().replace("_","").length == 12;
             }
         },
 

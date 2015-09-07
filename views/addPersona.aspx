@@ -151,7 +151,7 @@
                                         <td class="style21" style="width: 4px">
                                             <div class="input-control text">
                                                 <asp:TextBox ID="inMilitar" runat="server" data-validate-hint="Libreta militar incorrecta"
-                                                    data-validate-func="pattern" data-validate-arg="\d{12}"
+                                                    data-validate-func="militar"
                                                     data-inputmask="'mask': '9{12}'"></asp:TextBox>
                                             </div>
                                         </td>
@@ -704,7 +704,8 @@
                             </td>
                             <td>
                                 <div class="input-control text">
-                                    <asp:TextBox ID="emg_nombre" runat="server" data-validate-func="required" data-validate-hint="Nombre contacto emergencia"></asp:TextBox>
+                                    <asp:TextBox ID="emg_nombre" runat="server" data-validate-func="required" data-validate-hint="Nombre contacto emergencia"
+                                        data-inputmask="'mask': 'B{1,}'"></asp:TextBox>
                                 </div>
 
                             </td>
