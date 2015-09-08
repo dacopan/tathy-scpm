@@ -76,9 +76,9 @@ public class PuestoServiceModel
         else return false;
     }
 
-    public bool editArea(SCPM_AREAS newx)
+    public bool editArea(SCPM_AREAS newx, int unidad)
     {
-        var contains = db.SCPM_AREAS.Include("SCPM_UNIDAD").ToList().Any(u => u.ARE_NOM.Equals(newx.ARE_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_UNIDAD.UNI_COD == newx.SCPM_UNIDAD.UNI_COD && u.ARE_COD != newx.ARE_COD);
+        var contains = db.SCPM_AREAS.Include("SCPM_UNIDAD").ToList().Any(u => u.ARE_NOM.Equals(newx.ARE_NOM, StringComparison.InvariantCultureIgnoreCase) && u.SCPM_UNIDAD.UNI_COD == unidad && u.ARE_COD != newx.ARE_COD);
         if (contains || newx.ARE_NOM == "") return false;
 
         var _a = from a in db.SCPM_AREAS where a.ARE_COD == newx.ARE_COD select a;

@@ -242,7 +242,7 @@ public partial class MantenedoresPosiciones : System.Web.UI.Page
     protected void editArea_Click(object sender, EventArgs e)
     {
         psvm = new PuestoServiceModel();
-        if (ComboArea.Enabled && psvm.editArea(new SCPM_AREAS() { ARE_COD = Convert.ToInt32(ComboArea.SelectedValue), ARE_EST = AreaEnabled.Checked, ARE_NOM = inArea.Text }))
+        if (ComboArea.Enabled && psvm.editArea(new SCPM_AREAS() { ARE_COD = Convert.ToInt32(ComboArea.SelectedValue), ARE_EST = AreaEnabled.Checked, ARE_NOM = inArea.Text }, Convert.ToInt32(ComboUnidad.SelectedValue)))
         {
             HelperUtil.showNotifi("Area modificada");
             fillAreas(ComboArea, 0);
