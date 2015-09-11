@@ -203,7 +203,7 @@
                             <td class="style8">
                                 <div class="input-control text">
                                     <asp:TextBox ID="inCelular" runat="server" data-validate-hint="Telefono celular incorrecto"
-                                        data-validate-func="pattern" data-validate-arg="\d{10}"
+                                        data-validate-func="pattern" data-validate-arg="0(9|8)\d{8}"
                                         data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
                             </td>
@@ -477,7 +477,7 @@
                             <td style="height: 26px">
                                 <div class="input-control text">
                                     <asp:TextBox ID="con_celular" runat="server" data-validate-hint="Telefono celular cónyugue"
-                                        data-validate-func="pattern" data-validate-arg="\d{12}"
+                                        data-validate-func="pattern" data-validate-arg="0(9|8)\d{8}"
                                         data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
                             </td>
@@ -732,7 +732,7 @@
 
                                 <div class="input-control text">
                                     <asp:TextBox ID="emg_celular" runat="server" data-validate-hint="Numero celular contacto emergencia"
-                                          data-validate-func="pattern" data-validate-arg="\d{9}"
+                                          data-validate-func="pattern" data-validate-arg="0(9|8)\d{8}"
                                         data-inputmask="'mask': '9{10}'"></asp:TextBox>
                                 </div>
 
